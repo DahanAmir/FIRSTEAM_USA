@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <title>DataTable Campaign</title>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+    <style type="text/css">
+
+        button {
+            margin-left: 10px;
+        }
+
+        .colorDiv {
+            height: 30px;
+            width: 70px;
+            border: 2px solid black
+        }
+
+        #newBTN {
+            background-color: blueviolet;
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+
+    <script>
+        var id_edit; 
+        function editBtn_Function(cam_id) {
+            id_edit=''
+            $("#editDiv").show(); 
+            id_edit = cam_id
+            
+        }
+
+        
+
+        function a(){
+            let api = "../api/campaign/" + i + '/' + b;
+            ajaxCall("GET", api, "", success1, errorr1)
+        }
+        $(document).ready(function () {
+            let api = "../api/Campaign/"
+            ajaxCall("GET", api, "", getSuccess, erroradd_list_r)
+            $("#editDiv").hide();
+
+
+        });
+
+
+        function buttonEvents() {
+
+            $(document).on("click", ".editBtn", function () {
+                mode = "edit";
+                markSelected(this);
+                $("#editDiv").show();
+                $("#editDiv :input").prop("disabled", false); // edit mode: enable all controls in the form
+                populateFields(this.getAttribute('data-Campid')); // fill the form fields according to the selected row
+
+            });
+
+
+         
+
+        }
+        function del(cam_id) {
+
+            var x = confirm("Are you sure you want to delete?");
+            if (x) {
+
+                let api = "../api/campaign/delete/" + cam_id + '/0';
+                ajaxCall("Delete", api, "", delsucess, delerrorr)
+
+
+                swal("Submitted to the server!", "Great Job", "success");
+                id_edit = ''
+
+                location.reload();
+
+                return false;
+
+            }
+            else {
+
+                alert("Not Deleted!");
+                location.reload();
+
+            }
+               
+            
+           
+
+
+        }
+        function delsucess(data) {
+
+            alert("success! campaign zfor rest: " + id_edit + " with budget:  " + newb + " is Updated ")
+        }
+
+        function delerrorr(err) {
+            alert("Sorry, please try again");
+        }
+       
+        function erroradd_list_r(campaigndata) {
+            alert("erroradd_list_r");
+        }
+        var ids = "";
+        let campaigns
+
+
+        function getSuccess(campaigndata) { //הכנסת נתונים מהשרת לטבלה
+
+            campaigns = campaigndata;
+        
+            try {
+                tbl = $('#campaignsTable').DataTable({
+                    data: campaigndata,
+                    pageLength: 6,
+                    columns: [
+                        {
+                            render: function (data, type, row, meta) {
+                              
+                                let dataCampaign = "data-campaignId='" + row.Campid + "'";
+                                ids = row.Campid;
+                                editBtn = "<button type='button'  class = 'editBtn btn btn-success'  " + campaigndata + " id='"+ids+"' onclick='editBtn_Function(id)'> Edit </button>";
+                                deleteBtn = "<button type='button' class = 'deleteBtn btn btn-danger' " + campaigndata + " id='" + ids + "' onclick='del(id)'> Delete </button>";
+                                return editBtn +deleteBtn;
+                            }
+                        }, 
+                        { data: "Campid" },
+                        {
+                            data: function (jsonDate) {
+                                return jsonDate.Budget+ "$"
+
+                            } },
+                        {
+                            data: function (jsonDate) {
+                                return jsonDate.Remain / 100 + "$"
+
+                            }
+                        },
+                        { data: "Clicks" },
+                        { data: "Views" },
+                        {
+                            data: function (jsonDate) {
+                                if (jsonDate.Status == 1) {
+                                    return "active"
+
+                                }
+                                else
+                                    return "inactive"
+
+                            }
+                        },
+                    ],
+                });
+
+            }
+            catch (err) {
+                alert(err);
+            }
+        }
+
+
+        function Updateb() {
+
+            var newb = document.getElementById("Budget").value;
+            alert("new budget is:" + newb + " for rest: " + id_edit);
+
+            let api = "../api/campaign/" + id_edit + '/' + newb;
+            ajaxCall("GET", api, "", success1, errorr1)
+
+
+            swal("Submitted to the server!", "Great Job", "success");
+            id_edit=''
+            return false;
+
+
+        }
+
+        function success1(data) {
+
+            alert("success! campaign for rest: " + id_edit + " with budget:  " + newb + " is Updated ")
+        }
+
+        function errorr1(err) {
+            alert("Sorry, please try again");
+        }
+        function cancelf() {
+            $("#editDiv").hide();
+           document.getElementById("Budget").value=" ";
+
+        }
+     
+    </script>
+</head>
+<body>
+    <button>
+        <a href="start.html">Go Back to home page</a>
+    </button>
+
+    <table id="campaignsTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>   </th>
+                <th>Campid</th>
+                <th>Budget</th>
+                <th>Remain</th>
+                <th>Clicks</th>
+                <th>Views</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+    </table>
+    <div id="editDiv">
+        <form id="carForm">
+            <div class="form-group row">
+                <div class="form-group col-sm-3">
+                    <label for="manufacturer"><span class="red-star">★ </span>Budget</label>
+                    <input type="text" class="form-control" id="Budget" placeholder="Enter the new budget" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg" id="saveBTN" onclick="Updateb()">Save</button>
+                <input type="button" class="btn btn-warning btn-lg" id="cancelSaveBTN"  onclick="cancelf()" value="Cancel" />
+
+            </div>
+
+        </form>
+    </div>
+    
+</body>
+</html>

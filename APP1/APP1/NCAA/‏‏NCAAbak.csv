@@ -1,0 +1,887 @@
+﻿Id,Full_School_Name,School,Full_Conference,Conference_id,Adj. RPI,Division,Type,City,State,State_id
+1,University of Virginia,Virginia,Southeast,5,1,1,Mens,Charlottesville,Virginia,51
+2,Georgetown University,Georgetown,,0,2,1,Mens,Washington,District of Columbia,11
+3,University of Central Florida,UCF,Southeast,5,3,1,Mens,Orlando,Florida,12
+4,Southern Methodist University,SMU,Southwest ,6,4,1,Mens,University Park,Texas,48
+5,Clemson University,Clemson,Southeast,5,5,1,Mens,Clemson,South Carolina,45
+6,Wake Forest University,Wake Forest,Southeast,5,6,1,Mens,Winston-Salem,North Carolina,37
+7,University of Washington,Washington,Far West ,8,7,1,Mens,Seattle,Washington,53
+8,,St. John's (NY),,0,8,1,Mens,,,0
+9,Virginia Tech[A 53],Virginia Tech,Southeast,5,9,1,Mens,Blacksburg,Virginia,51
+10,,Missouri St.,,0,10,1,Mens,,,0
+11,,Saint Mary's (CA),,0,11,1,Mens,,,0
+12,Marshall University,Marshall,Southeast,5,12,1,Mens,Huntington,West Virginia,54
+13,University of New Hampshire,New Hampshire,New England ,1,13,1,Mens,Durham,New Hampshire,33
+14,,Penn St.,,0,14,1,Mens,,,0
+15,Indiana University,Indiana,Great Lakes ,3,15,1,Mens,Bloomington,Indiana,18
+16,Stanford University,Stanford,Far West ,8,16,1,Mens,Palo Alto,California,6
+17,"University of California, Davis",UC Davis,Far West ,8,17,1,Mens,Davis,California,6
+18,Providence College,Providence,New England ,1,18,1,Mens,Providence,Rhode Island,44
+19,University of Notre Dame,Notre Dame,Great Lakes ,3,19,1,Mens,South Bend,Indiana,18
+20,University of Kentucky,Kentucky,Southeast,5,20,1,Mens,Lexington,Kentucky,21
+21,University of North Carolina at Charlotte,Charlotte,Southeast,5,21,1,Mens,Charlotte,North Carolina,37
+22,"University of Maryland, College Park",Maryland,Mid East ,2,22,1,Mens,College Park,Maryland,24
+23,,LMU (CA),,0,23,1,Mens,,,0
+24,"University of California, Santa Barbara",UC Santa Barbara,Far West ,8,24,1,Mens,Santa Barbara,California,6
+25,University of Michigan,Michigan,Great Lakes ,3,25,1,Mens,Ann Arbor,Michigan,26
+26,University of Louisville,Louisville,Southeast,5,26,1,Mens,Louisville,Kentucky,21
+27,Butler University,Butler,Great Lakes ,3,27,1,Mens,Indianapolis,Indiana,18
+28,,Central Ark.,,0,28,1,Mens,,,0
+29,Boston College,Boston College,New England ,1,29,1,Mens,Chestnut Hill,Massachusetts,25
+30,Syracuse University,Syracuse,Mid East ,2,30,1,Mens,Syracuse,New York,36
+31,,Loyola Chicago,,0,31,1,Mens,,,0
+32,,South Fla.,,0,32,1,Mens,,,0
+33,Campbell University,Campbell,Southeast,5,33,1,Mens,Buies Creek,North Carolina,37
+34,James Madison University,James Madison,Southeast,5,34,1,Mens,Harrisonburg,Virginia,51
+35,,Seattle U,,0,35,1,Mens,,,0
+36,North Carolina State University,NC State,Southeast,5,36,1,Mens,Raleigh,North Carolina,37
+37,,Cal St. Fullerton,,0,37,1,Mens,,,0
+38,University of San Diego,San Diego,Far West ,8,38,1,Mens,San Diego,California,6
+39,Florida International University,FIU,Southeast,5,39,1,Mens,Miami,Florida,12
+40,,Western Mich.,,0,40,1,Mens,,,0
+41,University of Memphis,Memphis,Southeast,5,41,1,Mens,Memphis,Tennessee,47
+42,,Pittsburgh,,0,42,1,Mens,,,0
+43,Temple University,Temple,Mid East ,2,43,1,Mens,Philadelphia,Pennsylvania,42
+44,"University of California, Irvine",UC Irvine,Far West ,8,44,1,Mens,Irvine,California,6
+45,Yale University,Yale,New England ,1,45,1,Mens,New Haven,Connecticut,9
+46,Iona College,Iona,Mid East ,2,46,1,Mens,New Rochelle,New York,36
+47,High Point University,High Point,Southeast,5,47,1,Mens,High Point,North Carolina,37
+48,Lehigh University,Lehigh,Mid East ,2,48,1,Mens,Bethlehem,Pennsylvania,42
+49,,Albany (NY),,0,49,1,Mens,,,0
+50,Saint Louis University,Saint Louis,Plains ,4,50,1,Mens,St. Louis,Missouri,29
+51,University of North Carolina at Chapel Hill,North Carolina,Southeast,5,51,1,Mens,Chapel Hill,North Carolina,37
+52,Creighton University,Creighton,Plains ,4,52,1,Mens,Omaha,Nebraska,31
+53,,Oregon St.,,0,53,1,Mens,,,0
+54,,UIC,,0,54,1,Mens,,,0
+55,Villanova University,Villanova,Mid East ,2,55,1,Mens,Radnor Township,Pennsylvania,42
+56,"University of California, Los Angeles",UCLA,Far West ,8,56,1,Mens,Los Angeles,California,6
+57,,Loyola Maryland,,0,57,1,Mens,,,0
+58,,California,,0,58,1,Mens,,,0
+59,Duke University,Duke,Southeast,5,59,1,Mens,Durham,North Carolina,37
+60,University of Vermont,Vermont,New England ,1,60,1,Mens,Burlington,Vermont,50
+61,Coastal Carolina University,Coastal Carolina,Southeast,5,61,1,Mens,Conway,South Carolina,45
+62,Merrimack College,Merrimack,New England ,1,62,1,Mens,North Andover,Massachusetts,25
+63,Marquette University,Marquette,Great Lakes ,3,63,1,Mens,Milwaukee,Wisconsin,55
+64,,UNCW,,0,64,1,Mens,,,0
+65,University of Rhode Island,Rhode Island,New England ,1,65,1,Mens,Kingston,Rhode Island,44
+66,,Georgia St.,,0,66,1,Mens,,,0
+67,Florida Gulf Coast University,FGCU,Southeast,5,67,1,Mens,Fort Myers,Florida,12
+68,University of Hartford,Hartford,New England ,1,68,1,Mens,West Hartford,Connecticut,9
+69,,CSUN,,0,69,1,Mens,,,0
+70,University of Dayton,Dayton,Great Lakes ,3,70,1,Mens,Dayton,Ohio,39
+71,University of Portland,Portland,Far West ,8,71,1,Mens,Portland,Oregon,41
+72,Princeton University,Princeton,Mid East ,2,72,1,Mens,Princeton,New Jersey,34
+73,,Fla. Atlantic,,0,73,1,Mens,,,0
+74,Xavier University,Xavier,Great Lakes ,3,74,1,Mens,Cincinnati,Ohio,39
+75,DePaul University,DePaul,Great Lakes ,3,75,1,Mens,Chicago,Illinois,17
+76,,Appalachian St.,,0,76,1,Mens,,,0
+77,Northwestern University,Northwestern,Great Lakes ,3,77,1,Mens,Evanston,Illinois,17
+78,West Virginia University,West Virginia,Southeast,5,78,1,Mens,Morgantown,West Virginia,54
+79,Oral Roberts University,Oral Roberts,Southwest ,6,79,1,Mens,Tulsa,Oklahoma,40
+80,,Wright St.,,0,80,1,Mens,,,0
+81,,Ohio St.,,0,81,1,Mens,,,0
+82,University of South Carolina,South Carolina,Southeast,5,82,1,Mens,Columbia,South Carolina,45
+83,Utah Valley University,Utah Valley,Rocky Mountains ,7,83,1,Mens,Orem,Utah,49
+84,University of Akron,Akron,Great Lakes ,3,84,1,Mens,Akron,Ohio,39
+85,,Sacramento St.,,0,85,1,Mens,,,0
+86,Cornell University,Cornell,Mid East ,2,86,1,Mens,Ithaca,New York,36
+87,Rutgers University,Rutgers,Mid East ,2,87,1,Mens,New Brunswick,New Jersey,34
+88,United States Naval Academy,Navy,Mid East ,2,88,1,Mens,Annapolis,Maryland,24
+89,University of Pennsylvania,Penn,Mid East ,2,89,1,Mens,Philadelphia,Pennsylvania,42
+90,University of Texas Rio Grande Valley,UTRGV,Southwest ,6,90,1,Mens,Edinburg[A 48],Texas,48
+91,Seton Hall University,Seton Hall,Mid East ,2,91,1,Mens,South Orange,New Jersey,34
+92,"University of California, Riverside",UC Riverside,Far West ,8,92,1,Mens,Riverside,California,6
+93,,SIUE,,0,93,1,Mens,,,0
+94,Saint Peter's University,Saint Peter's,Mid East ,2,94,1,Mens,Jersey City,New Jersey,34
+95,Bowling Green State University,Bowling Green,Great Lakes ,3,95,1,Mens,Bowling Green,Ohio,39
+96,Quinnipiac University,Quinnipiac,New England ,1,96,1,Mens,Hamden,Connecticut,9
+97,Mercer University,Mercer,Southeast,5,97,1,Mens,Macon,Georgia,13
+98,University of Denver,Denver,Rocky Mountains ,7,98,1,Mens,Denver,Colorado,8
+99,University of Massachusetts Lowell,UMass Lowell,New England ,1,99,1,Mens,Lowell,Massachusetts,25
+100,Hofstra University,Hofstra,Mid East ,2,100,1,Mens,Hempstead,New York,36
+101,California Polytechnic State University,Cal Poly,Far West ,8,101,1,Mens,San Luis Obispo,California,6
+102,Stetson University,Stetson,Southeast,5,102,1,Mens,DeLand,Florida,12
+103,University of Connecticut,UConn,New England ,1,103,1,Mens,Storrs,Connecticut,9
+104,Marist College,Marist,Mid East ,2,104,1,Mens,Poughkeepsie,New York,36
+105,,Saint Francis (PA),,0,105,1,Mens,,,0
+106,Drake University,Drake,Plains ,4,106,1,Mens,Des Moines,Iowa,19
+107,Dartmouth College,Dartmouth,New England ,1,107,1,Mens,Hanover,New Hampshire,33
+108,University of the Pacific,Pacific,Far West ,8,108,1,Mens,Stockton,California,6
+109,Colgate University,Colgate,Mid East ,2,109,1,Mens,Hamilton,New York,36
+110,,LIU,,0,110,1,Mens,,,0
+111,University of Tulsa,Tulsa,Southwest ,6,111,1,Mens,Tulsa,Oklahoma,40
+112,New Jersey Institute of Technology,NJIT,Mid East ,2,112,1,Mens,Newark,New Jersey,34
+113,,Milwaukee,,0,113,1,Mens,,,0
+114,,Northern Ill.,,0,114,1,Mens,,,0
+115,University of North Florida,North Florida,Southeast,5,115,1,Mens,Jacksonville,Florida,12
+116,Fairleigh Dickinson University,Fairleigh Dickinson,Mid East ,2,116,1,Mens,Hackensack,New Jersey,34
+117,University of Wisconsin–Madison,Wisconsin,Great Lakes ,3,117,1,Mens,Madison,Wisconsin,55
+118,,Cleveland St.,,0,118,1,Mens,,,0
+119,La Salle University,La Salle,Mid East ,2,119,1,Mens,Philadelphia,Pennsylvania,42
+120,Santa Clara University,Santa Clara,Far West ,8,120,1,Mens,Santa Clara,California,6
+121,College of William & Mary,William & Mary,Southeast,5,121,1,Mens,Williamsburg,Virginia,51
+122,Furman University,Furman,Southeast,5,122,1,Mens,Greenville,South Carolina,45
+123,Fairfield University,Fairfield,New England ,1,123,1,Mens,Fairfield,Connecticut,9
+124,Oakland University,Oakland,Great Lakes ,3,124,1,Mens,Rochester,Michigan,26
+125,Elon University,Elon,Southeast,5,125,1,Mens,Elon,North Carolina,37
+126,Virginia Commonwealth University,VCU,Southeast,5,126,1,Mens,Richmond,Virginia,51
+127,,CSU Bakersfield,,0,127,1,Mens,,,0
+128,Jacksonville University,Jacksonville,Southeast,5,128,1,Mens,Jacksonville,Florida,12
+129,,Ga. Southern,,0,129,1,Mens,,,0
+130,,ETSU,,0,130,1,Mens,,,0
+131,,St. Francis Brooklyn,,0,131,1,Mens,,,0
+132,,Michigan St.,,0,132,1,Mens,,,0
+133,University of Cincinnati,Cincinnati,Great Lakes ,3,133,1,Mens,Cincinnati,Ohio,39
+134,Rider University,Rider,Mid East ,2,134,1,Mens,Lawrenceville,New Jersey,34
+135,Binghamton University,Binghamton,Mid East ,2,135,1,Mens,Vestal,New York,36
+136,,UNC Greensboro,,0,136,1,Mens,,,0
+137,Gonzaga University,Gonzaga,Far West ,8,137,1,Mens,Spokane,Washington,53
+138,Lafayette College,Lafayette,Mid East ,2,138,1,Mens,Easton,Pennsylvania,42
+139,,Gardner-Webb,,0,139,1,Mens,,,0
+140,,Detroit Mercy,,0,140,1,Mens,,,0
+141,"University of Maryland, Baltimore County",UMBC,Mid East ,2,141,1,Mens,Catonsville,Maryland,24
+142,Houston Baptist University,Houston Baptist,Southwest ,6,142,1,Mens,Houston,Texas,48
+143,,San Diego St.,,0,143,1,Mens,,,0
+144,United States Air Force Academy,Air Force,Rocky Mountains ,7,144,1,Mens,Colorado Springs,Colorado,8
+145,,Valparaiso,,0,145,1,Mens,,,0
+146,,Kansas City,,0,146,1,Mens,,,0
+147,Drexel University,Drexel,Mid East ,2,147,1,Mens,Philadelphia,Pennsylvania,42
+148,Old Dominion University,Old Dominion,Southeast,5,148,1,Mens,Norfolk,Virginia,51
+149,Stony Brook University,Stony Brook,Mid East ,2,149,1,Mens,Stony Brook,New York,36
+150,Bryant University,Bryant,New England ,1,150,1,Mens,Smithfield,Rhode Island,44
+151,Columbia University,Columbia,Mid East ,2,151,1,Mens,Manhattan,New York,36
+152,Northeastern University,Northeastern,New England ,1,152,1,Mens,Boston,Massachusetts,25
+153,Manhattan College,Manhattan,Mid East ,2,153,1,Mens,Riverdale,New York,36
+154,Fordham University,Fordham,Mid East ,2,154,1,Mens,Bronx,New York,36
+155,University of Alabama at Birmingham,UAB,Southeast,5,155,1,Mens,Birmingham,Alabama,1
+156,,Massachusetts,,0,156,1,Mens,,,0
+157,Bradley University,Bradley,Great Lakes ,3,157,1,Mens,Peoria,Illinois,17
+158,Lipscomb University,Lipscomb,Southeast,5,158,1,Mens,Nashville,Tennessee,47
+159,Mount St. Mary's University,Mount St. Mary's,Mid East ,2,159,1,Mens,Emmitsburg,Maryland,24
+160,Bucknell University,Bucknell,Mid East ,2,160,1,Mens,Lewisburg,Pennsylvania,42
+161,Grand Canyon University,Grand Canyon,Southwest ,6,161,1,Mens,Phoenix,Arizona,4
+162,,Saint Joseph's,,0,162,1,Mens,,,0
+163,,Northern Ky.,,0,163,1,Mens,,,0
+164,University of San Francisco,San Francisco,Far West ,8,164,1,Mens,San Francisco,California,6
+165,,San Jose St.,,0,165,1,Mens,,,0
+166,,USC Upstate,,0,166,1,Mens,,,0
+167,Radford University,Radford,Southeast,5,167,1,Mens,Radford,Virginia,51
+168,,Green Bay,,0,168,1,Mens,,,0
+169,,Omaha,,0,169,1,Mens,,,0
+170,Duquesne University,Duquesne,Mid East ,2,170,1,Mens,Pittsburgh,Pennsylvania,42
+171,Davidson College,Davidson,Southeast,5,171,1,Mens,Davidson,North Carolina,37
+172,University of Delaware,Delaware,Mid East ,2,172,1,Mens,Newark,Delaware,10
+173,Niagara University,Niagara,Mid East ,2,173,1,Mens,Lewiston,New York,36
+174,"University of Nevada, Las Vegas",UNLV,Far West ,8,174,1,Mens,Paradise,Nevada,32
+175,,Army West Point,,0,175,1,Mens,,,0
+176,,Boston U.,,0,176,1,Mens,,,0
+177,Longwood University,Longwood,Southeast,5,177,1,Mens,Farmville,Virginia,51
+178,Presbyterian College,Presbyterian,Southeast,5,178,1,Mens,Clinton,South Carolina,45
+179,American University,American,,0,179,1,Mens,Washington,District of Columbia,11
+180,Siena College,Siena,Mid East ,2,180,1,Mens,Loudonville,New York,36
+181,University of Evansville,Evansville,Great Lakes ,3,181,1,Mens,Evansville,Indiana,18
+182,Sacred Heart University,Sacred Heart,New England ,1,182,1,Mens,Fairfield,Connecticut,9
+183,Brown University,Brown,New England ,1,183,1,Mens,Providence,Rhode Island,44
+184,St. Bonaventure University,St. Bonaventure,Mid East ,2,184,1,Mens,St. Bonaventure,New York,36
+185,George Washington University,George Washington,,0,185,1,Mens,Washington,District of Columbia,11
+186,,UIW,,0,186,1,Mens,,,0
+187,Monmouth University,Monmouth,Mid East ,2,187,1,Mens,West Long Branch,New Jersey,34
+188,College of the Holy Cross,Holy Cross,New England ,1,188,1,Mens,Worcester,Massachusetts,25
+189,,Western Ill.,,0,189,1,Mens,,,0
+190,Harvard University,Harvard,New England ,1,190,1,Mens,Cambridge[A 12],Massachusetts,25
+191,,California Baptist,,0,191,1,Mens,,,0
+192,Winthrop University,Winthrop,Southeast,5,192,1,Mens,Rock Hill,South Carolina,45
+193,,Col. of Charleston,,0,193,1,Mens,,,0
+194,,Central Conn. St.,,0,194,1,Mens,,,0
+195,Wofford College,Wofford,Southeast,5,195,1,Mens,Spartanburg,South Carolina,45
+196,Robert Morris University,Robert Morris,Mid East ,2,196,1,Mens,Moon Township,Pennsylvania,42
+197,George Mason University,George Mason,Southeast,5,197,1,Mens,Fairfax,Virginia,51
+198,Indiana University – Purdue University Indianapolis,IUPUI,Great Lakes ,3,198,1,Mens,Indianapolis,Indiana,18
+199,University of North Carolina at Asheville,UNC Asheville,Southeast,5,199,1,Mens,Asheville,North Carolina,37
+200,,Eastern Ill.,,0,200,1,Mens,,,0
+201,Belmont University,Belmont,Southeast,5,201,1,Mens,Nashville,Tennessee,47
+202,Howard University,Howard,,0,202,1,Mens,Washington,District of Columbia,11
+203,Liberty University,Liberty,Southeast,5,203,1,Mens,Lynchburg,Virginia,51
+204,Canisius College,Canisius,Mid East ,2,204,1,Mens,Buffalo,New York,36
+205,Purdue University Fort Wayne[r],Purdue Fort Wayne,Great Lakes ,3,205,1,Mens,Fort Wayne,Indiana,18
+206,Virginia Military Institute,VMI,Southeast,5,206,1,Mens,Lexington,Virginia,51
+207,Stanford University,Stanford,Far West ,8,1,1,Women,Palo Alto,California,6
+208,University of North Carolina at Chapel Hill,North Carolina,Southeast,5,2,1,Women,Chapel Hill,North Carolina,37
+209,,Florida St.,,0,3,1,Women,,,0
+210,"University of California, Los Angeles",UCLA,Far West ,8,4,1,Women,Los Angeles,California,6
+211,University of South Carolina,South Carolina,Southeast,5,5,1,Women,Columbia,South Carolina,45
+212,University of Virginia,Virginia,Southeast,5,6,1,Women,Charlottesville,Virginia,51
+213,,Southern California,,0,7,1,Women,,,0
+214,Brigham Young University,BYU,Rocky Mountains ,7,8,1,Women,Provo,Utah,49
+215,,Washington St.,,0,9,1,Women,,,0
+216,University of Arkansas,Arkansas,Southeast,5,10,1,Women,Fayetteville,Arkansas,5
+217,University of Kansas,Kansas,Plains ,4,11,1,Women,Lawrence,Kansas,20
+218,University of Wisconsin–Madison,Wisconsin,Great Lakes ,3,12,1,Women,Madison,Wisconsin,55
+219,Hofstra University,Hofstra,Mid East ,2,13,1,Women,Hempstead,New York,36
+220,Brown University,Brown,New England ,1,14,1,Women,Providence,Rhode Island,44
+221,North Carolina State University,NC State,Southeast,5,15,1,Women,Raleigh,North Carolina,37
+222,,Oklahoma St.,,0,16,1,Women,,,0
+223,University of Michigan,Michigan,Great Lakes ,3,17,1,Women,Ann Arbor,Michigan,26
+224,Duke University,Duke,Southeast,5,18,1,Women,Durham,North Carolina,37
+225,,Penn St.,,0,19,1,Women,,,0
+226,,South Fla.,,0,20,1,Women,,,0
+227,Rutgers University,Rutgers,Mid East ,2,21,1,Women,New Brunswick,New Jersey,34
+228,University of Washington,Washington,Far West ,8,22,1,Women,Seattle,Washington,53
+229,Virginia Tech[A 53],Virginia Tech,Southeast,5,23,1,Women,Blacksburg,Virginia,51
+230,Santa Clara University,Santa Clara,Far West ,8,24,1,Women,Santa Clara,California,6
+231,Texas A&M University,Texas A&M,Southwest ,6,25,1,Women,College Station,Texas,48
+232,University of Louisville,Louisville,Southeast,5,26,1,Women,Louisville,Kentucky,21
+233,Texas Tech University,Texas Tech,Southwest ,6,27,1,Women,Lubbock,Texas,48
+234,University of Florida,Florida,Southeast,5,28,1,Women,Gainesville,Florida,12
+235,West Virginia University,West Virginia,Southeast,5,29,1,Women,Morgantown,West Virginia,54
+236,University of Notre Dame,Notre Dame,Great Lakes ,3,30,1,Women,South Bend,Indiana,18
+237,University of Memphis,Memphis,Southeast,5,31,1,Women,Memphis,Tennessee,47
+238,,Fla. Atlantic,,0,32,1,Women,,,0
+239,,California,,0,33,1,Women,,,0
+240,Vanderbilt University,Vanderbilt,Southeast,5,34,1,Women,Nashville,Tennessee,47
+241,University of Arizona,Arizona,Southwest ,6,35,1,Women,Tucson,Arizona,4
+242,Monmouth University,Monmouth,Mid East ,2,36,1,Women,West Long Branch,New Jersey,34
+243,Clemson University,Clemson,Southeast,5,37,1,Women,Clemson,South Carolina,45
+244,Xavier University,Xavier,Great Lakes ,3,38,1,Women,Cincinnati,Ohio,39
+245,Yale University,Yale,New England ,1,39,1,Women,New Haven,Connecticut,9
+246,University of Colorado Boulder,Colorado,Rocky Mountains ,7,40,1,Women,Boulder,Colorado,8
+247,Harvard University,Harvard,New England ,1,41,1,Women,Cambridge[A 12],Massachusetts,25
+248,Georgetown University,Georgetown,,0,42,1,Women,Washington,District of Columbia,11
+249,Pepperdine University,Pepperdine,Far West ,8,43,1,Women,Malibu,California,6
+250,University of Alabama,Alabama,Southeast,5,44,1,Women,Tuscaloosa,Alabama,1
+251,Saint Louis University,Saint Louis,Plains ,4,45,1,Women,St. Louis,Missouri,29
+252,University of Iowa,Iowa,Plains ,4,46,1,Women,Iowa City,Iowa,19
+253,University of North Texas,North Texas,Southwest ,6,47,1,Women,Denton,Texas,48
+254,,Milwaukee,,0,48,1,Women,,,0
+255,,Oregon St.,,0,49,1,Women,,,0
+256,Columbia University,Columbia,Mid East ,2,50,1,Women,Manhattan,New York,36
+257,University of Utah,Utah,Rocky Mountains ,7,51,1,Women,Salt Lake City,Utah,49
+258,University of Texas at Austin,Texas,Southwest ,6,52,1,Women,Austin,Texas,48
+259,University of Tennessee,Tennessee,Southeast,5,53,1,Women,Knoxville,Tennessee,47
+260,,Ole Miss,,0,54,1,Women,,,0
+261,,Loyola Chicago,,0,55,1,Women,,,0
+262,University of Georgia,Georgia,Southeast,5,56,1,Women,Athens,Georgia,13
+263,Samford University,Samford,Southeast,5,57,1,Women,Homewood,Alabama,1
+264,Furman University,Furman,Southeast,5,58,1,Women,Greenville,South Carolina,45
+265,Wake Forest University,Wake Forest,Southeast,5,59,1,Women,Winston-Salem,North Carolina,37
+266,University of South Alabama,South Alabama,Southeast,5,60,1,Women,Mobile,Alabama,1
+267,DePaul University,DePaul,Great Lakes ,3,61,1,Women,Chicago,Illinois,17
+268,Mercer University,Mercer,Southeast,5,62,1,Women,Macon,Georgia,13
+269,Texas Christian University,TCU,Southwest ,6,63,1,Women,Fort Worth,Texas,48
+270,University of Denver,Denver,Rocky Mountains ,7,64,1,Women,Denver,Colorado,8
+271,Purdue University,Purdue,Great Lakes ,3,65,1,Women,West Lafayette,Indiana,18
+272,Baylor University,Baylor,Southwest ,6,66,1,Women,Waco,Texas,48
+273,,Boise St.,,0,67,1,Women,,,0
+274,University of Portland,Portland,Far West ,8,68,1,Women,Portland,Oregon,41
+275,,Ball St.,,0,69,1,Women,,,0
+276,Rice University,Rice,Southwest ,6,70,1,Women,Houston,Texas,48
+277,University of Illinois at Urbana–Champaign,Illinois,Great Lakes ,3,71,1,Women,Urbana–Champaign,Illinois,17
+278,Villanova University,Villanova,Mid East ,2,72,1,Women,Radnor Township,Pennsylvania,42
+279,University of San Francisco,San Francisco,Far West ,8,73,1,Women,San Francisco,California,6
+280,Princeton University,Princeton,Mid East ,2,74,1,Women,Princeton,New Jersey,34
+281,Southern Methodist University,SMU,Southwest ,6,75,1,Women,University Park,Texas,48
+282,Butler University,Butler,Great Lakes ,3,76,1,Women,Indianapolis,Indiana,18
+283,Boston College,Boston College,New England ,1,77,1,Women,Chestnut Hill,Massachusetts,25
+284,Florida Gulf Coast University,FGCU,Southeast,5,78,1,Women,Fort Myers,Florida,12
+285,University of North Carolina at Charlotte,Charlotte,Southeast,5,79,1,Women,Charlotte,North Carolina,37
+286,University of Oregon,Oregon,Far West ,8,80,1,Women,Eugene,Oregon,41
+287,Gonzaga University,Gonzaga,Far West ,8,81,1,Women,Spokane,Washington,53
+288,La Salle University,La Salle,Mid East ,2,82,1,Women,Philadelphia,Pennsylvania,42
+289,Old Dominion University,Old Dominion,Southeast,5,83,1,Women,Norfolk,Virginia,51
+290,,Kennesaw St.,,0,84,1,Women,,,0
+291,,Mississippi St.,,0,85,1,Women,,,0
+292,,Lamar University,,0,86,1,Women,,,0
+293,Bowling Green State University,Bowling Green,Great Lakes ,3,87,1,Women,Bowling Green,Ohio,39
+294,,Colorado St.,,0,88,1,Women,,,0
+295,George Washington University,George Washington,,0,89,1,Women,Washington,District of Columbia,11
+296,,Illinois St.,,0,90,1,Women,,,0
+297,University of Oklahoma,Oklahoma,Southwest ,6,91,1,Women,Norman,Oklahoma,40
+298,University of Central Florida,UCF,Southeast,5,92,1,Women,Orlando,Florida,12
+299,United States Naval Academy,Navy,Mid East ,2,93,1,Women,Annapolis,Maryland,24
+300,University of Delaware,Delaware,Mid East ,2,94,1,Women,Newark,Delaware,10
+301,,UNCW,,0,95,1,Women,,,0
+302,Elon University,Elon,Southeast,5,96,1,Women,Elon,North Carolina,37
+303,,UNC Greensboro,,0,97,1,Women,,,0
+304,Auburn University,Auburn,Southeast,5,98,1,Women,Auburn,Alabama,1
+305,Indiana University,Indiana,Great Lakes ,3,99,1,Women,Bloomington,Indiana,18
+306,,Cal St. Fullerton,,0,100,1,Women,,,0
+307,University of New Mexico,New Mexico,Southwest ,6,101,1,Women,Albuquerque,New Mexico,35
+308,Fairfield University,Fairfield,New England ,1,102,1,Women,Fairfield,Connecticut,9
+309,University of Missouri,Missouri,Plains ,4,103,1,Women,Columbia,Missouri,29
+310,,San Diego St.,,0,104,1,Women,,,0
+311,Dartmouth College,Dartmouth,New England ,1,105,1,Women,Hanover,New Hampshire,33
+312,,Arkansas St.,,0,106,1,Women,,,0
+313,University of Pennsylvania,Penn,Mid East ,2,107,1,Women,Philadelphia,Pennsylvania,42
+314,,Western Caro.,,0,108,1,Women,,,0
+315,Stony Brook University,Stony Brook,Mid East ,2,109,1,Women,Stony Brook,New York,36
+316,"University of Maryland, College Park",Maryland,Mid East ,2,110,1,Women,College Park,Maryland,24
+317,Virginia Commonwealth University,VCU,Southeast,5,111,1,Women,Richmond,Virginia,51
+318,,Western Ky.,,0,112,1,Women,,,0
+319,Lipscomb University,Lipscomb,Southeast,5,113,1,Women,Nashville,Tennessee,47
+320,Providence College,Providence,New England ,1,114,1,Women,Providence,Rhode Island,44
+321,,South Dakota St.,,0,115,1,Women,,,0
+322,Utah Valley University,Utah Valley,Rocky Mountains ,7,116,1,Women,Orem,Utah,49
+323,Liberty University,Liberty,Southeast,5,117,1,Women,Lynchburg,Virginia,51
+324,Creighton University,Creighton,Plains ,4,118,1,Women,Omaha,Nebraska,31
+325,,Massachusetts,,0,119,1,Women,,,0
+326,Louisiana Tech University,Louisiana Tech,Southeast,5,120,1,Women,Ruston,Louisiana,22
+327,,Seattle U,,0,121,1,Women,,,0
+328,,Miami (FL),,0,122,1,Women,,,0
+329,,UIC,,0,123,1,Women,,,0
+330,,Central Conn. St.,,0,124,1,Women,,,0
+331,University of Alabama at Birmingham,UAB,Southeast,5,125,1,Women,Birmingham,Alabama,1
+332,Northeastern University,Northeastern,New England ,1,126,1,Women,Boston,Massachusetts,25
+333,Abilene Christian University,Abilene Christian,Southwest ,6,127,1,Women,Abilene,Texas,48
+334,,Murray St.,,0,128,1,Women,,,0
+335,,Georgia St.,,0,129,1,Women,,,0
+336,,Southeast Mo. St.,,0,130,1,Women,,,0
+337,,Missouri St.,,0,131,1,Women,,,0
+338,Campbell University,Campbell,Southeast,5,132,1,Women,Buies Creek,North Carolina,37
+339,,Kansas City,,0,133,1,Women,,,0
+340,Radford University,Radford,Southeast,5,134,1,Women,Radford,Virginia,51
+341,,San Jose St.,,0,135,1,Women,,,0
+342,University of North Florida,North Florida,Southeast,5,136,1,Women,Jacksonville,Florida,12
+343,University of Texas at San Antonio,UTSA,Southwest ,6,137,1,Women,San Antonio,Texas,48
+344,,Arizona St.,,0,138,1,Women,,,0
+345,,Colorado Col.,,0,139,1,Women,,,0
+346,United States Air Force Academy,Air Force,Rocky Mountains ,7,140,1,Women,Colorado Springs,Colorado,8
+347,University of Nebraska–Lincoln,Nebraska,Plains ,4,141,1,Women,Lincoln,Nebraska,31
+348,Troy University,Troy,Southeast,5,142,1,Women,Troy,Alabama,1
+349,Northwestern University,Northwestern,Great Lakes ,3,143,1,Women,Evanston,Illinois,17
+350,University of Tennessee at Chattanooga,Chattanooga,Southeast,5,144,1,Women,Chattanooga,Tennessee,47
+351,University of Connecticut,UConn,New England ,1,145,1,Women,Storrs,Connecticut,9
+352,,Northwestern St.,,0,146,1,Women,,,0
+353,Quinnipiac University,Quinnipiac,New England ,1,147,1,Women,Hamden,Connecticut,9
+354,James Madison University,James Madison,Southeast,5,148,1,Women,Harrisonburg,Virginia,51
+355,"University of California, Santa Barbara",UC Santa Barbara,Far West ,8,149,1,Women,Santa Barbara,California,6
+356,,Northern Ky.,,0,150,1,Women,,,0
+357,University of Hawaii at Manoa,Hawaii,Far West ,8,151,1,Women,Honolulu,Hawaii,15
+358,University of Cincinnati,Cincinnati,Great Lakes ,3,152,1,Women,Cincinnati,Ohio,39
+359,,CSUN,,0,153,1,Women,,,0
+360,University of San Diego,San Diego,Far West ,8,154,1,Women,San Diego,California,6
+361,,Texas St.,,0,155,1,Women,,,0
+362,,Middle Tenn.,,0,156,1,Women,,,0
+363,Marquette University,Marquette,Great Lakes ,3,157,1,Women,Milwaukee,Wisconsin,55
+364,University of Texas at El Paso,UTEP,Southwest ,6,158,1,Women,El Paso,Texas,48
+365,College of William & Mary,William & Mary,Southeast,5,159,1,Women,Williamsburg,Virginia,51
+366,,Western Mich.,,0,160,1,Women,,,0
+367,Louisiana State University,LSU,Southeast,5,161,1,Women,Baton Rouge,Louisiana,22
+368,University of Minnesota,Minnesota,Plains ,4,162,1,Women,Minneapolis–Saint Paul,Minnesota,27
+369,,Albany (NY),,0,163,1,Women,,,0
+370,,Sacramento St.,,0,164,1,Women,,,0
+371,University of New Hampshire,New Hampshire,New England ,1,165,1,Women,Durham,New Hampshire,33
+372,Fairleigh Dickinson University,Fairleigh Dickinson,Mid East ,2,166,1,Women,Hackensack,New Jersey,34
+373,Indiana University – Purdue University Indianapolis,IUPUI,Great Lakes ,3,167,1,Women,Indianapolis,Indiana,18
+374,,Army West Point,,0,168,1,Women,,,0
+375,,McNeese,,0,169,1,Women,,,0
+376,,Saint Joseph's,,0,170,1,Women,,,0
+377,,Ohio St.,,0,171,1,Women,,,0
+378,,Pittsburgh,,0,172,1,Women,,,0
+379,Oral Roberts University,Oral Roberts,Southwest ,6,173,1,Women,Tulsa,Oklahoma,40
+380,,Fresno St.,,0,174,1,Women,,,0
+381,,Michigan St.,,0,175,1,Women,,,0
+382,University of Hartford,Hartford,New England ,1,176,1,Women,West Hartford,Connecticut,9
+383,High Point University,High Point,Southeast,5,177,1,Women,High Point,North Carolina,37
+384,University of Dayton,Dayton,Great Lakes ,3,178,1,Women,Dayton,Ohio,39
+385,,California Baptist,,0,179,1,Women,,,0
+386,East Carolina University,East Carolina,Southeast,5,180,1,Women,Greenville,North Carolina,37
+387,,Eastern Wash.,,0,181,1,Women,,,0
+388,,Central Mich.,,0,182,1,Women,,,0
+389,,Utah St.,,0,183,1,Women,,,0
+390,University at Buffalo,Buffalo,Mid East ,2,184,1,Women,Buffalo,New York,36
+391,Coastal Carolina University,Coastal Carolina,Southeast,5,185,1,Women,Conway,South Carolina,45
+392,Drake University,Drake,Plains ,4,186,1,Women,Des Moines,Iowa,19
+393,University of Tennessee at Martin,UT Martin,Southeast,5,187,1,Women,Martin,Tennessee,47
+394,,Kansas St.,,0,188,1,Women,,,0
+395,"University of Nevada, Las Vegas",UNLV,Far West ,8,189,1,Women,Paradise,Nevada,32
+396,Howard University,Howard,,0,190,1,Women,Washington,District of Columbia,11
+397,Bryant University,Bryant,New England ,1,191,1,Women,Smithfield,Rhode Island,44
+398,,Southern Miss.,,0,192,1,Women,,,0
+399,,SIUE,,0,193,1,Women,,,0
+400,,LMU (CA),,0,194,1,Women,,,0
+401,Fordham University,Fordham,Mid East ,2,195,1,Women,Bronx,New York,36
+402,University of Wyoming,Wyoming,Rocky Mountains ,7,196,1,Women,Laramie,Wyoming,56
+403,University of Montana,Montana,Rocky Mountains ,7,197,1,Women,Missoula,Montana,30
+404,Oakland University,Oakland,Great Lakes ,3,198,1,Women,Rochester,Michigan,26
+405,,A&M-Corpus Christi,,0,199,1,Women,,,0
+406,Niagara University,Niagara,Mid East ,2,200,1,Women,Lewiston,New York,36
+407,University of Kentucky,Kentucky,Southeast,5,201,1,Women,Lexington,Kentucky,21
+408,,Louisiana,,0,202,1,Women,,,0
+409,Belmont University,Belmont,Southeast,5,203,1,Women,Nashville,Tennessee,47
+410,College of the Holy Cross,Holy Cross,New England ,1,204,1,Women,Worcester,Massachusetts,25
+411,University of South Dakota,South Dakota,Plains ,4,205,1,Women,Vermillion,South Dakota,46
+412,Ohio University,Ohio,Great Lakes ,3,206,1,Women,Athens,Ohio,39
+413,University of California San Diego,UC San Diego,Far West ,8,1,2,Mens,San Diego,California,6
+414,Lynn University,Lynn University,Southeast,5,2,2,Mens,Boca Raton,Florida,12
+415,Lee University,Lee University,Southeast,5,3,2,Mens,Cleveland,Tennessee,47
+416,Bellarmine University,Bellarmine,Southeast,5,4,2,Mens,Louisville,Kentucky,21
+417,,North GeorgiaUniversity,,0,5,2,Mens,,,0
+418,Lander University,Lander University,Southeast,5,6,2,Mens,Greenwood,South Carolina,45
+419,,Wis.-Parkside,,0,7,2,Mens,,,0
+420,Cedarville University,Cedarville,Great Lakes ,3,8,2,Mens,Cedarville,Ohio,39
+421,,AUM,,0,9,2,Mens,,,0
+422,,Carson-Newman,,0,10,2,Mens,,,0
+423,,Southern N.H.,,0,11,2,Mens,,,0
+424,Seattle Pacific University,Seattle Pacific,Far West ,8,12,2,Mens,Seattle,Washington,53
+425,,Midwestern St.,,0,13,2,Mens,,,0
+426,Quincy University,Quincy University,Great Lakes ,3,14,2,Mens,Quincy,Illinois,17
+427,Biola University,Biola,Far West ,8,15,2,Mens,La Mirada,California,6
+428,Nova Southeastern University,Nova Southeastern,Southeast,5,16,2,Mens,Davie,Florida,12
+429,Rockhurst University,Rockhurst,Plains ,4,17,2,Mens,Kansas City,Missouri,29
+430,Tusculum University,Tusculum,Southeast,5,18,2,Mens,Greeneville,Tennessee,47
+431,"California State University, Chico",Chico St.,Far West ,8,19,2,Mens,Chico,California,6
+432,,Tampa University,,0,20,2,Mens,,,0
+433,Palm Beach Atlantic University,Palm Beach Atl.,Southeast,5,21,2,Mens,West Palm Beach,Florida,12
+434,,Cal St. San B'dino,,0,22,2,Mens,,,0
+435,,Dixie St.,,0,23,2,Mens,,,0
+436,,Western Wash.,,0,24,2,Mens,,,0
+437,,Ga. Southwestern,,0,25,2,Mens,,,0
+438,Saint Michael's College,Saint Michael's,New England ,1,26,2,Mens,Colchester,Vermont,50
+439,Young Harris College,Young Harris,Southeast,5,27,2,Mens,Young Harris,Georgia,13
+440,Wingate University,Wingate University,Southeast,5,28,2,Mens,Wingate,North Carolina,37
+441,,Cal State LA,,0,29,2,Mens,,,0
+442,Assumption University,Assumption,New England ,1,30,2,Mens,Worcester,Massachusetts,25
+443,,Southern Ind.,,0,31,2,Mens,,,0
+444,,Colo. Sch. of Mines,,0,32,2,Mens,,,0
+445,University of Alabama in Huntsville,Alabama Huntsville,Southeast,5,33,2,Mens,Huntsville,Alabama,1
+446,University of New Haven,New Haven,New England ,1,34,2,Mens,West Haven,Connecticut,9
+447,Adelphi University,Adelphi,Mid East ,2,35,2,Mens,Garden City,New York,36
+448,,Rogers St.,,0,36,2,Mens,,,0
+449,,Point Loma,,0,37,2,Mens,,,0
+450,,Maryville (MO),,0,38,2,Mens,,,0
+451,Azusa Pacific University,Azusa Pacific,Far West ,8,39,2,Mens,Azusa,California,6
+452,St. Edward's University,St. Edward's,Southwest ,6,40,2,Mens,Austin,Texas,48
+453,Barton College,Barton,Southeast,5,41,2,Mens,Wilson,North Carolina,37
+454,McKendree University,McKendree,Great Lakes ,3,42,2,Mens,Lebanon,Illinois,17
+455,,Hawaii Hilo,,0,43,2,Mens,,,0
+456,,Fort Hays St.,,0,44,2,Mens,,,0
+457,Holy Family University,Holy Family,Mid East ,2,45,2,Mens,Philadelphia,Pennsylvania,42
+458,,East Stroudsburg,,0,46,2,Mens,,,0
+459,,Stanislaus St.,,0,47,2,Mens,,,0
+460,,Lenoir-Rhyne,,0,48,2,Mens,,,0
+461,West Chester University,West Chester,Mid East ,2,49,2,Mens,West Chester,Pennsylvania,42
+462,,Florida Tech,,0,50,2,Mens,,,0
+463,,Northern Mich.,,0,51,2,Mens,,,0
+464,Simon Fraser University,Simon Fraser,,0,52,2,Mens,Burnaby,British Columbia,
+465,,Lock Haven,,0,53,2,Mens,,,0
+466,Davis & Elkins College,Davis & Elkins,Southeast,5,54,2,Mens,Elkins,West Virginia,54
+467,,Notre Dame (OH),,0,55,2,Mens,,,0
+468,,USC Aiken,,0,56,2,Mens,,,0
+469,,Cal St. San Marcos,,0,57,2,Mens,,,0
+470,Mercy College,Mercy,Mid East ,2,58,2,Mens,Dobbs Ferry,New York,36
+471,Rollins College,Rollins,Southeast,5,59,2,Mens,Winter Park,Florida,12
+472,,Cal Poly Pomona,,0,60,2,Mens,,,0
+473,,UIndy,,0,61,2,Mens,,,0
+474,Barry University,Barry,Southeast,5,62,2,Mens,Miami Shores,Florida,12
+475,,Fla. Southern,,0,63,2,Mens,,,0
+476,,Southern Conn. St.,,0,64,2,Mens,,,0
+477,Tiffin University,Tiffin,Great Lakes ,3,65,2,Mens,Tiffin,Ohio,39
+478,Harding University,Harding,Southeast,5,66,2,Mens,Searcy,Arkansas,5
+479,,Texas-Tyler,,0,67,2,Mens,,,0
+480,,Regis (CO),,0,68,2,Mens,,,0
+481,,Ill. Springfield,,0,69,2,Mens,,,0
+482,,Wilmington (DE),,0,70,2,Mens,,,0
+483,Christian Brothers University,Christian Brothers,Southeast,5,71,2,Mens,Memphis,Tennessee,47
+484,,MSU Denver,,0,72,2,Mens,,,0
+485,,Embry-Riddle (FL),,0,73,2,Mens,,,0
+486,Drury University,Drury,Plains ,4,74,2,Mens,Springfield,Missouri,29
+487,Post University,Post,New England ,1,75,2,Mens,Waterbury,Connecticut,9
+488,,Jefferson,,0,76,2,Mens,,,0
+489,,Westminster (UT),,0,77,2,Mens,,,0
+490,,Humboldt St.,,0,78,2,Mens,,,0
+491,Saint Leo University,Saint Leo,Southeast,5,79,2,Mens,St. Leo,Florida,12
+492,Lincoln Memorial University,Lincoln Memorial,Southeast,5,80,2,Mens,Harrogate,Tennessee,47
+493,,Queens (NC),,0,81,2,Mens,,,0
+494,Southern Wesleyan University,Southern Wesleyan,Southeast,5,82,2,Mens,Central,South Carolina,45
+495,Newman University,Newman,Plains ,4,83,2,Mens,Wichita,Kansas,20
+496,,Cal St. Dom. Hills,,0,84,2,Mens,,,0
+497,Bentley University,Bentley,New England ,1,85,2,Mens,Waltham,Massachusetts,25
+498,Davenport University,Davenport,Great Lakes ,3,86,2,Mens,Grand Rapids,Michigan,26
+499,Stonehill College,Stonehill,New England ,1,87,2,Mens,Easton,Massachusetts,25
+500,Flagler College,Flagler,Southeast,5,88,2,Mens,St. Augustine,Florida,12
+501,Newberry College,Newberry,Southeast,5,89,2,Mens,Newberry,South Carolina,45
+502,Lewis University,Lewis,Great Lakes ,3,90,2,Mens,Romeoville,Illinois,17
+503,Shepherd University,Shepherd,Southeast,5,91,2,Mens,Shepherdstown,West Virginia,54
+504,University of Bridgeport,Bridgeport,New England ,1,92,2,Mens,Bridgeport,Connecticut,9
+505,,Hawaii Pacific,,0,93,2,Mens,,,0
+506,Le Moyne College,Le Moyne,Mid East ,2,94,2,Mens,Syracuse,New York,36
+507,,Union (TN),,0,95,2,Mens,,,0
+508,,Bloomsburg,,0,96,2,Mens,,,0
+509,West Liberty University,West Liberty,Southeast,5,97,2,Mens,West Liberty,West Virginia,54
+510,,Cal U (PA),,0,98,2,Mens,,,0
+511,Colorado Mesa University,Colorado Mesa,Rocky Mountains ,7,99,2,Mens,Grand Junction,Colorado,8
+512,Saint Martin's University,Saint Martin's,Far West ,8,100,2,Mens,Lacey,Washington,53
+513,,Chaminade,,0,101,2,Mens,,,0
+514,,Colo. Christian,,0,102,2,Mens,,,0
+515,,Delta St.,,0,103,2,Mens,,,0
+516,,St. Anselm,,0,104,2,Mens,,,0
+517,Molloy College,Molloy,Mid East ,2,105,2,Mens,Rockville Centre,New York,36
+518,,Missouri S&T,,0,105,2,Mens,,,0
+519,Bloomfield College,Bloomfield,Mid East ,2,107,2,Mens,Bloomfield,New Jersey,34
+520,,Saint Rose,,0,108,2,Mens,,,0
+521,,Tex. A&M Int'l,,0,109,2,Mens,,,0
+522,Trevecca Nazarene University,Trevecca Nazarene,Southeast,5,110,2,Mens,Nashville,Tennessee,47
+523,University of West Florida,West Florida,Southeast,5,111,2,Mens,Pensacola,Florida,12
+524,Ashland University,Ashland,Great Lakes ,3,112,2,Mens,Ashland,Ohio,39
+525,,King (TN),,0,112,2,Mens,,,0
+526,Catawba College,Catawba,Southeast,5,114,2,Mens,Salisbury,North Carolina,37
+527,Fresno Pacific University,Fresno Pacific,Far West ,8,115,2,Mens,Fresno,California,6
+528,Franklin Pierce University,Franklin Pierce,New England ,1,116,2,Mens,Rindge,New Hampshire,33
+529,Eckerd College,Eckerd,Southeast,5,117,2,Mens,St. Petersburg,Florida,12
+530,,Urbana,,0,118,2,Mens,,,0
+531,,Goldey-Beacom,,0,119,2,Mens,,,0
+532,Francis Marion University,Francis Marion,Southeast,5,120,2,Mens,Florence,South Carolina,45
+533,,New York Tech,,0,121,2,Mens,,,0
+534,,Lindenwood (MO),,0,122,2,Mens,,,0
+535,Chowan University,Chowan,Southeast,5,123,2,Mens,Murfreesboro,North Carolina,37
+536,,West Va. Wesleyan,,0,124,2,Mens,,,0
+537,,West Ala.,,0,125,2,Mens,,,0
+538,,Mo.-St. Louis,,0,126,2,Mens,,,0
+539,,Okla. Christian,,0,127,2,Mens,,,0
+540,Mercyhurst University,Mercyhurst,Mid East ,2,128,2,Mens,Erie,Pennsylvania,42
+541,,South Dakota Mines,,0,129,2,Mens,,,0
+542,,Ky. Wesleyan,,0,130,2,Mens,,,0
+543,,Shippensburg,,0,131,2,Mens,,,0
+544,,Concordia (CA),,0,132,2,Mens,,,0
+545,University of Mary,Mary,Plains ,4,133,2,Mens,Bismarck,North Dakota,38
+546,,Millersville,,0,134,2,Mens,,,0
+547,,Pitt.-Johnstown,,0,135,2,Mens,,,0
+548,Chestnut Hill College,Chestnut Hill,Mid East ,2,136,2,Mens,Philadelphia,Pennsylvania,42
+549,Malone University,Malone,Great Lakes ,3,137,2,Mens,Canton,Ohio,39
+550,Lake Erie College,Lake Erie,Great Lakes ,3,138,2,Mens,Painesville,Ohio,39
+551,Northwood University,Northwood,Great Lakes ,3,139,2,Mens,Midland,Michigan,26
+552,,Mont. St. Billings,,0,140,2,Mens,,,0
+553,,Notre Dame de Namur,,0,141,2,Mens,,,0
+554,,Anderson (SC),,0,142,2,Mens,,,0
+555,,UC-Colo. Springs,,0,143,2,Mens,,,0
+556,,Concordia Portland,,0,143,2,Mens,,,0
+557,,Staten Island,,0,143,2,Mens,,,0
+558,North Greenville University,North Greenville,Southeast,5,146,2,Mens,Tigerville,South Carolina,45
+559,University of Mount Olive,Mount Olive,Southeast,5,147,2,Mens,Mount Olive,North Carolina,37
+560,,West Tex. A&M,,0,148,2,Mens,,,0
+561,Georgian Court University,Georgian Court,Mid East ,2,149,2,Mens,Lakewood,New Jersey,34
+562,,Lees-McRae,,0,150,2,Mens,,,0
+563,Wheeling University,Wheeling,Southeast,5,151,2,Mens,Wheeling,West Virginia,54
+564,University of Findlay,Findlay,Great Lakes ,3,152,2,Mens,Findlay,Ohio,39
+565,,Sonoma St.,,0,153,2,Mens,,,0
+566,Mars Hill University,Mars Hill,Southeast,5,154,2,Mens,Mars Hill,North Carolina,37
+567,Northwest Nazarene University,Northwest Nazarene,Rocky Mountains ,7,155,2,Mens,Nampa,Idaho,16
+568,Coker University,Coker,Southeast,5,156,2,Mens,Hartsville,South Carolina,45
+569,,American Int'l,,0,157,2,Mens,,,0
+570,,Saginaw Valley,,0,158,2,Mens,,,0
+571,Felician University,Felician,Mid East ,2,159,2,Mens,Rutherford,New Jersey,34
+572,,Oakland City,,0,160,2,Mens,,,0
+573,,Charleston (WV),,0,161,2,Mens,,,0
+574,Caldwell University,Caldwell,Mid East ,2,162,2,Mens,Caldwell,New Jersey,34
+575,,Clayton St.,,0,163,2,Mens,,,0
+576,Alderson Broaddus University,Alderson Broaddus,Southeast,5,164,2,Mens,Philippi,West Virginia,54
+577,,Northeastern St.,,0,165,2,Mens,,,0
+578,Seton Hill University,Seton Hill,Mid East ,2,166,2,Mens,Greensburg,Pennsylvania,42
+579,,Dominican (NY),,0,167,2,Mens,,,0
+580,,Dist. Columbia,,0,167,2,Mens,,,0
+581,Gannon University,Gannon,Mid East ,2,169,2,Mens,Erie,Pennsylvania,42
+582,St. Thomas Aquinas College,St. Thomas Aquinas,Mid East ,2,170,2,Mens,Sparkill,New York,36
+583,,Purdue Northwest,,0,171,2,Mens,,,0
+584,Southwest Baptist University,Southwest Baptist,Plains ,4,172,2,Mens,Bolivar,Missouri,29
+585,,Cal St. East Bay,,0,172,2,Mens,,,0
+586,Ohio Valley University,Ohio Valley,Southeast,5,174,2,Mens,Vienna,West Virginia,54
+587,Spring Hill College,Spring Hill,Southeast,5,175,2,Mens,Mobile,Alabama,1
+588,Ohio Dominican University,Ohio Dominican,Great Lakes ,3,176,2,Mens,Columbus,Ohio,39
+589,Shorter University,Shorter,Southeast,5,177,2,Mens,Rome,Georgia,13
+590,Academy of Art University,Academy of Art,Far West ,8,178,2,Mens,San Francisco,California,6
+591,,CSU Pueblo,,0,179,2,Mens,,,0
+592,William Jewell College,William Jewell,Plains ,4,180,2,Mens,Liberty,Missouri,29
+593,Holy Names University,Holy Names,Far West ,8,181,2,Mens,Oakland,California,6
+594,Concord University,Concord,Southeast,5,182,2,Mens,Athens,West Virginia,54
+595,,Adams St.,,0,183,2,Mens,,,0
+596,,Concordia (NY),,0,184,2,Mens,,,0
+597,Lubbock Christian University,Lubbock Christian,Southwest ,6,185,2,Mens,Lubbock,Texas,48
+598,,Tex. Permian Basin,,0,186,2,Mens,,,0
+599,,San Fran. St.,,0,187,2,Mens,,,0
+600,,Salem (WV),,0,188,2,Mens,,,0
+601,,Okla. Baptist,,0,189,2,Mens,,,0
+602,Shaw University,Shaw,Southeast,5,190,2,Mens,Raleigh,North Carolina,37
+603,,Cal St. Monterey Bay,,0,191,2,Mens,,,0
+604,,St. Mary's (TX),,0,192,2,Mens,,,0
+605,,Slippery Rock,,0,193,2,Mens,,,0
+606,Ouachita Baptist University,Ouachita Baptist,Southeast,5,194,2,Mens,Arkadelphia,Arkansas,5
+607,Roberts Wesleyan College,Roberts Wesleyan,Mid East ,2,195,2,Mens,North Chili,New York,36
+608,Walsh University,Walsh,Great Lakes ,3,196,2,Mens,North Canton,Ohio,39
+609,,Truman,,0,197,2,Mens,,,0
+610,,Queens (NY),,0,198,2,Mens,,,0
+611,,DBU,,0,199,2,Mens,,,0
+612,University of Montevallo,Montevallo,Southeast,5,200,2,Mens,Montevallo,Alabama,1
+613,Daemen College,Daemen,Mid East ,2,201,2,Mens,Amherst,New York,36
+614,Nyack College,Nyack,Mid East ,2,202,2,Mens,Nyack,New York,36
+615,Erskine College,Erskine,Southeast,5,203,2,Mens,Due West,South Carolina,45
+616,Limestone University,Limestone,Southeast,5,203,2,Mens,Gaffney,South Carolina,45
+617,Upper Iowa University,Upper Iowa,Plains ,4,203,2,Mens,Fayette,Iowa,19
+618,Fort Lewis College,Fort Lewis,Rocky Mountains ,7,203,2,Mens,Durango,Colorado,8
+619,,Dominican (CA),,0,203,2,Mens,,,0
+620,,Mississippi Col.,,0,203,2,Mens,,,0
+621,,Emmanuel (GA),,0,203,2,Mens,,,0
+622,,Eastern N.M.,,0,203,2,Mens,,,0
+623,Belmont Abbey College,Belmont Abbey,Southeast,5,203,2,Mens,Belmont,North Carolina,37
+624,Southern Nazarene University,Southern Nazarene,Southwest ,6,203,2,Mens,Bethany,Oklahoma,40
+625,University of North Georgia,North Georgia,Southeast,5,1,2,Women,Dahlonega,Georgia,13
+626,,Grand Valley St.,,0,2,2,Women,,,0
+627,,UC San Diego,,0,3,2,Women,,,0
+628,,Ferris St.,,0,4,2,Women,,,0
+629,,UC-Colo. Springs,,0,5,2,Women,,,0
+630,,Southern N.H.,,0,6,2,Women,,,0
+631,Nova Southeastern University,Nova Southeastern,Southeast,5,7,2,Women,Davie,Florida,12
+632,,Stanislaus St.,,0,8,2,Women,,,0
+633,,Western Wash.,,0,9,2,Women,,,0
+634,,Columbus St.,,0,10,2,Women,,,0
+635,,Carson-Newman,,0,11,2,Women,,,0
+636,Flagler College,Flagler,Southeast,5,12,2,Women,St. Augustine,Florida,12
+637,,Minn. Duluth,,0,13,2,Women,,,0
+638,Lee University,Lee,Southeast,5,14,2,Women,Cleveland,Tennessee,47
+639,,Missouri Western,,0,15,2,Women,,,0
+640,,Minot St.,,0,16,2,Women,,,0
+641,,Point Loma,,0,17,2,Women,,,0
+642,,Dixie St.,,0,18,2,Women,,,0
+643,Quincy University,Quincy,Great Lakes ,3,18,2,Women,Quincy,Illinois,17
+644,,Wis.-Parkside,,0,20,2,Women,,,0
+645,,AUM,,0,21,2,Women,,,0
+646,,Colo. Sch. of Mines,,0,22,2,Women,,,0
+647,,Lenoir-Rhyne,,0,23,2,Women,,,0
+648,,Georgia College,,0,24,2,Women,,,0
+649,Cedarville University,Cedarville,Great Lakes ,3,25,2,Women,Cedarville,Ohio,39
+650,,Augustana (SD),,0,26,2,Women,,,0
+651,,Ga. Southwestern,,0,27,2,Women,,,0
+652,St. Edward's University,St. Edward's,Southwest ,6,28,2,Women,Austin,Texas,48
+653,Trevecca Nazarene University,Trevecca Nazarene,Southeast,5,29,2,Women,Nashville,Tennessee,47
+654,,Bloomsburg,,0,30,2,Women,,,0
+655,Seattle Pacific University,Seattle Pacific,Far West ,8,31,2,Women,Seattle,Washington,53
+656,,Notre Dame (OH),,0,32,2,Women,,,0
+657,,Southern Ind.,,0,33,2,Women,,,0
+658,Rockhurst University,Rockhurst,Plains ,4,34,2,Women,Kansas City,Missouri,29
+659,University of West Florida,West Florida,Southeast,5,35,2,Women,Pensacola,Florida,12
+660,,Midwestern St.,,0,36,2,Women,,,0
+661,Saint Michael's College,Saint Michael's,New England ,1,37,2,Women,Colchester,Vermont,50
+662,,Saint Rose,,0,38,2,Women,,,0
+663,,Goldey-Beacom,,0,39,2,Women,,,0
+664,,Emporia St.,,0,40,2,Women,,,0
+665,,Alabama Huntsville,,0,41,2,Women,,,0
+666,,Central Okla.,,0,42,2,Women,,,0
+667,Rollins College,Rollins,Southeast,5,43,2,Women,Winter Park,Florida,12
+668,Fresno Pacific University,Fresno Pacific,Far West ,8,44,2,Women,Fresno,California,6
+669,Tusculum University,Tusculum,Southeast,5,44,2,Women,Greeneville,Tennessee,47
+670,,Kutztown,,0,46,2,Women,,,0
+671,,Chico St.,,0,47,2,Women,,,0
+672,Biola University,Biola,Far West ,8,48,2,Women,La Mirada,California,6
+673,Christian Brothers University,Christian Brothers,Southeast,5,49,2,Women,Memphis,Tennessee,47
+674,Bellarmine University,Bellarmine,Southeast,5,50,2,Women,Louisville,Kentucky,21
+675,West Chester University,West Chester,Mid East ,2,51,2,Women,West Chester,Pennsylvania,42
+676,Mercy College,Mercy,Mid East ,2,52,2,Women,Dobbs Ferry,New York,36
+677,,East Stroudsburg,,0,53,2,Women,,,0
+678,,UIndy,,0,54,2,Women,,,0
+679,Lander University,Lander,Southeast,5,55,2,Women,Greenwood,South Carolina,45
+680,McKendree University,McKendree,Great Lakes ,3,56,2,Women,Lebanon,Illinois,17
+681,West Liberty University,West Liberty,Southeast,5,57,2,Women,West Liberty,West Virginia,54
+682,,Fairmont St.,,0,58,2,Women,,,0
+683,,Cal St. San Marcos,,0,59,2,Women,,,0
+684,,Northern Mich.,,0,60,2,Women,,,0
+685,,MSU Denver,,0,61,2,Women,,,0
+686,,Northwest Mo. St.,,0,62,2,Women,,,0
+687,,Mo. Southern St.,,0,63,2,Women,,,0
+688,Pace University,Pace,Mid East ,2,64,2,Women,Pleasantville,New York,36
+689,Azusa Pacific University,Azusa Pacific,Far West ,8,65,2,Women,Azusa,California,6
+690,,Embry-Riddle (FL),,0,66,2,Women,,,0
+691,Holy Family University,Holy Family,Mid East ,2,67,2,Women,Philadelphia,Pennsylvania,42
+692,Wingate University,Wingate,Southeast,5,68,2,Women,Wingate,North Carolina,37
+693,Barton College,Barton,Southeast,5,69,2,Women,Wilson,North Carolina,37
+694,Southern Wesleyan University,Southern Wesleyan,Southeast,5,70,2,Women,Central,South Carolina,45
+695,,Jefferson,,0,70,2,Women,,,0
+696,,St. Cloud St.,,0,72,2,Women,,,0
+697,,Texas-Tyler,,0,73,2,Women,,,0
+698,University of Bridgeport,Bridgeport,New England ,1,74,2,Women,Bridgeport,Connecticut,9
+699,,West Tex. A&M,,0,75,2,Women,,,0
+700,,Ill. Springfield,,0,76,2,Women,,,0
+701,,Bemidji St.,,0,77,2,Women,,,0
+702,Texas A&M University–Commerce,Tex. A&M-Commerce,Southwest ,6,78,2,Women,Commerce,Texas,48
+703,,USC Aiken,,0,79,2,Women,,,0
+704,,Cal St. San B'dino,,0,80,2,Women,,,0
+705,Lewis University,Lewis,Great Lakes ,3,81,2,Women,Romeoville,Illinois,17
+706,,Neb.-Kearney,,0,82,2,Women,,,0
+707,,Central Wash.,,0,83,2,Women,,,0
+708,,Valdosta St.,,0,84,2,Women,,,0
+709,Northwest Nazarene University,Northwest Nazarene,Rocky Mountains ,7,85,2,Women,Nampa,Idaho,16
+710,Davis & Elkins College,Davis & Elkins,Southeast,5,85,2,Women,Elkins,West Virginia,54
+711,Barry University,Barry,Southeast,5,87,2,Women,Miami Shores,Florida,12
+712,,Rogers St.,,0,88,2,Women,,,0
+713,,Concordia (CA),,0,89,2,Women,,,0
+714,,West Ala.,,0,90,2,Women,,,0
+715,Lock Haven,Lock Haven,Mid East ,2,91,2,Women,Lock Haven,pennsylvania,42
+716,,Cal State LA,,0,92,2,Women,,,0
+717,Bentley University,Bentley,New England ,1,93,2,Women,Waltham,Massachusetts,25
+718,,Florida Tech,,0,94,2,Women,,,0
+719,Saint Martin's University,Saint Martin's,Far West ,8,95,2,Women,Lacey,Washington,53
+720,Young Harris College,Young Harris,Southeast,5,96,2,Women,Young Harris,Georgia,13
+721,Molloy College,Molloy,Mid East ,2,97,2,Women,Rockville Centre,New York,36
+722,Lincoln Memorial University,Lincoln Memorial,Southeast,5,98,2,Women,Harrogate,Tennessee,47
+723,,Fort Hays St.,,0,99,2,Women,,,0
+724,,Concordia-St. Paul,,0,100,2,Women,,,0
+725,Catawba College,Catawba,Southeast,5,101,2,Women,Salisbury,North Carolina,37
+726,,Shippensburg,,0,102,2,Women,,,0
+727,,Northeastern St.,,0,103,2,Women,,,0
+728,,Humboldt St.,,0,104,2,Women,,,0
+729,,Cal St. Dom. Hills,,0,105,2,Women,,,0
+730,,Edinboro,,0,106,2,Women,,,0
+731,Newberry College,Newberry,Southeast,5,107,2,Women,Newberry,South Carolina,45
+732,,Ky. Wesleyan,,0,108,2,Women,,,0
+733,University of Mount Olive,Mount Olive,Southeast,5,109,2,Women,Mount Olive,North Carolina,37
+734,Stonehill College,Stonehill,New England ,1,110,2,Women,Easton,Massachusetts,25
+735,Tiffin University,Tiffin,Great Lakes ,3,111,2,Women,Tiffin,Ohio,39
+736,Lynn University,Lynn,Southeast,5,112,2,Women,Boca Raton,Florida,12
+737,,Michigan Tech,,0,113,2,Women,,,0
+738,Chaminade University of Honolulu,Chaminade,,0,114,2,Women,Honolulu,Hawai'i,
+739,Assumption University,Assumption,New England ,1,115,2,Women,Worcester,Massachusetts,25
+740,Shepherd University,Shepherd,Southeast,5,116,2,Women,Shepherdstown,West Virginia,54
+741,,Hawaii Hilo,,0,117,2,Women,,,0
+742,,West Va. Wesleyan,,0,118,2,Women,,,0
+743,Ohio Dominican University,Ohio Dominican,Great Lakes ,3,119,2,Women,Columbus,Ohio,39
+744,,Palm Beach Atl.,,0,120,2,Women,,,0
+745,,Indiana (PA),,0,121,2,Women,,,0
+746,,Converse,,0,122,2,Women,,,0
+747,Ashland University,Ashland,Great Lakes ,3,123,2,Women,Ashland,Ohio,39
+748,Georgian Court University,Georgian Court,Mid East ,2,124,2,Women,Lakewood,New Jersey,34
+749,University of Tampa,Tampa,Southeast,5,125,2,Women,Tampa,Florida,12
+750,Francis Marion University,Francis Marion,Southeast,5,126,2,Women,Florence,South Carolina,45
+751,,Regis (CO),,0,127,2,Women,,,0
+752,Mercyhurst University,Mercyhurst,Mid East ,2,128,2,Women,Erie,Pennsylvania,42
+753,,Saginaw Valley,,0,129,2,Women,,,0
+754,,Wilmington (DE),,0,130,2,Women,,,0
+755,Limestone University,Limestone,Southeast,5,131,2,Women,Gaffney,South Carolina,45
+756,,Hawaii Pacific,,0,132,2,Women,,,0
+757,,Maryville (MO),,0,133,2,Women,,,0
+758,,Mansfield,,0,134,2,Women,,,0
+759,,King (TN),,0,135,2,Women,,,0
+760,Colorado Mesa University,Colorado Mesa,Rocky Mountains ,7,136,2,Women,Grand Junction,Colorado,8
+761,,Westminster (UT),,0,137,2,Women,,,0
+762,Newman University,Newman,Plains ,4,138,2,Women,Wichita,Kansas,20
+763,,Okla. Christian,,0,139,2,Women,,,0
+764,Le Moyne College,Le Moyne,Mid East ,2,140,2,Women,Syracuse,New York,36
+765,,Queens (NC),,0,141,2,Women,,,0
+766,Adelphi University,Adelphi,Mid East ,2,142,2,Women,Garden City,New York,36
+767,Wheeling University,Wheeling,Southeast,5,143,2,Women,Wheeling,West Virginia,54
+768,,Pitt.-Johnstown,,0,144,2,Women,,,0
+769,,Frostburg St.,,0,145,2,Women,,,0
+770,,Winona St.,,0,146,2,Women,,,0
+771,,New York Tech,,0,146,2,Women,,,0
+772,Saint Leo University,Saint Leo,Southeast,5,148,2,Women,St. Leo,Florida,12
+773,,Concordia Portland,,0,149,2,Women,,,0
+774,,Southern Conn. St.,,0,150,2,Women,,,0
+775,,Sonoma St.,,0,151,2,Women,,,0
+776,Eckerd College,Eckerd,Southeast,5,152,2,Women,St. Petersburg,Florida,12
+777,,Cal Poly Pomona,,0,153,2,Women,,,0
+778,,Cal St. East Bay,,0,154,2,Women,,,0
+779,,Cal U (PA),,0,155,2,Women,,,0
+780,University of Mary,Mary,Plains ,4,156,2,Women,Bismarck,North Dakota,38
+781,,Colo. Christian,,0,157,2,Women,,,0
+782,,Union (TN),,0,158,2,Women,,,0
+783,North Greenville University,North Greenville,Southeast,5,159,2,Women,Tigerville,South Carolina,45
+784,,Millersville,,0,160,2,Women,,,0
+785,Concord University,Concord,Southeast,5,161,2,Women,Athens,West Virginia,54
+786,,Western Ore.,,0,162,2,Women,,,0
+787,,Fla. Southern,,0,163,2,Women,,,0
+788,,Delta St.,,0,164,2,Women,,,0
+789,Drury University,Drury,Plains ,4,165,2,Women,Springfield,Missouri,29
+790,William Jewell College,William Jewell,Plains ,4,166,2,Women,Liberty,Missouri,29
+791,,American Int'l,,0,167,2,Women,,,0
+792,Bloomfield College,Bloomfield,Mid East ,2,168,2,Women,Bloomfield,New Jersey,34
+793,,St. Anselm,,0,169,2,Women,,,0
+794,Alderson Broaddus University,Alderson Broaddus,Southeast,5,170,2,Women,Philippi,West Virginia,54
+795,East Central University,East Central,Southwest ,6,171,2,Women,Ada,Oklahoma,40
+796,Malone University,Malone,Great Lakes ,3,171,2,Women,Canton,Ohio,39
+797,,Oakland City,,0,173,2,Women,,,0
+798,Northwood University,Northwood,Great Lakes ,3,174,2,Women,Midland,Michigan,26
+799,Seton Hill University,Seton Hill,Mid East ,2,175,2,Women,Greensburg,Pennsylvania,42
+800,,Southwestern Okla.,,0,176,2,Women,,,0
+801,Chowan University,Chowan,Southeast,5,177,2,Women,Murfreesboro,North Carolina,37
+802,Davenport University,Davenport,Great Lakes ,3,178,2,Women,Grand Rapids,Michigan,26
+803,,Mo.-St. Louis,,0,179,2,Women,,,0
+804,Chestnut Hill College,Chestnut Hill,Mid East ,2,180,2,Women,Philadelphia,Pennsylvania,42
+805,,West Ga.,,0,181,2,Women,,,0
+806,Harding University,Harding,Southeast,5,182,2,Women,Searcy,Arkansas,5
+807,,Anderson (SC),,0,183,2,Women,,,0
+808,,Cal St. Monterey Bay,,0,183,2,Women,,,0
+809,University of Findlay,Findlay,Great Lakes ,3,185,2,Women,Findlay,Ohio,39
+810,Caldwell University,Caldwell,Mid East ,2,186,2,Women,Caldwell,New Jersey,34
+811,,Tex. A&M Int'l,,0,187,2,Women,,,0
+812,Spring Hill College,Spring Hill,Southeast,5,188,2,Women,Mobile,Alabama,1
+813,,Mont. St. Billings,,0,189,2,Women,,,0
+814,St. Thomas Aquinas College,St. Thomas Aquinas,Mid East ,2,190,2,Women,Sparkill,New York,36
+815,Southwest Baptist University,Southwest Baptist,Plains ,4,191,2,Women,Bolivar,Missouri,29
+816,Lake Erie College,Lake Erie,Great Lakes ,3,192,2,Women,Painesville,Ohio,39
+817,,CSU Pueblo,,0,193,2,Women,,,0
+818,,Lees-McRae,,0,194,2,Women,,,0
+819,,Slippery Rock,,0,195,2,Women,,,0
+820,,Black Hills St.,,0,196,2,Women,,,0
+821,Felician University,Felician,Mid East ,2,197,2,Women,Rutherford,New Jersey,34
+822,,Missouri S&T,,0,198,2,Women,,,0
+823,Lubbock Christian University,Lubbock Christian,Southwest ,6,199,2,Women,Lubbock,Texas,48
+824,Mars Hill University,Mars Hill,Southeast,5,200,2,Women,Mars Hill,North Carolina,37
+825,Gannon University,Gannon,Mid East ,2,201,2,Women,Erie,Pennsylvania,42
+826,Daemen College,Daemen,Mid East ,2,202,2,Women,Amherst,New York,36
+827,,Notre Dame de Namur,,0,203,2,Women,,,0
+828,,Dominican (NY),,0,204,2,Women,,,0
+829,Coker University,Coker,Southeast,5,205,2,Women,Hartsville,South Carolina,45
+830,Simon Fraser University,Simon Fraser,,0,206,2,Women,Burnaby,British Columbia,
+831,,Mississippi Col.,,0,207,2,Women,,,0
+832,Academy of Art University,Academy of Art,Far West ,8,208,2,Women,San Francisco,California,6
+833,Erskine College,Erskine,Southeast,5,209,2,Women,Due West,South Carolina,45
+834,Post University,Post,New England ,1,210,2,Women,Waterbury,Connecticut,9
+835,,Minn.-Crookston,,0,211,2,Women,,,0
+836,,Adams St.,,0,212,2,Women,,,0
+837,,MSU Moorhead,,0,213,2,Women,,,0
+838,Holy Names University,Holy Names,Far West ,8,214,2,Women,Oakland,California,6
+839,,UNC Pembroke,,0,215,2,Women,,,0
+840,University of New Haven,New Haven,New England ,1,216,2,Women,West Haven,Connecticut,9
+841,Franklin Pierce University,Franklin Pierce,New England ,1,217,2,Women,Rindge,New Hampshire,33
+842,Shorter University,Shorter,Southeast,5,218,2,Women,Rome,Georgia,13
+843,,Purdue Northwest,,0,219,2,Women,,,0
+844,,San Fran. St.,,0,220,2,Women,,,0
+845,,Lincoln (PA),,0,221,2,Women,,,0
+846,,St. Mary's (TX),,0,222,2,Women,,,0
+847,,Minnesota St.,,0,223,2,Women,,,0
+848,,Urbana,,0,224,2,Women,,,0
+849,Walsh University,Walsh,Great Lakes ,3,225,2,Women,North Canton,Ohio,39
+850,,Lindenwood (MO),,0,226,2,Women,,,0
+851,,Charleston (WV),,0,227,2,Women,,,0
+852,Texas Woman's University,Texas Woman's,Southwest ,6,228,2,Women,Denton,Texas,48
+853,,Clayton St.,,0,229,2,Women,,,0
+854,,Salem (WV),,0,230,2,Women,,,0
+855,,Northwestern Okla.,,0,231,2,Women,,,0
+856,,Concordia (NY),,0,232,2,Women,,,0
+857,,Angelo St.,,0,233,2,Women,,,0
+858,,Albany St. (GA),,0,234,2,Women,,,0
+859,,Wayne St. (NE),,0,235,2,Women,,,0
+860,,Western Colo.,,0,236,2,Women,,,0
+861,Roberts Wesleyan College,Roberts Wesleyan,Mid East ,2,237,2,Women,North Chili,New York,36
+862,,Truman,,0,237,2,Women,,,0
+863,,Central Mo.,,0,239,2,Women,,,0
+864,Shaw University,Shaw,Southeast,5,240,2,Women,Raleigh,North Carolina,37
+865,,Tex. Permian Basin,,0,241,2,Women,,,0
+866,Washburn University,Washburn,Plains ,4,242,2,Women,Topeka,Kansas,20
+867,,Queens (NY),,0,243,2,Women,,,0
+868,,DBU,,0,244,2,Women,,,0
+869,,Okla. Baptist,,0,245,2,Women,,,0
+870,Ouachita Baptist University,Ouachita Baptist,Southeast,5,245,2,Women,Arkadelphia,Arkansas,5
+871,Southern Nazarene University,Southern Nazarene,Southwest ,6,247,2,Women,Bethany,Oklahoma,40
+872,,Southwest Minn. St.,,0,248,2,Women,,,0
+873,,N.M. Highlands,,0,249,2,Women,,,0
+874,Ursuline College,Ursuline,Great Lakes ,3,249,2,Women,Pepper Pike,Ohio,39
+875,Nyack College,Nyack,Mid East ,2,251,2,Women,Nyack,New York,36
+876,,Glenville St.,,0,252,2,Women,,,0
+877,Belmont Abbey College,Belmont Abbey,Southeast,5,253,2,Women,Belmont,North Carolina,37
+878,University of Montevallo,Montevallo,Southeast,5,254,2,Women,Montevallo,Alabama,1
+879,,Eastern N.M.,,0,255,2,Women,,,0
+880,,Clarion,,0,255,2,Women,,,0
+881,,Emmanuel (GA),,0,255,2,Women,,,0
+882,University of Sioux Falls,Sioux Falls,Plains ,4,255,2,Women,Sioux Falls,South Dakota,46
+883,Upper Iowa University,Upper Iowa,Plains ,4,255,2,Women,Fayette,Iowa,19
+884,,Dominican (CA),,0,255,2,Women,,,0
+885,Fort Lewis College,Fort Lewis,Rocky Mountains ,7,255,2,Women,Durango,Colorado,8
+886,,Northern St.,,0,255,2,Women,,,0

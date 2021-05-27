@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<script src="../Scripts/ajaxCalls.js"></script>
+	<script src="../Scripts/jquery-3.4.1.min.js"></script>
+	<style>
+
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		form {
+			border: 3px solid #f1f1f1;
+		}
+
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+
+		button {
+			background-color: navy;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+		}
+
+			button:hover {
+				opacity: 0.8;
+			}
+
+		.cancelbtn {
+			width: auto;
+			padding: 10px 18px;
+			background-color: #f44336;
+		}
+
+		.imgcontainer {
+			text-align: center;
+			margin: 24px 0 12px 0;
+		}
+
+
+		.container {
+			padding: 16px;
+		}
+
+		span.psw {
+			float: right;
+			padding-top: 16px;
+		}
+
+		/* Change styles for span and cancel button on extra small screens */
+		@media screen and (max-width: 300px) {
+			span.psw {
+				display: block;
+				float: none;
+			}
+
+			.cancelbtn {
+				width: 100%;
+			}
+		}
+	</style>
+	<script>
+		$(document).ready(function () {
+
+		});
+
+		function signup() {
+			window.location.href = "NewUserFormForOwner.html";
+		}
+		function login() {
+
+
+			email = $("#uname").val();
+			password = $("#psw").val();
+
+			let api = "../api/Users/" + email + '/' + password;
+
+			ajaxCall("Get", api, email + "" + password, successlogin, errorlogin)
+
+
+		}
+		function successlogin(data) {
+			if (data == 0) {
+				alert("Hello player");
+				localStorage.setItem("email", email);
+				localStorage.setItem("password", password);
+				window.open("FavLocale.html")
+				window.close()
+			}
+			if (data == 1) {
+				alert("Hello manager");
+				localStorage.setItem("email", email);
+				localStorage.setItem("password", password);
+				window.open("FavLocale.html")
+				window.close();
+			}
+
+
+			else {
+				alert("dont found");
+			}
+
+
+		}
+
+		function errorlogin(data) { alert('errorlogin') }
+
+		function signin() {
+
+
+		}
+
+
+		function contact() {
+			window.open("https://www.firsteamusa.com/%D7%A6%D7%95%D7%A8-%D7%A7%D7%A9%D7%A8");
+		}
+
+
+
+	</script>
+</head>
+<body>
+
+
+	<div class="imgcontainer">
+		<img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+	</div>
+
+	<div class="container">
+		<label for="uname"><b>Username</b></label>
+		<input id="uname" type="text" placeholder="Enter Username" name="uname" required>
+
+		<label for="psw"><b>Password</b></label>
+		<input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+
+		<button onclick="login()">Login</button>
+		<label>
+			<input type="checkbox" checked="checked" name="remember"> Remember me
+		</label>
+	</div>
+
+	<div class="container" style="background-color:#f1f1f1">
+		<button type="button" class="cancelbtn" style="background-color:darkblue" onclick="signup()">Sign up</button>
+		<button type="button" class="cancelbtn" style="background-color:red">Cancel</button>
+		<button type="button" class="cancelbtn" style="background-color:black" onclick="contact()">Contact Us!</button>
+		<span class="psw">Forgot <a href="#">password?</a></span>
+	</div>
+
+</body>
+</html>

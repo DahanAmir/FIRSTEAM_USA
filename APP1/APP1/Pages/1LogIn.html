@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form {
+            border: 3px solid #f1f1f1;
+        }
+
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+            button:hover {
+                opacity: 0.8;
+            }
+
+        .signinbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #0094ff;
+        }
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+
+        });
+
+        var email = "";
+        function signin() { //תפיסת ערכים של הכפתורים
+            email = $("#uname").val();
+            let password = $("#upass").val();
+          
+            let api = "../api/Costumer/" + email + '/' + password;
+
+            ajaxCall("Get", api, "", successCB1, errorCB1)
+            return false;
+        }
+
+
+        function successCB1(data) {
+            if (data) {  //אם השם משתמש וסיסמא זהים לנתנוים שבשרת אז נכנסים
+                alert("Login successed")
+                localStorage.setItem('email', email)
+
+                window.location.href = "start.html";
+            }
+            else {
+                alert("Your password/email are incorrect ")
+            }
+
+        }
+
+        function errorCB1(err) {
+            alert("Login err")
+            console.log(err.responseText)
+        }
+
+        
+    </script>
+</head>
+<body>
+    <h2>Login Form</h2>
+
+   
+
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input id="uname" type="text" placeholder="Enter Username" name="uname" required>
+            <label for="psw"><b>Password</b></label>
+            <input id="upass" type="password" placeholder="Enter Password" name="psw" required>
+            <button type="submit" id="login_btn" onclick="signin()">Login</button>
+         </div>
+        <div class="container" style="background-color:#f1f1f1; text-align:center">
+          
+            <button type="button" id="cancel_btn" class="cancelbtn">
+                <a href="start.html">Continue without registration</a>
+            </button>
+            <button type="button" id="signin_btn" class="signinbtn">
+                <a href="NewCostumerForm - Copy.html">Sign In</a>
+               
+            </button>
+          
+        </div>
+
+</body>
+</html>

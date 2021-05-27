@@ -1,0 +1,546 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .btn-group button {
+            background-color: #04AA6D; /* Green background */
+            border: 1px solid green; /* Green border */
+            color: white; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+        }
+
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .btn-group button:not(:last-child) {
+            border-right: none; /* Prevent double borders */
+        }
+
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+    <style>
+
+
+        .button2 {
+            background-color: white;
+            border: none;
+            color: darkblue;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            float: left;
+        }
+
+
+        /*כותרת*/
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: red;
+                    color: white;
+                }
+
+
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: black;
+                color: white;
+            }
+
+        #header {
+            background-color: red;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 0px auto;
+            width: 100%;
+            height: 100%;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            height: 60px;
+            color: white;
+            width: 180px;
+            float: left;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #f13333;
+            border-color: #f13333;
+        }
+    </style>
+
+
+    <script>
+        var flag
+        var UniversityTypeAPI
+        var JSON_ncaa = []
+        var Sat
+        var SatAPI
+        var UniversitySize
+        var UniversitySizeAPI
+        var UniversityType
+        var UniversityTypeAPI
+        var PriceMax
+        var page;
+        var PriceMaxAPI
+        var MYDistrict   //כל האזורים של משתמש
+        var MYStates     //כל המדניות של משתמש
+        var MYFavorite   //העדפות כלליות של משתמש
+        var MYLocale     //כל סוגי המקומות של משתמש
+        var api_data;
+        var api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&";
+//        var api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&page=" + page + "&";
+
+        var api_tail = "fields=id,school.name,school.region_id,school.state_fips,school.ownership,school.locale,school.school_url,2018.student.size,2018.cost.tuition.out_of_state,2018.admissions.sat_scores.average.overall&api_key=tcw4YqKbgv55DmuUicwNWeBtGk3XwHzoCf2SbWne";
+        var api_State
+        var all_District
+        var show_all_match
+        var District
+        var all_name_csv_universities
+        var wishlist = [];
+        var name1 = [];
+        var name = '';
+
+
+        var email = localStorage.getItem("email");
+
+        var password
+        var api_District
+        // var email = "adi@gmail.com";
+        var UniversityLevel;
+
+
+        $(document).ready(function () {
+
+            name1 = email.split('@');
+            name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
+            document.getElementById("intro").innerHTML = name;
+            page = 1;
+            //    alert("email is: " + email);
+            get_all_uni_data()
+
+
+        });
+
+        //-----CSV----//
+        function get_all_uni_data() {
+
+            $.ajax({
+                type: "GET",
+                url: "../NCAA/NCAA.csv",
+                dataType: "text",
+                success: function (data) {
+                    var lines = data.split("\n");
+
+                    var result = [];
+
+                    // NOTE: If your columns contain commas in their values, you'll need
+                    // to deal with those before doing the next step
+                    // (you might convert them to &&& or something, then covert them back later)
+                    // jsfiddle showing the issue https://jsfiddle.net/
+                    var headers = lines[0].split(",");
+
+                    for (var i = 1; i < lines.length; i++) {
+
+                        var obj = {};
+                        var currentline = lines[i].split(",");
+
+                        for (var j = 0; j < headers.length; j++) {
+                            obj[headers[j]] = currentline[j];
+                        }
+
+                        JSON_ncaa.push(obj);
+
+                    }
+                    all_name_csv_universities = 'school.name=' + JSON_ncaa[0].Full_School_Name + ',' + JSON_ncaa[0].School
+                    for (var i = 1; i < JSON_ncaa.length; i++) {
+                        if (JSON_ncaa[i].Full_School_Name) {
+                            all_name_csv_universities += ',' + JSON_ncaa[i].Full_School_Name;
+
+                        }
+                        if (JSON_ncaa[i].School) {
+                            all_name_csv_universities += ',' + JSON_ncaa[i].School
+                        }
+
+
+                    }
+                    all_name_csv_universities += '&';
+                }
+            });
+            var filename = "../NCAA/NCAA.csv"
+            var request = new XMLHttpRequest();
+            file = request.open('GET', filename, true);
+            let api_Districts = "../api/UsersDistrict/" + email + "/get_all_District";
+            ajaxCall("Get", api_Districts, "", successDistrict, errorDistrict)
+            let api_States = "../api/UsersStates/" + email + "/get_all_States";
+            ajaxCall("Get", api_States, "", successState, errorState)
+            let api_Locale = "../api/UsersLocale/" + email + "/get_all_Locale";
+            ajaxCall("Get", api_Locale, "", successLocale, errorLocale)
+            let api_fav = "../api/Favorites/" + email + "/get_all_Favorites"
+            ajaxCall("Get", api_fav, "", successFavorites, errorFavorites)
+        }
+        function csvJSON(csv) {
+
+            var lines = csv.split("\n");
+
+            var result = [];
+
+            var headers = lines[0].split(",");
+
+            for (var i = 1; i < lines.length; i++) {
+                var obj = {};
+                var currentline = lines[i].split(",");
+                for (var j = 0; j < headers.length; j++) {
+                    obj[headers[j]] = currentline[j];
+                }
+                result.push(obj)
+            }
+            return JSON.stringify(result); //JSON
+        }
+
+
+        //----Region, State, Locale----//
+        function errorDistrict(data) {
+            console.log(data);
+            alert("ErrorDistrict")
+        }
+        function successDistrict(data) {
+            MYDistrict
+            if (data.length == 0 || data.length == 8)
+                api_District = "";
+            else {
+                api_District = "school.region_id=" + data[0].Id
+                for (var i = 1; i < data.length; i++) {
+                    api_District = api_District + ',' + data[i].Id
+                }
+                api_District = api_District + '&'
+            }
+            MYDistrict = api_District
+
+        }
+
+        function errorState(data) {
+            alert("ErrorDState")
+        }
+        function successState(data) {
+            MYStates = data
+            // console.log(data);
+            if (data.length == 0 || data.length == 57)
+                api_State = "";
+            else {
+                api_State = "school.state_fips=" + data[0].Id
+                for (var i = 1; i < data.length; i++) {
+                    api_State = api_State + ',' + data[i].Id
+                }
+                api_State = api_State + '&'
+            }
+            MYStates = api_State
+        }
+
+        function errorLocale(data) {
+            alert("ErrorLocale")
+        }
+        function successLocale(data) {
+            if (data.length == 0 || data.length == 6)
+                api_Locale = "";
+            else {
+                api_Locale = "school.locale=" + data[0].Id
+                for (var i = 1; i < data.length; i++) {
+                    arapi_Locale = api_Locale + ',' + data[i].Id
+                }
+                api_Locale = api_Locale + '&'
+            }
+            MYLocale = api_Locale
+
+        }
+
+        //----Favotires----//
+
+        function errorFavorites(data) {
+            console.log(data);
+            alert("ErrorAll")
+        }
+        function successFavorites(data) {
+
+            if (data.PriceMax) {
+                PriceMax = data.PriceMax
+                PriceMaxAPI = "2018.cost.tuition.out_of_state__range=0.." + data.PriceMax + '&';
+            }
+            else
+                PriceMaxAPI = '';
+
+
+            if (data.UniversityType) {
+
+                UniversityType = data.UniversityType
+                UniversityTypeAPI = "school.ownership=" + data.UniversityType + '&';
+
+
+            }
+            else {
+                UniversityTypeAPI = ''
+            }
+
+
+            if (data.Sat) {
+
+                Sat = data.Sat
+                SatAPI = "2018.admissions.sat_scores.average.overall__range=0.." + data.Sat + '&';
+            }
+            else
+                SatAPI = '';
+
+            if (data.UniversitySize) {
+
+                UniversitySize = data.UniversitySize
+                UniversitySizeAPI = "2018.student.size__range=0.." + data.UniversitySize + '&';
+            }
+            else
+                UniversitySizeAPI = '';
+
+
+            MYFavorite = data
+
+
+        }
+
+
+        function rend() {
+            api_All = api_head + MYDistrict + MYStates + MYLocale + UniversityTypeAPI + PriceMaxAPI + UniversitySizeAPI + SatAPI + api_tail;
+            $.get(api_All, function (data) {
+                console.log(data);
+                api_All = data;
+                let str = '';
+                str += "<table id='customers' class='table' class='header'>";
+                str += "<thead><tr>";
+                str += "<th >School name</th>";
+                str += "<th >School Website </th>";
+                str += "<th> School ID </th>";
+                str += "<th> Locale </th>";
+                str += "<th>Ownership</th>";
+                str += "<th> Region </th> ";
+                str += "<th> State </th>";
+                str += "<th> Cost </th>";
+                str += "<th> Size </th>";
+                str += "<th> SAT </th>";
+                str += "<th> Rank </th>";
+                str += "<th> Div </th>";
+                str += "<th> WishList </th>";
+                str += "</tr></thead>";
+                str += " <tbody>";
+
+                for (var i = 0; i < data.results.length; i++) {
+
+                    str += "<tr>";
+                    str += "<td>" + data.results[i]["school.name"] + "</td>";
+                    str += "<td><a href=" + data.results[i]["school.school_url"] + ">" + data.results[i]["school.school_url"] + "</a></td>";
+                    str += "<td>" + data.results[i].id + "</td>";
+                    str += "<td>" + data.results[i]["school.locale"] + "</td>";
+                    str += "<td>" + data.results[i]["school.ownership"] + "</td>";
+                    str += "<td> " + data.results[i]["school.region_id"] + "</td>";
+                    str += "<td> " + data.results[i]["school.state_fips"] + "</td>";
+                    str += "<td> " + data.results[i]["2018.cost.tuition.out_of_state"] + "$</td>";
+                    str += "<td> " + data.results[i]["2018.student.size"] + "</td>";
+                    str += "<td> " + data.results[i]["2018.admissions.sat_scores.average.overall"] + "</td>";
+                    flag = 0
+                    for (var j = 0; j < JSON_ncaa.length; j++) {
+                        if (JSON_ncaa[j].Full_School_Name == data.results[i]["school.name"] || JSON_ncaa[j].School == data.results[i]["school.name"]) {
+                            flag = 1
+                            str += "<td> " + JSON_ncaa[j]["Adj. RPI"] + "</td>";
+                            str += "<td> " + JSON_ncaa[j].Division + "</td>";
+                            j = JSON_ncaa.length;
+                        }
+                    }
+                    if (flag == 0) {
+                        str += "<td> " + "null" + "</td>";
+                        str += "<td> " + "null" + "</td>";
+                    }
+                    str += "<td> " + "<label> <input type='checkbox' id='" + data.results[i].id + "' class='radio' value='" + data.results[i]["school.name"] + "'/></label>" + "</td>";
+                }
+                str += "</tr></tbody></table>";
+                number = '<div class="btn-group">  <button>1</button> <button>2</button><button>3</button> </div>'
+
+                document.getElementById("showfav").innerHTML = str + number;
+            })
+        }
+
+
+        function ChangeFavorites() {
+
+            window.open('FavRegion.html');
+
+        }
+
+        function Wishlist() {
+            var checkboxes = document.getElementsByTagName("input");
+            for (i = 0; i < checkboxes.length; i++) { //כל פעם שנלחץ לשמור נעבור על כל התכונות ונראה מי 0 מי 1
+                if (checkboxes[i].checked) {
+
+                    item = {
+                        Id: checkboxes[i].id,
+                        UniversityName: checkboxes[i].value,
+                        Email: email
+                    }
+
+                    wishlist.push(item)
+
+
+                }
+
+
+            }
+            let api_WishList = "../api/University";
+            ajaxCall("POST", api_WishList, JSON.stringify(wishlist), successWishlist, errorWishlist)
+
+        }
+
+
+        function errorWishlist() {
+            alert("Please Choose school to Save")
+        }
+
+        function successWishlist() {
+            alert("successWishlist")
+        }
+
+
+
+
+        function gotowishlist() {
+            window.open('WishList.html')
+        }
+
+
+        function allprofiles() {
+            window.open('Profile_Show.html')
+        }
+
+        function goBack() {
+            window.history.back();
+            window.close()
+        }
+
+    </script>
+
+</head>
+<body>
+    <button class="button2" ONCLICK="goBack()" style="float:left"> Go Back  </button>
+    <br /><br /><br /><br />
+
+
+    <div class="imgcontainer">
+
+        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+        <div class="topnav">
+            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
+            <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
+            <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
+            <a href="#about" onclick="gotowishlist()">Show WishList</a>
+            <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
+            <p> Add To WishList  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
+    <span class="glyphicon glyphicon-heart"></span> Add To WishList
+</a>
+            </p>
+        </div>
+        <h1 style="color:red"> Match Schools: </h1>
+        <div id="intro">     </div>
+
+
+    </div>
+    <div>
+
+        <!--<div><button onclick="rend()" style="background-color:red; color:white">Show Results</button></div>
+        <div><button onclick="ChangeFavorites()" style="background-color: red; color:white">Change Favorites</button></div>
+        <div><button onclick="Wishlist()" style="background-color: Black; color:white">Add to WishList</button></div>
+        <div><button onclick="gotowishlist()" style="background-color: darkblue; color:white">Show WishList</button></div>
+        <div><button onclick="allprofiles()" style="background-color: darkblue; color:white">All Playres Profiles</button></div>-->
+        <div id="showfav">  </div>
+        <div id="api">  </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+
+
+
+
+</body>
+</html>

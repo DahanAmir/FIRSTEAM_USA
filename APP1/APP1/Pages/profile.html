@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+
+    <title>DataTable Campaign</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+    <style type="text/css">
+
+        button {
+            margin-left: 10px;
+        }
+
+        .colorDiv {
+            height: 30px;
+            width: 70px;
+            border: 2px solid black
+        }
+
+        #newBTN {
+            background-color: blueviolet;
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+
+    <script>
+        var id_edit;
+        function editBtn_Function(i) {
+           
+            
+                Register = ''
+                if (users[i].Register) {
+                    Register = users[i].Register.split('T00:00:00')
+                }
+            status_select = '<select id="Status" name="Status"><option value="candidate">candidate</option><option value="I20">I20</option> <option value="בניית פרופיל אישי">בניית פרופיל אישי</option> <option value="חתימה על NLI, LOI">חתימה על NLI, LOI</option> <option value="שגרירות">שגרירות</option> <option value="שיחות עם מאמנים">שיחות עם מאמנים</option> </select >'
+            date = ''
+            EstimatedYear=''
+            if (users[i].BirthDay) { date = users[i].Register.split('T00:00:00') }
+            if (users[i].EstimatedYear) { EstimatedYear = users[i].EstimatedYear.split('T00:00:00') }
+
+            str = '<div class="container">   <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">   <div class="card h-100">     <div class="card-body">       <div class="account-settings">     <div class="user-profile">   <div class="user-avatar">  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">  </div>  <h3 class="user-name">' + users[i].LastName + ' ' + users[i].FirstName + '</h3>        <h6 class="user-email">' + 'Registration: ' + Register[0] + '</h6>  </div>  <div class="about">  <h5>About</h5>  </div>  </div>  </div>  </div>  </div> '
+            str += '<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">  <div class="card h-100">  <div class="card-body">  <div class="row gutters">                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">  <h6 class="mb-2 text-primary">Personal Details</h6>  </div>  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">  <div class="form-group">  <label for="LastName">LastName</label>  <input type="text"   class="form-control" id="LastName" value="' + users[i].LastName + '">				</div>  </div>     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">  <div class="form-group">  <label for="FirstName">FirstName</label>  <input type="text"  class="form-control" id="FirstName" value="' + users[i].FirstName + '">				</div>  </div>'
+            str += '<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">  <div class="form-group">  <label for="eMail">Email</label>        <input type="email" readonly class="form-control" id="eMail"                value="' + users[i].Email + '">				</div>  </div>  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">  <div class="form-group">  <label for="phone">Phone</label>  <input type="text" class="form-control" id="phone" placeholder="Enter phone number" value="' + users[i].Phone + '"></div> </div>  '
+            str += '<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">   <div class="form-group"> <label for="password">Password</label>  <input type="url" class="form-control" id="password" placeholder="Password" value="' + users[i].Password + '">		    </div>  </div> <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">	   <div class="form-group">   <label for="EstimatedYear">EstimatedYear</label>  	'
+            str += '<input type="date" class="form-control" id="EstimatedYear" placeholder="Enter EstimatedYear" value="' + EstimatedYear[0] + '">				</div>   </div>  </div>  <div class="row gutters">  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">  <h6 class="mt-3 mb-2 text-primary"></h6>  </div>  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">    <div class="form-group">   <label for="Street">Address</label>      <input type="name" class="form-control" id="Address" placeholder="Enter Address" value="' + users[i].Address + '">				</div>  </div>  '
+            str += '<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">   <div class="form-group">                                                                    <label for="Birthday">Birthday</label>                                                                    <input type="date" class="form-control" id="birthday" placeholder="Enter Birthay" value="' + date[0] + '">				</div></div><div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12"><div class="form-group"><label for="sTate">Status</label>' + status_select + '</div></div>'
+            str += '<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12"> <div class="form-group"> <label for="LastName">LastName</label> <input type="text" class="form-control" id="Position" placeholder="Position" value="' + users[i].Position + '">				 </div > </div > <div class="row gutters"> <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">                                                                            <div class="text-right"> <button type="button" id="submit" name="submit" class="btn btn-secondary"  onclick="cancelf()">Cancel</button>           <button type="button" id="submit" name="submit" class="btn btn-primary" onclick="Update(' + i + ')"  >Update</button></div></div></div>         </div >             </div >        </div > </div ></div > '
+                //str = '<div class="container bootstrap snippets bootdey"> <div class="h4 text-center">PLAYER</div>                    <div class="row pv-lg">                                                        <div class="col-lg-2"></div>                                                        <div class="col-lg-8">                                                                                                                                                                 <label class="col-sm-2 control-label" for="inputContact1">Name</label>                                                                    <div class="col-sm-10">                                                                        <input class="form-control" id="inputContact1" type="text" placeholder="" value="' + users[i].LastName + users[i].FirstName + '">                                </div>                                                                    </div>                                                                    <div class="form-group">                                                                        <label class="col-sm-2 control-label" for="inputContact2">Email</label>                                                                        <div class="col-sm-10">                                                                            <input class="form-control" id="inputContact2" type="email" value="' + users[i].Email + '">                                </div>                                                                        </div>                                                                        <div class="form-group">                                                                            <label class="col-sm-2 control-label" for="inputContact3">Phone</label>                                                                            <div class="col-sm-10">                                                                                <input class="form-control" id="inputContact3" type="text" value="' + users[i].Phone + '">                                </div>                                                                            </div>                                                                            <div class="form-group">                                                                                <label class="col-sm-2 control-label" for="inputContact4">password</label>                                                                                <div class="col-sm-10">                                                                                    <input class="form-control" id="inputContact4" type="text" value="' + users[i].Password + '">                                </div>                                                                                </div>                                                                                <div class="form-group">                                                                                    <label class="col-sm-2 control-label" for="inputContact5">Website</label>                                                                                    <div class="col-sm-10">                                                                                        <input class="form-control" id="inputContact5" type="text" value="' + users[i].Position + '">                                </div>                                                                                    </div>                                                                                    <div class="form-group">                                                                                        <label class="col-sm-2 control-label" for="inputContact6">Address</label>                                                                                        <div class="col-sm-10">                                                                                            <textarea class="form-control" id="inputContact6" row="4">' + users[i].Address + '</textarea>               </div>         </div>            <div class="form-group">                                               <label class="col-sm-2 control-label" for="inputContact7">status</label>        <div class="col-sm-10">                 <input class="form-control" id="inputContact7" type="text" value="' + users[i].Status + '">                                </div>                                                                                        </div>                                                                                        <div class="form-group">                                                                                            <label class="col-sm-2 control-label" for="inputContact8">Company</label>                                                                                            <div class="col-sm-10">                                                                                                <input class="form-control" id="inputContact8" type="text" placeholder="No Company">                                </div>                                                                                            </div>                                                                                            <div class="form-group">                                                                                                <div class="col-sm-offset-2 col-sm-10">                                                                                                    <div class="checkbox">                                                                                                        <label>                                                                                                            <input type="checkbox"> Favorite contact?</label>                                    </div>                                                                                                    </div>                                                                                                </div>                                                                                                <div class="form-group">                                                                                                    <div class="col-sm-offset-2 col-sm-10">                                                                                                        <button class="btn btn-info" type="submit">Update</button>                                                                                                    </div>                                                                                                </div>                        </form>                                                                                            <div class="text-right"><a class="text-muted" href="#">Delete this contact?</a></div>                                                                                        </div>                                                                                    </div>                                                                                </div>                                                                            </div>                                                                                                                                                                                                   </div> '
+            document.getElementById("card").innerHTML = str
+            if (users[i].Status) {
+                document.getElementById("Status").value = users[i].Status               //document.getElementsByClassName("container").innerHTML = str
+
+            }
+          
+        }
+
+
+
+        //function a() {
+        //    let api = "../api/campaign/" + i + '/' + b;
+        //    ajaxCall("GET", api, "", success1, errorr1)
+        //}
+        $(document).ready(function () {
+            str = "users_show"
+            let api = "../api/Users/" + str + "/Show_all_users";
+            ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
+
+
+
+        });
+
+
+        function buttonEvents() {
+
+            $(document).on("click", ".editBtn", function () {
+                mode = "edit";
+                markSelected(this);
+                $("#editDiv").show();
+                $("#editDiv :input").prop("disabled", false); // edit mode: enable all controls in the form
+                populateFields(this.getAttribute('data-Campid')); // fill the form fields according to the selected row
+
+            });
+
+
+
+
+        }
+        function del(i) {
+
+            var x = confirm("Are you sure you want to delete?");
+            if (x) {
+
+                let api = "../api/Users/Delete";
+                ajaxCall("Delete", api, JSON.stringify(users[i]), delsucess, delerrorr)
+
+
+                swal("Submitted to the server!", "Great Job", "success");
+                id_edit = ''
+
+                location.reload();
+
+                return false;
+
+            }
+            else {
+
+                alert("Not Deleted!");
+                location.reload();
+
+            }
+
+
+        }
+        function delsucess(data) {
+
+            alert("success! campaign zfor rest: " + id_edit + " with budget:  " + newb + " is Updated ")
+        }
+
+        function delerrorr(err) {
+            alert("Sorry, please try again");
+        }
+
+        function erroradd_list_r(campaigndata) {
+            alert("erroradd_list_r");
+        }
+        var ids = "";
+        let campaigns
+
+
+        function getSuccess(list_users) { //הכנסת נתונים מהשרת לטבלה
+            localStorage.setItem('list_users', list_users)
+            users = list_users;
+
+            try {
+                tbl = $('#campaignsTable').DataTable({
+                    data: list_users,
+                    pageLength: 9,
+                    action: function (e, dt, node) {
+
+                        $(dt.table().node()).toggleClass('cards');
+                        $('.fa', node).toggleClass(['fa-table', 'fa-id-badge']);
+
+                        dt.draw('page');
+                    },
+                    columns: [
+                        {
+                            render: function (data, type, row, meta) {
+
+                                let dataCampaign = "data-campaignId='" + row.Email + "'";
+                                ids = meta.row;
+                                editBtn = "<button type='button'  class = 'editBtn btn btn-success'  " + list_users + " id='" + ids + "' onclick='editBtn_Function(id)'> Edit </button>";
+                                deleteBtn = "<button type='button' class = 'deleteBtn btn btn-danger' " + list_users + " id='" + ids + "' onclick='del(id)'> Active </button>";
+                                return editBtn + deleteBtn;
+                            }
+                        },
+                        {
+                            data: function (jsonDate) {
+                                return jsonDate.LastName + " " + jsonDate.FirstName
+                            }
+                        },
+                        { data: "Phone" },
+
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate.Register.split('T00:00:00')
+                                return d[0]
+                            }
+                        },
+                        { data: "Position" },
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate.BirthDay.split('T00:00:00')
+                                return d[0]
+                            }
+                        },
+                        {
+                            data: "Status"
+                        },
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate.EstimatedYear.split('T00:00:00')
+                                if ('0001-01-01' != d[0])
+                                    return d[0]
+                                else {
+                                    return 'No Estimated'
+                                }
+                            }
+                        }, {
+                            data: function (jsonDate) {
+                    if (jsonDate.Active==-1)
+                                    return 'No'
+                                else {
+                                    return 'Yes'
+                                }
+                            }
+                        },
+                    ],
+                });
+
+            }
+            catch (err) {
+                alert(err);
+            }
+        }
+        function Update(i) {
+            let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                FirstName: $("#FirstName").val(),
+                LastName: $("#LastName").val(),
+                BirthDay: $("#birthday").val(),
+                Phone: $("#phone").val(),
+                Address: $("#Address").val(),
+                Email: users[i].Email,
+                Password: $("#password").val(),
+                Position: $("#Position").val(),
+                TypeUsers: 0,
+                Sex: users[i].Sex,
+                Height: users[i].Height,
+                EstimatedYear: $("#EstimatedYear").val(),
+                Active: 1,
+                Status: $("#Status").val(),
+                
+
+                //  Myfile: $("#mailTB").val(),
+            }
+            if (u.Status == 0) {
+
+                u.Status = ''
+            }
+            console.log(u)
+            //console.log(u)
+            //let x = $("#files").get(0).files[0].name
+            ajaxCall("POST", "../api/Users/update", JSON.stringify(u), success_update, error_update); //נוסיף לשרת את היוזר
+        }
+
+       
+        function success_update(data) {
+
+
+
+            alert("Submitted")
+            window.open("profile.html")
+            window.close();
+            return false;
+        
+
+        } function error_update(data) {
+
+
+
+            alert("error_update")
+
+            return false;
+
+        }
+
+        
+        function cancelf() {
+            alert("cancel")
+            window.open("profile.html")
+            window.close();
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="card">
+        <div class="container-fluid">
+            <table id="campaignsTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>   </th>
+                        <th>Full name</th>
+                        <th>Phone</th>
+                        <th>Register</th>
+                        <th>Position</th>
+                        <th>BirthDay</th>
+                        <th>Status</th>
+                        <th>EstimatedYear</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+
+            </table>
+            <div id="editDiv">
+                <form id="carForm">
+                    <div class="form-group row">
+                        <div class="form-group col-sm-3">
+
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

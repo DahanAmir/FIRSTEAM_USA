@@ -1,0 +1,62 @@
+﻿
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <title></title>
+
+
+    <script>
+        $(document).ready(function () {
+            let email = localStorage.getItem("email");
+            //email = "adi@gmail.com";
+            let api = "../api/UsersFile/get_all_UF";
+            ajaxCall("Get", api, "", successFiles, errorFiles)
+
+        });
+
+        function successFiles(data) {
+            alert("successFiles")
+            console.log(data)
+            isnull ='\n'
+            nonull = '\n'
+            emails = []
+
+           let Files = []
+
+            for (var i = 0; i < data.length; i++) {
+                if (emails.includes(data[i].Email) == false) {
+                    let File = []
+                    emails.push(data[i].Email)
+                    File[0] = data[i].Full_Name
+                    for (var j = 1; j < 8; j++) {
+                         File[j]='no'
+
+                    }
+                    if (data[i].Isnull == 1) {
+                        for (var j = i; j < data.length; j++) {
+                            if (data[i].Email == data[j].Email) {
+                                File[data[i].Id]='yes'
+                            }
+                        }
+                    }
+                    Files.push(File)
+                }
+            }
+            console.log(Files)
+           
+
+        }
+
+        function errorFiles(data) {
+            +console.log(data)
+            alert("errorFiles")
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,1616 @@
+﻿<!--https://codepen.io/Aliskander84/pen/PrOKmw-->
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo list</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/aa56b476ff.js"></script>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i&display=swap&subset=cyrillic");
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        box-shadow: none;
+    }
+
+        button:focus {
+            outline: 0;
+        }
+
+    .stopScroll {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .wrapper {
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+    .pageTitle {
+        display: flex;
+        justify-content: center;
+    }
+
+    .pageTitle--text {
+        padding: 10px;
+    }
+
+    .addBlock {
+        display: flex;
+        margin: 10px 0;
+    }
+
+    .addBlock--input {
+        width: 100%;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid lightgray;
+        outline: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+    }
+
+    .rectangleBtn {
+        cursor: pointer;
+        border: none;
+        background-color: white;
+        padding: 5px 20px;
+        box-shadow: 0 0 4px 0 #6666da;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        font-family: Montserrat, sans-serif;
+    }
+
+    .rectangleBtn-spaceL {
+        margin-left: 15px;
+    }
+
+    .rectangleBtn-spaceR {
+        margin-right: 15px;
+    }
+
+    .rectangleBtn-spaceH {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+    .rectangleBtn-spaceV {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .rectangleBtn-minSize {
+        padding: 1px;
+        box-shadow: 0 0 2px 0 gray;
+        border-radius: 2px;
+    }
+
+    .rectangleBtn-greenShadow {
+        box-shadow: 0 0 4px 0 #27cd15;
+    }
+
+    .rectangleBtn-redShadow {
+        box-shadow: 0 0 4px 0 #cd5046;
+    }
+
+    .rectangleBtn:active {
+        background-color: #c9c9c9;
+    }
+
+    .rectangleBtn:hover {
+        font-weight: bold;
+    }
+
+    .filterBlock {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .filterBtn {
+        text-align: center;
+        padding: 1px 0;
+        box-shadow: 0 0 2px 0 #6460cd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        background-color: white;
+    }
+
+    .filterBtn--up-hide {
+        display: none;
+    }
+
+    .filterBtn--down-hide {
+        display: none;
+    }
+
+    .filterBtn-active {
+        color: #6460cd;
+    }
+
+    .filterBtn-width1stCol {
+        width: 10%;
+    }
+
+    .filterBtn-width2ndCol {
+        width: 9%;
+    }
+
+    .filterBtn-width4thCol {
+        width: 15%;
+    }
+
+    .filterBtn:active {
+        background-color: #c9c9c9;
+    }
+
+    .searchInput {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid lightgray;
+        outline: none;
+        width: 63%;
+    }
+
+    .taskTemplate {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .taskTemplate-hide {
+        display: none;
+    }
+
+    .taskBlock {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .taskBlock-hide {
+        display: none;
+    }
+
+    .dateBlock {
+        width: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dateBlock--date {
+        text-align: center;
+    }
+
+    .dateBlock--time {
+        text-align: center;
+    }
+
+    .priorityBlock {
+        width: 9%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .priorityBlock--wrap {
+        padding: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #dfe7ff;
+        margin-right: 2px;
+        border-radius: 5px;
+    }
+
+    .priorityBlock--wrap-red {
+        background-color: rgba(254, 195, 157, 0.98);
+    }
+
+    .priorityBlock--wrap-orange {
+        background-color: #ffec82;
+    }
+
+    .priorityBlock--wrap-green {
+        background-color: #61ff8a;
+    }
+
+    .taskTextBlock {
+        width: 63%;
+        text-align: justify;
+    }
+
+    .taskTextBlock--wrap {
+        padding: 5px;
+        background-color: #dfe7ff;
+        border-radius: 5px;
+        height: 100%;
+    }
+
+    .taskTextBlock--wrap-completed {
+        background-color: #e9e9e9;
+        text-decoration: line-through;
+    }
+
+    .taskBtnBlock {
+        width: 15%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .roundBtn {
+        padding: 5px 5px;
+        box-shadow: 0 0 4px 0 grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        background-color: white;
+    }
+
+    .roundBtn--text {
+        width: 15px;
+        height: 15px;
+        text-align: center;
+    }
+
+    .roundBtn-green {
+        background-color: #61ff8a;
+    }
+
+    .roundBtn-orange {
+        background-color: #ffec82;
+    }
+
+    .roundBtn-red {
+        background-color: rgba(254, 195, 157, 0.98);
+    }
+
+    .roundBtn:active {
+        background-color: #c9c9c9;
+    }
+
+    .editPopup {
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: rgba(128, 128, 128, 0.25);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .editPopup--wrap {
+        width: 80%;
+        max-width: 720px;
+        min-width: 320px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .editPopup--titleWrap {
+        width: fit-content;
+    }
+
+    .editPopup--title {
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .editPopup--inputWrap {
+        margin: 0 auto;
+        width: 90%;
+        height: 200px;
+    }
+
+    .editPopup--input {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        resize: none;
+        border-radius: 5px;
+        padding: 5px;
+        font-family: Montserrat, sans-serif;
+    }
+
+    .editPopup--btnWrap {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .editPopup-hide {
+        display: none;
+    }
+
+    .confirmWindow {
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: rgba(128, 128, 128, 0.25);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .confirmWindow--wrap {
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .confirmWindow--titleWrap {
+        width: fit-content;
+    }
+
+    .confirmWindow--title {
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .confirmWindow--btnWrap {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .confirmWindow-hide {
+        display: none;
+    }
+
+    @media screen and (max-width: 850px) {
+        .wrapper {
+            margin: 0 auto;
+            max-width: 700px;
+        }
+    }
+
+    @media screen and (max-width: 750px) {
+        .wrapper {
+            margin: 0 auto;
+            max-width: 600px;
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        .wrapper {
+            margin: 0 auto;
+            max-width: 550px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .wrapper {
+            margin: 0 auto;
+            max-width: 500px;
+        }
+    }
+
+</style>
+
+<script>
+
+    (function () {
+        const Fetch = new _Fetch();
+        const DOM = new _DOM();
+        const Render = new _Render();
+        const Filter = new _Filter();
+        const Valid = new _Valid();
+        const Task = new _Task();
+        const Events = new _Events();
+        const DB = new _DB();
+
+        const Main = new _Main();
+
+        let tasks = [];
+        let searchTasks = undefined;
+        let sortBy = 'priority desc';
+        let currentTaskIndex;
+
+        function _Main() {
+            // let tasks = [];
+            // let searchTasks = undefined;
+            // let sortBy = 'priority desc';
+            // let currentTaskIndex;
+
+            document.addEventListener("DOMContentLoaded", () => {
+                if (DB.check('DB')) {
+                    DB.read();
+                    Render.render(tasks);
+                } else {
+                    Fetch.getServerFetch();
+                    // Fetch.postServerFetch();
+                }
+            });
+        }
+
+        function _Fetch() {
+            this.getServerXHR = function () {
+                let xhr = new XMLHttpRequest();
+
+                xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos', true);
+                xhr.onload = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        console.log('request done');
+                        let serverTasks = JSON.parse(xhr.responseText);
+                        for (let i = 0; i < serverTasks.length; i++) {
+                            let date = Task.getDate();
+                            let priority = serverTasks[i].id;
+                            let text = serverTasks[i].title;
+                            let completed = +serverTasks[i].completed;
+                            let id = serverTasks[i].id;
+                            let task = {
+                                id: id,
+                                date: date,
+                                priority: priority,
+                                text: text,
+                                completed: completed,
+                            };
+
+                            tasks.splice(0, 0, task);
+                        }
+                        Render.render(tasks);
+                        DB.save();
+                    } else {
+                        console.log('request error: ' + xhr.status + ': ' + xhr.statusText);
+                    }
+                };
+                xhr.send();
+            };
+
+            this.getServerFetch = function () {
+                fetch('https://jsonplaceholder.typicode.com/todos')
+                    .then(response => response.json())
+                    .then(tasksArr => {
+                        for (let i = 0; i < tasksArr.length; i++) {
+                            let date = Task.getDate();
+                            let priority = tasksArr[i].id;
+                            let text = tasksArr[i].title;
+                            let completed = +tasksArr[i].completed;
+                            let id = tasksArr[i].id;
+                            let task = {
+                                id: id,
+                                date: date,
+                                priority: priority,
+                                text: text,
+                                completed: completed,
+                            };
+
+                            tasks.splice(0, 0, task);
+                        }
+                        Render.render(tasks);
+                        DB.save();
+                    })
+            };
+
+            this.postServerFetch = function (task) {
+                fetch('https://jsonplaceholder.typicode.com/todos', {
+                    method: 'POST',
+                    body: JSON.stringify(task),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    }
+                })
+                    .then(response => response.json())
+                    .then(task => console.log('POST =>' + task))
+            };
+
+            this.putServerFetch = function (task, index) {
+                fetch('https://jsonplaceholder.typicode.com/todos/' + +(index + 1), {
+                    method: 'PUT',
+                    body: JSON.stringify(task),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    }
+                })
+                    .then(response => response.json())
+                    .then(json => {
+                        console.log('PUT => ' + +(index + 1));
+                        console.log(json);
+                    })
+            };
+
+            this.deleteServerFetch = function (index) {
+                fetch('https://jsonplaceholder.typicode.com/todos/' + +(index + 1), {
+                    method: 'DELETE',
+                })
+                    .then(response => response.json())
+                    .then(json => {
+                        console.log('DELETE =>' + +(index + 1));
+                        console.log(json);
+                    })
+            };
+        }
+
+        function _Render() {
+            this.render = function (tasks) {
+                clearTasks();
+
+                if (sortBy === 'priority desc') {
+                    Filter.sortByPriorityDesc(tasks);
+                    DOM.setPriorityFilterDesc();
+                    DOM.unsetDateFilter();
+                    DOM.unsetCompletedFilter();
+                } else if (sortBy === 'priority asc') {
+                    Filter.sortByPriorityAsc(tasks);
+                    DOM.setPriorityFilterAsc();
+                    DOM.unsetDateFilter();
+                    DOM.unsetCompletedFilter();
+                } else if (sortBy === 'date desc') {
+                    Filter.sortByDateDesc(tasks);
+                    DOM.setDateFilterDesc();
+                    DOM.unsetPriorityFilter();
+                    DOM.unsetCompletedFilter();
+                } else if (sortBy === 'date asc') {
+                    Filter.sortByDateAsc(tasks);
+                    DOM.setDateFilterAsc();
+                    DOM.unsetPriorityFilter();
+                    DOM.unsetCompletedFilter();
+                } else if (sortBy === 'completed desc') {
+                    Filter.sortByCompletedDesc(tasks);
+                    DOM.setCompletedFilterDesc();
+                    DOM.unsetDateFilter();
+                    DOM.unsetPriorityFilter();
+                } else if (sortBy === 'completed asc') {
+                    Filter.sortByCompletedAsc(tasks);
+                    DOM.setCompletedFilterAsc();
+                    DOM.unsetDateFilter();
+                    DOM.unsetPriorityFilter();
+                }
+
+                viewTasks(tasks);
+                Events.addEvents();
+            };
+
+            function clearTasks() {
+                let tasks = DOM.getAllTasks();
+                for (let i = 0; i < tasks.length; i++) {
+                    tasks[i].remove();
+                }
+            }
+
+            function viewTasks(tasks) {
+                for (let i = 0; i < tasks.length; i++) {
+                    let task = Task.getTaskData(tasks, i);
+                    DOM.fillTemplate(task);
+                    DOM.cloneTemplate();
+                }
+            }
+        }
+
+        function _Filter() {
+            this.dateFilter = function () {
+                if (sortBy !== 'date desc') {
+                    sortBy = 'date desc';
+
+                    if (searchTasks !== undefined) {
+                        Render.render(searchTasks);
+                    } else {
+                        Render.render(tasks);
+                    }
+                } else {
+                    sortBy = 'date asc';
+
+                    if (searchTasks !== undefined) {
+                        Render.render(searchTasks);
+                    } else {
+                        Render.render(tasks);
+                    }
+                }
+            };
+
+            this.priorityFilter = function () {
+                if (sortBy !== 'priority desc') {
+                    sortBy = 'priority desc';
+
+                    if (searchTasks !== undefined) {
+                        Render.render(searchTasks);
+                    } else {
+                        Render.render(tasks);
+                    }
+                } else {
+                    sortBy = 'priority asc';
+
+                    if (searchTasks !== undefined) {
+                        Render.render(searchTasks);
+                    } else {
+                        Render.render(tasks);
+                    }
+                }
+            };
+
+            this.completedFilter = function () {
+                if (sortBy !== 'completed desc') {
+                    sortBy = 'completed desc';
+
+                    if (searchTasks !== undefined) {
+                        Render.render(searchTasks);
+                    } else {
+                        Render.render(tasks);
+                    }
+                } else {
+                    sortBy = 'completed asc';
+
+                    if (searchTasks !== undefined) {
+                        Render.render(searchTasks);
+                    } else {
+                        Render.render(tasks);
+                    }
+                }
+            };
+
+            this.sortByDateAsc = function (tasks) {
+                tasks.sort((a, b) => {
+                    if (a.date.full > b.date.full) return 1;
+                    if (a.date.full < b.date.full) return -1;
+                })
+            };
+
+            this.sortByDateDesc = function (tasks) {
+                tasks.sort((a, b) => {
+                    if (a.date.full > b.date.full) return -1;
+                    if (a.date.full < b.date.full) return 1;
+                })
+            };
+
+            this.sortByPriorityAsc = function (tasks) {
+                tasks.sort((a, b) => {
+                    if (a.priority > b.priority) return -1;
+                    if (a.priority < b.priority) return 1;
+                })
+            };
+
+            this.sortByPriorityDesc = function (tasks) {
+                tasks.sort((a, b) => {
+                    if (a.priority > b.priority) return 1;
+                    if (a.priority < b.priority) return -1;
+                })
+            };
+
+            this.sortByCompletedAsc = function (tasks) {
+                tasks.sort((a, b) => {
+                    if (a.completed > b.completed) return -1;
+                    if (a.completed < b.completed) return 1;
+                })
+            };
+
+            this.sortByCompletedDesc = function (tasks) {
+                tasks.sort((a, b) => {
+                    if (a.completed > b.completed) return 1;
+                    if (a.completed < b.completed) return -1;
+                })
+            };
+
+            this.search = function () {
+                let inputNode = DOM.getSearchInput();
+                let search = inputNode.value.toLowerCase();
+
+                if (search !== '') {
+                    let filter = tasks.filter((taskText) => {
+                        return taskText.text.toLowerCase().indexOf(search) >= 0;
+                    });
+
+                    Render.render(filter);
+                    searchTasks = filter;
+                } else {
+                    Render.render(tasks);
+                    searchTasks = undefined;
+                }
+            };
+        }
+
+        function _Valid() {
+            this.addInput = function () {
+                if (this.value.length > 300) {
+                    this.value = this.value.slice(0, 300);
+                }
+            };
+
+            this.searchInput = function () {
+                if (this.value.length > 50) {
+                    this.value = this.value.slice(0, 50);
+                }
+            };
+
+            this.editInput = function () {
+                if (this.value.length > 300) {
+                    this.value = this.value.slice(0, 300);
+                }
+            };
+        }
+
+        function _Task() {
+            this.getTaskData = function (tasks, index) {
+                let t = tasks;
+                let i = index;
+                let taskDate = {
+                    day: t[i].date.day,
+                    month: t[i].date.month,
+                    year: t[i].date.year,
+                    hour: t[i].date.hour,
+                    minute: t[i].date.minute,
+                };
+                let date;
+                let time;
+                let priority = t[i].priority;
+                let text = t[i].text;
+                let completed = t[i].completed;
+                let id = t[i].id;
+
+                if (taskDate.day.toString().length === 1) {
+                    taskDate.day = '0' + taskDate.day;
+                }
+                if (taskDate.month.toString().length === 1) {
+                    taskDate.month = '0' + taskDate.month;
+                }
+                if (taskDate.minute.toString().length === 1) {
+                    taskDate.minute = '0' + taskDate.minute;
+                }
+                date = taskDate.day + '.' + taskDate.month + '.' + taskDate.year;
+                time = taskDate.hour + ':' + taskDate.minute;
+
+                return {
+                    id: id,
+                    date: date,
+                    time: time,
+                    priority: priority,
+                    text: text,
+                    completed: completed,
+                };
+            };
+
+            this.addTask = function () {
+                if (DOM.getAddInput().value !== '') {
+                    createTask();
+                    Filter.search();
+                    if (searchTasks !== undefined) {
+                        Render.render(searchTasks);
+                    } else {
+                        Render.render(tasks);
+                    }
+                    DB.save();
+                }
+            };
+
+            this.addTaskEnter = function () {
+                if (event.key === 'Enter') {
+                    Task.addTask();
+                }
+            };
+
+            this.completeTask = function () {
+                let taskNode = DOM.getTaskNode(this);
+                let id = +taskNode.getAttribute('id');
+                let index = getTaskIndex(id);
+                if (tasks[index].completed === 0) {
+                    tasks[index].completed = 1;
+                } else {
+                    tasks[index].completed = 0;
+                }
+                if (searchTasks !== undefined) {
+                    Render.render(searchTasks);
+                } else {
+                    Render.render(tasks);
+                }
+                DB.save();
+                Fetch.putServerFetch(tasks[index], index);
+            };
+
+            this.editTask = function () {
+                let taskNode = DOM.getTaskNode(this);
+                let id = +taskNode.getAttribute('id');
+                let index = getTaskIndex(id);
+                let text = tasks[index].text;
+
+                DOM.viewEditPopup(text);
+                currentTaskIndex = index;
+            };
+
+            this.deleteTask = function () {
+                let taskNode = DOM.getTaskNode(this);
+                let id = +taskNode.getAttribute('id');
+                let index = getTaskIndex(id);
+
+                DOM.viewConfirmDeletePopup();
+                currentTaskIndex = index;
+            };
+
+            this.priorityUp = function () {
+                let taskNode = DOM.getTaskNode(this);
+                let id = +taskNode.getAttribute('id');
+                let index = getTaskIndex(id);
+
+                if (tasks[index].priority > 1) {
+                    tasks[index].priority -= 1;
+                }
+                if (searchTasks !== undefined) {
+                    Render.render(searchTasks);
+                } else {
+                    Render.render(tasks);
+                }
+                currentTaskIndex = index;
+                DB.save();
+                Fetch.putServerFetch(tasks[index], index);
+            };
+
+            this.priorityDown = function () {
+                let taskNode = DOM.getTaskNode(this);
+                let id = +taskNode.getAttribute('id');
+                let index = getTaskIndex(id);
+
+                if (tasks[index].priority < 999) {
+                    tasks[index].priority += 1;
+                }
+                if (searchTasks !== undefined) {
+                    Render.render(searchTasks);
+                } else {
+                    Render.render(tasks);
+                }
+                DB.save();
+                Fetch.putServerFetch(tasks[index], index);
+            };
+
+            this.editCancel = function () {
+                let prevText = tasks[currentTaskIndex].text;
+                let newText = DOM.getEditText();
+
+                if (newText === '') {
+                    DOM.hideEditPopup();
+                } else if (newText === prevText) {
+                    DOM.hideEditPopup();
+                } else {
+                    DOM.hideEditPopup();
+                    DOM.viewConfirmSavePopup();
+                }
+
+                //console.log();
+            };
+
+            this.editSave = function () {
+                let prevText = tasks[currentTaskIndex].text;
+                let newText = DOM.getEditText();
+
+                if (newText === '') {
+                    //do nothing
+                } else if (newText === prevText) {
+                    //do nothing
+                } else {
+                    DOM.hideEditPopup();
+                    DOM.viewConfirmSavePopup();
+                }
+            };
+
+            this.confirmSaveYes = function () {
+                let text = DOM.getEditText();
+
+                if (text !== '') {
+                    tasks[currentTaskIndex].text = text;
+                    Filter.search();
+                    DOM.hideConfirmSavePopup();
+                    if (searchTasks !== undefined) {
+                        Render.render(searchTasks);
+                    } else {
+                        Render.render(tasks);
+                    }
+                    Fetch.putServerFetch(tasks[currentTaskIndex], currentTaskIndex);
+                    currentTaskIndex = undefined;
+                }
+                DB.save();
+            };
+
+            this.confirmSaveNo = function () {
+                DOM.hideConfirmSavePopup();
+                currentTaskIndex = undefined;
+
+                //console.log();
+            };
+
+            this.confirmSaveBack = function () {
+                let text = DOM.getEditText();
+
+                DOM.hideConfirmSavePopup();
+                DOM.viewEditPopup(text);
+
+                //console.log();
+            };
+
+            this.confirmDeleteYes = function () {
+                tasks.splice(currentTaskIndex, 1);
+                DOM.hideConfirmDeletePopup();
+                Filter.search();
+                if (searchTasks !== undefined) {
+                    Render.render(searchTasks);
+                } else {
+                    Render.render(tasks);
+                }
+                DB.save();
+                Fetch.deleteServerFetch(currentTaskIndex);
+            };
+
+            this.confirmDeleteNo = function () {
+                DOM.hideConfirmDeletePopup();
+
+                //console.log();
+            };
+
+            this.getDate = function () {
+                let d = new Date();
+                let year = d.getFullYear();
+                let month = d.getMonth();
+                let day = d.getDate();
+                let hour = d.getHours();
+                let minute = d.getMinutes();
+                let full = d.getTime();
+
+                return {
+                    year: year,
+                    month: month,
+                    day: day,
+                    hour: hour,
+                    minute: minute,
+                    full: full,
+                };
+            };
+
+            function createTask() {
+                let date = getDate();
+                let priority = 1;
+                let text = DOM.getAddInput().value;
+                let completed = 0;
+                let task = {
+                    id: date.full,
+                    date: date,
+                    priority: priority,
+                    text: text,
+                    completed: completed,
+                };
+
+                tasks.splice(0, 0, task);
+                DOM.getAddInput().value = '';
+                Fetch.postServerFetch(task);
+            }
+
+            function getDate() {
+                let d = new Date();
+                let year = d.getFullYear();
+                let month = d.getMonth();
+                let day = d.getDate();
+                let hour = d.getHours();
+                let minute = d.getMinutes();
+                let full = d.getTime();
+
+                return {
+                    year: year,
+                    month: month,
+                    day: day,
+                    hour: hour,
+                    minute: minute,
+                    full: full,
+                };
+            }
+
+            function getTaskIndex(id) {
+                for (let i = 0; i < tasks.length; i++) {
+                    if (tasks[i].id === id) return i;
+                }
+            }
+        }
+
+        function _DB() {
+            this.save = function () {
+                let DB = JSON.stringify(tasks);
+
+                localStorage.setItem('DB', DB);
+            };
+
+            this.read = function () {
+                let DB = localStorage.getItem('DB');
+                tasks = JSON.parse(DB);
+            };
+
+            this.check = function () {
+                let DB = localStorage.getItem('DB');
+
+                return (DB !== null);
+            }
+        }
+
+        function _Events() {
+            this.addEvents = function () {
+                const singleElement = {
+                    addBtn: DOM.getElement('.addBtn'),
+                    addInput: DOM.getElement('.addBlock--input'),
+                    searchInput: DOM.getElement('.searchInput'),
+                    dateFilterBtn: DOM.getElement('.dateFilterBtn'),
+                    priorityFilterBtn: DOM.getElement('.priorityFilterBtn'),
+                    completedFilterBtn: DOM.getElement('.completedFilterBtn'),
+                    editInput: DOM.getElement('.editPopup--input'),
+                    editCancelBtn: DOM.getElement('.editCancelBtn'),
+                    editSaveBtn: DOM.getElement('.editSaveBtn'),
+                    confirmSaveBackBtn: DOM.getElement('.confirmSaveBackBtn'),
+                    confirmSaveNoBtn: DOM.getElement('.confirmSaveNoBtn'),
+                    confirmSaveYesBtn: DOM.getElement('.confirmSaveYesBtn'),
+                    confirmDeleteYesBtn: DOM.getElement('.confirmDeleteYesBtn'),
+                    confirmDeleteNoBtn: DOM.getElement('.confirmDeleteNoBtn'),
+                };
+                const multiElement = {
+                    priorityUpBtn: DOM.getAllElements('.priorityUpBtn'),
+                    priorityDownBtn: DOM.getAllElements('.priorityDownBtn'),
+                    completeBtn: DOM.getAllElements('.completeBtn'),
+                    editBtn: DOM.getAllElements('.editBtn'),
+                    deleteBtn: DOM.getAllElements('.deleteBtn'),
+                };
+                const events = {
+                    singleElement: [
+                        [singleElement.addBtn, 'click', Task.addTask,],
+                        [singleElement.addInput, 'keyup', Task.addTaskEnter],
+                        [singleElement.addInput, 'keyup', Valid.addInput,],
+                        [singleElement.searchInput, 'keyup', Filter.search,],
+                        [singleElement.searchInput, 'keyup', Valid.searchInput,],
+                        [singleElement.dateFilterBtn, 'click', Filter.dateFilter,],
+                        [singleElement.priorityFilterBtn, 'click', Filter.priorityFilter,],
+                        [singleElement.completedFilterBtn, 'click', Filter.completedFilter,],
+                        [singleElement.editInput, 'keyup', Valid.editInput,],
+                        [singleElement.editCancelBtn, 'click', Task.editCancel,],
+                        [singleElement.editSaveBtn, 'click', Task.editSave,],
+                        [singleElement.confirmSaveBackBtn, 'click', Task.confirmSaveBack,],
+                        [singleElement.confirmSaveNoBtn, 'click', Task.confirmSaveNo,],
+                        [singleElement.confirmSaveYesBtn, 'click', Task.confirmSaveYes,],
+                        [singleElement.confirmDeleteYesBtn, 'click', Task.confirmDeleteYes,],
+                        [singleElement.confirmDeleteNoBtn, 'click', Task.confirmDeleteNo,],
+                    ],
+                    multiElement: [
+                        [multiElement.priorityUpBtn, 'click', Task.priorityUp,],
+                        [multiElement.priorityDownBtn, 'click', Task.priorityDown,],
+                        [multiElement.completeBtn, 'click', Task.completeTask,],
+                        [multiElement.editBtn, 'click', Task.editTask],
+                        [multiElement.deleteBtn, 'click', Task.deleteTask],
+                    ],
+                };
+                const s = events.singleElement;
+                const m = events.multiElement;
+
+                for (let i = 0; i < s.length; i++) {
+                    s[i][0].addEventListener(s[i][1], s[i][2]);
+                }
+                for (let i = 0; i < m.length; i++) {
+                    for (let j = 0; j < m[i][0].length; j++) {
+                        m[i][0][j].addEventListener(m[i][1], m[i][2]);
+                    }
+                }
+            }
+        }
+
+        function _DOM() {
+            const d = document;
+            const template = d.querySelector('.taskTemplate');
+
+            this.getAllTasks = function () {
+                return d.querySelectorAll('.taskBlock');
+            };
+
+            this.getTemplate = function () {
+                return template;
+            };
+
+            this.getTask = function () {
+
+            };
+
+            this.getAddInput = function () {
+                return d.querySelector('.addBlock--input')
+            };
+
+            this.getSearchInput = function () {
+                return d.querySelector('.searchInput');
+            };
+
+            this.getElement = function (selector) {
+                return d.querySelector(selector);
+            };
+
+            this.getAllElements = function (selector) {
+                return d.querySelectorAll(selector);
+            };
+
+            this.fillTemplate = function (task) {
+                let templateFields = {
+                    date: getTemplateDate(),
+                    time: getTemplateTime(),
+                    priority: getTemplatePriority(),
+                    text: getTemplateText(),
+                };
+                let templateCompleted = getTemplateCompleted();
+                let templateId = getTemplateId();
+
+                templateFields.date.innerHTML = task.date;
+                templateFields.time.innerHTML = task.time;
+                templateFields.priority.innerHTML = task.priority;
+                templateFields.text.innerHTML = task.text;
+
+                if (task.priority === 1) {
+                    templateFields.priority.classList.add('priorityBlock--wrap-red');
+                    templateFields.priority.classList.remove('priorityBlock--wrap-orange');
+                    templateFields.priority.classList.remove('priorityBlock--wrap-green');
+                }
+                if (task.priority === 2) {
+                    templateFields.priority.classList.remove('priorityBlock--wrap-red');
+                    templateFields.priority.classList.add('priorityBlock--wrap-orange');
+                    templateFields.priority.classList.remove('priorityBlock--wrap-green');
+                }
+                if (task.priority >= 3) {
+                    templateFields.priority.classList.remove('priorityBlock--wrap-red');
+                    templateFields.priority.classList.remove('priorityBlock--wrap-orange');
+                    templateFields.priority.classList.add('priorityBlock--wrap-green');
+                }
+
+                if (task.completed === 0) {
+                    templateCompleted.classList.remove('taskTextBlock--wrap-completed');
+                }
+                if (task.completed === 1) {
+                    templateCompleted.classList.add('taskTextBlock--wrap-completed');
+                }
+
+                templateId.setAttribute('id', task.id);
+            };
+
+            this.cloneTemplate = function () {
+                let clone = template.cloneNode(true);
+
+                template.parentNode.appendChild(clone);
+                clone.classList.remove('taskTemplate', 'taskTemplate-hide');
+                clone.classList.add('taskBlock');
+                template.setAttribute('id', 'empty');
+            };
+
+            this.getTaskNode = function (node) { //to do
+                let parent = node.parentNode;
+                let taskNode;
+
+                if (node.getAttribute('id') !== null) {
+                    taskNode = node;
+                    return node;
+                } else if (parent.getAttribute('id') !== null) {
+                    return parent;
+                } else {
+                    return DOM.getTaskNode(parent.parentNode);
+                }
+            };
+
+            this.getEditPopup = function () {
+                return getElement('.editPopup');
+            };
+
+            this.getEditInput = function () {
+                getElement('.editPopup--input');
+            };
+
+            this.viewEditPopup = function (text) {
+                let popup = getElement('.editPopup');
+                let input = getElement('.editPopup--input');
+
+                setStopScroll();
+                popup.classList.remove('editPopup-hide');
+                input.value = text;
+            };
+
+            this.hideEditPopup = function () {
+                let popup = getElement('.editPopup');
+
+                unsetStopScroll();
+                popup.classList.add('editPopup-hide');
+            };
+
+            this.getEditText = function () {
+                let textInput = getElement('.editPopup--input');
+
+                return textInput.value;
+            };
+
+            this.getConfirmSavePopup = function () {
+                return getElement('.confirmSavePopup');
+            };
+
+            this.viewConfirmSavePopup = function () {
+                let popup = getElement('.confirmSavePopup');
+
+                setStopScroll();
+                popup.classList.remove('confirmWindow-hide');
+            };
+
+            this.hideConfirmSavePopup = function () {
+                let popup = getElement('.confirmSavePopup');
+
+                unsetStopScroll();
+                popup.classList.add('confirmWindow-hide');
+            };
+
+            this.getConfirmDeletePopup = function () { //to do
+                return getElement('.confirmDeletePopup');
+            };
+
+            this.viewConfirmDeletePopup = function () {
+                let popup = getElement('.confirmDeletePopup');
+
+                setStopScroll();
+                popup.classList.remove('confirmWindow-hide');
+            };
+
+            this.hideConfirmDeletePopup = function () {
+                let popup = getElement('.confirmDeletePopup');
+
+                unsetStopScroll();
+                popup.classList.add('confirmWindow-hide');
+            };
+
+            this.setDateFilterDesc = function () {
+                let btn = getElement('.dateFilterBtn');
+                let arrowUp = btn.querySelector('.filterBtn--up');
+                let arrowDown = btn.querySelector('.filterBtn--down');
+
+                btn.classList.add('filterBtn-active');
+                arrowUp.classList.remove('filterBtn--up-hide');
+                arrowDown.classList.add('filterBtn--up-hide');
+            };
+
+            this.setDateFilterAsc = function () {
+                let btn = getElement('.dateFilterBtn');
+                let arrowUp = btn.querySelector('.filterBtn--up');
+                let arrowDown = btn.querySelector('.filterBtn--down');
+
+                btn.classList.add('filterBtn-active');
+                arrowUp.classList.add('filterBtn--up-hide');
+                arrowDown.classList.remove('filterBtn--up-hide');
+            };
+
+            this.unsetDateFilter = function () {
+                let btn = getElement('.dateFilterBtn');
+                let arrowUp = btn.querySelector('.filterBtn--up');
+                let arrowDown = btn.querySelector('.filterBtn--down');
+
+                btn.classList.remove('filterBtn-active');
+                arrowUp.classList.add('filterBtn--up-hide');
+                arrowDown.classList.add('filterBtn--up-hide');
+            };
+
+            this.setPriorityFilterDesc = function () {
+                let btn = getElement('.priorityFilterBtn');
+                let arrowUp = btn.querySelector('.filterBtn--up');
+                let arrowDown = btn.querySelector('.filterBtn--down');
+
+                btn.classList.add('filterBtn-active');
+                arrowUp.classList.add('filterBtn--up-hide');
+                arrowDown.classList.remove('filterBtn--up-hide');
+            };
+
+            this.setPriorityFilterAsc = function () {
+                let btn = getElement('.priorityFilterBtn');
+                let arrowUp = btn.querySelector('.filterBtn--up');
+                let arrowDown = btn.querySelector('.filterBtn--down');
+
+                btn.classList.add('filterBtn-active');
+                arrowUp.classList.remove('filterBtn--up-hide');
+                arrowDown.classList.add('filterBtn--up-hide');
+            };
+
+            this.unsetPriorityFilter = function () {
+                let btn = getElement('.priorityFilterBtn');
+                let arrowUp = btn.querySelector('.filterBtn--up');
+                let arrowDown = btn.querySelector('.filterBtn--down');
+
+                btn.classList.remove('filterBtn-active');
+                arrowUp.classList.add('filterBtn--up-hide');
+                arrowDown.classList.add('filterBtn--up-hide');
+            };
+
+            this.setCompletedFilterDesc = function () {
+                let btn = getElement('.completedFilterBtn');
+                let arrowUp = btn.querySelector('.filterBtn--up');
+                let arrowDown = btn.querySelector('.filterBtn--down');
+
+                btn.classList.add('filterBtn-active');
+                arrowUp.classList.add('filterBtn--up-hide');
+                arrowDown.classList.remove('filterBtn--up-hide');
+            };
+
+            this.setCompletedFilterAsc = function () {
+                let btn = getElement('.completedFilterBtn');
+                let arrowUp = btn.querySelector('.filterBtn--up');
+                let arrowDown = btn.querySelector('.filterBtn--down');
+
+                btn.classList.add('filterBtn-active');
+                arrowUp.classList.remove('filterBtn--up-hide');
+                arrowDown.classList.add('filterBtn--up-hide');
+            };
+
+            this.unsetCompletedFilter = function () {
+                let btn = getElement('.completedFilterBtn');
+                let arrowUp = btn.querySelector('.filterBtn--up');
+                let arrowDown = btn.querySelector('.filterBtn--down');
+
+                btn.classList.remove('filterBtn-active');
+                arrowUp.classList.add('filterBtn--up-hide');
+                arrowDown.classList.add('filterBtn--up-hide');
+            };
+
+            this.setPriorityRed = function () {
+                getElement('.')
+            };
+
+            function setStopScroll() {
+                getElement('body').classList.add('stopScroll');
+            }
+
+            function unsetStopScroll() {
+                getElement('body').classList.remove('stopScroll');
+            }
+
+            function getElement(selector) {
+                return d.querySelector(selector);
+            }
+
+            function getTemplateDate() {
+                return template.querySelector('.dateBlock--date');
+            }
+
+            function getTemplateTime() {
+                return template.querySelector('.dateBlock--time');
+            }
+
+            function getTemplatePriority() {
+                return template.querySelector('.priorityBlock--wrap');
+            }
+
+            function getTemplateText() {
+                return template.querySelector('.taskTextBlock--wrap');
+            }
+
+            function getTemplateCompleted() {
+                return template.querySelector('.taskTextBlock--wrap');
+            }
+
+            function getTemplateId() {
+                return template;
+            }
+        }
+    }
+    )();
+
+
+
+    /*
+    TODO
+    todo xhr push
+    todo drag n drop
+    to do xhr pull
+    to do responsive
+    to do embedded font
+    to do priority color
+    to do input limit in add, edit
+    to do view time correctly
+    to do z index to modals
+    to do add by enter
+    to do add input autofocus
+    to do search
+    to do completed sort
+    to do date sort
+    to do DB
+    to do priority sort
+    to do confirm edit logic
+    to do edit btn
+    to do delete btn
+    to do change priority btn
+    to do complete btn
+    */
+
+</script>
+<body>
+    <div class="wrapper">
+
+        <div class="pageTitle">
+            <h1 class="pageTitle--text">
+                TODO LIST
+            </h1>
+        </div>
+        <div class="addBlock">
+            <input class="addBlock--input" type="text"
+                   placeholder="Type new task here">
+            <button class="addBtn rectangleBtn rectangleBtn-spaceL rectangleBtn-greenShadow">
+                <div class="rectangleBtn--text"><i class="fas fa-plus"></i></div>
+            </button>
+        </div>
+        <div class="taskListBlock">
+            <div class="filterBlock">
+                <button class="dateFilterBtn filterBtn filterBtn-width1stCol">
+                    <i class="far fa-clock"></i>
+                    <span>&nbsp;</span>
+                    <span class="filterBtn--up filterBtn--up-hide">
+                        <i class="fas fa-angle-up"></i>
+                    </span>
+                    <span class="filterBtn--down filterBtn--up-hide">
+                        <i class="fas fa-angle-down"></i>
+                    </span>
+                </button>
+                <button class="priorityFilterBtn filterBtn filterBtn-active filterBtn-width2ndCol">
+                    <i class="fas fa-fire-alt"></i>
+                    <span>&nbsp;</span>
+                    <span class="filterBtn--up filterBtn--up-hide">
+                        <i class="fas fa-angle-up"></i>
+                    </span>
+                    <span class="filterBtn--down">
+                        <i class="fas fa-angle-down"></i>
+                    </span>
+                </button>
+                <input class="searchInput" placeholder="Search..." type="text">
+                <button class="completedFilterBtn filterBtn filterBtn-inactive filterBtn-width4thCol">
+                    <i class="far fa-check-circle"></i>
+                    <span>&nbsp;</span>
+                    <span class="filterBtn--up filterBtn--up-hide">
+                        <i class="fas fa-angle-up"></i>
+                    </span>
+                    <span class="filterBtn--down filterBtn--up-hide">
+                        <i class="fas fa-angle-down"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="allTasksBlock">
+                <div class="taskTemplate taskTemplate-hide">
+                    <div class="dateBlock">
+                        <div class="dateBlock--wrap">
+                            <div class="dateBlock--date">dd.mm.yyyy</div>
+                            <div class="dateBlock--time">hh:mm</div>
+                        </div>
+                    </div>
+                    <div class="priorityBlock">
+                        <div class="priorityBlock--wrap">1</div>
+                        <div class="changePriorityBtn">
+                            <button class="priorityUpBtn rectangleBtn rectangleBtn-minSize">
+                                <i class="fas fa-angle-up"></i>
+                            </button>
+                            <button class="priorityDownBtn rectangleBtn rectangleBtn-minSize">
+                                <i class="fas fa-angle-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="taskTextBlock">
+                        <div class="taskTextBlock--wrap">
+                            This is template for new task
+                        </div>
+                    </div>
+                    <div class="taskBtnBlock">
+                        <button class="completeBtn roundBtn roundBtn-green">
+                            <div class="roundBtn--text">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </button>
+                        <button class="editBtn roundBtn roundBtn-orange">
+                            <div class="roundBtn--text">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                        </button>
+                        <button class="deleteBtn roundBtn roundBtn-red">
+                            <div class="roundBtn--text">
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="editPopup editPopup-hide">
+            <div class="editPopup--wrap">
+                <h2 class="editPopup--title">
+                    <div class="editPopup--titleWrap">
+                        Edit text
+                    </div>
+                </h2>
+                <div class="editPopup--inputWrap">
+                    <textarea class="editPopup--input" type="text"></textarea>
+                </div>
+                <div class="editPopup--btnWrap">
+                    <button class="editCancelBtn rectangleBtn rectangleBtn-spaceVert rectangleBtn-redShadow">
+                        Cancel
+                    </button>
+                    <button class="editSaveBtn rectangleBtn rectangleBtn-spaceVert rectangleBtn-greenShadow"
+                            autofocus>
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="confirmSavePopup confirmWindow confirmWindow-hide">
+            <div class="confirmWindow--wrap">
+                <h2 class="confirmWindow--title">
+                    <div class="confirmWindow--titleWrap">
+                        Save changes?
+                    </div>
+                </h2>
+                <div class="confirmWindow--btnWrap">
+                    <button class="confirmSaveBackBtn rectangleBtn rectangleBtn-spaceV rectangleBtn-spaceL">
+                        Back
+                    </button>
+                    <button class="confirmSaveNoBtn rectangleBtn rectangleBtn-spaceV rectangleBtn-spaceH rectangleBtn-redShadow">
+                        No
+                    </button>
+                    <button class="confirmSaveYesBtn rectangleBtn rectangleBtn-spaceV rectangleBtn-spaceR rectangleBtn-greenShadow">
+                        Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="confirmDeletePopup confirmWindow confirmWindow-hide">
+            <div class="confirmWindow--wrap">
+                <h2 class="confirmWindow--title">
+                    <div class="confirmWindow--titleWrap">
+                        Delete task?
+                    </div>
+                </h2>
+                <div class="confirmWindow--btnWrap">
+                    <button class="confirmDeleteYesBtn rectangleBtn rectangleBtn-spaceV rectangleBtn-redShadow rectangleBtn-spaceH">
+                        Yes
+                    </button>
+                    <button class="confirmDeleteNoBtn rectangleBtn rectangleBtn-spaceV rectangleBtn-greenShadow rectangleBtn-spaceR">
+                        No
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/main.js"></script>
+    </div>
+</body>
+</html>

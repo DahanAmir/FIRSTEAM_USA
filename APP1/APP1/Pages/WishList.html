@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery-3.4.1.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <style>
+
+
+
+
+
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: red;
+                    color: white;
+                }
+
+
+
+
+
+        /**/ /**/ /**/
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: black;
+                color: white;
+            }
+
+        #header {
+            background-color: red;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 0px auto;
+            width: 100%;
+            height: 100%;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            height: 60px;
+            color: white;
+            width: 180px;
+            float: left;
+        }
+
+            button:hover {
+                background-color: #4CAF50;
+                color: white;
+            }
+    </style>
+
+    <script>
+        var arr = '';
+        var university_id = '';
+        var str=''
+        var getid;
+        var api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&";
+        var api_tail = "fields=id,school.name,school.region_id,school.state_fips,school.ownership,school.locale,school.school_url,2018.student.size,2018.cost.tuition.out_of_state,2018.admissions.sat_scores.average.overall&api_key=tcw4YqKbgv55DmuUicwNWeBtGk3XwHzoCf2SbWne";
+        var JSON_ncaa = []
+        var flag
+        var email
+
+        $(document).ready(function () {
+            email = localStorage.getItem("email");
+            //email = "adi@gmail.com";
+            let api_wishlist = "../api/University/" + email + "/get_wishlist";
+            ajaxCall("Get", api_wishlist, email, successShow, errorShow)
+
+            var filename = "../NCAA/NCAA.csv"
+            var request = new XMLHttpRequest();
+            file = request.open('GET', filename, true);
+            get_all_uni_data()
+
+        });
+        function csvJSON(csv) {
+
+            var lines = csv.split("\n");
+
+            var result = [];
+
+            var headers = lines[0].split(",");
+
+            for (var i = 1; i < lines.length; i++) {
+                var obj = {};
+                var currentline = lines[i].split(",");
+                for (var j = 0; j < headers.length; j++) {
+                    obj[headers[j]] = currentline[j];
+                }
+                result.push(obj)
+            }
+            return JSON.stringify(result); //JSON
+        }
+        //----CSV---//
+        function get_all_uni_data() {
+
+            $.ajax({
+                type: "GET",
+                url: "../NCAA/NCAA.csv",
+                dataType: "text",
+                success: function (data) {
+                    var lines = data.split("\n");
+
+                    var result = [];
+
+                    // NOTE: If your columns contain commas in their values, you'll need
+                    // to deal with those before doing the next step
+                    // (you might convert them to &&& or something, then covert them back later)
+                    // jsfiddle showing the issue https://jsfiddle.net/
+                    var headers = lines[0].split(",");
+
+                    for (var i = 1; i < lines.length; i++) {
+
+                        var obj = {};
+                        var currentline = lines[i].split(",");
+
+                        for (var j = 0; j < headers.length; j++) {
+                            obj[headers[j]] = currentline[j];
+                        }
+
+                        JSON_ncaa.push(obj);
+
+                    }
+                    all_name_csv_universities = 'school.name=' + JSON_ncaa[0].Full_School_Name + ',' + JSON_ncaa[0].School
+                    for (var i = 1; i < JSON_ncaa.length; i++) {
+                        if (JSON_ncaa[i].Full_School_Name) {
+                            all_name_csv_universities += ',' + JSON_ncaa[i].Full_School_Name;
+
+                        }
+                        if (JSON_ncaa[i].School) {
+                            all_name_csv_universities += ',' + JSON_ncaa[i].School
+                        }
+
+
+                    }
+                    all_name_csv_universities += '&';
+
+                }
+            })
+
+        }
+
+
+
+
+        function errorShow() {
+            alert("ErrorShow");
+        }
+
+        function successShow(data) {
+            var arr = ''
+            if (data.length > 0) {
+                for (var i = 1; i < data.length; i++) {
+                    arr += +data[i].Id + ",";
+                }
+            }
+            arr += data[0].Id
+            getid = "id=" + arr;
+
+            let api_getlist = api_head + getid + '&' + api_tail
+            $.get(api_getlist, function (data) {
+                console.log(data);
+                api_getlist = data;
+
+                alert("successShow2")
+                str += "<table id='customers' class='table' class='header'>";
+                str += "<thead><tr>";
+                str += "<th>School name</th>";
+                str += "<th>School Website </th>";
+                str += "<th> School ID </th>";
+                str += "<th> Locale </th>";
+                str += "<th>Ownership</th>";
+                str += "<th> Region </th> ";
+                str += "<th> State </th>";
+                str += "<th> Cost </th>";
+                str += "<th> Size </th>";
+                str += "<th> SAT </th>";
+                str += "<th> Rank </th>";
+                str += "<th> Div </th>";
+
+                str += "</tr></thead>";
+                str += " <tbody>";
+
+                for (var i = 0; i < data.results.length; i++) {
+
+                    str += "<tr>";
+                    str += "<td>" + data.results[i]["school.name"] + "</td>";
+                    str += "<td><a href=" + data.results[i]["school.school_url"] + ">" + data.results[i]["school.school_url"] + "</a></td>";
+                    str += "<td>" + data.results[i].id + "</td>";
+                    str += "<td>" + data.results[i]["school.locale"] + "</td>";
+                    str += "<td>" + data.results[i]["school.ownership"] + "</td>";
+                    str += "<td> " + data.results[i]["school.region_id"] + "</td>";
+                    str += "<td> " + data.results[i]["school.state_fips"] + "</td>";
+                    str += "<td> " + data.results[i]["2018.cost.tuition.out_of_state"] + "$</td>";
+                    str += "<td> " + data.results[i]["2018.student.size"] + "</td>";
+                    str += "<td> " + data.results[i]["2018.admissions.sat_scores.average.overall"] + "</td>";
+
+
+                    flag = 0
+
+                    for (var j = 0; j < JSON_ncaa.length; j++) {
+                        if (JSON_ncaa[j].Full_School_Name == data.results[i]["school.name"] || JSON_ncaa[j].School == data.results[i]["school.name"]) {
+                            flag = 1
+                            str += "<td> " + JSON_ncaa[j]["Adj. RPI"] + "</td>";
+                            str += "<td> " + JSON_ncaa[j].Division + "</td>";
+                            j = JSON_ncaa.length;
+                        }
+                    }
+                    if (flag == 0) {
+                        str += "<td> " + "null" + "</td>";
+                        str += "<td> " + "null" + "</td>";
+                    }
+                    //for (var j = 0; j < JSON_ncaa.length; j++) {
+                    //    if (JSON_ncaa[j].Full_School_Name == data.results[i]["school.name"] || JSON_ncaa[j].School == data.results[i]["school.name"]) {
+                    //        flag = 1
+                    //        str += "<td> " + JSON_ncaa[j]["Adj. RPI"] + "</td>";
+                    //        str += "<td> " + JSON_ncaa[j].Division + "</td>";
+                    //        j = JSON_ncaa.length;
+                    //    }
+                    //}
+                    //if (flag == 0) {
+                    //    str += "<td> " + "null" + "</td>";
+                    //    str += "<td> " + "null" + "</td>";
+                    //}
+
+                }
+
+                str += "</tr></tbody></table>";
+                document.getElementById("ph").innerHTML += str;
+            })
+
+
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+    <h1 style="color:red">WishList ❤️</h1>
+    <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+    <div id="ph"> </div>
+   
+</body>
+</html>

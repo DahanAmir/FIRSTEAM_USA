@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>    </title>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+
+       
+        $(document).ready(function () {
+            str = "users_show"
+            let api = "../api/Users/" + str + "/Show_all_users";
+            ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
+
+
+
+        });
+
+        function getSuccess(data) {
+          
+            console.log(data);
+            rendusers(data);
+        }
+
+        function erroradd_list_r() {
+            alert("erroradd_list_r")
+        }
+
+        var arr = "";
+        function rendusers(data) {
+            arr += "<form>";
+            arr += "<label for='players'> Choose a Player:</label>";
+            arr += "<select id = 'players' >";
+            for (var i = 0; i < data.length; i++) {
+
+                arr += "<option value='" + data[i].Email + "' onclick='gemail(this.id)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
+
+            }
+
+            arr += "</select >";
+            arr += "<form>";
+            document.getElementById("Show").innerHTML = arr;
+
+
+
+        }
+
+
+
+        var obj = "";
+        function gemail(obj) {
+            alert("obj is: " +obj);
+        }
+
+        function send() {
+
+            var e = document.getElementById("players");
+            var email = e.value;
+
+            var s = document.getElementById("subject");
+            var subject = s.value;
+
+            var b = document.getElementById("body");
+            var body = b.value;
+            
+
+            console.log(email);
+            console.log(subject);
+            console.log(body);
+
+          window.open('mailto:'+email+'?subject=' + subject + '&body=' + body);
+
+        }
+
+
+       
+
+
+
+        //const mandrill = require('node-mandrill')('ElVm4L8kFJpof9f7f0uqXQ');
+
+        //function sendEmail(_name, _email, _subject, _message) {
+        //    mandrill('/messages/send', {
+        //        message: {
+        //            to: [{ email: "adivaturi95@gmail.com", name:"adi" }],
+        //            from_email: 'firsteamusa@gmail.com',
+        //            subject: _subject,
+        //            text: _message
+        //        }
+        //    }, function (error, response) {
+        //        if (error) console.log(error);
+        //        else console.log(response);
+        //    });
+        //    alert("dvd")
+        //}
+
+        //// define your own email api which points to your server.
+
+        //app.post('/api/sendemail/', function (req, res) {
+
+        //    let _name = req.body.name;
+        //    let _email = req.body.email;
+        //    let _subject = req.body.subject;
+        //    let _messsage = req.body.message;
+
+        //    //implement your spam protection or checks. 
+
+        //    sendEmail(_name, _email, _subject, _message);
+
+        //});
+
+    </script>
+</head>
+<body>
+    <!--<form method="POST">
+
+        <input type="button" value="Send" onclick="sendEmail()"/>
+
+    </form>-->
+    <!--<script type="text/javascript">-->
+    <!--//function sendEmail() {
+    //    Email.send({
+    //        Host: "smtp.gmail.com",
+    //        Username: "firstteamusauser@gmail.com",
+    //        Password: "adiamir12",
+    //        To: 'adivaturi95@gmail.com',
+    //        From: "firstteamusauser@gmail.com",
+    //        Subject: "This is the subject",
+    //        Body: "And this is the body"
+    //    }).then(
+    //        message => alert(message)
+    //    );
+    //}-->
+    <!--</script>-->
+
+
+    <div id="Show"> </div>
+
+
+    <label for="subject">Subject: </label>
+    <input type="text" id="subject" name="subject"><br><br>
+
+    <label for="body">Body: </label>
+    <input type="text" id="body" name="body"><br><br>
+
+    <!--<input type="text" id="send" name="send"><br><br>-->
+    <input type="submit" value="send" onclick="send()" >
+
+
+
+
+
+</body>
+</html>

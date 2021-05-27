@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+    //<script src="../Scripts/ajaxCallsWithKey.js"></script>
+
+    <script>     //let api = "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&cuisiness=5"; </script>
+    <script>
+        $(document).ready(function () {
+            $.get("https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=id,school.name,school.region_id,school.state_fips,school.ownership,school.locale,school.school_url,2018.student.size,2018.cost.tuition.out_of_state,2018.admissions.sat_scores.average.overall&api_key=tcw4YqKbgv55DmuUicwNWeBtGk3XwHzoCf2SbWne", function (data) {                console.log(data);            })
+
+
+          //let api = "https://api.data.gov/ed/collegescorecard/v1/schools.json?fields=id,school.name,school.region_id,school.state_fips,school.ownership,school.locale,school.school_url,2018.student.size,2018.cost.tuition.out_of_state,2018.admissions.sat_scores.average.overall&api_key=tcw4YqKbgv55DmuUicwNWeBtGk3XwHzoCf2SbWne";
+           
+          //  fetch(api)
+          //      .then(function (element) {
+          //          document.getElementById("test").innerHTML = element.results[1];
+
+          //      })
+          //      .catch(function (element) {
+
+          //      });
+          //  ajaxCall("GET", api, "", successR, errorR)
+
+        });
+
+
+
+        function successR(data) {
+            alert('successResult');
+
+        
+        }
+
+        function errorR(data) { alert('errorResult') }
+
+
+
+
+
+    </script>
+
+
+</head>
+
+
+
+<body>
+    <div id="test">
+        
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <style>
+
+        .button2 {
+            background-color: white;
+            border: none;
+            color: darkblue;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            float: left;
+        }
+        body {
+            margin: 0;
+            padding-top: 40px;
+            color: #2e323c;
+            background: #f5f6fa;
+            position: relative;
+            height: 100%;
+        }
+
+        .account-settings .user-profile {
+            margin: 0 0 1rem 0;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+
+            .account-settings .user-profile .user-avatar {
+                margin: 0 0 1rem 0;
+            }
+
+                .account-settings .user-profile .user-avatar img {
+                    width: 90px;
+                    height: 90px;
+                    -webkit-border-radius: 100px;
+                    -moz-border-radius: 100px;
+                    border-radius: 100px;
+                }
+
+
+            .account-settings .user-profile h5.user-name {
+                margin: 0 0 1.9rem 0;
+            }
+
+            .account-settings .user-profile h6.user-email {
+                margin: 0;
+                font-size: 1.8rem;
+                font-weight: 400;
+                color: #9fa8b9;
+            }
+
+        .account-settings .about {
+            margin: 2rem 0 0 0;
+            text-align: center;
+        }
+
+            .account-settings .about h5 {
+                margin: 0 0 15px 0;
+                color: #007ae1;
+            }
+
+            .account-settings .about p {
+                font-size: 0.825rem;
+            }
+
+        .form-control {
+            border: 1px solid #cfd1d8;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            font-size: 2rem;
+            background: #ffffff;
+            color: #2e323c;
+        }
+
+        .card {
+            background: #ffffff;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            border: 0;
+            margin-bottom: 1rem;
+        }
+
+        /* Float four columns side by side */
+        .column {
+            float: left;
+            width: 25%;
+            padding: 0 10px;
+        }
+
+        /* Remove extra left and right margins, due to padding */
+        .row {
+            /*margin: 0 -5px;*/
+            margin: 0;
+        }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+        /* Responsive columns */
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+     
+        /* Style the counter cards */
+        .card {
+            box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: left;
+            background-color: #f1f1f1;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: red;
+                    color: white;
+                }
+       
+
+
+
+    </style>
+    <script>
+        var Register = ''
+        var str
+        var date
+        var users
+        var status_select
+        $(document).ready(function () {
+            str = "users_show"
+            let api = "../api/Users/" + str + "/Show_all_users";
+            ajaxCall("GET", api, str, successusers_show, errorusers_show)
+
+        });
+        function editor(i) {
+            Register = ''
+            if (users[i].Register) {
+                Register = users[i].Register.split('T00:00:00')
+            }
+            status_select = '<select id="cars" name="cars"><option value="0">candidate</option><option value="I20">I20</option>                <option value="בניית פרופיל אישי">בניית פרופיל אישי</option>                <option value="חתימה על NLI, LOI">חתימה על NLI, LOI</option>                <option value="שגרירות">שגרירות</option>                <option value="שיחות עם מאמנים">שיחות עם מאמנים</option>                            </select >'
+            date = ''
+            if (users[i].BirthDay) { date = users[i].Register.split('T00:00:00') }
+            str = '<div class="container">                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">                        <div class="card h-100">                            <div class="card-body">                                <div class="account-settings">                                    <div class="user-profile">                                        <div class="user-avatar">                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">				</div>                                            <h3 class="user-name">' + users[i].LastName + ' ' + users[i].FirstName + '</h3>        <h6 class="user-email">' + 'Registration: ' + Register[0] + '</h6>                                        </div>                                        <div class="about">                                            <h5>About</h5>                                                                       </div>                                    </div>                                </div>                            </div>                        </div>                        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">                            <div class="card h-100">                                <div class="card-body">                                    <div class="row gutters">                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">                                            <h6 class="mb-2 text-primary">Personal Details</h6>                                        </div>                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">                                            <div class="form-group">                                                <label for="fullName">Full Name</label>                                                <input type="text" readonly class="form-control" id="fullName" value="' + users[i].LastName + ' ' + users[i].FirstName + '">				</div>                                            </div>                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">                                                <div class="form-group">                                                    <label for="eMail">Email</label>                                                    <input type="email" readonly class="form-control" id="eMail" value="' + users[i].Email + '">				</div>                                                </div>                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">                                                    <div class="form-group">                                                        <label for="phone">Phone</label>                                                        <input type="text" class="form-control" id="phone" placeholder="Enter phone number" value="' + users[i].Phone + '">				</div>                                                    </div>                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">                                                        <div class="form-group">                                                            <label for="password">Password</label>                                                            <input type="url" class="form-control" id="password" placeholder="Password" value="' + users[i].Password + '">				</div>                                                        </div>                                                    </div>                                                    <div class="row gutters">                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">                                                            <h6 class="mt-3 mb-2 text-primary"></h6>                                                        </div>                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">                                                            <div class="form-group">                                                                <label for="Street">Address</label>                                                                <input type="name" class="form-control" id="Address" placeholder="Enter Address" value="' + users[i].Address + '">				</div>                                                            </div>                                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">                                                                <div class="form-group">                                                                    <label for="Birthday">Birthday</label>                                                                    <input type="date" class="form-control" id="birthday" placeholder="Enter Birthay" value="' + date[0] + '">				</div>                                                                </div>                                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">                                                                    <div class="form-group">                                                                        <label for="sTate">Status</label>                                                                     ' + status_select + '   				</div>                                                                    </div>                                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">                                                                        <div class="form-group">                                                                            <label for="Position">Position</label>                                                                            <input type="text" class="form-control" id="Position" placeholder="Position" value="' + users[i].Position + '">				</div>                                                                        </div>                                                                    </div>                                                                    <div class="row gutters">                                                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">                                                                            <div class="text-right">                                                                                <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>                                                                                <button type="button" id="submit" name="submit" class="btn btn-primary"  onclick="Update(' + i + ')"  >Update</button></div></div></div>         </div>             </div>        </div>           </div></div>'
+            //str = '<div class="container bootstrap snippets bootdey"> <div class="h4 text-center">PLAYER</div>                    <div class="row pv-lg">                                                        <div class="col-lg-2"></div>                                                        <div class="col-lg-8">                                                                                                                                                                 <label class="col-sm-2 control-label" for="inputContact1">Name</label>                                                                    <div class="col-sm-10">                                                                        <input class="form-control" id="inputContact1" type="text" placeholder="" value="' + users[i].LastName + users[i].FirstName + '">                                </div>                                                                    </div>                                                                    <div class="form-group">                                                                        <label class="col-sm-2 control-label" for="inputContact2">Email</label>                                                                        <div class="col-sm-10">                                                                            <input class="form-control" id="inputContact2" type="email" value="' + users[i].Email + '">                                </div>                                                                        </div>                                                                        <div class="form-group">                                                                            <label class="col-sm-2 control-label" for="inputContact3">Phone</label>                                                                            <div class="col-sm-10">                                                                                <input class="form-control" id="inputContact3" type="text" value="' + users[i].Phone + '">                                </div>                                                                            </div>                                                                            <div class="form-group">                                                                                <label class="col-sm-2 control-label" for="inputContact4">password</label>                                                                                <div class="col-sm-10">                                                                                    <input class="form-control" id="inputContact4" type="text" value="' + users[i].Password + '">                                </div>                                                                                </div>                                                                                <div class="form-group">                                                                                    <label class="col-sm-2 control-label" for="inputContact5">Website</label>                                                                                    <div class="col-sm-10">                                                                                        <input class="form-control" id="inputContact5" type="text" value="' + users[i].Position + '">                                </div>                                                                                    </div>                                                                                    <div class="form-group">                                                                                        <label class="col-sm-2 control-label" for="inputContact6">Address</label>                                                                                        <div class="col-sm-10">                                                                                            <textarea class="form-control" id="inputContact6" row="4">' + users[i].Address + '</textarea>               </div>         </div>            <div class="form-group">                                               <label class="col-sm-2 control-label" for="inputContact7">status</label>        <div class="col-sm-10">                 <input class="form-control" id="inputContact7" type="text" value="' + users[i].Status + '">                                </div>                                                                                        </div>                                                                                        <div class="form-group">                                                                                            <label class="col-sm-2 control-label" for="inputContact8">Company</label>                                                                                            <div class="col-sm-10">                                                                                                <input class="form-control" id="inputContact8" type="text" placeholder="No Company">                                </div>                                                                                            </div>                                                                                            <div class="form-group">                                                                                                <div class="col-sm-offset-2 col-sm-10">                                                                                                    <div class="checkbox">                                                                                                        <label>                                                                                                            <input type="checkbox"> Favorite contact?</label>                                    </div>                                                                                                    </div>                                                                                                </div>                                                                                                <div class="form-group">                                                                                                    <div class="col-sm-offset-2 col-sm-10">                                                                                                        <button class="btn btn-info" type="submit">Update</button>                                                                                                    </div>                                                                                                </div>                        </form>                                                                                            <div class="text-right"><a class="text-muted" href="#">Delete this contact?</a></div>                                                                                        </div>                                                                                    </div>                                                                                </div>                                                                            </div>                                                                                                                                                                                                   </div> '
+            document.getElementById("users").innerHTML = str
+        }
+
+        function Update(i) {
+            let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                FirstName: users[i].FirstName,
+                LastName: users[i].LastName,
+                BirthDay: $("#birthday").val(),
+                Phone: $("#phone").val(),
+                Address: $("#Address").val(),
+                Email: users[i].Email,
+                Password: $("#password").val(),
+                Position: $("#Position").val(),
+                TypeUsers: 0,
+                Sex: users[i].Sex,
+
+                //  Myfile: $("#mailTB").val(),
+            }
+            console.log(u)
+            alert("");
+            //console.log(u)
+            //let x = $("#files").get(0).files[0].name
+            ajaxCall("POST", "../api/Users/update", JSON.stringify(u), success_update, error_update); //נוסיף לשרת את היוזר
+        }
+        function error_update(data) {
+            alert(data);
+        }
+        function success_update(data) {
+            alert(data);
+        }
+        function successusers_show(data) {
+            users = data
+            str = ''
+            date = ''
+            for (var i = 0; i < data.length; i = i + 4) {
+                for (var j = 0; j < 4; j++) {
+                    date = data[i + j].Register.split('T00:00:00')
+                    str += '<div class="row"><div class="column"><div class="card"  ><h3>Name: ' + data[i + j].FirstName + ' ' + data[i + j].LastName + '</h3><p>Phone:' + data[i + j].Phone + '</p><p>Sex: ' + data[i + j].Sex + '</p><p>Email: ' + data[i + j].Email + '</p><p>Position: ' + data[i + j].Position + '</p><p>status: ' + data[i + j].Status + '</p><p>Register: ' + date[0] + '</p>     <button onclick="editor(' + (i + j) + ')" >To edit</button> </div></div>'
+                    if (i + j + 1 >= data.length) {
+                        j = 4
+                    }
+                }
+
+                document.getElementById("users").innerHTML = str;
+            }
+        }
+        function errorusers_show(data) {
+            alert("errorusers_show");
+        }
+
+        function BackToFav() {
+            window.open('FavRegion.html');
+        }
+
+
+        function gotowishlist() {
+            window.open('WishList.html')
+        }
+
+
+        function allprofiles() {
+            window.open('Profile_Show.html')
+        }
+
+        function goBack() {
+            window.history.back();
+            window.close()
+        }
+
+    </script>
+</head>
+<body>
+    <button class="button2" ONCLICK="goBack()" style="float:left"> Go Back  </button>
+    <br /><br /><br /><br />
+
+
+    <div class="imgcontainer">
+
+        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+        <div class="topnav">
+            <a class="active" href="#home" onclick="BackToFav()">Back to Favorites</a>
+            <a href="#about" onclick="gotowishlist()">Show WishList</a>
+            <!--<a href="#about" onclick="allprofiles()">All Playres Profiles</a>-->
+        </div>
+
+    </div>
+
+
+    <div id="users">
+
+    </div>
+    <input type="text" name="name" value="" hidden="hidden" />
+
+
+
+</body>
+</html>

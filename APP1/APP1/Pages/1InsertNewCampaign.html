@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Insert new campagin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+
+    <title>DB Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--<script src="../Scripts/ajaxCalls.js"></script>-->
+    <script src="../Scripts/ajaxCallsWithKey.js"></script>
+    <style type="text/css">
+
+
+        .red-star {
+            color: red;
+        }
+    </style>
+
+  
+
+    <script>
+        $(document).ready(function () {
+            let api = "../api/businesses/" + "null" + '/' + 999
+            ajaxCall("GET", api, "", add_list_r, erroradd_list_r)  
+            $("#pForm").submit(f1); // bind the submit event to a function called f1
+        
+        });
+
+        var name = [];
+        var id = [];
+        var str="";
+
+		function add_list_r(data) { //בניית רשימה DDL
+          
+            for (var i = 0; i < data.length; i++) {
+                id[i] = data[i].Id
+                name[i] = data[i].Name
+            }
+			str += '<label for="rest">Choose a rest:</label>';
+			str += '<select onchange="insertval(this.value)">';
+			str += '<option> Select restaurant... <option/>';
+            for (var i = 0; i < data.length; i++) {
+			
+				str += '<option id="' + data[i].Id + '"  >' + data[i].Id + ' ' + data[i].Name + '</option>';
+				
+			}
+			str += '</select >';
+        
+
+            document.getElementById("select").innerHTML = str;
+        }
+
+
+        var i = "";
+        var b = "";
+
+
+        function addc() { //כאשר לוחצים על רשימה
+
+            i = valid[0]; // נעשה ספליט וניקח את האיבר הראשון- התז
+           
+            b = document.getElementById("BudgetTB").value; 
+            alert("Add new campaign for rest: "+ i+" with budget of: " + b);
+
+            }
+       
+      
+
+        function erroradd_list_r(err) {
+            alert("Sorry, please try again");
+        }
+
+
+        function f1() {
+            AddCampaign();
+            return false; // the return false will prevent the form from being submitted
+            // hence the page will not reload
+        }
+	
+        function AddCampaign() {
+        
+		
+            let api = "../api/campaign/" + i + '/' + b;
+           
+            ajaxCall("GET", api, "", success1, errorr1)
+
+
+            swal("Submitted to the server!", "Great Job", "success");
+            return false;
+        }
+
+        function success1(data) {
+           
+            alert("success! campaign for rest: " + i+ " with budget:  " + b + " is Active ")
+        }
+
+
+    
+        function success(data) {
+            alert("sucess- added")
+
+        }
+
+        // This function is called in case of an error
+        function errorr1(err) {
+            alert("Sorry, please try again");
+        }
+
+
+        var valid='';
+        function insertval(val) { 
+            valid = val.split(' ');
+            
+
+        }
+
+
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</head>
+<body>
+    <a href="HtmlPage1.html">Go Back To Home Page</a>
+    <div class="container">
+        <form id="pForm">
+            <h2>Insert A new Campaign</h2>
+
+          
+            <div id="select" >    </div>
+
+            <div class="form-group">
+                <label for="BudgetTB"><span class="red-star">★ </span>Budget</label>
+                <input type="text" class="form-control" id="BudgetTB" placeholder="Enter your budget" required />
+            </div>
+
+
+            <input type="submit" id="buttonUpload" value="Submit BTN" onclick="addc()" />
+
+        </form>
+
+    </div>
+    <div id="ph">
+
+
+    </div>
+   
+
+</body>
+
+</html>
