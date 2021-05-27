@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<script src="../Scripts/jquery-3.3.1.min.js"></script>
+	<script src="../Scripts/ajaxCalls.js"></script>
+	<link href="../Scripts/StyleSheet1.css" rel="stylesheet" />
+	<style>
+		.container {
+			display: block;
+			position: relative;
+			padding-left: 35px;
+			margin-bottom: 12px;
+			cursor: pointer;
+			font-size: 22px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			text-align: center;
+			margin: 0px auto;
+			width: 100%;
+			height: 100%;
+		}
+
+		th, td {
+			padding: 5px;
+			text-align: left;
+			text-align: center;
+		}
+
+		button {
+			width: 100px;
+			height: 60px;
+			border-color: #4CAF50;
+			color: green;
+			width: 180px;
+		}
+
+			button:hover {
+				background-color: #4CAF50;
+				color: white;
+			}
+			#manager {
+				float:left;
+			width: 80px;
+			height: 80px;
+			border-color: #4CAF50;
+			color:red;
+			width: 80px;
+		}
+
+			#manager:hover {
+				background-color: red;
+				color: white;
+			}
+
+		image {
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+
+	<script>
+
+		$(document).ready(function () { //חיווט של הכפתורים
+			$("#search-rest").click(search)
+			$("#search-rest-user").click(search_user)
+			$("#logout").click(logout)
+			$("#login").click(login)
+            $("#Highlight").click(Highlight)
+            $("#newuser").click(newuser)
+            $("#manager").click(manager)
+
+		});
+
+
+        function clickss(id,url) { // סופר קליקים
+
+            let api = "../api/Campaign/" + 1 + "/" + id
+            ajaxCall("PUT", api, "", countclick, errorcountclick)
+            window.location = url
+
+        }
+
+        function errorcountclick() {
+            alert("errorcountclick");
+        }
+		function countclick(){
+
+		}
+
+
+		let resto
+		var favorite_list = [];
+		let v = [];
+		var reslist = [];
+		var counter_views = 0;
+
+		function postSuccess() {
+			alert("add to favorit success");
+		}
+
+		function postError() {
+			alert(err.responseJSON.ExceptionMessage)
+
+		}
+
+		let category
+		let price
+
+
+		function on_mouseover(r_index) {
+
+
+		}
+		
+		function countclicks(data) {
+
+
+		}
+
+        function logout() {
+
+            localStorage.clear("email")
+
+			alert('logout');
+            window.location.href = "LogIn.html";
+
+		}
+        function login() {
+
+            window.location.href = "Login.html";
+
+		}
+
+
+
+		function Highlight() {
+            var email = localStorage.getItem('email');
+            if (email) {
+                window.location.href = "Highlights.html";
+            }
+            else {
+                alert("plaese login");
+            }
+        
+
+		}
+
+
+        function newuser() {
+          
+                window.location.href = "NewCostumerForm - Copy.html";
+          
+		}
+		function manager() {
+          
+            window.location.href = "DataTableCampaign.html";
+          
+        }
+
+        function search() { // חיפוש ללא העדפות וללא הרשמה
+            
+                api = "../api/Businesses/1"
+                ajaxCall("GET", "../api/Businesses/1", "", successCB1campign, errorCB1campign)
+
+			    category = $("#category").val();
+                price = $("#price").val();
+                api = "../api/Businesses/" + category + '/' + price
+                ajaxCall("GET", api, "", successCB1, errorCB1)
+         
+		}
+
+        function successCB1(data) {
+            resto = data;
+            rend(data, 0);
+        }
+        function errorCB1() {
+
+            alert("Sorry, please try again");
+        }
+
+
+        function search_user() { //חיפוש עם הרשמה והעדפות
+            var email = localStorage.getItem('email');
+			if (email) { 
+				//אורגני
+                email = email.replace(".", "dotttt");
+                api = "../api/Businesses/email/status/" + email+"/0";
+				ajaxCall("GET", api, "", successemail, errorCB1email)
+
+				//ממומן
+
+                email = email.replace(".", "dotttt");
+                api = "../api/Businesses/email/status/" + email+"/1";
+                ajaxCall("GET", api, "", successemail1, errorCB1email1)
+
+            }
+            else {
+                alert("Please login");
+            }
+
+        }
+		
+       
+        function errorCB1email() {
+
+            alert("Sorry, please try again");
+        } function errorCB1email1() {
+
+            alert("Sorry, please try again");
+        }
+		function successemail(data) {
+			resto = data;
+            rend(data, 0); //חיפוש אורגני
+        }
+        function successemail1(data) {
+            resto = data;
+            rend(data, 1); //חיפוש ממומן
+        }
+
+		function errorCB1campign() {
+
+			alert("Sorry, please try again");
+		}
+
+        function successCB1campign(data) {
+			alert("successCB1campign");
+			rend(data, 1);
+			resto = data;
+		}
+		
+        function rend(rlist, type) {
+
+            if (rlist == '') {
+                if (category == 'null')
+                    category = 'כל הקטגוריות'
+                if (price == 999)
+                    price = '1-4'
+
+                alert('מצטערים, לא נמצא מסעדות: ב' + category + ' בטווח מחיר: ' + price);
+                document.getElementById("data_organic").innerHTML = ' '
+                document.getElementById("data_paid").innerHTML = ''
+            }
+            else {
+                let str = ''
+                for (k in rlist) {
+					if (type == 1) { // מסעדות ממומונות
+						let api = "../api/Campaign/" + rlist[k].Id;
+					
+                        ajaxCall("GET", api, "", countclicks, errorcountclick)
+                    }
+                    str += "<table class='table'>";
+                    str += "<thead><tr>";
+                    str += "<th>Rest name</th>";
+                    str += "<th>Image </th>";
+                    str += "<th> ID </th>";
+                    str += "<th> Price </th>";
+                    str += "<th>Rating</th>";
+                    str += "<th> Address </th> ";
+                    str += "<th> Phone </th>";
+                    str += "<th> Url </th>";
+                    str += "</tr></thead>";
+                    str += '<tbody  >';
+                    str += "<tr>";
+                    str += "<td>" + rlist[k].Name + "</td>";
+                    str += "<td> <img src='" + rlist[k].Featured_image + "'height='60px'</td>";
+                    str += " <td>" + rlist[k].Id + "</td>";
+                    str += "<td>" + rlist[k].Price + "</td>";
+                    str += "<td>" + rlist[k].Rating + "</td>";
+                    str += "<td>" + rlist[k].Address + "</td>";
+                    str += "<td> " + rlist[k].Phone + "</td>";
+
+                   
+                    str += "<td><button onclick='clickss(this.value,this.id)' value='" + rlist[k].Id + "' id='" + rlist[k].Url + "'>  open page </button></td>";
+                    str += "</tr></tbody></table>";
+                }
+                if (type == 0) { //בשביל לכתוב לאזור האורגני
+                    document.getElementById("data_organic").innerHTML = str;
+                }
+                else { //לכתוב לאזור הממומן
+                    document.getElementById("data_paid").innerHTML = str;
+                }
+
+            }
+		}
+
+
+
+	</script>
+
+
+
+</head>
+<body>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+
+
+
+	<div class="header">
+		<button id="manager"> Go to all Campaigns</button>
+		<h2>✨✨Restaurants✨✨</h2>
+
+	</div>
+
+	<div id="show">
+	
+
+
+
+		<select name="category" id="category">
+			<option value="null">Select a category type</option>
+			<option value="Air Conditioned">Air Conditioned</option>
+			<option value="Brunch">Brunch</option>
+			<option value="Buffet">Buffet</option>
+			<option value="Cafes">Cafes</option>
+			<option value="Cash">Cash</option>
+			<option value="Delivery">Delivery</option>
+			<option value="Fullbar">Fullbar</option>
+			<option value="Kid Friendly">Kid Friendly</option>
+			<option value="Outdoor Seating">Outdoor Seating</option>
+			<option value="Private Dining Area Available">Private Dining Area Available</option>
+			<option value="Table booking recommended">Table booking recommended</option>
+		</select>
+		
+		
+		
+		<select name="price" id="price">
+			<option value="999">Select a price category</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
+
+		<br />
+		
+		<br />
+		<br />
+		<button id="search-rest"> Search for restaurants</button>
+		<button id="search-rest-user"> My results with highlights</button>
+
+		<button id="logout"> logout</button>
+		<br/>
+		<button id="login"> login</button>
+		<button id="Highlight"> Choose your Highlight</button>
+		<button id="newuser"> Create a new user</button>
+
+
+
+	</div>
+	<div>
+
+
+		<!--<button id="user">
+			<a href="HtmlPage2.html">Create a new user</a>
+		</button>-->
+		<!--<button id="fav">
+			<a href="Favr_est.html"> Go to Favorites</a>
+		</button>-->
+	</div>
+	<br />
+	<div id="data_paid"></div>
+	<br />
+	<br />
+	<div>'_______________________________________________________________________________________________________________'</div>
+	<br />
+	<br />
+	<div id="data_organic" style="border-color:red"></div>
+</body>
+</html>

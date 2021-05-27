@@ -1,0 +1,424 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <title>DataTable Example</title>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+    <style type="text/css">
+
+        button {
+            margin-left: 10px;
+        }
+
+        .colorDiv {
+            height:30px;
+            width:70px;
+            border:2px solid black
+        }
+
+        #newBTN {
+            background-color:blueviolet;
+            margin-bottom:10px;
+        }
+
+
+    </style>
+
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="../Scripts/ajaxCallsStub.js"></script>
+
+
+    <script>
+
+        // will run when the document is ready
+        $(document).ready(function () {
+
+            mode = "";
+
+            $("#cancelSaveBTN").on("click", function () {
+                car = null;
+                $("#editDiv").hide();
+                if (mode == "new") $("#pForm").show();
+                mode = "";
+            });
+
+            $("#newBTN").on("click", function () {
+                car = null;
+                mode = "new";
+                $("#pForm").hide();
+                $("#editDiv").show();
+                clearFields();
+                $("#editDiv :input").prop("disabled", false); // new mode: enable all controls in the form
+            });
+
+
+            // once the document is ready we fetch a list of cars from the server
+            ajaxCall("GET", "../api/cars", "", getSuccess, error);
+            
+            $("#carForm").submit(onSubmitFunc); // wire the submit event to a function called f1
+
+            $("#editDiv").hide();
+
+            buttonEvents();
+        });
+
+        // wire all the buttons to their functions
+        function buttonEvents() {
+
+            $(document).on("click", ".editBtn", function () {
+                mode = "edit";
+                markSelected(this);
+                $("#editDiv").show();
+                $("#editDiv :input").prop("disabled", false); // edit mode: enable all controls in the form
+                populateFields(this.getAttribute('data-carId')); // fill the form fields according to the selected row
+            });
+
+            $(document).on("click", ".viewBtn", function () {
+                mode = "view";
+                markSelected(this);
+                $("#editDiv").show();
+                $("#editDiv :input").attr("disabled", "disabled"); // view mode: disable all controls in the form
+                populateFields(this.getAttribute('data-carId'));
+            });
+
+            $(document).on("click", ".deleteBtn", function () {
+                mode = "delete";
+                markSelected(this);
+                var carId = this.getAttribute('data-carId');
+                swal({ // this will open a dialouge 
+                    title: "Are you sure ??",
+                    text: "",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                })
+                .then(function (willDelete) {
+                    if (willDelete) DeleteCar(carId);
+                    else swal("Not Deleted!");
+                });
+            });
+        }
+
+        // mark the selected row
+        function markSelected(btn) {
+            $("#carsTable tr").removeClass("selected"); // remove seleced class from rows that were selected before
+            row = (btn.parentNode).parentNode; // button is in TD which is in Row
+            row.className = 'selected'; // mark as selected
+        }
+
+        // Delete a car from the server
+        function DeleteCar(id) {
+            ajaxCall("DELETE", "../api/cars/" + id, "", deleteSuccess, error);
+        }
+
+        function onSubmitFunc() {
+
+            var Id = -1;
+            var Image = "car.jpg";
+            if (mode == "edit") {
+                Id = car.Id;
+                Image = car.Image;
+            }
+
+
+            let cartoSave = {
+                Id: Id,
+                Image: Image, // for now we do not change the image
+                Manufacturer: $("#manufacturer").val(),
+                Model: $("#model").val(),
+                Year: $("#year").val(),
+                Price: $("#price").val(),
+                Color: $("#color").val(),
+                Hand: $("#hand").val(),
+                Description: $("#description").val(),
+                Automatic: $("#automatic").is(":checked")
+            }
+
+            // add a new Car record to the server
+            if(mode == "edit")
+                ajaxCall("PUT", "../api/cars", JSON.stringify(cartoSave), updateSuccess, error);
+            else if (mode == "new")
+                ajaxCall("POST", "../api/cars", JSON.stringify(cartoSave), insertSuccess, error);
+            return false;
+        }
+
+        // fill the form fields
+        function populateFields(carId) {
+            car = getCar(carId);
+            $("#manufacturer").val(car.Manufacturer);
+            $("#model").val(car.Model);
+            $("#year").val(car.Year);
+            $("#price").val(car.Price);
+            $("#color").val(car.Color);
+            $("#hand").val(car.Hand);
+            $("#description").val(car.Description);
+            $("#automatic").prop('checked', car.Automatic);
+            $("#image").attr("src", "images/" + car.Image);
+        }
+
+
+        // fill the form fields
+        function clearFields() {
+            $("#manufacturer").val("");
+            $("#model").val("");
+            $("#year").val("");
+            $("#price").val("");
+            $("#color").val("");
+            $("#hand").val("");
+            $("#description").val("");
+            $("#automatic").prop('checked', true);
+            $("#image").attr("src", "images/car.jpg");
+        }
+
+        // get a car according to its Id
+        function getCar(id) {
+            for (i in cars) {
+                if (cars[i].Id == id)
+                    return cars[i];
+            }
+            return null;
+        }
+
+        // success callback function after update
+        function updateSuccess(carsdata) {
+            tbl.clear();
+            redrawTable(tbl, carsdata);
+            buttonEvents();
+            $("#editDiv").hide();
+            swal("Updated Successfuly!", "Great Job", "success");
+            mode = "";
+        }
+
+        // success callback function after update
+        function insertSuccess(carsdata) {
+            $("#pForm").show();
+            tbl.clear();
+            redrawTable(tbl, carsdata);
+            buttonEvents();
+            $("#editDiv").hide();
+            swal("Inserted Successfuly!", "Great Job", "success");
+            mode = "";
+        }
+
+        // success callback function after delete
+        function deleteSuccess(carsdata) {
+            tbl.clear();
+            redrawTable(tbl, carsdata);
+            buttonEvents(); // after redrawing the table, we must wire the new buttons
+            $("#editDiv").hide();
+            swal("Deleted Successfuly!", "Great Job", "success");
+            mode = "";
+        }
+
+        // redraw a datatable with new data
+        function redrawTable(tbl, data) {
+            tbl.clear();
+            for (var i = 0; i < data.length; i++) {
+                tbl.row.add(data[i]);
+            }
+            tbl.draw();
+        }
+
+        // this function is activated in case of a success
+        function getSuccess(carsdata) {
+            cars = carsdata; // keep the cars array in a global variable;
+            try{
+                tbl = $('#carsTable').DataTable({
+                    data: carsdata,
+                    pageLength: 5,
+                    columns: [
+                        {
+                            render: function (data, type, row, meta) {
+                                let dataCar = "data-carId='" + row.Id + "'";
+
+                                editBtn = "<button type='button' class = 'editBtn btn btn-success' " + dataCar + "> Edit </button>";
+                                viewBtn = "<button type='button' class = 'viewBtn btn btn-info' " + dataCar + "> View </button>";
+                                deleteBtn = "<button type='button' class = 'deleteBtn btn btn-danger' " + dataCar + "> Delete </button>";
+                                return editBtn + viewBtn + deleteBtn;
+                            }
+                        },
+                        { data: "Id" },
+                        { data: "Manufacturer" },
+                        { data: "Model" },
+                        { data: "Year" },
+                        { data: "Price" },
+                        {
+                            data: "Color",
+                            render: function (data, type, row, meta) {
+                                return "<div class = 'colorDiv' style='background-color:" + data + "'> </div>"
+                            }
+                        },
+                        { data: "Hand" },
+                        {
+                          data: "Automatic",
+                          render: function (data, type, row, meta) {
+                            if (data == true)
+                                return '<input type="checkbox" checked disabled="disabled" />';
+                            else
+                                return '<input type="checkbox" disabled="disabled"/>';
+                            }
+                        },
+                        {
+                            data: "Description",
+                            visible: false
+                        },
+                        {
+                            data: "Image",
+                            visible: false
+                        }
+                    ],
+                });
+                
+            }
+
+            catch (err) {
+                alert(err);
+            }
+        }
+
+        // this function is activated in case of a failure
+        function error(err) {
+            swal("Error: " + err );
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Car DataTable Example</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <input type="button" value="New" class="btn btn-primary btn-lg" id="newBTN" />
+        <form id="pForm">
+            <table id="carsTable" class="display nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Id</th>
+                        <th>Manufacturer</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Price</th>
+                        <th>Color</th>
+                        <th>Hand</th>
+                        <th>Gear</th>
+                    </tr>
+                </thead>
+            </table>
+
+        </form>
+
+        <div id="editDiv">
+        <form id="carForm">
+        <div class="form-group row">
+        <div class="form-group col-sm-3">
+            <label for="manufacturer"><span class="red-star">★ </span>Manufacturer</label>
+            <input type="text" class="form-control" id="manufacturer" placeholder="Enter the manufacturer name" required>
+        </div>
+
+
+        <div class="form-group col-sm-3">
+            <label for="model"><span class="red-star">★ </span>Model</label>
+            <input type="text" class="form-control" id="model" placeholder="Enter the model name" required>
+        </div>
+
+
+       <div class="form-group col-sm-3">
+            <label for="year"><span class="red-star">★ </span>Year</label>
+            <select id="year" class="form-control" required>
+                <option value="">Choose Year</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+            </select>
+        </div>
+
+        <div class="form-group col-sm-3" >
+            <label for="price"><span class="red-star">★ </span>Price</label>
+            <input type="number" class="form-control" id="price" placeholder="Enter the price" required />
+        </div>
+
+
+        </div>
+
+        <div class="form-group row">
+
+
+        <div class="form-group col-sm-3">
+            <label for="color"><span class="red-star">★ </span>Color</label>
+            <select class="form-control" id="color" required>
+              <option value="">Choose Color</option>
+              <option value="White"> White </option>
+              <option value="Blue"> Blue </option>
+              <option value="Black"> Black </option>
+              <option value="Red"> Red </option>
+              <option value="Grey"> Grey </option>
+            </select>
+        </div>
+
+        <div class="form-group col-sm-3">
+            <label for="hand"><span class="red-star">★ </span>Hand</label>
+            <select class="form-control" id="hand" required >
+              <option value="">Choose Hand</option>
+              <option value="1"> 1 </option>
+              <option value="2"> 2 </option>
+              <option value="3"> 3 </option>
+              <option value="4"> 4 </option>
+              <option value="5"> 5 </option>
+            </select>
+        </div>
+
+        <div class="form-group col-sm-3" >
+            <label for="automatic"><span class="red-star">★ </span>Automatic?</label>
+            <input type="checkbox" class="form-control" id="automatic" checked />
+        </div>
+
+       </div>
+        <div class="form-group row">
+            <div class="form-group col-sm-8">
+                <label for="description">Description</label>
+                <textarea rows="6" class="form-control" id="description" placeholder="Enter the description"></textarea>
+            </div>
+
+            <div class="form-group col-sm-4">
+               <img src="images/car.jpg" id="image" />
+            </div>
+
+        </div>  
+            
+       <button type="submit" class="btn btn-primary btn-lg" id="saveBTN">Save</button> 
+       <input type="button" class="btn btn-warning btn-lg" id="cancelSaveBTN" value="Cancel"/>
+    </form>
+    </div>
+
+    </div>
+
+
+
+
+</body>
+</html>

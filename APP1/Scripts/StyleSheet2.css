@@ -1,0 +1,163 @@
+﻿body {
+*
+    +box-sizing(border-box)
+
+body
+    padding-top: 50px
+    padding-bottom: 20px
+    background: #F2F2F2
+
+.faint
+    color: $mountain_mist
+
+.fa
+    font-size: 5em
+    text-align: center
+    padding: 20px
+
+.btn
+    &:hover
+        outline: 0 !important
+    &:focus
+        outline: 0 !important
+    &:active
+        outline: 0 !important
+
+.btn-download
+    height: 50px
+    text-align: center
+    margin-top: 40px
+    font-size: 1.7em
+
+.btn-flip-extend
+    background-color: transparent
+    +box-shadow(none)
+    opacity: 1
+
+.btn-flip
+    opacity: 0.8
+    color: $storm_dust
+    background-color: transparent
+    &:hover
+        @extend .btn-flip-extend
+    &:focus
+        @extend .btn-flip-extend
+    i
+        font-size: 16px
+
+.card-holder
+    margin-top: 50px
+
+.card-container
+    +perspective(800px)
+    +transform-style(preserve-3d)
+    +border-radius(4px)
+    margin-bottom: 30px
+    width: 100%
+    height: 420px
+    &:not(.manual-flip):hover
+        .front
+            +transform(rotateY(180deg))
+        .back
+            +transform(rotateY(0deg))
+    &.hover.manual-flip
+        .front
+            +transform(rotateY(180deg))
+        .back
+            +transform(rotateY(0deg))
+
+.card
+    +transform-style(preserve-3d)
+    +border-radius(4px)
+    +transition(transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275))
+    position: relative
+    background: none repeat scroll 0 0 $white
+    color: $tundora
+    max-width: 320px
+    margin: 0 auto
+    .cover
+        +border-radius(4px 4px 0 0)
+        height: 105px
+        overflow: hidden
+        z-index: -2
+        img
+            width: 100%
+    .branded
+        position: relative
+        background: $white
+        +border-radius(50%)
+        display: block
+        height: 120px
+        margin: (-55px) auto 0
+        width: 120px
+        text-align: center
+    .content
+        background-color: rgba(0, 0, 0, 0)
+        +box-shadow(none)
+        padding: 10px 20px 20px
+        .main
+            min-height: 140px
+    .use-for
+        font-size: 22px
+        text-align: center
+    h5
+        margin: 5px 0
+        font-weight: 400
+        line-height: 20px
+    .footer
+        color: $mountain_mist
+        padding: 10px 0 0
+        text-align: center
+        .btn-simple
+            margin-top: -6px
+    .header
+        padding: 15px 20px
+        height: 90px
+    .back .content .main
+        height: 215px
+
+.front
+    +backface-visibility(hidden)
+    +transition(transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275))
+    +transform-style(preserve-3d)
+    +transform(rotateY(0deg))
+    +box-shadow(0 1px 3px 0 $black_14)
+    +border-radius(4px)
+    position: absolute
+    background-color: $white
+    width: 100%
+    height: 420px
+    top: 0
+    left: 0
+    z-index: 2
+
+.back
+    +backface-visibility(hidden)
+    +transition(transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275))
+    +transform-style(preserve-3d)
+    +transform(rotateY(-180deg))
+    +box-shadow(0 1px 3px 0 $black_14)
+    +border-radius(4px)
+    position: absolute
+    background-color: $white
+    width: 100%
+    height: 420px
+    top: 0
+    left: 0
+    .btn-simple
+        position: absolute
+        left: 0
+        bottom: 4px
+
+.qr canvas
+    +backface-visibility(hidden)
+    margin: 0 auto
+
+.title
+    color: $bismark
+    text-align: center
+    font-weight: 300
+    font-size: 44px
+    margin-bottom: 90px
+    line-height: 90%
+}

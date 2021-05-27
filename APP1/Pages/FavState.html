@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <style>
+
+        .button2 {
+            background-color: white;
+            border: none;
+            color: darkblue;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            float: left;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: red;
+                    color: white;
+                }
+
+
+        * {
+            font-family: 'Century Gothic';
+            color: darkblue;
+            text-align: center;
+        }
+
+        .highlightsDiv {
+            font-size: 20px;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+        }
+
+            .button1:hover {
+                background-color: #008CBA;
+                color: white;
+            }
+    </style>
+
+    <script>
+		
+		
+
+        var states = [];
+        var all_States;
+        
+        var email = localStorage.getItem('email');
+
+
+
+       
+        function savestates() {
+            var item
+           // var email = 'adi@gmail.com'
+            var list_Users_States = []
+            var checkboxes = document.getElementsByTagName("input");
+         
+            
+            for (i = 1; i < checkboxes.length; i++) { //כל פעם שנלחץ לשמור נעבור על כל התכונות ונראה מי 0 מי 1
+                if (checkboxes[i].checked || checkboxes[0].checked) {
+
+                    item = {
+                        States: checkboxes[i].nextSibling.data,
+                        Id: checkboxes[i].id,
+                        Email: email
+                    }
+
+
+                    list_Users_States.push(item)
+                  
+                }
+
+
+            }
+
+            if (list_Users_States.length != 0) {
+                let api = "../api/UsersStates";
+                ajaxCall("Put", api, JSON.stringify(list_Users_States), SuccessInsertStates, ErrorInsertStates)
+            }
+            else {
+                alert("Success!");
+                window.open("FavUser.html")
+                window.close()
+            }
+
+            
+        }
+
+        function SuccessInsertStates() {
+            alert("Success!");
+            window.open("FavUser.html")
+            window.close()
+
+            }
+
+        function ErrorInsertStates() {
+			alert("Sorry something is wrong");
+			flag = 0;
+            window.open("LogIn.html")
+        }
+
+
+        function gotowishlist() {
+            window.open('WishList.html')
+        }
+
+
+        function allprofiles() {
+            window.open('Profile_Show.html')
+        }
+
+        function ChangeRegion() {
+            window.open('FavRegion.html')
+        }
+
+        function ChangeStae() {
+            window.open('FavState.html')
+        }
+
+        function ChangeLocale() {
+            window.open('FavLocale.html')
+        }
+
+        function ChangeOtherFavorites() {
+            window.open('FavUser.html')
+        }
+
+        function goBack() {
+            window.history.back();
+            window.close()
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <button class="button2" ONCLICK="goBack()" style="float:left"> Go Back  </button>
+    <br /><br /><br /><br />
+
+    <div class="imgcontainer">
+
+        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo" style="float:left">
+        <br /><br /><br />  <br />
+
+        <div class="topnav">
+            <a class="active" href="#home" onclick="ChangeRegion()">Change Region</a>
+            <a class="active" href="#news" onclick="ChangeStae()">Change Stae</a>
+            <a class="active" href="#news" onclick="ChangeLocale()">Change Locale</a>
+            <a class="active" href="#news" onclick="ChangeOtherFavorites()">Change Other Favorites</a>
+            <a href="#about" onclick="gotowishlist()">Show WishList</a>
+            <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
+        </div>
+    </div>
+    <!--<h1 style="color:red">בחירת העדפות</h1>-->
+    <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+    <div class="highlightsDiv">
+
+        <h3><label for="region" style="color:red">בחר/י מדינה:</label> </h3>
+
+        <div class="state">
+            <label> <input type="checkbox" id="0" class="radio" value="0" />all</label><br />
+            <label> <input type="checkbox" id="1" class="radio" value="1" />Alabama</label><br />
+            <label> <input type="checkbox" id="2" class="radio" value="2" />Alaska</label><br />
+            <label> <input type="checkbox" id="4" class="radio" value="4" />Arizona</label><br />
+            <label> <input type="checkbox" id="5" class="radio" value="5" />Arkansas</label><br />
+            <label> <input type="checkbox" id="6" class="radio" value="6" />California</label><br />
+            <label> <input type="checkbox" id="8" class="radio" value="8" />Colorado</label><br />
+            <label> <input type="checkbox" id="9" class="radio" value="9" />Connecticut</label><br />
+            <label> <input type="checkbox" id="10" class="radio" value="10" />Delaware</label><br />
+            <label> <input type="checkbox" id="11" class="radio" value="11" />District of Columbia</label><br />
+            <label> <input type="checkbox" id="12" class="radio" value="12" />Florida</label><br />
+            <label> <input type="checkbox" id="13" class="radio" value="13" />Georgia</label><br />
+            <label> <input type="checkbox" id="15" class="radio" value="15" />Hawaii</label><br />
+            <label> <input type="checkbox" id="16" class="radio" value="16" />Idaho</label><br />
+            <label> <input type="checkbox" id="17" class="radio" value="17" />Illinois</label><br />
+            <label> <input type="checkbox" id="18" class="radio" value="18" />Indiana</label><br />
+            <label> <input type="checkbox" id="19" class="radio" value="19" />Iowa</label><br />
+            <label> <input type="checkbox" id="20" class="radio" value="20" />Kansas</label><br />
+            <label> <input type="checkbox" id="21" class="radio" value="21" />Kentucky</label><br />
+            <label> <input type="checkbox" id="22" class="radio" value="22" />Louisiana</label><br />
+            <label> <input type="checkbox" id="23" class="radio" value="23" />Maine</label><br />
+            <label> <input type="checkbox" id="24" class="radio" value="24" />Maryland</label><br />
+            <label> <input type="checkbox" id="25" class="radio" value="25" />Massachusetts</label><br />
+            <label> <input type="checkbox" id="26" class="radio" value="26" />Michigan</label><br />
+            <label> <input type="checkbox" id="27" class="radio" value="27" />Minnesota</label><br />
+            <label> <input type="checkbox" id="28" class="radio" value="28" />Mississippi</label><br />
+            <label> <input type="checkbox" id="29" class="radio" value="29" />Missouri</label><br />
+            <label> <input type="checkbox" id="30" class="radio" value="30" />Montana</label><br />
+            <label> <input type="checkbox" id="31" class="radio" value="31" />Nebraska</label><br />
+            <label> <input type="checkbox" id="32" class="radio" value="32" />Nevada</label><br />
+            <label> <input type="checkbox" id="33" class="radio" value="33" />New Hampshire</label><br />
+            <label> <input type="checkbox" id="34" class="radio" value="34" />New Jersey</label><br />
+            <label> <input type="checkbox" id="35" class="radio" value="35" />New Mexico</label><br />
+            <label> <input type="checkbox" id="36" class="radio" value="36" />New York</label><br />
+            <label> <input type="checkbox" id="37" class="radio" value="37" />North Carolina</label><br />
+            <label> <input type="checkbox" id="38" class="radio" value="38" />North Dakota</label><br />
+            <label> <input type="checkbox" id="39" class="radio" value="39" />Ohio</label><br />
+            <label> <input type="checkbox" id="40" class="radio" value="40" />Oklahoma</label><br />
+            <label> <input type="checkbox" id="41" class="radio" value="41" />Oregon</label><br />
+            <label> <input type="checkbox" id="42" class="radio" value="42" />Pennsylvania</label><br />
+            <label> <input type="checkbox" id="44" class="radio" value="44" />Rhode Island</label><br />
+            <label> <input type="checkbox" id="45" class="radio" value="45" />South Carolina</label><br />
+            <label> <input type="checkbox" id="46" class="radio" value="46" />South Dakota</label><br />
+            <label> <input type="checkbox" id="47" class="radio" value="47" />Tennessee</label><br />
+            <label> <input type="checkbox" id="48" class="radio" value="48" />Texas</label><br />
+            <label> <input type="checkbox" id="49" class="radio" value="49" />Utah</label><br />
+            <label> <input type="checkbox" id="50" class="radio" value="50" />Vermont</label><br />
+            <label> <input type="checkbox" id="51" class="radio" value="51" />Virginia</label><br />
+            <label> <input type="checkbox" id="53" class="radio" value="53" />Washington</label><br />
+            <label> <input type="checkbox" id="54" class="radio" value="54" />West Virginia</label><br />
+            <label> <input type="checkbox" id="55" class="radio" value="55" />Wisconsin</label><br />
+            <label> <input type="checkbox" id="56" class="radio" value="56" />Wyoming</label><br />
+            <label> <input type="checkbox" id="60" class="radio" value="60" />American Samoa</label><br />
+            <label> <input type="checkbox" id="64" class="radio" value="64" />Federated States of Micronesia</label><br />
+            <label> <input type="checkbox" id="66" class="radio" value="66" />Guam</label><br />
+            <label> <input type="checkbox" id="69" class="radio" value="69" />Northern Mariana Islands</label><br />
+            <label> <input type="checkbox" id="70" class="radio" value="70" />Palau</label><br />
+            <label> <input type="checkbox" id="72" class="radio" value="72" />Puerto Rico</label><br />
+
+        </div>
+    </div>
+    <div>
+        <button class="button button1" onclick="savestates()">
+            Save!
+        </button>
+    </div>
+    <div id="df">   </div>
+
+</body>
+</html>

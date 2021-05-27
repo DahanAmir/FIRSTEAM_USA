@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="https://localhost:44381/Scripts/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!--<script src="../Scripts/ajaxCalls.js"></script>-->
+    <style type="text/css">
+        .btn-group button {
+            background-color: #04AA6D; /* Green background */
+            border: 1px solid green; /* Green border */
+            color: white; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+        }
+
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .btn-group button:not(:last-child) {
+            border-right: none; /* Prevent double borders */
+        }
+
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+    <style>
+
+
+        .button2 {
+            background-color: white;
+            border: none;
+            color: darkblue;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            float: left;
+        }
+
+
+        /*כותרת*/
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: red;
+                    color: white;
+                }
+
+
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: black;
+                color: white;
+            }
+
+        #header {
+            background-color: red;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 0px auto;
+            width: 100%;
+            height: 100%;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            height: 60px;
+            color: white;
+            width: 180px;
+            float: left;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #f13333;
+            border-color: #f13333;
+        }
+
+        .red-star {
+            color: red;
+        }
+    </style>
+
+
+    <script>
+        $(document).ready(function () {
+            //   $("#dyn").click(dynStaff);
+            $("#pForm").submit(AddData); // bind the submit event to a function called f1
+
+            // activate a custom validation function when the element looses focus.
+            //    $("#discountCodeTB").on("blur", checkCode);
+        });
+
+        function checkCode() {
+            if (this.value % 3 != 0) { // an example of validation that the code divides by 3
+                this.validity.valid = false; // must set it to false to prevent the submit to the server
+                this.setCustomValidity('Code is not valid, please enter a valid code');
+            }
+            else {
+                this.validity.valid = true;
+                this.setCustomValidity('');
+            }
+        }
+
+
+
+
+        // This function is called in case of a success
+        function successData(data) {
+
+
+
+            alert("Submitted")
+
+            swal("Submitted to the server!", "Great Job", "success");
+            //  localStorage.setItem('email', $("#mailTB").val())
+            // localStorage.setItem('password', $("#passwordTB").val())
+            //window.open("FavRegion.html");
+
+            return false;
+
+        }
+
+        // This function is called in case of an error
+        function errorData(err) {
+            alert("Error")
+            if (err.status == 500)
+                alert("error- this email already exist");
+            else
+                alert("Please try again");
+
+            return false;
+
+        }
+
+
+
+        function AddData() { // הכנסת יוזר חדש
+
+
+
+
+            let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                // FirstName: $("#nameTB").val(),
+                Email: $("#mailTB").val(),
+                National: $("#NT").val(),
+                Cnational1: $("#CNT").val(),
+                League: $("#league").val(),
+                Champions: $("#champions").val(),
+                Cups: $("#Cups").val(),
+                Position: $("#Position").val(),
+                Tofel: $("#Tofel").val(),
+                Sat: $("#Sat").val(),
+                Gpa: $("#GPA").val()
+                
+            }
+
+          //  alert("info is: " + u.National);
+
+            ajaxCall("POST", "../api/UserData", JSON.stringify(u), successData, errorData); //נוסיף לשרת את היוזר
+
+            return false;
+
+
+
+        }
+
+
+
+
+        $(document).ready(function () {
+
+            name1 = email.split('@');
+            name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
+            document.getElementById("intro").innerHTML = name;
+            //    alert("email is: " + email);
+
+        });
+
+
+        function ChangeFavorites() {
+
+            window.open('FavRegion.html');
+
+        }
+
+
+
+        function errorWishlist() {
+            alert("Please Choose school to Save")
+        }
+
+        function successWishlist() {
+            alert("successWishlist")
+        }
+
+        function Algo() {
+            window.open('Algo.html')
+        }
+
+
+
+        function gotowishlist() {
+            window.open('WishList.html')
+        }
+
+
+        function allprofiles() {
+            window.open('Profile_Show.html')
+        }
+
+        function goBack() {
+            window.history.back();
+            window.close()
+        }
+
+
+
+    </script>
+
+
+</head>
+<body>
+
+    <button class="button2" ONCLICK="goBack()" style="float:left"> Go Back  </button>
+    <br /><br /><br /><br />
+
+
+    <div class="imgcontainer">
+
+        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+        <div class="topnav">
+            <a href="#home" onclick="Algo()" style="background-color:#034f84">Smart Algo</a>
+            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
+            <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
+            <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
+            <a href="#about" onclick="gotowishlist()">Show WishList</a>
+            <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
+            <p>
+                Add To WishList  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
+                    <span class="glyphicon glyphicon-heart"></span> Add To WishList
+                </a>
+            </p>
+        </div>
+
+        <div id="intro">     </div>
+
+
+    </div>
+    <div>
+
+
+    </div>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+
+
+    <a href="LogIn.html">Go Back To Home Page</a>
+    <div class="container">
+        <form id="pForm">
+            <h1 style="color:red">Insert User Data</h1>
+            <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+            <!--<div class="form-group">
+        <label for="nameTB"><span class="red-star">★ </span>First Name</label>
+        <input type="text" class="form-control" id="nameTB" pattern="[A-Za-z].{1,10}" required oninvalid="this.setCustomValidity('Format should be max 10 char')"
+               oninput="this.setCustomValidity('')" placeholder="Enter your name">
+    </div>-->
+
+
+            <div class="form-group">
+                <label for="mailTB"><span class="red-star" required>★ </span>mail</label>
+                <input type="text" class="form-control" id="mailTB" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter the mail. Format should be: XXXX@XXXX." required />
+            </div>
+
+
+            <!--<div class="form-group">
+        <label for="user"><span class="red-star" required>★ </span>Gender</label><br />
+        <select id="Gender" name="leaveCode">
+            <option value="999">Please Choose option</option>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+        </select>
+    </div>-->
+
+
+
+            <div class="form-group">
+                <label for="user"><span class="red-star" required>★ </span>In National Team?</label><br />
+                <select id="NT" name="leaveCode">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="user"><span class="red-star" required>★ </span>In Captain National Team?</label><br />
+                <select id="CNT" name="leaveCode">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="league">Choose a league:</label>
+                <select name="league" id="league">
+                    <option value="0">Choose..</option>
+                    <option value="1">על</option>
+                    <option value="2">לאומית</option>
+                    <option value="3">א'</option>
+                    <option value="4">אחר</option>
+                </select>
+                <br><br>
+            </div>
+
+            <div>
+                <label for="champions">Champions Num:</label><br>
+                <input type="text" id="champions" name="champions"><br>
+            </div>
+            <div>
+                <label for="cups">Cups Num:</label><br>
+                <input type="text" id="Cups" name="Cups"><br>
+            </div>
+
+            <div>
+                <label for="Position">Choose Your Position:</label>
+                <select name="league" id="league">
+                    <option value="0">Choose..</option>
+                    <option value="שוער">שוער</option>
+                    <option value="בלם">בלם</option>
+                    <option value="מגן">מגן</option>
+                    <option value="קישור">קישור</option>
+                    <option value="כנף">כנף</option>
+                    <option value="חלוץ">חלוץ</option>
+                </select>
+                <br><br>
+            </div>
+
+
+            <div>
+                <label for="Tofel">TOFEL Score:</label><br>
+                <input type="text" id="Tofel" name="Tofel"><br>
+            </div>
+            <div>
+                <label for="SAT">SAT Score:</label><br>
+                <input type="text" id="SAT" name="SAT"><br>
+            </div>
+            <div>
+                <label for="GPA">GPA Score:</label><br>
+                <input type="text" id="GPA" name="GPA"><br>
+            </div>
+
+
+
+
+
+
+
+
+            <br />
+
+            <input type="submit" id="buttonUpload" value="Submit BTN" />
+
+        </form>
+
+    </div>
+    <div id="ph">
+
+    </div>
+
+
+</body>
+
+</html>

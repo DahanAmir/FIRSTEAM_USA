@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link href="../StyleSheetFav.css" rel="stylesheet" />
+	<script src="../Scripts/jquery-3.3.1.min.js"></script>
+	<script src="../Scripts/ajaxCallsWithKey.js"></script>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+	<script>
+
+		$(document).ready(function () {
+			getfav();
+
+		});
+
+
+
+
+
+        function getfav() {
+            let api = "../api/Costumer";
+			ajaxCall("GET", api, "", getSuccess, getError);
+
+        }
+
+        function getSuccess(data) {
+            console.log(data);
+            rendfav(data)
+
+        }
+
+
+        function getError(err) {
+			console.log(err);
+            alert("Sorry, please try again");
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+		//function getfav() {
+
+		//	let api = "../api/businesses";
+		//	ajaxCall("GET", api, "", getSuccess, getError);
+
+		//}
+
+		//function getSuccess(data) {
+
+		//	console.log(data);
+		//	rendfav(data)
+
+		//}
+
+
+		//function getError(err) {
+		//	alert("in err");
+		//	console.log(err);
+
+		//}
+		function rendfav(data) {
+			let str = ''
+			for (var k = 0; k < data.length; k++) {
+				// <a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
+				str += "<div style:'position:relative'>" + data[k].Name + "</br ></div>";
+				str += "<div style:'position:relative'>" + data[k].Fname + "</br ></div>";
+				str += "<div style:'position:relative'>" + data[k].Email + "</br ></div>";
+				str += "<div style:'position:relative'>" + data[k].Password + "</br ></div>";
+				str += "<div style:'position:relative'>" + data[k].Phone + "</br ></div>";            
+				// str += " <a href=" + favorite_list[k]. + " > view photos </a >";
+				//var httpPostedFile = httpContext.data[k].Myfile
+
+                str += "<img src='../uploadedFiles/" + data[k].Myfile + "'/>";
+				//str += '<img src="../uploadedFiles/‏'+‏data[k].Myfile + '"/>';
+             
+                //str += "<div style:'float:left'><img id='img' src='" + httpPostedFile + "' width='50px' height='60px'></div>";
+				//str += "</br> img src=" + data[k].Featured_image+ "'>";
+				//  str += "<div>  <button onclick='gotofav(this.id)' id='" + rlist[k].name + ' ' + rlist[k].photos_url + "'>  Add to favorites </button> rest name: " + rlist[k].name + "</div>";
+
+			}
+			document.getElementById("showfav").innerHTML = str;
+
+		}
+        function showImages(data) {
+            console.log(data);
+
+            var imgStr = "";
+
+            if (Array.isArray(data)) {
+
+                for (var i = 0; i < data.length; i++) {
+                    imgStr += "<img src='../" + data[i] + "'/>";
+                }
+
+            }
+
+            else {
+                imgStr = "<img src='../" + data + "'/>";
+            }
+
+            document.getElementById("ph").innerHTML = imgStr;
+        }
+
+
+	</script>
+
+</head>
+<body>
+	<a href="HtmlPage1.html">Go Back</a>
+	<div class="header">
+		<h1>Favorits ♡</h1>
+
+	</div>
+	<div id="showfav">
+
+	</div>
+</body>
+</html>

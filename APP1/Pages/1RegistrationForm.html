@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+	<script src="../Scripts/jquery-3.4.1.min.js"></script>
+	<script src="../Scripts/ajaxCalls.js"></script>
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			text-align:right;
+		}
+
+		* {
+			box-sizing: border-box
+		}
+
+		/* Full-width input fields */
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 15px;
+			margin: 5px 0 22px 0;
+			display: inline-block;
+			border: none;
+			background: #f1f1f1;
+			text-align:right;
+		}
+
+			input[type=text]:focus, input[type=password]:focus {
+				background-color: #ddd;
+				outline: none;
+			}
+
+		hr {
+			border: 1px solid #f1f1f1;
+			margin-bottom: 25px;
+		}
+
+		/* Set a style for all buttons */
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+			opacity: 0.9;
+		}
+
+			button:hover {
+				opacity: 1;
+			}
+
+		/* Extra styles for the cancel button */
+		.cancelbtn {
+			padding: 14px 20px;
+			background-color: #f44336;
+		}
+
+		/* Float cancel and signup buttons and add an equal width */
+		.cancelbtn, .signupbtn {
+			float: left;
+			width: 50%;
+		}
+
+		/* Add padding to container elements */
+		.container {
+			padding: 16px;
+		}
+
+		/* Clear floats */
+		.clearfix::after {
+			content: "";
+			clear: both;
+			display: table;
+		}
+
+		/* Change styles for cancel button and signup button on extra small screens */
+		@media screen and (max-width: 300px) {
+			.cancelbtn, .signupbtn {
+				width: 100%;
+			}
+		}
+	</style>
+
+	<script>
+		function submit1() {
+			alert("in submit")
+			let email = $("#email").val();
+			let password1 = $("#password").val();
+			let password2 = $("#psw-repeat").val();
+
+
+			if (password1 == password2) {
+				let newUser = {
+					email: $("#email").val(),
+					password: $("#password").val()
+				}
+				alert(newUser)
+            }
+			else alert("Passwords are no match!")
+
+			
+		}
+	</script>
+</head>
+<body>
+
+	<div style="border:1px solid #ccc">
+		<div class="imgcontainer" style="text-align:center">
+			<img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+		</div>
+		<div class="container">
+			<h1>יצירת חשבון חדש</h1>
+			<p>מלא טופס זה על מנת ליצור חשבון</p>
+			<hr>
+
+			<label for="email"><b>דוא"ל</b></label>
+			<input type="text"  id="email" placeholder="הכנס כתובת מייל" name="email" required>
+
+			<label for="psw"><b>סיסמה</b></label>
+			<input type="password" id="password" placeholder="הכנס סיסמה" name="psw" required>
+
+			<label for="psw-repeat"><b>אימות סיסמה</b></label>
+			<input type="password" id="psw-repeat" placeholder="חזור על הסיסמה" name="psw-repeat" required>
+
+			<label>
+				<input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> זכור אותי במחשב זה
+			</label>
+
+			<!--<p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>-->
+
+			<div class="clearfix">
+				<button type="button" class="cancelbtn">ביטול</button>
+				<button type="submit" class="signupbtn" onclick="submit1()" >הרשמה</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

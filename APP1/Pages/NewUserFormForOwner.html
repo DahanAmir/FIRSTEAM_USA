@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="https://localhost:44381/Scripts/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!--<script src="../Scripts/ajaxCalls.js"></script>-->
+    <style type="text/css">
+
+
+        .red-star {
+            color: red;
+        }
+    </style>
+    <script>
+
+        //function readURL(input) {
+        //    if (input.files && input.files[0]) {
+        //        var reader = new FileReader();
+        //        reader.onload = (function (e) {
+        //            var file = e.target;
+        //            $("<span class=\"pip\">" +
+        //                "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+        //                "<br/><span class=\"remove\">Remove image</span>" +
+        //                "</span>").insertAfter("#" + input_id);
+        //            $(".remove").click(function () {
+        //                $(this).parent(".pip").remove();
+        //            });
+        //        });
+        //        reader.readAsDataURL(input.files[0]);
+        //    }
+        //}
+
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            //   $("#dyn").click(dynStaff);
+            $("#pForm").submit(f1); // bind the submit event to a function called f1
+
+            // activate a custom validation function when the element looses focus.
+            //    $("#discountCodeTB").on("blur", checkCode);
+        });
+
+        function checkCode() {
+            if (this.value % 3 != 0) { // an example of validation that the code divides by 3
+                this.validity.valid = false; // must set it to false to prevent the submit to the server
+                this.setCustomValidity('Code is not valid, please enter a valid code');
+            }
+            else {
+                this.validity.valid = true;
+                this.setCustomValidity('');
+            }
+        }
+
+
+
+
+        // This function is called in case of a success
+        function success(data) {
+
+
+
+            alert("Submitted")
+            swal("Submitted to the server!", "Great Job", "success");
+            localStorage.setItem('email', $("#mailTB").val())
+            localStorage.setItem('password', $("#passwordTB").val())
+            window.open("FavRegion.html");
+
+            return false;
+
+        }
+
+        // This function is called in case of an error
+        function error(err) {
+            alert("Error")
+            if (err.status == 500)
+                alert("error- this email already exist");
+            else
+                alert("Please try again");
+        }
+
+
+
+        function AddCost() { // הכנסת יוזר חדש
+            var date = $("#birthday").val().split("-")
+
+            alert(date);
+
+            var sex = document.getElementById('sex')
+            let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                FirstName: $("#nameTB").val(),
+                LastName: $("#FnameTB").val(),
+                BirthDay: $("#birthday").val(),
+                Phone: $("#phoneTB").val(),
+                Address: $("#AddressTB").val(),
+                Email: $("#mailTB").val(),
+                Password: $("#passwordTB").val(),
+                Position: $("#PositionTB").val(),
+                TypeUsers: document.getElementById('user').value,
+                Sex: document.getElementById('Sex').value,
+                Height: $("#HeightTB").val(),
+                EstimatedYear: $("#EstimatedYear").val(),
+                Active: 1
+
+            }
+
+            ajaxCall("Put", "../api/Users", JSON.stringify(u), success, error); //נוסיף לשרת את היוזר
+
+            function showImages(data) {
+                console.log(data);
+
+
+            }
+
+            function error1(data) {
+                console.log(data);
+            }
+
+
+        }
+
+
+        function f1() {
+
+            var psw1 = document.getElementById("passwordTB").value
+            var psw2 = document.getElementById("password2TB").value
+            if (psw1 == psw2) {
+
+                alert("Password matches")
+                AddCost();
+                return false; // the return false will prevent the form from being submitted
+                // hence the page will not reload
+
+            }
+            else alert("Passwords are not matched!")
+            return false;
+        }
+
+
+    </script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</head>
+<body>
+
+    <a href="LogIn.html">Go Back To Home Page</a>
+    <div class="container">
+        <form id="pForm">
+            <h1 style="color:red">Insert new User</h1>
+            <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+            <div class="form-group">
+                <label for="nameTB"><span class="red-star">★ </span>First Name</label>
+                <input type="text" class="form-control" id="nameTB" pattern="[A-Za-z].{1,10}" required oninvalid="this.setCustomValidity('Format should be max 10 char')"
+                       oninput="this.setCustomValidity('')" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="FnameTB"><span class="red-star">★ </span>Last Name</label>
+                <input type="text" class="form-control" id="FnameTB" pattern="[A-Za-z].{1,10}" required placeholder="Enter the family name">
+            </div>
+            <div class="form-group">
+                <label for="birthday">Birthday:</label>
+                <input type="date" placeholder="MM-dd-yyyy" id="birthday" name="birthday">
+            </div>
+
+                <div class="form-group">
+                    <label for="dealerPhone"><span class="red-star">★ </span>Your Phone (using a pattern validator)</label>
+                    <input type="tel" class="form-control" placeholder="Enter the dealer phone ddd-dd-dd" id="phoneTB"
+                           pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" required
+                           oninvalid="this.setCustomValidity('Format should be ddd-dddd-ddd')"
+                           oninput="this.setCustomValidity('')" />
+                </div>
+                <div class="form-group">
+                    <label for="AddressTB"><span class="red-star">★ </span>Address</label>
+                    <input type="text" class="form-control" id="AddressTB" placeholder="Enter Street,City" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="mailTB"><span class="red-star" required>★ </span>mail</label>
+                    <input type="text" class="form-control" id="mailTB" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter the mail. Format should be: XXXX@XXXX." required />
+                </div>
+
+
+                <div class="form-group">
+                    <label for="passwordTB"><span class="red-star" required>★ </span>Password</label>
+                    <input type="password" class="form-control" id="passwordTB" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required placeholder="Enter Password Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+                           oninvalid="this.setCustomValidity('Enter Password Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters')"
+                           oninput="this.setCustomValidity('')" />
+                </div>
+                <div class="form-group">
+                    <label for="passwordTB"><span class="red-star" required>★ </span>Repeat Password</label>
+                    <input type="text" class="form-control" id="password2TB" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required placeholder="Enter Password Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+                           oninvalid="this.setCustomValidity('Enter Password Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters')"
+                           oninput="this.setCustomValidity('')" />
+                </div>
+           
+            <div class="form-group">
+                <label for="EstimatedYear">Estimated Year:</label>
+                <input type="date" placeholder="MM-dd-yyyy" id="EstimatedYear" name="EstimatedYear">
+
+            </div>
+
+            <div class="form-group">
+                <label for="HeightTB"><span class="red-star" required>★ </span>Height</label>
+                <input type="number" step="0.01" placeholder="CM" class="form-control" id="HeightTB" max="3"
+                       oninvalid="this.setCustomValidity('Enter Your Height')"
+                       oninput="this.setCustomValidity('')" required />
+
+            </div>
+
+            <div class="form-group">
+                <label for="PositionTB"><span class="red-star" required>★ </span>Position</label>
+                <input type="text" class="form-control" id="PositionTB"
+                       oninvalid="this.setCustomValidity('Enter Your Position')"
+                       oninput="this.setCustomValidity('')" required />
+            </div>
+
+            <div class="form-group">
+                <label for="user"><span class="red-star" required>★ </span>User</label><br />
+                <select id="user" name="leaveCode">
+                    <option value="0">Player</option>
+                    <option value="1">Owner</option>
+
+                </select>
+
+
+
+            </div>
+            <div class="form-group">
+
+
+                <label for="Sex"><span class="red-star" required>★ </span>Sex</label><br />
+                <select id="Sex" name="leaveCode">
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+
+                </select>
+
+
+
+            </div>
+
+
+            <br />
+
+
+
+            <br />
+
+            <input type="submit" id="buttonUpload" value="Submit BTN" />
+
+        </form>
+
+    </div>
+    <div id="ph">
+
+    </div>
+
+
+</body>
+
+</html>

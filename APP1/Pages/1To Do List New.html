@@ -1,0 +1,554 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <style>
+       
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo list</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/aa56b476ff.js"></script>
+    <script>
+        @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i&display=swap&subset=cyrillic");
+* {
+            margin: 0;
+            padding: 0;
+            box- sizing: border - box; }
+
+        body {
+            font - family: 'Montserrat', sans - serif;
+            font - size: 12px;
+        }
+
+        h1 {
+            font - size: 16px;
+        }
+
+        h2 {
+            font - size: 14px;
+        }
+
+        a {
+            text - decoration: none;
+        }
+
+        button {
+            box - shadow: none;
+        }
+        button: focus {
+            outline: 0;
+        }
+
+.stopScroll {
+            height: 100 %;
+            overflow: hidden;
+        }
+
+.wrapper {
+            margin: 0 auto;
+            max - width: 800px;
+        }
+
+.pageTitle {
+            display: flex;
+            justify - content: center;
+        }
+  .pageTitle--text {
+            padding: 10px;
+        }
+
+.addBlock {
+            display: flex;
+            margin: 10px 0;
+        }
+  .addBlock--input {
+            width: 100 %;
+            border - top: none;
+            border - left: none;
+            border - right: none;
+            border - bottom: 1px solid lightgray;
+            outline: none;
+            font - family: 'Montserrat', sans - serif;
+            font - size: 12px;
+        }
+
+.rectangleBtn {
+            cursor: pointer;
+            border: none;
+            background - color: white;
+            padding: 5px 20px;
+            box - shadow: 0 0 4px 0 #6666da;
+            display: flex;
+            justify - content: center;
+            align - items: center;
+            border - radius: 5px;
+            font - family: Montserrat, sans - serif;
+        }
+  .rectangleBtn - spaceL {
+            margin - left: 15px;
+        }
+  .rectangleBtn - spaceR {
+            margin - right: 15px;
+        }
+  .rectangleBtn - spaceH {
+            margin - right: 15px;
+            margin - left: 15px;
+        }
+  .rectangleBtn - spaceV {
+            margin - top: 10px;
+            margin - bottom: 15px;
+        }
+  .rectangleBtn - minSize {
+            padding: 1px;
+            box - shadow: 0 0 2px 0 gray;
+            border - radius: 2px;
+        }
+  .rectangleBtn - greenShadow {
+            box - shadow: 0 0 4px 0 #27cd15;
+        }
+  .rectangleBtn - redShadow {
+            box - shadow: 0 0 4px 0 #cd5046;
+        }
+  .rectangleBtn: active {
+            background - color: #c9c9c9;
+        }
+  .rectangleBtn: hover {
+            font - weight: bold;
+        }
+
+.filterBlock {
+            display: flex;
+            justify - content: space - between;
+        }
+
+.filterBtn {
+            text - align: center;
+            padding: 1px 0;
+            box - shadow: 0 0 2px 0 #6460cd;
+            display: flex;
+            justify - content: center;
+            align - items: center;
+            border - radius: 3px;
+            font - size: 14px;
+            cursor: pointer;
+            border: none;
+            background - color: white;
+        }
+  .filterBtn--up - hide {
+            display: none;
+        }
+  .filterBtn--down - hide {
+            display: none;
+        }
+  .filterBtn - active {
+            color: #6460cd;
+        }
+  .filterBtn - width1stCol {
+            width: 10 %;
+        }
+  .filterBtn - width2ndCol {
+            width: 9 %;
+        }
+  .filterBtn - width4thCol {
+            width: 15 %;
+        }
+  .filterBtn: active {
+            background - color: #c9c9c9;
+        }
+
+.searchInput {
+            font - family: 'Montserrat', sans - serif;
+            font - size: 12px;
+            border - top: none;
+            border - left: none;
+            border - right: none;
+            border - bottom: 1px solid lightgray;
+            outline: none;
+            width: 63 %;
+        }
+
+.taskTemplate {
+            margin - top: 10px;
+            display: flex;
+            justify - content: space - between;
+        }
+  .taskTemplate - hide {
+            display: none;
+        }
+
+.taskBlock {
+            margin - top: 10px;
+            display: flex;
+            justify - content: space - between;
+        }
+  .taskBlock - hide {
+            display: none;
+        }
+
+.dateBlock {
+            width: 10 %;
+            display: flex;
+            justify - content: center;
+            align - items: center;
+        }
+  .dateBlock--date {
+            text - align: center;
+        }
+  .dateBlock--time {
+            text - align: center;
+        }
+
+.priorityBlock {
+            width: 9 %;
+            display: flex;
+            justify - content: center;
+            align - items: center;
+        }
+  .priorityBlock--wrap {
+            padding: 5px;
+            font - size: 16px;
+            font - weight: bold;
+            background - color: #dfe7ff;
+            margin - right: 2px;
+            border - radius: 5px;
+        }
+    .priorityBlock--wrap - red {
+            background - color: rgba(254, 195, 157, 0.98);
+        }
+    .priorityBlock--wrap - orange {
+            background - color: #ffec82;
+        }
+    .priorityBlock--wrap - green {
+            background - color: #61ff8a;
+        }
+
+.taskTextBlock {
+            width: 63 %;
+            text - align: justify;
+        }
+  .taskTextBlock--wrap {
+            padding: 5px;
+            background - color: #dfe7ff;
+            border - radius: 5px;
+            height: 100 %;
+        }
+    .taskTextBlock--wrap - completed {
+            background - color: #e9e9e9;
+            text - decoration: line - through;
+        }
+
+.taskBtnBlock {
+            width: 15 %;
+            display: flex;
+            justify - content: space - between;
+            align - items: center;
+        }
+
+.roundBtn {
+            padding: 5px 5px;
+            box - shadow: 0 0 4px 0 grey;
+            display: flex;
+            justify - content: center;
+            align - items: center;
+            border - radius: 50 %;
+            cursor: pointer;
+            border: none;
+            background - color: white;
+        }
+  .roundBtn--text {
+            width: 15px;
+            height: 15px;
+            text - align: center;
+        }
+  .roundBtn - green {
+            background - color: #61ff8a;
+        }
+  .roundBtn - orange {
+            background - color: #ffec82;
+        }
+  .roundBtn - red {
+            background - color: rgba(254, 195, 157, 0.98);
+        }
+  .roundBtn: active {
+            background - color: #c9c9c9;
+        }
+
+.editPopup {
+            position: fixed;
+            left: 0;
+            top: 0;
+            background - color: rgba(128, 128, 128, 0.25);
+            width: 100 %;
+            height: 100vh;
+            display: flex;
+            justify - content: center;
+            align - items: center;
+            z - index: 100;
+        }
+  .editPopup--wrap {
+            width: 80 %;
+            max - width: 720px;
+            min - width: 320px;
+            background - color: white;
+            border - radius: 10px;
+        }
+  .editPopup--titleWrap {
+            width: fit - content;
+        }
+  .editPopup--title {
+            height: 30px;
+            display: flex;
+            justify - content: center;
+            align - items: center;
+        }
+  .editPopup--inputWrap {
+            margin: 0 auto;
+            width: 90 %;
+            height: 200px;
+        }
+  .editPopup--input {
+            height: 100 %;
+            width: 100 %;
+            outline: none;
+            resize: none;
+            border - radius: 5px;
+            padding: 5px;
+            font - family: Montserrat, sans - serif;
+        }
+  .editPopup--btnWrap {
+            height: 40px;
+            display: flex;
+            align - items: center;
+            justify - content: space - around;
+            max - width: 350px;
+            margin: 0 auto;
+        }
+  .editPopup - hide {
+            display: none;
+        }
+
+.confirmWindow {
+            position: fixed;
+            left: 0;
+            top: 0;
+            background - color: rgba(128, 128, 128, 0.25);
+            width: 100 %;
+            height: 100vh;
+            display: flex;
+            justify - content: center;
+            align - items: center;
+            z - index: 100;
+        }
+  .confirmWindow--wrap {
+            background - color: white;
+            border - radius: 10px;
+        }
+  .confirmWindow--titleWrap {
+            width: fit - content;
+        }
+  .confirmWindow--title {
+            height: 30px;
+            display: flex;
+            justify - content: center;
+            align - items: center;
+        }
+  .confirmWindow--btnWrap {
+            height: 40px;
+            display: flex;
+            align - items: center;
+            justify - content: space - around;
+            max - width: 350px;
+            margin: 0 auto;
+        }
+  .confirmWindow - hide {
+            display: none;
+        }
+
+        @media screen and(max - width: 850px) {
+  .wrapper {
+                margin: 0 auto;
+                max - width: 700px;
+            }
+        }
+
+        @media screen and(max - width: 750px) {
+  .wrapper {
+                margin: 0 auto;
+                max - width: 600px;
+            }
+        }
+
+        @media screen and(max - width: 650px) {
+  .wrapper {
+                margin: 0 auto;
+                max - width: 550px;
+            }
+        }
+
+        @media screen and(max - width: 600px) {
+  .wrapper {
+                margin: 0 auto;
+                max - width: 500px;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="pageTitle">
+            <h1 class="pageTitle--text">
+                TODO LIST
+            </h1>
+        </div>
+        <div class="addBlock">
+            <input class="addBlock--input" type="text"
+                   placeholder="Type new task here">
+            <button class="addBtn rectangleBtn rectangleBtn-spaceL rectangleBtn-greenShadow">
+                <div class="rectangleBtn--text"><i class="fas fa-plus"></i></div>
+            </button>
+        </div>
+        <div class="taskListBlock">
+            <div class="filterBlock">
+                <button class="dateFilterBtn filterBtn filterBtn-width1stCol">
+                    <i class="far fa-clock"></i>
+                    <span>&nbsp;</span>
+                    <span class="filterBtn--up filterBtn--up-hide">
+                        <i class="fas fa-angle-up"></i>
+                    </span>
+                    <span class="filterBtn--down filterBtn--up-hide">
+                        <i class="fas fa-angle-down"></i>
+                    </span>
+                </button>
+                <button class="priorityFilterBtn filterBtn filterBtn-active filterBtn-width2ndCol">
+                    <i class="fas fa-fire-alt"></i>
+                    <span>&nbsp;</span>
+                    <span class="filterBtn--up filterBtn--up-hide">
+                        <i class="fas fa-angle-up"></i>
+                    </span>
+                    <span class="filterBtn--down">
+                        <i class="fas fa-angle-down"></i>
+                    </span>
+                </button>
+                <input class="searchInput" placeholder="Search..." type="text">
+                <button class="completedFilterBtn filterBtn filterBtn-inactive filterBtn-width4thCol">
+                    <i class="far fa-check-circle"></i>
+                    <span>&nbsp;</span>
+                    <span class="filterBtn--up filterBtn--up-hide">
+                        <i class="fas fa-angle-up"></i>
+                    </span>
+                    <span class="filterBtn--down filterBtn--up-hide">
+                        <i class="fas fa-angle-down"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="allTasksBlock">
+                <div class="taskTemplate taskTemplate-hide">
+                    <div class="dateBlock">
+                        <div class="dateBlock--wrap">
+                            <div class="dateBlock--date">dd.mm.yyyy</div>
+                            <div class="dateBlock--time">hh:mm</div>
+                        </div>
+                    </div>
+                    <div class="priorityBlock">
+                        <div class="priorityBlock--wrap">1</div>
+                        <div class="changePriorityBtn">
+                            <button class="priorityUpBtn rectangleBtn rectangleBtn-minSize">
+                                <i class="fas fa-angle-up"></i>
+                            </button>
+                            <button class="priorityDownBtn rectangleBtn rectangleBtn-minSize">
+                                <i class="fas fa-angle-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="taskTextBlock">
+                        <div class="taskTextBlock--wrap">
+                            This is template for new task
+                        </div>
+                    </div>
+                    <div class="taskBtnBlock">
+                        <button class="completeBtn roundBtn roundBtn-green">
+                            <div class="roundBtn--text">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </button>
+                        <button class="editBtn roundBtn roundBtn-orange">
+                            <div class="roundBtn--text">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                        </button>
+                        <button class="deleteBtn roundBtn roundBtn-red">
+                            <div class="roundBtn--text">
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="editPopup editPopup-hide">
+            <div class="editPopup--wrap">
+                <h2 class="editPopup--title">
+                    <div class="editPopup--titleWrap">
+                        Edit text
+                    </div>
+                </h2>
+                <div class="editPopup--inputWrap">
+                    <textarea class="editPopup--input" type="text"></textarea>
+                </div>
+                <div class="editPopup--btnWrap">
+                    <button class="editCancelBtn rectangleBtn rectangleBtn-spaceVert rectangleBtn-redShadow">
+                        Cancel
+                    </button>
+                    <button class="editSaveBtn rectangleBtn rectangleBtn-spaceVert rectangleBtn-greenShadow"
+                            autofocus>
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="confirmSavePopup confirmWindow confirmWindow-hide">
+            <div class="confirmWindow--wrap">
+                <h2 class="confirmWindow--title">
+                    <div class="confirmWindow--titleWrap">
+                        Save changes?
+                    </div>
+                </h2>
+                <div class="confirmWindow--btnWrap">
+                    <button class="confirmSaveBackBtn rectangleBtn rectangleBtn-spaceV rectangleBtn-spaceL">
+                        Back
+                    </button>
+                    <button class="confirmSaveNoBtn rectangleBtn rectangleBtn-spaceV rectangleBtn-spaceH rectangleBtn-redShadow">
+                        No
+                    </button>
+                    <button class="confirmSaveYesBtn rectangleBtn rectangleBtn-spaceV rectangleBtn-spaceR rectangleBtn-greenShadow">
+                        Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="confirmDeletePopup confirmWindow confirmWindow-hide">
+            <div class="confirmWindow--wrap">
+                <h2 class="confirmWindow--title">
+                    <div class="confirmWindow--titleWrap">
+                        Delete task?
+                    </div>
+                </h2>
+                <div class="confirmWindow--btnWrap">
+                    <button class="confirmDeleteYesBtn rectangleBtn rectangleBtn-spaceV rectangleBtn-redShadow rectangleBtn-spaceH">
+                        Yes
+                    </button>
+                    <button class="confirmDeleteNoBtn rectangleBtn rectangleBtn-spaceV rectangleBtn-greenShadow rectangleBtn-spaceR">
+                        No
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/main.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    <title></title>
+
+    <style>
+        body {
+            margin: 0;
+            min-width: 250px;
+        }
+
+        a {
+            display: inline-block;
+        }
+
+        .tasks {
+            margin: 30px 5px 5px 5px;
+        }
+
+            .tasks ul {
+                margin: 0;
+                padding: 0;
+            }
+
+                .tasks ul li {
+                    cursor: pointer;
+                    position: relative;
+                    padding: 12px 8px 12px 40px;
+                    background: #eee;
+                    font-size: 18px;
+                    transition: 0.2s;
+                }
+
+                    .tasks ul li:nth-child(odd) {
+                        background: #f9f9f9;
+                    }
+
+                    .tasks ul li:hover {
+                        background: #ddd;
+                    }
+
+        .dropdown-list {
+            padding: 5px 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+        }
+
+            .close:hover {
+                background-color: #f44336;
+                color: white;
+            }
+
+        .jumbotron {
+            background-color: #323064;
+            text-align: center;
+            color: #fff;
+        }
+
+        .btn-primary,
+        .btn-success {
+            width: 100%;
+            border-color: black;
+        }
+
+        .pagination {
+            padding-left: 40px !important;
+            cursor: pointer !important;
+        }
+
+    </style>
+    <script>
+        var todoList = [{
+            'todo': 'Do task 0',
+            'id': 'todo0'
+        }];
+
+        var pageList = new Array();
+        var currentPage = 1;
+        var numberPerPage = 10;
+        var numberOfPages = 0;
+        var email = "";
+        function newElement() {
+            email = localStorage.getItem("email");
+
+            var inputTitle = document.getElementById('title').value,
+                inputUser = document.getElementById('usr').value,
+                inputDate = document.getElementById('due-date').value,
+                todo = '';
+            if (inputTitle === '') {
+                alert("Please write a task");
+                return;
+            } else {
+                todo = inputTitle;
+                if (inputUser != '') {
+                    todo = inputUser + " צריך.ה " + inputTitle;
+                }
+                if (inputDate != '') {
+                    todo = todo + "  עד לתאריך " + inputDate
+                }
+            }
+            var newTodoId = findNextId(),
+                newTodo = {
+                    'todo': todo,
+                    'id': 'todo' + newTodoId
+                };
+            todoList.push(newTodo);
+
+
+            var todoSave = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                Email: email,
+                Task: $("#title").val(),
+                DueDate: $("#due-date").val()
+
+            }
+            //alert("Todois: " + todoSave);
+            let api = "../api/ToDoList";
+
+            ajaxCall("Post", api, JSON.stringify(todoSave), successtodo, errortodo)
+
+        
+            sortElementsById();
+            clearFields();
+            return false;
+
+        }
+
+
+
+        function successtodo() {
+            alert("in successtodo");
+        }
+
+        function errortodo() {
+            alert("in errortodo");
+        }
+
+        //function newElement() {
+        //    var inputTitle = document.getElementById('title').value,
+        //        inputUser = document.getElementById('usr').value,
+        //        inputDate = document.getElementById('due-date').value,
+        //        todo = '';
+        //    if (inputTitle === '') {
+        //        alert("Please write a task");
+        //        return;
+        //    } else {
+        //        todo = inputTitle;
+        //        if (inputUser != '') {
+        //            todo = inputUser + " needs to " + inputTitle;
+        //        }
+        //        if (inputDate != '') {
+        //            todo = todo + " by " + inputDate
+        //        }
+        //    }
+        //    var newTodoId = findNextId(),
+        //        newTodo = {
+        //            'todo': todo,
+        //            'id': 'todo' + newTodoId
+        //        };
+        //    todoList.push(newTodo);
+        //    sortElementsById();
+        //    clearFields();
+        //}
+
+        function fetchIdFromObj(todo) {
+            return parseInt(todo.id.slice(4));
+        }
+
+        function findNextId() {
+            if (todoList.length === 0) {
+                return 0;
+            }
+            var lastElementId = fetchIdFromObj(todoList[todoList.length - 1]),
+                firstElementId = fetchIdFromObj(todoList[0]);
+            return (firstElementId >= lastElementId) ? (firstElementId + 1) : (lastElementId + 1);
+        }
+
+        function clearFields() {
+            document.getElementById('title').value = '';
+            document.getElementById('usr').value = '';
+            document.getElementById('due-date').value = '';
+        }
+
+        function deleteElement(event) {
+            var idOfEltToBeDeleted = event.target.parentElement.id;
+            var arrayIndex = todoList.findIndex(function (singleTodo) {
+                return singleTodo.id === idOfEltToBeDeleted;
+            });
+            if (arrayIndex !== -1) {
+                todoList.splice(arrayIndex, 1);
+            }
+            load(todoList);
+        }
+
+        function displayOneElement(todoObject) {
+            var li_element = document.createElement("li");
+            var p_element = document.createElement("p");
+            p_element.className = "task-name";
+            li_element.appendChild(p_element);
+            li_element.setAttribute("id", todoObject.id);
+            var text_node = document.createTextNode(todoObject.todo);
+            p_element.appendChild(text_node);
+            var span_element = document.createElement("SPAN");
+            span_element.className = "close";
+            var txt_node = document.createTextNode("\u00D7");
+            span_element.appendChild(txt_node);
+            span_element.onclick = deleteElement;
+            li_element.appendChild(span_element);
+            document.getElementById("task-list").appendChild(li_element);
+        }
+
+        function sortElementsById() {
+            var manyTodos = todoList.sort(function (a, b) {
+                var x = fetchIdFromObj(a);
+                var y = fetchIdFromObj(b);
+
+                if (x > y) {
+                    return -1;
+                }
+                if (x < y) {
+                    return 1;
+                }
+                return 0;
+            })
+            load(manyTodos);
+        }
+
+        function sortElementsByName() {
+            var manyTodos = todoList.sort(function (a, b) {
+                var x = a.todo.toLowerCase();
+                var y = b.todo.toLowerCase();
+                if (x < y) {
+                    return -1;
+                }
+                if (x > y) {
+                    return 1;
+                }
+                return 0;
+            })
+            load(manyTodos);
+        }
+
+        function searchInList() {
+            var str = document.getElementById('search-text').value.toLowerCase();
+            var searchResultList = [];
+            for (var j = 0; j < todoList.length; j++) {
+                if (todoList[j].todo.toLowerCase().match(str))
+                    searchResultList.push(todoList[j]);
+            }
+            load(searchResultList);
+        }
+
+        function getNumberOfPages(manyTodos) {
+            return Math.ceil(manyTodos.length / numberPerPage);
+        }
+
+        function gotoPage(event) {
+            currentPage = parseInt(event.target.id);
+            loadList(todoList);
+        }
+
+        function refreshPaginations() {
+            var paginationTarget = document.getElementById('pagination'),
+                setActiveClass = false;
+            paginationTarget.innerHTML = '';
+            for (var i = 1; i <= numberOfPages; i++) {
+                var li_element = document.createElement("li"),
+                    a_element = document.createElement('a');
+                if (i === currentPage) {
+                    li_element.className = 'active';
+                    setActiveClass = true;
+                } else {
+                    a_element.onclick = gotoPage;
+                }
+                a_element.setAttribute('id', i);
+                a_element.innerHTML = i;
+                li_element.appendChild(a_element);
+                paginationTarget.appendChild(li_element);
+            }
+            if (numberOfPages > 0 && setActiveClass === false) {
+                currentPage = 1;
+                refreshPaginations();
+                loadList(todoList);
+            }
+        }
+
+        function loadList(manyTodos) {
+            var begin = ((currentPage - 1) * numberPerPage);
+            var end = begin + numberPerPage;
+            pageList = manyTodos.slice(begin, end);
+            refreshPaginations();
+            drawList(pageList);
+        }
+
+        function drawList(manyTodos) {
+            document.getElementById("task-list").innerHTML = "";
+            manyTodos.forEach(function (singleTodo) {
+                displayOneElement(singleTodo);
+            });
+        }
+
+        function load(manyTodos) {
+            numberOfPages = getNumberOfPages(manyTodos);
+            loadList(manyTodos);
+        }
+
+        window.onload = function () {
+            sortElementsById();
+        }
+
+
+    </script>
+
+   
+</head>
+<body>
+    <div class="container">
+        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+
+        <div class="jumbotron page-header">
+            <h2 style="margin:5px" width="50%">My To Do List</h2>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="title">Task:</label>
+                <input type="text" id="title" class="form-control" placeholder="Add a title... ">
+            </div>
+            <div class="form-group">
+                <label for="usr">Who should do it:</label>
+                <input type="text" id="usr" class="form-control" placeholder="Add a user...">
+            </div>
+            <div class="form-group">
+                <label for="usr">Due Date:</label>
+                <input type="date" id="due-date" class="form-control" placeholder="Due date">
+            </div>
+            <div class="row">
+                <div class="col-xs-3 pull-left">
+                    <button type="button" class="btn btn-primary" onclick="newElement()">Add Task</button>
+                </div>
+                <div class="dropdown col-xs-3 pull-left">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="background-color:red">
+                        Sort
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-list" onclick="sortElementsById()">Sort By ID</li>
+                        <li class="dropdown-list" onclick="sortElementsByName()">Sort By Name</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 pull-right">
+                    <div class="input-group">
+                        <input id="search-text" onkeyup="searchInList()" type="text" class="form-control" placeholder="Search..." name="search">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="tasks">
+        <ul id="task-list">
+        </ul>
+    </div>
+    <ul id="pagination" class="pagination pagination-lg"></ul>
+</body>
+
+</html>

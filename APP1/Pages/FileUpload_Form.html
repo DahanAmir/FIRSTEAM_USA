@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Files Upload Example</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="../Scripts/ajaxCalls.js"></script>
+
+
+	<style type="text/css">
+
+		img {
+			height: 100px;
+		}
+	</style>
+
+	<script>
+		//up to date--- new
+		$(document).ready(function () {
+            alert(localStorage.getItem('fileemail');
+			$('#buttonUpload').on('click', function () {
+				var data = new FormData();
+				var files = $("#files").get(0).files;
+
+				// Add the uploaded file to the form data collection
+				if (files.length > 0) {
+					for (f = 0; f < files.length; f++) {
+						data.append("UploadedFiles", files[f]);
+					}
+					data.append("name", "benny"); // append what ever data you want to send along with the files. See how you extract it in the controller.
+
+				}
+
+				// Ajax upload
+				$.ajax({
+					type: "POST",
+					url: "../Api/FileUpload",
+					contentType: false,
+					processData: false,
+					data: data,
+					success: showImages,
+					error: error
+				});
+
+				return false;
+			});
+
+		});
+
+
+		function showImages(data) {
+			console.log(data);
+
+
+			//let filec = {
+
+			//Email: $("#email").val(),
+			//   FileType:$("#fileType").val(),
+			//Score: $("#score").val(),
+			//Remark: $("#remark").val(),
+			//FileName: $("#filename").val(),
+
+			//}
+			///upload files with normal ajax post
+
+			ajaxCall("POST", "../api/UsersFile", JSON.stringify(UploadedFiles), success, error);
+		}
+
+		function error(data) {
+			console.log(data);
+		}
+		function success(data) {
+			alert(data);
+			alert("success");
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<form method="post" enctype="multipart/form-data" id="formUpload">
+		<div>
+			<label for="files">Files</label>
+			<input type="file" id="files" name="files" multiple="multiple" />
+		</div>
+		<!--<div class="form-group">
+			<label for="email"><span class="red-star">★ </span>email</label>
+			<input type="text" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter the mail" required />
+			<label for="fileType">fileType</label>
+			<input type="text" id="fileType" name="fileType" />
+			<label for="score">score</label>
+			<input type="number" id="score" name="score" />
+			<label for="remark">remark</label>
+			<input type="text" id="remark" name="remark" />
+			<label for="filename">filename</label>
+			<input type="text" id="filename" name="filename" />
+		</div>-->
+		<br />
+		<button type="button" id="buttonUpload">Upload files</button>
+	</form>
+
+	<div id="ph"></div>
+
+
+</body>
+</html>

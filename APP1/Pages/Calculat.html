@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+    <script src="../Scripts/ajaxCallsWithKey.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        $(document).ready(function () {
+
+            var fs = require('fs');
+            var jsonexport = require('jsonexport');
+            jsonexport(response, function (err, csv) {
+                fs.writeFile("C:\github\FinalProj56\Final56\APP1 backup\APP1\NCAA\c.csv", csv, function (err) {
+                    if (err) { }
+                });
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

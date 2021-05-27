@@ -1,0 +1,544 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+
+    <style>
+        body {
+            margin: 0;
+            min-width: 250px;
+        }
+
+        /* Include the padding and border in an element's total width and height */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Remove margins and padding from the list */
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+            /* Style the list items */
+            ul li {
+                cursor: pointer;
+                position: relative;
+                padding: 12px 8px 12px 40px;
+                list-style-type: none;
+                background: #eee;
+                font-size: 18px;
+                transition: 0.2s;
+                /* make the list items unselectable */
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+                /* Set all odd list items to a different color (zebra-stripes) */
+                ul li:nth-child(odd) {
+                    background: #f9f9f9;
+                }
+
+                /* Darker background-color on hover */
+                ul li:hover {
+                    background: #ddd;
+                }
+
+                /* When clicked on, add a background color and strike out text */
+                ul li.checked {
+                    background: #888;
+                    color: #fff;
+                    text-decoration: line-through;
+                }
+                    /* Add a "checked" mark when clicked on */
+                    ul li.checked::before {
+                        content: '';
+                        position: absolute;
+                        border-color: #fff;
+                        border-style: solid;
+                        border-width: 0 2px 2px 0;
+                        top: 10px;
+                        left: 16px;
+                        transform: rotate(45deg);
+                        height: 15px;
+                        width: 7px;
+                    }
+        /* Style the close button */
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+        }
+
+            .close:hover {
+                background-color: #f44336;
+                color: white;
+            }
+        /* Style the header */
+        .header {
+            background-color: lavender;
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+        }
+            /* Clear floats after the header */
+            .header:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        /* Style the input */
+       /* input {
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            width: 75%;
+            padding: 10px;
+            float: left;
+            font-size: 16px;
+        }*/
+        /* Style the "Add" button */
+        .addBtn {
+            padding: 10px;
+            width: 25%;
+            background: #d9d9d9;
+            color: #555;
+            float: left;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 0;
+        }
+
+            .addBtn:hover {
+                background-color: #bbb;
+            }
+
+        #calendar {
+            float: left;
+            position: absolute;
+        }
+
+        .profilesBtn {
+            background-color: lavender;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            font-size: 16px;
+            margin: 4px 2px;
+            opacity: 1;
+            transition: 0.3s;
+        }
+
+            .profilesBtn:hover {
+                opacity: 0.6
+            }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: red;
+                    color: white;
+                }
+        /*  todo list*/
+        table#miyazaki {
+            margin: 0 auto;
+            border-collapse: collapse;
+            font-family: Agenda-Light, sans-serif;
+            font-weight: 100;
+            background: #333;
+            color: #fff;
+            text-rendering: optimizeLegibility;
+            border-radius: 5px;
+            float: right;
+        }
+
+            table#miyazaki caption {
+                font-size: 2rem;
+                color: #444;
+                margin: 1rem;
+                /*  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/miyazaki.png), url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/miyazaki2.png);*/
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center left, center right;
+            }
+
+            table#miyazaki thead th {
+                font-weight: 600;
+            }
+
+            table#miyazaki thead th, table#miyazaki tbody td {
+                padding: .8rem;
+                font-size: 1.4rem;
+            }
+
+            table#miyazaki tbody td {
+                padding: .8rem;
+                font-size: 1.4rem;
+                color: #444;
+                background: #eee;
+            }
+
+            table#miyazaki tbody tr:not(:last-child) {
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+            }
+
+        @media screen and (max-width: 600px) {
+            table#miyazaki caption {
+                background-image: none;
+            }
+
+            table#miyazaki thead {
+                display: none;
+            }
+
+            table#miyazaki tbody td {
+                display: block;
+                padding: .6rem;
+            }
+
+            table#miyazaki tbody tr td:first-child {
+                background: #666;
+                color: #fff;
+            }
+
+            table#miyazaki tbody td:before {
+                content: attr(data-th);
+                font-weight: bold;
+                display: inline-block;
+                width: 6rem;
+            }
+        }
+
+
+        #email {
+            float: left;
+            border: 1px solid;
+            width: 200px;
+            height: 300px;
+        }
+        
+       /* #Show {
+            float: left;
+            border: 1px solid;
+            width:100px;
+        }*/
+        /*  todo list*/
+    </style>
+    <script>
+        // Create a "close" button and append it to each list item
+        var myNodelist = document.getElementsByTagName("LI");
+        var i;
+        for (i = 0; i < myNodelist.length; i++) {
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            myNodelist[i].appendChild(span);
+        }
+        // Click on a close button to hide the current list item
+        var close = document.getElementsByClassName("close");
+        var i;
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function () {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+        // Add a "checked" symbol when clicking on a list item
+        var list = document.querySelector('ul');
+        list.addEventListener('click', function (ev) {
+            if (ev.target.tagName === 'LI') {
+                ev.target.classList.toggle('checked');
+            }
+        }, false);
+        // Create a new list item when clicking on the "Add" button
+        function newElement() {
+            var li = document.createElement("li");
+            var inputValue = document.getElementById("myInput").value;
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+            if (inputValue === '') {
+                alert("You must write something!");
+            } else {
+                document.getElementById("myUL").appendChild(li);
+            }
+            document.getElementById("myInput").value = "";
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span);
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function () {
+                    var div = this.parentElement;
+                    div.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+
+
+
+        var str = "";
+        var str1 = "";
+        var email = "";
+        var name = '';
+        var email = localStorage.getItem("email");
+        var arr = "";
+        var obj = "";
+
+
+        $(document).ready(function () {
+
+            name1 = email.split('@');
+            name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
+            document.getElementById("intro").innerHTML = name;
+            str1 = "users_show"
+            let api = "../api/Users/" + str1 + "/Show_all_users";
+            ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
+            todo();
+
+
+        });
+
+        function getSuccess(data) {
+            alert("in sucess");
+            console.log(data);
+            rendusers(data);
+        }
+
+        function erroradd_list_r() {
+            alert("erroradd_list_r")
+        }
+
+        
+        function rendusers(data) {
+            alert("in rendusers")
+            arr += "<form>";
+            arr += "<label for='players'> Choose a Player:</label>";
+            arr += "<select id = 'players' >";
+            for (var i = 0; i < data.length; i++) {
+
+                arr += "<option value='" + data[i].Email + "' onclick='gemail(this.id)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
+
+            }
+
+            arr += "</select >";
+            arr += "<form>";
+            document.getElementById("Show").innerHTML = arr;
+              }
+
+        function send() {
+
+            var e = document.getElementById("players");
+            var email = e.value;
+
+            var s = document.getElementById("subject");
+            var subject = s.value;
+
+            var b = document.getElementById("body");
+            var body = b.value;
+
+
+            console.log(email);
+            console.log(subject);
+            console.log(body);
+
+            window.open('mailto:' + email + '?subject=' + subject + '&body=' + body);
+
+        }
+
+        function todo() {
+            let api_todo = "../api/ToDoList/" + email + "/get_all_TODO";
+            ajaxCall("Get", api_todo, email, successTodo, errorTodo)
+
+        }
+
+        function successTodo(data) {
+            // alert("in successTodo")
+            console.log(data);
+
+            str += "<table id='miyazaki'>";
+            str += "<h3> My To Do List </h3>";
+            str += "<thead>";
+            str += "<tr><th>Task<th>Responisibility<th>Due Date<tbody>"
+
+            for (var i = 0; i < data.length; i++) {
+
+            
+                str += "<tr><td>" + data[i].Task;
+                str += "<td>" + data[i].Status;
+                str += "<td>" + data[i].DueDate + "<tr>";
+
+            }
+
+            // str += "<button class='button2' ONCLICK='alltodo()' style='float: left'> My To Do List  </button>";
+            document.getElementById("todo").innerHTML = str;
+
+
+
+        }
+
+        function errorTodo() {
+            alert("in errorTodo")
+        }
+
+
+        function errorWishlist() {
+            alert("Please Choose school to Save")
+        }
+
+        function successWishlist() {
+            alert("successWishlist")
+        }
+
+        function gotowishlist() {
+            window.open('WishList.html')
+        }
+
+
+        function allprofiles() {
+            window.open('Profile_Show.html')
+        }
+
+        function goBack() {
+            window.history.back();
+            window.close()
+        }
+
+        function Mytodo() {
+            window.open('NewToDo.html')
+        }
+
+        function Alltodo() {
+            window.open('TODO List.html')
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button class="button2" ONCLICK="goBack()" style="float:left"> Go Back  </button>
+        <br /><br /><br /><br />
+
+
+        <div class="imgcontainer">
+
+            <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+            <div class="topnav">
+                <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
+                <a class="active" href="#news" onclick="Mytodo()">My To Do List</a>
+                <a class="active" href="#news" onclick="Alltodo()">All To Do List</a>
+                <!--<a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>-->
+                <a href="#about" onclick="gotowishlist()">Show WishList</a>
+                <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
+                <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
+                    <span class="glyphicon glyphicon-heart"></span>Add To WishList
+                </a>
+            </div>
+        </div>
+
+
+        <div id="intro">     </div>
+        <div id="email">
+            Send Quick Email:
+            <br />   <br />   <br />
+            <div id="Show" style="float:left"> </div>
+
+            <label for="subject">Subject: </label>
+            <input type="text" id="subject" name="subject"><br><br>
+
+            <label for="body">Body: </label>
+            <input type="text" id="body" name="body"><br><br>
+
+            <!--<input type="text" id="send" name="send"><br><br>-->
+            <input type="submit" value="send" onclick="send()">
+
+             </div>
+
+    </div>
+
+
+
+    <div id="todo" style="float:left"> </div>
+
+
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <div id="calendar" style="float:right">
+        <table>
+            <tr>
+                <td>
+                    <iframe src="https://calendar.google.com/calendar/embed?height=350&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FJerusalem&amp;src=ZXMtNDE5Lmpld2lzaCNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%237986CB&amp;title=%D7%90%D7%99%D7%A8%D7%95%D7%A2%D7%99%D7%9D%20%D7%A7%D7%A8%D7%95%D7%91%D7%99%D7%9D&amp;mode=AGENDA&amp;showTabs=0&amp;showCalendars=1&amp;showPrint=1&amp;showDate=1&amp;showNav=1&amp;showTz=1&amp;hl=iw" style="border-width:0" width="400" height="350" frameborder="0" scrolling="no"></iframe>
+                </td>
+                <td>
+                    <iframe src="https://calendar.google.com/calendar/embed?height=350&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FJerusalem&amp;src=ZXMtNDE5Lmpld2lzaCNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%237986CB&amp;title=%D7%99%D7%95%D7%9E%D7%9F%20%D7%A9%D7%91%D7%95%D7%A2%D7%99&amp;mode=WEEK&amp;showTabs=0&amp;showCalendars=1&amp;showPrint=1&amp;showDate=1&amp;showNav=1&amp;showTz=1" style="border-width:0" width="800" height="350" frameborder="0" scrolling="no"></iframe>
+                </td>
+                <!--<td>
+                    <button class="profilesBtn"><a href="Profile_Show.html">Students profiles</a></button>
+
+                </td>-->
+            </tr>
+        </table>
+
+    </div>
+
+    <ul id="myUL">  </ul>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
+</body>
+</html>
