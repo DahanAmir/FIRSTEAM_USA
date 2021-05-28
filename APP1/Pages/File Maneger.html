@@ -1,0 +1,508 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="assets/styles/normalize.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+
+    <link rel="stylesheet" href="assets/styles/normalize.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <style>
+        .p {
+        }
+
+        body {
+            background-color: #f4f7f6;
+            margin-top: 20px;
+        }
+
+        .file_manager .file a:hover .hover,
+        .file_manager .file .file-name small {
+            display: block
+        }
+
+        .file_manager .file {
+            padding: 0 !important
+        }
+
+            .file_manager .file .icon {
+                text-align: center
+            }
+
+
+        .file_manager .file {
+            position: relative;
+            border-radius: .55rem;
+            overflow: hidden
+        }
+
+            .file_manager .file .image,
+            .file_manager .file .icon {
+                max-height: 180px;
+                overflow: hidden;
+                background-size: cover;
+                background-position: top
+            }
+
+            .file_manager .file .hover {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                display: none;
+                transition: all 0.2s ease-in-out
+            }
+
+            .file_manager .file a:hover .hover {
+                transition: all 0.2s ease-in-out
+            }
+
+            .file_manager .file .icon {
+                padding: 15px 10px;
+                display: table;
+                width: 100%
+            }
+
+                .file_manager .file .icon i {
+                    display: table-cell;
+                    font-size: 30px;
+                    vertical-align: middle;
+                    color: #777;
+                    line-height: 100px
+                }
+
+            .file_manager .file .file-name {
+                padding: 10px;
+                border-top: 1px solid #f7f7f7
+            }
+
+                .file_manager .file .file-name small .date {
+                    float: right
+                }
+
+        .folder {
+            padding: 20px;
+            display: block;
+            color: #777
+        }
+
+        @media only screen and (max-width: 992px) {
+            .file_manager .nav-tabs {
+                padding-left: 0;
+                padding-right: 0
+            }
+
+                .file_manager .nav-tabs .nav-item {
+                    display: inline-block
+                }
+        }
+
+        .card {
+            background: #fff;
+            transition: .5s;
+            border: 0;
+            margin-bottom: 30px;
+            border-radius: .55rem;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function deldet(id) {
+            alert('delete'+id);
+
+        }
+        function add(id) {
+            alert('add' + id);
+            window.open('add-file.html')
+
+        }
+        function downlord(id) {
+            alert('downlord'+id);
+
+        }
+
+
+    </script>
+</head>
+<body>
+
+
+
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <div id="main-content" class="file_manager">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="1" onclick="deldet(id)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="1" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="1" onclick="downlord(id)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
+
+                                </div>
+                                <div class="image">
+                                    <img src="../IMAGE/SAT.png" alt="img" class="img-fluid" />
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">TAYP: SAT</p>
+                                    <p class="m-b-5 text-muted">Score: 1100</p>
+                                    <small> <span class="date text-muted">25/05/2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="2" onclick="deldet(id)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="2" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="2" onclick="downlord(id)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
+
+                                </div>
+                                <div class="image">
+
+                                    <img src="../IMAGE/PASSPORT.png" alt="img" class="img-fluid" />
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="3" onclick="deldet(id)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="3" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="3" onclick="downlord(id)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
+
+                                </div>
+                                <div class="image">
+                                    <img src="../IMAGE/TOEFL.png" alt="img" class="img-fluid" />
+                                </div>
+                                <div class="file-name">
+
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="4" onclick="deldet(id)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="4" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="4" onclick="downlord(id)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
+
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/B0C4DE/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/9370DB/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/48D1CC/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/DA70D6/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/DB7093/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/DDA0DD/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/FFC0CB/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/FA8072/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/4682B4/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/40E0D0/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/87CEFA/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/FA8072/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/87CEFA/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
