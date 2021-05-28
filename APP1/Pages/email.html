@@ -13,13 +13,13 @@
         $(document).ready(function () {
             str = "users_show"
             let api = "../api/Users/" + str + "/Show_all_users";
-            ajaxCall("GET", api, str, getSucces1s, erroradd_list_r1)
+            ajaxCall("GET", api, str, getSuccess, erroradd_list_r1)
 
 
 
         });
 
-        function getSuccess1(data) {
+        function getSuccess(data) {
           
             console.log(data);
             rendusers(data);

@@ -196,6 +196,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Gmail.max-1100x1100 %281%29.png" />
     <Content Include="MatchCSS.css" />
     <Content Include="Pages\email.html" />
     <Content Include="Pages\file view.html" />
@@ -203,6 +204,7 @@
     <Content Include="Pages\Calculat.html" />
     <Content Include="Pages\ManagerDash - Copy.html" />
     <Content Include="Pages\Algo.html" />
+    <Content Include="Pages\NewManagerDash.html" />
     <Content Include="Pages\tryemail.html" />
     <Content Include="Pages\Teamplate.html" />
     <Content Include="Pages\Match - Copy.html" />
