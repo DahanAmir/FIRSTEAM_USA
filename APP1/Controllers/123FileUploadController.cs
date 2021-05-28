@@ -9,11 +9,12 @@ using System.Web;
 using System.Web.Hosting;
 using System.Web.Http;
 
-namespace WebApplication2.Controllers
+namespace APP1.Controllers
 {
     public class FileUploadController : ApiController
     {
-
+        //up to date-- new
+       
         [HttpPost]
         public HttpResponseMessage Post()
         {
@@ -36,10 +37,10 @@ namespace WebApplication2.Controllers
                         // Construct file save path  
                         //var fileSavePath = Path.Combine(HostingEnvironment.MapPath(ConfigurationManager.AppSettings["fileUploadFolder"]), httpPostedFile.FileName);
                         string fname = httpPostedFile.FileName.Split('\\').Last();
-                        var fileSavePath = Path.Combine(HostingEnvironment.MapPath("~/File"), fname);
+                        var fileSavePath = Path.Combine(HostingEnvironment.MapPath("~/uploadedFiles"), fname);
                         // Save the uploaded file  
                         httpPostedFile.SaveAs(fileSavePath);
-                        imageLinks.Add("File/" + fname);
+                        imageLinks.Add("uploadedFiles/" + fname);
                     }
                 }
             }

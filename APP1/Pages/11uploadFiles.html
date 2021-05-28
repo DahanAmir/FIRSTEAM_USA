@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <title>Files Upload Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+    <style type="text/css">
+
+        img {
+            height:100px;
+        }
+
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#buttonUpload').on('click', function () {
+                var data = new FormData();
+                var files = $("#files").get(0).files;
+
+                // Add the uploaded file to the form data collection  
+                if (files.length > 0) {
+                    for (f = 0; f < files.length; f++) {
+                        data.append("UploadedImage", files[f]);
+                    }
+                    data.append("name", "benny"); // append what ever data you want to send along with the files. See how you extract it in the controller.
+                }
+
+                // Ajax upload  
+                $.ajax({
+                    type: "POST",
+                    url: "../Api/FileUpload",
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: showImages,
+                    error:error
+                });
+
+                return false;
+            });  
+
+        });
+
+
+        function showImages(data) {
+            console.log(data);
+
+            var imgStr = "";
+
+            if (Array.isArray(data)) {
+
+                for (var i = 0; i < data.length; i++) {
+                    imgStr += "<img src='../" + data[i] + "'/>";
+                }
+
+            }
+
+            else {
+                imgStr = "<img src='../" + data + "'/>";
+            }
+
+            document.getElementById("ph").innerHTML = imgStr;
+        }
+
+        function error(data) {
+            console.log(data);
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <form method="post" enctype="multipart/form-data" id="formUpload">
+        <div>
+            <label for="files">Files</label>
+            <input type="file" id="files" name="files" multiple="multiple" />
+        </div>
+        <br/>
+        <button type="button" id="buttonUpload">Upload files</button>
+    </form>
+
+    <div id="ph"></div>
+
+
+</body>
+</html>
