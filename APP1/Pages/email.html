@@ -9,23 +9,23 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
 
-       
+        var str = "";
         $(document).ready(function () {
             str = "users_show"
             let api = "../api/Users/" + str + "/Show_all_users";
-            ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
+            ajaxCall("GET", api, str, getSucces1s, erroradd_list_r1)
 
 
 
         });
 
-        function getSuccess(data) {
+        function getSuccess1(data) {
           
             console.log(data);
             rendusers(data);
         }
 
-        function erroradd_list_r() {
+        function erroradd_list_r1() {
             alert("erroradd_list_r")
         }
 
