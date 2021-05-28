@@ -7,6 +7,16 @@
     <script src="../Scripts/ajaxCalls.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="../Scripts/ajaxCalls.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+    <!--<script>
+        @import compass/css3 $tundora: #444444 $white: #fff $gallery: #eee $de_york: #8c8 $mountain_mist: #999 $black_14: rgba(0, 0, 0, 0.14) $bismark: #506a85 $storm_dust: #666666 * +box-sizing(border-box) body padding-top: 50px padding-bottom: 20px background: #F2F2F2 .faint color: $mountain_mist .fa font-size: 5em text-align: center padding: 20px .btn &:hover outline: 0 !important &:focus outline: 0 !important &:active outline: 0 !important .btn-download height: 50px text-align: center margin-top: 40px font-size: 1.7em .btn-flip-extend background-color: transparent +box-shadow(none) opacity: 1 .btn-flip opacity: 0.8 color: $storm_dust background-color: transparent &:hover @extend .btn-flip-extend &:focus @extend .btn-flip-extend i font-size: 16px .card-holder margin-top: 50px .card-container +perspective(800px) +transform-style(preserve-3d) +border-radius(4px) margin-bottom: 30px width: 100% height: 420px &:not(.manual-flip):hover .front +transform(rotateY(180deg)) .back +transform(rotateY(0deg)) &.hover.manual-flip .front +transform(rotateY(180deg)) .back +transform(rotateY(0deg)) .card +transform-style(preserve-3d) +border-radius(4px) +transition(transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)) position: relative background: none repeat scroll 0 0 $white color: $tundora max-width: 320px margin: 0 auto .cover +border-radius(4px 4px 0 0) height: 105px overflow: hidden z-index: -2 img width: 100% .branded position: relative background: $white +border-radius(50%) display: block height: 120px margin: (-55px) auto 0 width: 120px text-align: center .content background-color: rgba(0, 0, 0, 0) +box-shadow(none) padding: 10px 20px 20px .main min-height: 140px .use-for font-size: 22px text-align: center h5 margin: 5px 0 font-weight: 400 line-height: 20px .footer color: $mountain_mist padding: 10px 0 0 text-align: center .btn-simple margin-top: -6px .header padding: 15px 20px height: 90px .back .content .main height: 215px .front +backface-visibility(hidden) +transition(transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)) +transform-style(preserve-3d) +transform(rotateY(0deg)) +box-shadow(0 1px 3px 0 $black_14) +border-radius(4px) position: absolute background-color: $white width: 100% height: 420px top: 0 left: 0 z-index: 2 .back +backface-visibility(hidden) +transition(transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)) +transform-style(preserve-3d) +transform(rotateY(-180deg)) +box-shadow(0 1px 3px 0 $black_14) +border-radius(4px) position: absolute background-color: $white width: 100% height: 420px top: 0 left: 0 .btn-simple position: absolute left: 0 bottom: 4px .qr canvas +backface-visibility(hidden) margin: 0 auto .title color: $bismark text-align: center font-weight: 300 font-size: 44px margin-bottom: 90px line-height: 90%
+
+    </script>-->
+
 
 
     <style>
@@ -97,7 +107,7 @@
                 clear: both;
             }
         /* Style the input */
-       /* input {
+        /* input {
             margin: 0;
             border: none;
             border-radius: 0;
@@ -251,14 +261,50 @@
             width: 200px;
             height: 300px;
         }
-        
-       /* #Show {
+
+        /* #Show {
             float: left;
             border: 1px solid;
             width:100px;
         }*/
         /*  todo list*/
+
+        /*emailnew*/
+
+
+
     </style>
+    <script>
+
+        $(document).ready(function () {
+            $('#qrIos').qrcode({
+                width: 200,
+                height: 200,
+                text: "iOS_URL_HERE"
+            });
+            $('#qrAndroid').qrcode({
+                width: 200,
+                height: 200,
+                text: "DROID_URL_HERE"
+            });
+            $('#qrWeb').qrcode({
+                width: 200,
+                height: 200,
+                text: "WINDOWS_URL_HERE"
+            });
+        });
+
+        function rotateCard(btn) {
+            var $card = $(btn).closest('.card-container');
+            console.log($card);
+            if ($card.hasClass('hover')) {
+                $card.removeClass('hover');
+            } else {
+                $card.addClass('hover');
+            }
+        }
+
+    </script>
     <script>
         // Create a "close" button and append it to each list item
         var myNodelist = document.getElementsByTagName("LI");
@@ -312,8 +358,7 @@
         }
     </script>
 
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
-    <script src="../Scripts/ajaxCalls.js"></script>
+
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
@@ -352,7 +397,7 @@
             alert("erroradd_list_r")
         }
 
-        
+
         function rendusers(data) {
             alert("in rendusers")
             arr += "<form>";
@@ -367,7 +412,7 @@
             arr += "</select >";
             arr += "<form>";
             document.getElementById("Show").innerHTML = arr;
-              }
+        }
 
         function send() {
 
@@ -406,7 +451,7 @@
 
             for (var i = 0; i < data.length; i++) {
 
-            
+
                 str += "<tr><td>" + data[i].Task;
                 str += "<td>" + data[i].Status;
                 str += "<td>" + data[i].DueDate + "<tr>";
@@ -483,7 +528,65 @@
 
 
         <div id="intro">     </div>
+
+        <div class="container" id="email2">
+            <div class="row">
+                <section class="card-holder">
+                    <!-- Begin iOS -->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card-container manual-flip">
+                            <div class="card">
+                                <div class="front">
+                                    <div class="cover">
+                                        <img src="https://bilbo.surge.sh/codepen/download-cards/apple.png" />
+                                    </div>
+                                    <div class="branded">
+                                        <span class="fa fa-apple"></span>
+                                    </div>
+                                    <div class="content">
+                                        <div class="main">
+                                            <h3 class="use-for faint">Send Email To</h3>
+                                            <!--להכניס רשימה לאימייל-->
+                                            <div id="Show" style="float:left"> </div>
+
+                                            <button type="button" class="btn btn-default btn-block btn-download" onclick="send()"> Submit
+                                            </button>
+                                            <!--<input type="submit" value="send" onclick="send()"  class="btn btn-default btn-block btn-download">-->
+
+                                        </div>
+                                        <div class="footer">
+                                            <!--<button class="btn btn-flip btn-qr" onclick="rotateCard(this)">
+                                                <i class="fa fa-mail-forward"></i> Get QR Code
+                                            </button>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <div class="header">
+                                        <h3 class="use-for faint">QR Code</h3>
+                                    </div>
+                                    <div class="content">
+                                        <div id="qrIos" class="qr text-center"></div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="btn btn-flip" onclick="rotateCard(this)">
+                                            <i class="fa fa-reply"></i> Back
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End iOS -->
+                   
+                </section>
+            </div>
+        </div>
+       
+
+
         <div id="email">
+
             Send Quick Email:
             <br />   <br />   <br />
             <div id="Show" style="float:left"> </div>
@@ -530,15 +633,7 @@
 
     <ul id="myUL">  </ul>
 
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-
-
-
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-
+  
 
 </body>
 </html>
