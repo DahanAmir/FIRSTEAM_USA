@@ -1,15 +1,27 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../Scripts/ajaxCalls.js"></script>
-    <script src="../Scripts/bootstrap.js"></script>
 
 
-
-    <meta charset="utf-8" />
-    <title></title>
-    <style>
+    <title>DB Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--<script src="../Scripts/ajaxCalls.js"></script>-->
+    <script src="../Scripts/ajaxCallsWithKey.js"></script>
+    <style type="text/css">
+        <title > </title >
+        <style >
         @import "compass/css3";
 
         .file-area {
@@ -188,35 +200,36 @@
     </style>
     <script>
         function add() {
-
+            alert('asdasd');
             let x = $("#files").get(0).files[0].name
-            ajaxCall("POST", "../api/Costumer", JSON.stringify(cost), success, error);
-            var data = new FormData();
+            var dataform = new FormData();
             var files = $("#files").get(0).files;
             alert('in file' + files[0].name);
             // Add the uploaded file to the form data collection
             if (files.length > 0) {
                 for (f = 0; f < files.length; f++) {
-                    data.append("UploadedImage", files[f]);
+                    dataform.append("UploadedImage", files[f]);
                 }
-                data.append("name", "benny"); // append what ever data you want to send along with the files. See how you extract it in the controller.
+                dataform.append("name", "benny"); // append what ever data you want to send along with the files. See how you extract it in the controller.
             }
-
             // Ajax upload
             $.ajax({
                 type: "POST",
                 url: "../Api/FileUpload",
                 contentType: false,
                 processData: false,
-                data: data,
+                data: dataform,
                 success: showImages,
                 error: error1
             });
-            swal("Submitted to the server!", "Great Job", "success");
             return false;
+
+            swal("Submitted to the server!", "Great Job", "success");
+            
 
         }
         function showImages(data) {
+            return false;
             console.log(data);
 
         }
@@ -224,12 +237,11 @@
         function error1(data) {
             console.log(data);
         }
-         
+
 
     </script>
 </head>
 <body>
-    <form  method="post">
 
         <h1><strong>File upload</strong> with style and pure CSS</h1>
 
@@ -244,7 +256,7 @@
 
         <div class="form-group file-area">
             <label for="images">Images <span>Your images should be at least 400x300 wide</span></label>
-            <input type="file" name="images" class="files" id="files" required="required" multiple="multiple" />
+            <input type="file" id="files" name="files" class="files"  required="required"  />
             <div class="file-dummy">
                 <div class="success">Great, your files are selected. Keep on.</div>
                 <div class="default">Please select some files</div>
@@ -255,7 +267,6 @@
             <button type="submit" onclick="add()">Upload images</button>
         </div>
 
-    </form>
 
 
 

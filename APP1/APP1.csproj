@@ -197,14 +197,14 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-<<<<<<< HEAD
+
     <Content Include="Gmail.max-1100x1100 %281%29.png" />
-=======
+
     <Content Include="IMAGE\PASSPORT.jpg" />
     <Content Include="IMAGE\PASSPORT.png" />
     <Content Include="IMAGE\SAT.png" />
     <Content Include="IMAGE\TOEFL.png" />
->>>>>>> b8e1c2de04b628ca3865946ade078289608c54f1
+
     <Content Include="MatchCSS.css" />
     <Content Include="Pages\11uploadFiles.html" />
     <Content Include="Pages\add-file.html" />
