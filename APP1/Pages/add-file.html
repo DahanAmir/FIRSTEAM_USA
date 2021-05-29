@@ -12,7 +12,6 @@
     <style>
         @import "compass/css3";
 
-        /* ===================== FILE INPUT ===================== */
         .file-area {
             width: 100%;
             position: relative;
@@ -190,10 +189,12 @@
     <script>
         function add() {
 
+            let x = $("#files").get(0).files[0].name
+            ajaxCall("POST", "../api/Costumer", JSON.stringify(cost), success, error);
             var data = new FormData();
             var files = $("#files").get(0).files;
-
-            // Add the uploaded file to the form data collection  
+            alert('in file' + files[0].name);
+            // Add the uploaded file to the form data collection
             if (files.length > 0) {
                 for (f = 0; f < files.length; f++) {
                     data.append("UploadedImage", files[f]);
@@ -201,7 +202,7 @@
                 data.append("name", "benny"); // append what ever data you want to send along with the files. See how you extract it in the controller.
             }
 
-            // Ajax upload  
+            // Ajax upload
             $.ajax({
                 type: "POST",
                 url: "../Api/FileUpload",
@@ -209,26 +210,26 @@
                 processData: false,
                 data: data,
                 success: showImages,
-                error: error
+                error: error1
             });
-
+            swal("Submitted to the server!", "Great Job", "success");
             return false;
 
         }
-        function error() {
+        function showImages(data) {
+            console.log(data);
 
         }
-        function success() {
-            alert('success');
-            return false
+
+        function error1(data) {
+            console.log(data);
         }
-
-
+         
 
     </script>
 </head>
 <body>
-    <form action method="post">
+    <form  method="post">
 
         <h1><strong>File upload</strong> with style and pure CSS</h1>
 
