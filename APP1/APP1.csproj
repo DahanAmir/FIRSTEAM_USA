@@ -155,10 +155,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\businessesController.cs" />
     <Compile Include="Controllers\FavoritesController.cs" />
-    <Compile Include="Controllers\123FileUploadController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\ToDoListController.cs" />
     <Compile Include="Controllers\UserDataController.cs" />
     <Compile Include="Controllers\UsersFileController.cs" />
@@ -197,14 +196,11 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-
     <Content Include="Gmail.max-1100x1100 %281%29.png" />
-
     <Content Include="IMAGE\PASSPORT.jpg" />
     <Content Include="IMAGE\PASSPORT.png" />
     <Content Include="IMAGE\SAT.png" />
     <Content Include="IMAGE\TOEFL.png" />
-
     <Content Include="MatchCSS.css" />
     <Content Include="Pages\11uploadFiles.html" />
     <Content Include="Pages\add-file.html" />
@@ -220,6 +216,7 @@
     <Content Include="Pages\Teamplate.html" />
     <Content Include="Pages\Match - Copy.html" />
     <Content Include="Pages\1NewToDo.html" />
+    <Content Include="Pages\uploadFiles.html" />
     <Content Include="Pages\UsarDataQ.html" />
     <Content Include="Pages\profile.html" />
     <Content Include="Pages\1DataTableCampaign.html" />
@@ -312,6 +309,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="FILE\" />
+    <Folder Include="uploaded_Files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
