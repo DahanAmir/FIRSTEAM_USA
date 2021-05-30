@@ -56,8 +56,14 @@ namespace APP1.Models
             return dbs.get_FT();
         }
 
+        public int insertFile(File f)
+        {
+            
+            DB_Services dbs = new DB_Services();
 
-        
+            return dbs.insertFile(f);
+        }
+
 
     }
 

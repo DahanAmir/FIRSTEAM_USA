@@ -18,9 +18,9 @@ namespace APP1.Controllers
             File f = new File();
             return f.get_UF();
         }
-        [HttpGet]
+        [HttpDelete]
         [Route("api/UsersFile/get_all_File_Type")]
-        public List<File> Gett()
+        public List<File> Delete()
         {
             File f = new File();
             return f.get_FT();
@@ -32,10 +32,11 @@ namespace APP1.Controllers
             return "value";
         }
         [HttpPost]
-        [Route("api/UsersFile/new/update")]
+        [Route("api/UsersFile/Post_Favorite/insert/save")]
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public int Post(File f)
         {
+            return f.insertFile(f);
         }
 
         // PUT api/<controller>/5

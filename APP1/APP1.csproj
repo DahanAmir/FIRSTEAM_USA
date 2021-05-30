@@ -210,6 +210,7 @@
     <Content Include="Pages\Teamplate.html" />
     <Content Include="Pages\Match - Copy.html" />
     <Content Include="Pages\1NewToDo.html" />
+    <Content Include="Pages\uploadFiles.html" />
     <Content Include="Pages\UsarDataQ.html" />
     <Content Include="Pages\profile.html" />
     <Content Include="Pages\1DataTableCampaign.html" />

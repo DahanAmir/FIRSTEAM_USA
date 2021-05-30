@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <script src="../Scripts/ajaxCalls.js"></script>
     <script src="../Scripts/jquery-3.4.1.min.js"></script>
+
+    <script src="../Scripts/ajaxCalls.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -168,7 +169,7 @@
         var MYLocale     //כל סוגי המקומות של משתמש
         var api_data;
         var api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&";
-//        var api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&page=" + page + "&";
+        //        var api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&page=" + page + "&";
 
         var api_tail = "fields=id,school.name,school.region_id,school.state_fips,school.ownership,school.locale,school.school_url,2018.student.size,2018.cost.tuition.out_of_state,2018.admissions.sat_scores.average.overall&api_key=tcw4YqKbgv55DmuUicwNWeBtGk3XwHzoCf2SbWne";
         var api_State
