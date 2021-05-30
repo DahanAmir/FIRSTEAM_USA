@@ -158,6 +158,7 @@
     <Compile Include="Controllers\businessesController.cs" />
     <Compile Include="Controllers\FavoritesController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Controllers\ToDoListController.cs" />
     <Compile Include="Controllers\UserDataController.cs" />
     <Compile Include="Controllers\UsersFileController.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Models\Favorites.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Teachers.cs" />
     <Compile Include="Models\ToDoList.cs" />
     <Compile Include="Models\University.cs" />
     <Compile Include="Models\UserData.cs" />
@@ -205,6 +207,7 @@
     <Content Include="Pages\ManagerDash - Copy.html" />
     <Content Include="Pages\Algo.html" />
     <Content Include="Pages\NewManagerDash.html" />
+    <Content Include="Pages\NewTeacher.html" />
     <Content Include="Pages\Teachers.html" />
     <Content Include="Pages\tryemail.html" />
     <Content Include="Pages\Teamplate.html" />
