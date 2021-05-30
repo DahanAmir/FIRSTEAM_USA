@@ -113,7 +113,6 @@
             ajaxCall("Delete", api, "", successType, errorType)
             var email = localStorage.getItem("email").replace(".", "dot");
             //var type = localStorage.getItem("type");
-            var type = 1
             var end
 
             $('#buttonUpload').on('click', function () {
@@ -126,7 +125,7 @@
                         data.append("UploadedImage", files[f]);
                         end = files[f].name.split(".")
                     }
-                    data.append("name", type + email + '.' + end[1]); // append what ever data you want to send along with the files. See how you extract it in the controller.
+                    data.append("name", $("#type").val() + email + '.' + end[1]); // append what ever data you want to send along with the files. See how you extract it in the controller.
                 }
 
                 // Ajax upload
@@ -193,7 +192,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Score</label>
                         <div class="col-sm-10">
-                            <input type="text" class="Score" id="Score">
+                            <input type="number" class="Score" id="Score">
                         </div>
                     </div>
                     <br />
