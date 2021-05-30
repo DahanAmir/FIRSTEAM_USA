@@ -14,7 +14,7 @@ namespace APP1.Models.DAL
     {
 
 
-<<<<<<< HEAD
+
         ///////////////////////Teachers////////////
 
         public int Insert_New_Teacher(Teachers t)
@@ -91,8 +91,7 @@ namespace APP1.Models.DAL
 
 
 
-=======
->>>>>>> 636ba4f0cba085a4d0510160a621f07f5d9e6ff9
+
         public List<File> get_FT()
         {
             List<File> FT = new List<File>();
