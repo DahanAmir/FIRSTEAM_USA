@@ -13,7 +13,7 @@ namespace APP1.Models.DAL
     public class DB_Services
     {
 
-        
+
         public List<File> get_FT()
         {
             List<File> FT = new List<File>();
@@ -32,8 +32,8 @@ namespace APP1.Models.DAL
                 while (dr.Read())
                 {
                     File f = new File();
-                        f.Filetype = (string)dr["FileType"];
-                           f.Id = Convert.ToInt32(dr["id"]);
+                    f.Filetype = (string)dr["FileType"];
+                    f.Id = Convert.ToInt32(dr["id"]);
 
                     FT.Add(f);
                 }
@@ -122,6 +122,67 @@ namespace APP1.Models.DAL
 
 
         }
+
+
+        public int insertFile(File f)
+        {
+
+            SqlConnection con;
+            SqlCommand cmd;
+
+            try
+            {
+                con = connect("DBConnectionString"); // create the connection
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            String cStr = BuildInsertCommandFile(f);      // helper method to build the insert string
+
+            cmd = CreateCommand(cStr, con);             // create the command
+
+            try
+            {
+                int numEffected = cmd.ExecuteNonQuery(); // execute the command
+                return numEffected;
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            finally
+            {
+                if (con != null) //אם אימייל כבר קיים שגיאה 500
+                {
+                    // close the db connection
+                    con.Close();
+                }
+            }
+
+        }
+
+
+
+        private String BuildInsertCommandFile(File f) {
+            String command;
+            StringBuilder sb = new StringBuilder();
+            string EXISTS = " IF EXISTS(SELECT * FROM[UsersFile] WHERE Email = '" + f.Email + "' and FileType='" + f.Filetype + "') ";
+            // use a string builder to create the dynamic string
+            sb.AppendFormat("Values('{0}','{1}', '{2}', '{3}', '{4}', '{5}')", f.Email, f.FileName, f.Filetype, f.Id, f.Remark, f.Score);
+            String prefix = "insert INTO[UsersFile] (Email,[FileName], Filetype, Id, Remark,[Score])";
+            String delete = " DELETE FROM [UsersFile] WHERE Email='" + f.Email + "' and FileType='" + f.Filetype + "' ";
+            command = EXISTS + delete + prefix + sb.ToString();
+            return command;
+        }
+
+   
+
+
 
         public int Insert_New_UserData(UserData u)
         {
