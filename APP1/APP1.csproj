@@ -155,10 +155,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\businessesController.cs" />
     <Compile Include="Controllers\FavoritesController.cs" />
-    <Compile Include="Controllers\123FileUploadController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\ToDoListController.cs" />
     <Compile Include="Controllers\UserDataController.cs" />
     <Compile Include="Controllers\UsersFileController.cs" />
@@ -197,25 +196,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-<<<<<<< HEAD
     <Content Include="Gmail.max-1100x1100 %281%29.png" />
-=======
-    <Content Include="IMAGE\PASSPORT.jpg" />
-    <Content Include="IMAGE\PASSPORT.png" />
-    <Content Include="IMAGE\SAT.png" />
-    <Content Include="IMAGE\TOEFL.png" />
->>>>>>> b8e1c2de04b628ca3865946ade078289608c54f1
     <Content Include="MatchCSS.css" />
-    <Content Include="Pages\11uploadFiles.html" />
-    <Content Include="Pages\add-file.html" />
     <Content Include="Pages\email.html" />
-    <Content Include="Pages\File Maneger.html" />
     <Content Include="Pages\file view.html" />
     <Content Include="Pages\1edit - class Ex solution.html" />
     <Content Include="Pages\Calculat.html" />
     <Content Include="Pages\ManagerDash - Copy.html" />
     <Content Include="Pages\Algo.html" />
     <Content Include="Pages\NewManagerDash.html" />
+    <Content Include="Pages\Teachers.html" />
     <Content Include="Pages\tryemail.html" />
     <Content Include="Pages\Teamplate.html" />
     <Content Include="Pages\Match - Copy.html" />
@@ -311,7 +301,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="FILE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
