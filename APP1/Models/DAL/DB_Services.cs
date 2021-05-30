@@ -13,7 +13,83 @@ namespace APP1.Models.DAL
     public class DB_Services
     {
 
-        
+
+        ///////////////////////Teachers////////////
+
+        public int Insert_New_Teacher(Teachers t)
+        {
+
+            SqlConnection con;
+            SqlCommand cmd;
+
+            try
+            {
+                con = connect("DBConnectionString"); // create the connection
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            String cStr = BuildInsertCommandTeachers(t);      // helper method to build the insert string
+
+            cmd = CreateCommand(cStr, con);             // create the command
+
+            try
+            {
+                int numEffected = cmd.ExecuteNonQuery(); // execute the command
+                return numEffected;
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            finally
+            {
+                if (con != null) //אם אימייל כבר קיים שגיאה 500
+                {
+                    // close the db connection
+                    con.Close();
+                }
+            }
+
+
+
+        }
+
+        private String BuildInsertCommandTeachers(Teachers t)
+        {
+            String command;
+
+            StringBuilder sb = new StringBuilder();
+            string status = "INSERT INTO Teachers (Email, Firstname, Lastname, Phone, Active)Values('" + t.Email + "','" + t.Firstname + "','"+ t.Lastname+ "','"+ t.Phone+",'1' )";
+            // use a string builder to create the dynamic string
+            sb.AppendFormat("Values('{0}','{1}', '{2}', '{3}', '{4}')", t.Email, t.Firstname, t.Lastname, t.Phone, t.Active);
+            //String prefix = "INSERT INTO Teachers " + "( Email , BirthDay , Sex ,Phone ,Password ,LastName ,FirstName, TypeUsers,Position,Register,Height,Address, EstimatedYear, Active) ";
+            command = sb.ToString();
+
+            return command + status;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public List<File> get_FT()
         {
             List<File> FT = new List<File>();

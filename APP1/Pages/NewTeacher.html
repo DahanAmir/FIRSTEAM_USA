@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+
+    <!--<script src="../Scripts/ajaxCalls.js"></script>-->
+    <style type="text/css">
+
+
+        .red-star {
+            color: red;
+        }
+    </style>
+
+
+    <script>
+
+
+        function checkCode() {
+            if (this.value % 3 != 0) { // an example of validation that the code divides by 3
+                this.validity.valid = false; // must set it to false to prevent the submit to the server
+                this.setCustomValidity('Code is not valid, please enter a valid code');
+            }
+            else {
+                this.validity.valid = true;
+                this.setCustomValidity('');
+            }
+        }
+
+
+
+
+        // This function is called in case of a success
+
+
+        // This function is called in case of an error
+        function error(err) {
+            alert("Error")
+            if (err.status == 500)
+                alert("error- this email already exist");
+            else
+                alert("Please try again");
+        }
+
+
+
+        function AddCost() { // הכנסת יוזר חדש
+            //  var date = $("#birthday").val().split("-")
+
+            alert("in addcost")
+
+            let t = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+
+                Firstname: $("#nameTB").val(),
+                Lastname: $("#FnameTB").val(),
+                Phone: $("#phoneTB").val(),
+                Email: $("#mailTB").val(),
+                Active: 1
+
+            }
+
+            alert(t);
+
+            ajaxCall("Get", "../api/Teachers/add", JSON.stringify(t), successt, errort); //נוסיף לשרת את היוזר
+
+            function successt(data) {
+                console.log(data);
+                alert("Submitted")
+                swal("Submitted to the server!", "Great Job", "success");
+
+
+            }
+
+        }
+
+
+        function errort(data) {
+            console.log(data);
+            alert("Not successt")
+        }
+
+
+
+
+
+
+
+    </script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</head>
+<body>
+
+    <a href="LogIn.html">Go Back To Home Page</a>
+    <div class="container">
+        <form id="pForm">
+            <h1 style="color:red">Insert new User</h1>
+            <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+            <div class="form-group">
+                <label for="nameTB"><span class="red-star">★ </span>First Name</label>
+                <input type="text" class="form-control" id="nameTB" pattern="[A-Za-z].{1,10}" required oninvalid="this.setCustomValidity('Format should be max 10 char')"
+                       oninput="this.setCustomValidity('')" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="FnameTB"><span class="red-star">★ </span>Last Name</label>
+                <input type="text" class="form-control" id="FnameTB" pattern="[A-Za-z].{1,10}" required placeholder="Enter the family name">
+            </div>
+           
+
+            <div class="form-group">
+                <label for="dealerPhone"><span class="red-star">★ </span>Your Phone (using a pattern validator)</label>
+                <input type="tel" class="form-control" placeholder="Enter the dealer phone ddd-dd-dd" id="phoneTB"
+                       pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" required
+                       oninvalid="this.setCustomValidity('Format should be ddd-dddd-ddd')"
+                       oninput="this.setCustomValidity('')" />
+            </div>
+
+            <div class="form-group">
+                <label for="mailTB"><span class="red-star" required>★ </span>mail</label>
+                <input type="text" class="form-control" id="mailTB" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter the mail. Format should be: XXXX@XXXX." required />
+            </div>
+            <input type="submit" id="buttonUpload" value="Submit BTN" onclick="AddCost()" />
+     </form>
+
+</div>
+    
+
+
+
+   
+
+
+    <div id="ph">
+
+    </div>
+
+
+</body>
+
+</html>
