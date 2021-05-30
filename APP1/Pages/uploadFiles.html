@@ -1,24 +1,20 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <title>Files Upload Example</title>
     <meta charset="utf-8">
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../Scripts/ajaxCalls.js"></script>
 
+    <style type="text/css">
 
-    <title>DB Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <!--<script src="../Scripts/ajaxCalls.js"></script>-->
-    <script src="../Scripts/ajaxCallsWithKey.js"></script>
+        img {
+            height: 100px;
+        }
+    </style>
     <style type="text/css">
         <title > </title >
         <style >
@@ -199,82 +195,85 @@
         }
     </style>
     <script>
-        function add() {
-            alert('asdasd');
-            let x = $("#files").get(0).files[0].name
-            var dataform = new FormData();
-            var files = $("#files").get(0).files;
-            alert('in file' + files[0].name);
-            // Add the uploaded file to the form data collection
-            if (files.length > 0) {
-                for (f = 0; f < files.length; f++) {
-                    dataform.append("UploadedImage", files[f]);
-                }
-                dataform.append("name", "benny"); // append what ever data you want to send along with the files. See how you extract it in the controller.
-            }
-            // Ajax upload
-            $.ajax({
-                type: "POST",
-                url: "../Api/FileUpload",
-                contentType: false,
-                processData: false,
-                data: dataform,
-                success: showImages,
-                error: error1
-            });
-            return false;
 
-            swal("Submitted to the server!", "Great Job", "success");
+        $(document).ready(function () {
+            alert(localStorage.getItem("email"));
+            api / UsersFile / get_all_File_Type
+
+            let api = "../api/Favorites/Post_Favorite/insert/save";
+
+            ajaxCall("Gett", api, JSON.stringify(fav), successFav, errorFav)
+            var email = localStorage.getItem("email").replace(".", "dot");
+            //var type = localStorage.getItem("type");
+            var type = 1
+            var end
             
+            $('#buttonUpload').on('click', function () {
+                var data = new FormData();
+                var files = $("#files").get(0).files;
+                // Add the uploaded file to the form data collection
+                if (files.length > 0) {
+                    for (f = 0; f < files.length; f++) {
 
-        }
+                        data.append("UploadedImage", files[f]);
+                        end = files[f].name.split(".")
+                    }
+                    data.append("name", type + email + '.' + end[1]); // append what ever data you want to send along with the files. See how you extract it in the controller.
+                }
+
+                // Ajax upload
+                $.ajax({
+                    type: "POST",
+                    url: "../Api/FileUpload",
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: showImages,
+                    error: error
+                });
+
+                return false;
+            });
+
+        });
+
+
         function showImages(data) {
-            return false;
-            console.log(data);
 
+
+            var file = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                Email: email,
+                Filename: type + email + '.' + end[1],
+                Remark: type,
+                Score: type,
+                FileType: type,
+              
+            }
+             api = "../api/Favorites/Post_Favorite/insert/save";
+
+            ajaxCall("Post", api, JSON.stringify(file), successFav, errorFav)
         }
 
-        function error1(data) {
+        function error(data) {
             console.log(data);
         }
-
 
     </script>
+
 </head>
 <body>
 
-        <h1><strong>File upload</strong> with style and pure CSS</h1>
-
-        <div class="form-group">
-            <label for="title">Title <span>Use title case to get a better result</span></label>
-            <input type="text" name="title" id="title" class="form-controll" />
+    <form method="post" enctype="multipart/form-data" id="formUpload">
+        <div>
+            <label for="files">Files</label>
+            <input type="file" id="files" name="files" multiple="multiple" />
         </div>
-        <div class="form-group">
-            <label for="caption">Caption <span>This caption should be descriptiv</span></label>
-            <input type="text" name="caption" id="caption" class="form-controll" />
-        </div>
+        <br/>
+        <button type="button" id="buttonUpload">Upload files</button>
+    </form>
 
-        <div class="form-group file-area">
-            <label for="images">Images <span>Your images should be at least 400x300 wide</span></label>
-            <input type="file" id="files" name="files" class="files"  required="required"  />
-            <div class="file-dummy">
-                <div class="success">Great, your files are selected. Keep on.</div>
-                <div class="default">Please select some files</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <button type="submit" onclick="add()">Upload images</button>
-        </div>
+    <div id="ph"></div>
 
 
-
-
-
-
-
-    <link href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700' rel='stylesheet' type='text/css'>
-
-    <a href="http://scribblerockerz.com/drag-n-drop-file-input-without-javascript/" class="back-to-article" target="_blank">back to Article</a>
 </body>
 </html>

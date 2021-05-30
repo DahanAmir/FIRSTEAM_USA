@@ -36,10 +36,10 @@ namespace WebApplication2.Controllers
                         // Construct file save path  
                         //var fileSavePath = Path.Combine(HostingEnvironment.MapPath(ConfigurationManager.AppSettings["fileUploadFolder"]), httpPostedFile.FileName);
                         string fname = httpPostedFile.FileName.Split('\\').Last();
-                        var fileSavePath = Path.Combine(HostingEnvironment.MapPath("~/File"), fname);
+                        var fileSavePath = Path.Combine(HostingEnvironment.MapPath("~/uploaded_Files"), name);
                         // Save the uploaded file  
                         httpPostedFile.SaveAs(fileSavePath);
-                        imageLinks.Add("File/" + fname);
+                        imageLinks.Add("uploaded_Files/" + fname);
                     }
                 }
             }

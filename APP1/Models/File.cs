@@ -48,9 +48,16 @@ namespace APP1.Models
 
             return dbs.show_UF();
         }
+        public List<File> get_FT()
+        {
+            List<File> t = new List<File>();
+            DB_Services dbs = new DB_Services();
+
+            return dbs.get_FT();
+        }
 
 
-
+        
 
     }
 
