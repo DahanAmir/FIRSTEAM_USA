@@ -12,35 +12,216 @@
     <style type="text/css">
 
         img {
-            height:100px;
+            height: 100px;
+        }
+    </style>
+    <style type="text/css">
+        <title > </title >
+        <style >
+        @import "compass/css3";
+
+        .file-area {
+            width: 100%;
+            position: relative;
+
+        {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            cursor: pointer;
         }
 
-    </style>
+        .file-dummy {
+            width: 100%;
+            padding: 30px;
+            background: rgba(255,255,255,0.2);
+            border: 2px dashed rgba(255,255,255,0.2);
+            text-align: center;
+            transition: background 0.3s ease-in-out;
+            .success
 
+        {
+            display: none;
+        }
+
+        }
+
+        &:hover .file-dummy {
+            background: rgba(255,255,255,0.1);
+        }
+
+        input[type=file]:focus + .file-dummy {
+            outline: 2px solid rgba(255,255,255,0.5);
+            outline: -webkit-focus-ring-color auto 5px;
+        }
+
+        input[type=file]:valid + .file-dummy {
+            border-color: rgba(0,255,0,0.4);
+            background-color: rgba(0,255,0,0.3);
+            .success
+
+        {
+            display: inline-block;
+        }
+
+        .default {
+            display: none;
+        }
+
+        }
+        }
+
+
+
+
+
+
+
+
+
+        /* ===================== BASIC STYLING ===================== */
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-weight: 300;
+            height: 100%;
+            background: #053777;
+            color: #fff;
+            font-size: 16px;
+            overflow: hidden;
+            background: -moz-linear-gradient(top, #053777 0%, #00659b 100%);
+            /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #053777), color-stop(100%, #00659b));
+            /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, #053777 0%, #00659b 100%);
+            /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, #053777 0%, #00659b 100%);
+            /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, #053777 0%, #00659b 100%);
+            /* IE10+ */
+            background: linear-gradient(to bottom, #053777 0%, #00659b 100%);
+            /* W3C */
+        }
+
+        h1 {
+            text-align: center;
+            margin: 50px auto;
+            font-weight: 100;
+        }
+
+        label {
+            font-weight: 500;
+            display: block;
+            margin: 4px 0;
+            text-transform: uppercase;
+            font-size: 13px;
+            overflow: hidden;
+            span
+
+        {
+            float: right;
+            text-transform: none;
+            font-weight: 200;
+            line-height: 1em;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        }
+
+        .form-controll {
+            display: block;
+            padding: 8px 16px;
+            width: 100%;
+            font-size: 16px;
+            background-color: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            font-weight: 200;
+            &:focus
+
+        {
+            outline: 2px solid rgba(255,255,255,0.5);
+            outline: -webkit-focus-ring-color auto 5px;
+        }
+
+        }
+
+        button {
+            padding: 8px 30px;
+            background: rgba(255,255,255,0.8);
+            color: #053777;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 11px;
+            border: 0;
+            text-shadow: 0 1px 2px #fff;
+            cursor: pointer;
+        }
+
+        .form-group {
+            max-width: 500px;
+            margin: auto;
+            margin-bottom: 30px;
+        }
+
+        .back-to-article {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 12px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            background: rgba(0,0,0,0.6);
+            padding: 10px 18px;
+            transition: all 0.3s ease-in-out;
+            opacity: 0.6;
+            opacity: 1;
+            background: rgba(0,0,0,0.8);
+        }
+    </style>
     <script>
 
         $(document).ready(function () {
             alert(localStorage.getItem("email"));
+            api / UsersFile / get_all_File_Type
 
-            var email = localStorage.getItem("email").replace(".","dot");
+            let api = "../api/Favorites/Post_Favorite/insert/save";
+
+            ajaxCall("Gett", api, JSON.stringify(fav), successFav, errorFav)
+            var email = localStorage.getItem("email").replace(".", "dot");
             //var type = localStorage.getItem("type");
             var type = 1
             var end
-
+            
             $('#buttonUpload').on('click', function () {
                 var data = new FormData();
                 var files = $("#files").get(0).files;
-                // Add the uploaded file to the form data collection  
+                // Add the uploaded file to the form data collection
                 if (files.length > 0) {
                     for (f = 0; f < files.length; f++) {
-                       
+
                         data.append("UploadedImage", files[f]);
                         end = files[f].name.split(".")
                     }
-                    data.append("name", type+email+'.'+end[1]); // append what ever data you want to send along with the files. See how you extract it in the controller.
+                    data.append("name", type + email + '.' + end[1]); // append what ever data you want to send along with the files. See how you extract it in the controller.
                 }
 
-                // Ajax upload  
+                // Ajax upload
                 $.ajax({
                     type: "POST",
                     url: "../Api/FileUpload",
@@ -48,17 +229,29 @@
                     processData: false,
                     data: data,
                     success: showImages,
-                    error:error
+                    error: error
                 });
 
                 return false;
-            });  
+            });
 
         });
 
 
         function showImages(data) {
-            alert('tnx');
+
+
+            var file = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                Email: email,
+                Filename: type + email + '.' + end[1],
+                Remark: type,
+                Score: type,
+                FileType: type,
+              
+            }
+             api = "../api/Favorites/Post_Favorite/insert/save";
+
+            ajaxCall("Post", api, JSON.stringify(file), successFav, errorFav)
         }
 
         function error(data) {

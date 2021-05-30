@@ -13,10 +13,51 @@ namespace APP1.Models.DAL
     public class DB_Services
     {
 
+        
+        public List<File> get_FT()
+        {
+            List<File> FT = new List<File>();
+            SqlConnection con = null;
 
+            try
+            {
+                con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
+
+                String selectSTR = "select * from FileType ";
+                SqlCommand cmd = new SqlCommand(selectSTR, con);
+
+                // get a reader
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection); // CommandBehavior.CloseConnection: the connection will be closed after reading has reached the end
+
+                while (dr.Read())
+                {
+                    File f = new File();
+                        f.Filetype = (string)dr["FileType"];
+                           f.Id = Convert.ToInt32(dr["id"]);
+
+                    FT.Add(f);
+                }
+                return FT;
+
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+
+
+        }
         public List<File> show_UF()
         {
-           List<File> uf1 = new List<File>();
+            List<File> uf1 = new List<File>();
             SqlConnection con = null;
 
             try
@@ -34,7 +75,7 @@ namespace APP1.Models.DAL
                     File f = new File();
                     if (dr["EmailFile"].GetType() != typeof(DBNull))
                     {
-                    
+
                         f.Email = (string)dr["Email"];
                         f.Full_Name = (string)dr["LastName"] + ' ' + (string)dr["FirstName"];
                         if (dr["Filetype"].GetType() != typeof(DBNull))

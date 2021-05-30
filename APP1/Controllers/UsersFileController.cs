@@ -12,11 +12,18 @@ namespace APP1.Controllers
         // GET api/<controller>
         [HttpGet]
         [Route("api/UsersFile/get_all_UF")]
-       
+
         public List<File> Get()
         {
             File f = new File();
             return f.get_UF();
+        }
+        [HttpGet]
+        [Route("api/UsersFile/get_all_File_Type")]
+        public List<File> Gett()
+        {
+            File f = new File();
+            return f.get_FT();
         }
 
         // GET api/<controller>/5
@@ -24,7 +31,8 @@ namespace APP1.Controllers
         {
             return "value";
         }
-
+        [HttpPost]
+        [Route("api/UsersFile/new/update")]
         // POST api/<controller>
         public void Post([FromBody]string value)
         {
