@@ -3,84 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
-    <script src="../Scripts/ajaxCalls.js"></script>
-
-
-    <script>
-
-        ajaxCall("GET", "../api/Teachers/get", "", successshow, errorshow); //נוסיף לשרת את היוזר
-
-
-        var str = "";
-        function successshow(data) {
-            alert("successshow");
-            console.log(data);
-
-            str += "<table>";
-            str+= "<tr><th>Name</th><th>Date</th><th>Hours</th><th>Class to</th></tr>";
-
-            for (var i = 0; i < data.length; i++) {
-                str += "<tr><td>" + data[i].Firstname + "</td>";
-           //     str += "<td>" + data[i].Firstname + "</td>";
-            //    str += "<td>" + data[i].Firstname + "</td>";
-            }
-
-            str += "</tr></table>"
-
-            document.getElementById("show").innerHTML = str;
-        }
-
-
-        function errorshow() {
-            alert("errorshow");
-
-        }
-
-
-        function savenewwork() {
-
-            //let w = {
-            //    First
-
-
-            //}
-          
-
-        }
-
-    </script>
 </head>
-
-
 <body>
-
-    <div id="work">
-
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname"><br>
-
-        <label for="fname">Month: (MM)</label><br>
-        <input type="text" id="month" name="month"><br> 
-        
-        <label for="fname">Day: (DD)</label><br>
-        <input type="text" id="day" name="day"><br>
-
-
-        <label for="fname">Hours:</label><br>
-        <input type="text" id="hours" name="hours"><br>
-
-        
-        <label for="fname">To:</label><br>
-        <input type="text" id="to" name="to"><br>
-
-
-        <input type="submit" value="Add working hours" onclick="savenewwork()">
-
-
-
-    </div>
-    <div id="show"></div>
 
 </body>
 </html>

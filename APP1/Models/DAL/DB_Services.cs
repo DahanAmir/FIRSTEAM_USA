@@ -17,55 +17,6 @@ namespace APP1.Models.DAL
 
         ///////////////////////Teachers////////////
 
-
-        public List<Teachers> Show_Teachers()
-        {
-            List<Teachers> list_of_Teachers = new List<Teachers>();
-            SqlConnection con = null;
-
-            try
-            {
-                con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
-
-                String selectSTR = "select * from Teachers order by email";
-                SqlCommand cmd = new SqlCommand(selectSTR, con);
-
-                // get a reader
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection); // CommandBehavior.CloseConnection: the connection will be closed after reading has reached the end
-
-                while (dr.Read())
-                {
-
-                    Teachers te = new Teachers();
-                    te.Firstname = (string)dr["FirstName"];
-                    te.Email = (string)dr["Email"];
-                    te.Lastname = (string)dr["LastName"];
-                    te.Phone = (string)dr["Phone"];
-                    te.Active = Convert.ToInt32(dr["Active"]);
-                   
-                   
-
-                    list_of_Teachers.Add(te);
-                }
-
-                Teachers t = new Teachers();
-                return list_of_Teachers;
-
-            }
-            catch (Exception ex)
-            {
-                // write to log
-                throw (ex);
-            }
-            finally
-            {
-                if (con != null)
-                {
-                    con.Close();
-                }
-            }
-        }
-
         public int Insert_New_Teacher(Teachers t)
         {
 
