@@ -1,0 +1,269 @@
+﻿﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Files Upload Example</title>
+    <meta charset="utf-8">
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+    <style type="text/css">
+
+        body {
+            margin-top: 20px;
+            background: #f5f5f5;
+        }
+
+        .panel {
+            box-shadow: none;
+        }
+
+        .panel-heading {
+            border-bottom: 0;
+        }
+
+        .panel-title {
+            font-size: 17px;
+        }
+
+            .panel-title > small {
+                font-size: .75em;
+                color: #999999;
+            }
+
+        .panel-body *:first-child {
+            margin-top: 0;
+        }
+
+        .panel-footer {
+            border-top: 0;
+        }
+
+        .panel-default > .panel-heading {
+            color: #333333;
+            background-color: transparent;
+            border-color: rgba(0, 0, 0, 0.07);
+        }
+
+        form label {
+            color: #999999;
+            font-weight: 400;
+        }
+
+        .form-horizontal .form-group {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        @media (min-width: 768px) {
+            .form-horizontal .control-label {
+                text-align: right;
+                margin-bottom: 0;
+                padding-top: 7px;
+            }
+        }
+
+        .profile__contact-info-icon {
+            float: left;
+            font-size: 18px;
+            color: #999999;
+        }
+
+        .profile__contact-info-body {
+            overflow: hidden;
+            padding-left: 20px;
+            color: #999999;
+        }
+
+        .profile-avatar {
+            width: 200px;
+            position: relative;
+            margin: 0px auto;
+            margin-top: 196px;
+            border: 4px solid #f3f3f3;
+        }
+    </style>
+    <style type="text/css">
+    </style>
+
+
+
+    <script>
+
+    
+
+    
+
+        function Show_all_users(data) {
+            alert("in sucess");
+            console.log(data);
+            rendusers(data);
+        }
+
+        function erroradd_list_r() {
+            alert("erroradd_list_r")
+        }
+
+        function rendusers(data) {
+
+          
+            let arr = "<h4>"
+            alert("in rendusers")
+            arr += "<label  for='players'> Choose a Player:</label>";
+            arr += "</h4>"
+
+            arr += "<select id = 'players' >";
+            for (var i = 0; i < data.length; i++) {
+
+                arr += "<option value='" + data[i].Email + "' onclick='gemail(this.id)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
+
+            }
+
+            arr += "</select >";
+            document.getElementById("users").innerHTML = arr;
+        }
+
+
+    </script>
+    <script>
+        function successType(data) {
+            var select = '<div class="panel-body"> <div class="form-group" >'
+            select = '<select name = "type" id ="type" class="form-control">'
+            for (var i = 0; i < data.length; i++) {
+                select += '  <option value="' + data[i].Id + '">' + data[i].Filetype + '</option>'
+            }
+            select += ' </select> </div> </div>'
+            document.getElementById("ph").innerHTML = select
+        }
+        function errorType(data) {
+            alert('errorType');
+        }
+        $(document).ready(function () {
+            str1 = "users_show"
+            let api = "../api/Users/" + str1 + "/Show_all_users";
+            ajaxCall("GET", api, str1, Show_all_users, erroradd_list_r)
+
+            alert(localStorage.getItem("email"));
+
+             api = "../api/UsersFile/get_all_File_Type";
+
+            ajaxCall("Delete", api, "", successType, errorType)
+            var email = localStorage.getItem("email").replace(".", "dot");
+            //var type = localStorage.getItem("type");
+            var end
+
+            $('#buttonUpload').on('click', function () {
+                var data = new FormData();
+                var files = $("#files").get(0).files;
+                // Add the uploaded file to the form data collection
+                if (files.length > 0) {
+                    for (f = 0; f < files.length; f++) {
+
+                        data.append("UploadedImage", files[f]);
+                        end = files[f].name.split(".")
+                    }
+                    data.append("name", $("#type").val() + email + '.' + end[1]); // append what ever data you want to send along with the files. See how you extract it in the controller.
+                }
+
+                // Ajax upload
+                $.ajax({
+                    type: "POST",
+                    url: "../Api/FileUpload",
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: showImages,
+                    error: error
+                });
+                var file = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                    Email: localStorage.getItem("email"),
+                    Filename: type + email + '.' + end[1],
+                    Remark: $("#Remark").val(),
+                    Score: $("#Score").val(),
+                    FileType: $("#type option:selected").text(),
+                    Id: $("#type").val()
+
+                }
+                api = "../api/UsersFile/Post_Favorite/insert/save";
+
+                ajaxCall("Post", api, JSON.stringify(file), successinsert_F_DBS, errorinsert_F_DBS)
+                return false;
+            });
+
+        });
+
+        
+        function showImages(data) {
+
+            alert($("#type option:selected").text());
+
+        } function errorinsert_F_DBS(data) {
+
+            alert('errorinsert_F_DBS');
+
+        } function successinsert_F_DBS(data) {
+
+            alert('successinsert_F_DBS');
+
+        }
+
+        function error(data) {
+            console.log(data);
+        }
+
+    </script>
+
+</head>
+<body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <div class="container bootstrap snippets bootdeys">
+
+
+
+        <form method="post" enctype="multipart/form-data" id="formUpload">
+            <div class="panel-heading">
+                <div class="panel panel-default">
+                    <div id="users"></div>
+
+                    <div id="ph"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Score</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="Score" id="Score">
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Remark</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="Remark" id="Remark">
+                        </div>
+                    </div>
+                    <div>
+                        <br />
+                        <br />
+                        <label for="files">Files</label>
+                        <input type="file" id="files" name="files" multiple="multiple" />
+                    </div>
+                    <br />
+                    <button type="button" id="buttonUpload">Upload files</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+
+
+</body>
+</html>

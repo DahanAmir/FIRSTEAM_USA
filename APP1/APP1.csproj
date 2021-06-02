@@ -200,7 +200,9 @@
     <Content Include="Global.asax" />
     <Content Include="Gmail.max-1100x1100 %281%29.png" />
     <Content Include="MatchCSS.css" />
+    <Content Include="Pages\add-file.html" />
     <Content Include="Pages\email.html" />
+    <Content Include="Pages\File Maneger.html" />
     <Content Include="Pages\file view.html" />
     <Content Include="Pages\1edit - class Ex solution.html" />
     <Content Include="Pages\Calculat.html" />
@@ -213,6 +215,7 @@
     <Content Include="Pages\Teamplate.html" />
     <Content Include="Pages\Match - Copy.html" />
     <Content Include="Pages\1NewToDo.html" />
+    <Content Include="Pages\Manager_uploadFiles.html" />
     <Content Include="Pages\uploadFiles.html" />
     <Content Include="Pages\UsarDataQ.html" />
     <Content Include="Pages\profile.html" />

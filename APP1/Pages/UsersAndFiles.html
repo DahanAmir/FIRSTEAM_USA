@@ -10,7 +10,7 @@
     <script>
         $(document).ready(function () {
             let email = localStorage.getItem("email");
-            //email = "adi@gmail.com";
+            email = "adi@gmail.com";
             let api = "../api/UsersFile/get_all_UF";
             ajaxCall("Get", api, "", successFiles, errorFiles)
 
