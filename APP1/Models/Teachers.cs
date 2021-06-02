@@ -39,6 +39,15 @@ namespace APP1.Models
             return dbs.Insert_New_Teacher(t);
         }
 
+        public List<Teachers> Show_Teachers()
+        {
+
+            DB_Services dbs = new DB_Services();
+            List<Teachers> tList = dbs.Show_Teachers();
+            return tList;
+
+        }
+
 
     }
 

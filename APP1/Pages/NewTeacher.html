@@ -70,7 +70,7 @@
 
             alert(t);
 
-            ajaxCall("Get", "../api/Teachers/add", JSON.stringify(t), successt, errort); //נוסיף לשרת את היוזר
+            ajaxCall("POST", "../api/Teachers/add", JSON.stringify(t), successt, errort); //נוסיף לשרת את היוזר
 
             function successt(data) {
                 console.log(data);

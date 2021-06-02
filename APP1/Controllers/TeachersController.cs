@@ -10,11 +10,17 @@ namespace APP1.Controllers
 {
     public class TeachersController : ApiController
     {
+
+        [HttpGet]
+        [Route("api/Teachers/get")]
         // GET api/<controller>
-        public IEnumerable<string> Get()
+       
+        public List<Teachers> Get()
         {
-            return new string[] { "value1", "value2" };
+            Teachers t = new Teachers();
+            return t.Show_Teachers();
         }
+
 
         // GET api/<controller>/5
         public string Get(int id)
@@ -25,9 +31,9 @@ namespace APP1.Controllers
         // POST api/<controller>
        
 
-        [HttpGet]
+        [HttpPost]
         [Route("api/Teachers/add")]
-        public int Get(Teachers t)
+        public int Post(Teachers t)
         {
             return t.Insert_New_Teacher(t);
         }
