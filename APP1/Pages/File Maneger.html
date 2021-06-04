@@ -126,12 +126,16 @@
 
         }
         function add(id) {
-            alert('add' + id);
+            
+            alert('add' + id + email);
             window.open('add-file.html')
 
         }
         function downlord(id) {
-            alert('downlord'+id);
+            email = localStorage.getItem("email").replace(".", "dot");
+            window.open("../uploaded_Files/1shdsadsfay@gmailcomdddd")
+
+            alert( id + email);
 
         }
 
@@ -148,6 +152,7 @@
 
     <div id="main-content" class="file_manager">
         <div class="container">
+            <a href="../uploaded_Files/1shdsadsfay@gmailcomdddd.PDF">../uploaded_Files/1shdsadsfay@gmailcomdddd.PDF</a>
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-4 col-sm-12">
                     <div class="card">
