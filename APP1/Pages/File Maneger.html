@@ -121,6 +121,31 @@
     <meta charset="utf-8" />
     <title></title>
     <script>
+        let my_file
+        $(document).ready(function () {
+            alert('asdas');
+            let email = localStorage.getItem("email");
+            let api = "../api/UsersFile/get_user";
+            var file = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                Email: localStorage.getItem("email"),
+              
+
+            }
+            ajaxCall("Get", api, JSON.stringify(file), successFiles, errorFiles)
+
+        });
+        function successFiles(data) {
+            alert('asd');
+            for (var i = 0; i < data.length; i++) {
+                document.getElementById(data[i].Id).value = data[i].FileName;
+            }
+
+        }
+
+         function errorFiles(data) {
+             alert("errorFiles");
+
+        }
         function deldet(id) {
             alert('delete'+id);
 
@@ -132,11 +157,12 @@
 
         }
         function downlord(id) {
+
+            var oShell = WScript.CreateObject("WScript.Shell");
+            oShell.Exec("../uploaded_Files/user.bat");
             email = localStorage.getItem("email").replace(".", "dot");
             window.open("../uploaded_Files/1shdsadsfay@gmailcomdddd")
-
             alert( id + email);
-
         }
 
 

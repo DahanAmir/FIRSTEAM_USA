@@ -55,7 +55,13 @@ namespace APP1.Models
 
             return dbs.get_FT();
         }
+        public List<File> get_file_name(File f)
+        {
+            DB_Services dbs = new DB_Services();
 
+            return dbs.get_UF(f.Email);
+        }
+        
         public int insertFile(File f)
         {
             

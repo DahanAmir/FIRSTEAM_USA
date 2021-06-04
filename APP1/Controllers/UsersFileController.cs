@@ -27,9 +27,13 @@ namespace APP1.Controllers
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        [HttpGet]
+        [Route("api/UsersFile/get_user")]
+        public List<File> Get(File f)
         {
-            return "value";
+
+            return f.get_file_name(f);
+
         }
         [HttpPost]
         [Route("api/UsersFile/Post_Favorite/insert/save")]
