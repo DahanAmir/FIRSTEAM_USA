@@ -27,12 +27,12 @@ namespace APP1.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet]
-        [Route("api/UsersFile/get_user")]
-        public List<File> Get(File f)
+      
+        public List<File> Get(File emailfile)
         {
+            File file = new File();
 
-            return f.get_file_name(f);
+            return file.get_file_name(emailfile);
 
         }
         [HttpPost]
@@ -44,8 +44,11 @@ namespace APP1.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public List<File> Put(File emailfile)
         {
+            File file = new File();
+
+            return file.get_file_name(emailfile);
         }
 
         // DELETE api/<controller>/5

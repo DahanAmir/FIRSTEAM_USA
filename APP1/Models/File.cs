@@ -59,7 +59,7 @@ namespace APP1.Models
         {
             DB_Services dbs = new DB_Services();
 
-            return dbs.get_UF(f.Email);
+            return dbs.get_UF(f);
         }
         
         public int insertFile(File f)

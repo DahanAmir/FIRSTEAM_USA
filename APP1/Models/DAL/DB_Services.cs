@@ -139,7 +139,7 @@ namespace APP1.Models.DAL
 
 
 
-            public List<File> get_UF(string email)
+            public List<File> get_UF(File file)
         {
             List<File> FT = new List<File>();
             SqlConnection con = null;
@@ -148,7 +148,7 @@ namespace APP1.Models.DAL
             {
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
 
-                String selectSTR = "select * from UsersFile where='"+ email+"'";
+                String selectSTR = "select * from UsersFile where email='" + file.Email+"'";
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
