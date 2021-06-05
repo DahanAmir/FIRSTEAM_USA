@@ -148,11 +148,11 @@
 
         });
         function successFiles(data) {
-            alert('asd');
-            for (var i = 0; i < data.length; i++) {
-                $('"' + data[i].Id + '"').val = data[i].Filename
 
+            for (var i = 0; i < data.length; i++) {
+                document.getElementById(data[i].Id).value = data[i].FileName;
             }
+            alert('asd');
 
         }
 
