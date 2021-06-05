@@ -128,13 +128,13 @@
     <title></title>
     <script>
         $(document).ready(function () {
-            let email = localStorage.getItem("email");
+            let email = 'nan177athe@queen.com';
             //let api = "../api/UsersFile/get_user/emailfile";
             let api = "../api/UsersFile";
 
 
             var my_email = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
-                Email: localStorage.getItem("email"),
+                Email: "nan177athe@queen.com",
                 Filename: '',
                 Remark: '',
                 Score: '',
@@ -148,10 +148,20 @@
 
         });
         function successFiles(data) {
+            
 
             for (var i = 0; i < data.length; i++) {
-                document.getElementById(data[i].Id).value = data[i].FileName;
+                elms = document.querySelectorAll("[id='" + data[i].Id + "']");
+                elms[0].value = data[i].FileName
+                elms[1].value = data[i].FileName
+                elms[2].value = data[i].FileName
+
             }
+
+
+            //for (var i = 0; i < data.length; i++) {
+            //    document.getElementById(data[i].Id).value = data[i].FileName;
+            //}
             alert('asd');
 
         }
@@ -161,22 +171,21 @@
 
         }
         function deldet(id) {
+            window.open("../uploaded_Files/" + file)
+
             alert('delete' + id);
 
         }
         function add(id) {
+            alert('delete' + id);
 
             alert('add' + id + email);
             window.open('add-file.html')
 
         }
-        function downlord(id) {
-
-            var oShell = WScript.CreateObject("WScript.Shell");
-            oShell.Exec("../uploaded_Files/user.bat");
-            email = localStorage.getItem("email").replace(".", "dot");
-            window.open("../uploaded_Files/1shdsadsfay@gmailcomdddd")
-            alert(id + email);
+        function downlord(file) {
+            window.open("../uploaded_Files/" + file)
+          
         }
 
 
@@ -199,13 +208,13 @@
                         <div class="file">
                             <a href="javascript:void(0);">
                                 <div class="hover">
-                                    <button type="button" class="btn btn-icon btn-danger" id="1" onclick="deldet(id)">
+                                    <button type="button" class="btn btn-icon btn-danger" id="1" onclick="deldet(value)">
                                         <i class="fa fa-trash-o" title="Trash"></i>
                                     </button>
                                     <button type="button" class="btn btn-icon btn-danger" id="1" onclick="add(id)">
                                         <i class="fa fa-file-pdf-o" title="Add"></i>
                                     </button>
-                                    <button type="button" class="btn btn-icon btn-danger" id="1" onclick="downlord(id)">
+                                    <button type="button" class="btn btn-icon btn-danger" id="1" onclick="downlord(value)">
                                         <i class=" fa fa-download" title="Download"></i>
                                     </button>
 
@@ -227,13 +236,13 @@
                         <div class="file">
                             <a href="javascript:void(0);">
                                 <div class="hover">
-                                    <button type="button" class="btn btn-icon btn-danger" id="2" onclick="deldet(id)">
+                                    <button type="button" class="btn btn-icon btn-danger" id="2" onclick="deldet(value)">
                                         <i class="fa fa-trash-o" title="Trash"></i>
                                     </button>
                                     <button type="button" class="btn btn-icon btn-danger" id="2" onclick="add(id)">
                                         <i class="fa fa-file-pdf-o" title="Add"></i>
                                     </button>
-                                    <button type="button" class="btn btn-icon btn-danger" id="2" onclick="downlord(id)">
+                                    <button type="button" class="btn btn-icon btn-danger" id="2" onclick="downlord(value)">
                                         <i class=" fa fa-download" title="Download"></i>
                                     </button>
 
@@ -255,13 +264,13 @@
                         <div class="file">
                             <a href="javascript:void(0);">
                                 <div class="hover">
-                                    <button type="button" class="btn btn-icon btn-danger" id="3" onclick="deldet(id)">
+                                    <button type="button" class="btn btn-icon btn-danger" id="3" onclick="deldet(value)">
                                         <i class="fa fa-trash-o" title="Trash"></i>
                                     </button>
                                     <button type="button" class="btn btn-icon btn-danger" id="3" onclick="add(id)">
                                         <i class="fa fa-file-pdf-o" title="Add"></i>
                                     </button>
-                                    <button type="button" class="btn btn-icon btn-danger" id="3" onclick="downlord(id)">
+                                    <button type="button" class="btn btn-icon btn-danger" id="3" onclick="downlord(value)">
                                         <i class=" fa fa-download" title="Download"></i>
                                     </button>
 
@@ -283,13 +292,13 @@
                         <div class="file">
                             <a href="javascript:void(0);">
                                 <div class="hover">
-                                    <button type="button" class="btn btn-icon btn-danger" id="4" onclick="deldet(id)">
+                                    <button type="button" class="btn btn-icon btn-danger" id="4" onclick="deldet(value)">
                                         <i class="fa fa-trash-o" title="Trash"></i>
                                     </button>
                                     <button type="button" class="btn btn-icon btn-danger" id="4" onclick="add(id)">
                                         <i class="fa fa-file-pdf-o" title="Add"></i>
                                     </button>
-                                    <button type="button" class="btn btn-icon btn-danger" id="4" onclick="downlord(id)">
+                                    <button type="button" class="btn btn-icon btn-danger" id="4" onclick="downlord(value)">
                                         <i class=" fa fa-download" title="Download"></i>
                                     </button>
 
