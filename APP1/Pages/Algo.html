@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
     <script src="../Scripts/jquery-3.4.1.js"></script>
     <script src="../Scripts/ajaxCalls.js"></script>
-   
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 
@@ -146,17 +147,71 @@
             background-color: #f13333;
             border-color: #f13333;
         }
+
+
+
+        /*        ניבוי
+        */
+
+
+
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:600');
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h4 {
+            background: #f13333;
+            text-align: center;
+            width:10%;
+        }
+
+        #nbr {
+            font-size: 62px;
+            margin: 44px 0 0 0;
+        }
+
+        element.style {
+            /* background-color: red; */
+        }
+
+        button {
+            outline: none;
+            background-color: #034f84;
+            border: 2px solid #000;
+            padding: 11px;
+            cursor: pointer;
+        }
+
+            button:active {
+                background: #034f84;
+                color: white;
+            }
     </style>
+
+
+
 
 
     <script>
 
         $(document).ready(function () {
+            var x = document.getElementById("calculate");
+            x.style.display = "none";
+            $("#nbr").hide();
+            $("h4").hide();
+
+
+            $("#nbr").click(function () {
+                $("#nbr").hide();
+            });
+
+
+
             var name = "";
-            //var email = email = localStorage.getItem("email");
-            var email = localStorage.getItem("email")
-           // alert(email);
-           // var email = "adi@gmail.com";
+            // var email = localStorage.getItem("email")
+            var email = "adi@gmail.com";
             let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
                 // FirstName: $("#nameTB").val(),
                 Email: email,
@@ -179,36 +234,56 @@
 
         function successData(data) {
             console.log(data)
-            alert("successData")
+            //   alert("successData")
             rend(data)
         }
 
-
+        var TotalNumber = 0;
+        var P = 0;
         var str = "";
         function rend(data) {
             str += "<h3> Your Data is: </h3>";
-            str += "Gender: " + data[0].Gender + "</br>"; 
-            str += "National: " + data[0].National + "</br>"; 
-            str += "Captain: " + data[0].Captain + "</br>"; 
-            str += "League: " + data[0].League + "</br>"; 
-            str += "Championships: " + data[0].Champions + "</br>"; 
-            str += "Cups: " + data[0].Cups + "</br>"; 
-            str += "Position: " + data[0].Position + "</br>"; 
-            str += "TOFEL: " + data[0].Tofel + "</br>"; 
-            str += "SAT: " + data[0].Sat + "</br>"; 
-            str += "GPA: " + data[0].GPA + "</br>"; 
-            
+            str += "Gender: " + data[0].Gender + "</br>";
+            str += "National: " + data[0].National + "</br>";
+            str += "Captain: " + data[0].Captain + "</br>";
+            str += "League: " + data[0].League + "</br>";
+            str += "Championships: " + data[0].Champions + "</br>";
+            str += "Cups: " + data[0].Cups + "</br>";
+            str += "Position: " + data[0].Position + "</br>";
+            str += "TOFEL: " + data[0].Tofel + "</br>";
+            str += "SAT: " + data[0].Sat + "</br>";
+            str += "GPA: " + data[0].Gpa + "</br>";
+
+
+            let numberAcademic = (((data[0].Tofel + data[0].GPA) * 100 + data[0].Sat) ^ 0.4) * 0.4;
+            alert(numberAcademic);
+
+            if (data[0].Position == 'מגן' || data[0].Position == 'כנף')
+                P = 1
+            else P = 0;
+
+            let numberPro = data[0].National * 30 + data[0].Captain * 20 + (data[0].Champions + data[0].Cups) * 10 + data[0].League * 10 + P * 30;
+            alert(numberPro);
+
+            TotalNumber = numberAcademic + numberPro;
+
+
             document.getElementById("data").innerHTML = str;
 
-            calculateAlgo()
+
+
+            calculateAlgo(TotalNumber)
         }
 
-
+        var numberPro = 0;
+        var numberAcademic = 0;
         var arr = "";
-        function calculateAlgo() {
-           
-            document.getElementById("calculate").innerHTML= "Number TBD"
+        function calculateAlgo(TotalNumber) {
+            alert("in calculate")
 
+            alert(TotalNumber);
+
+            document.getElementById("calculate").innerHTML = "<h4 id='nbr'>" + TotalNumber + "</h4>";
 
 
         }
@@ -265,6 +340,57 @@
 
     </script>
 
+    <script>
+
+
+        var speed = 10;
+
+        function hideb() {
+            var x = document.getElementById("calculate");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+            incNbr();
+        }
+
+
+
+        /* Call this function with a string containing the ID name to
+         * the element containing the number you want to do a count animation on.*/
+        function incEltNbr(id) {
+            elt = document.getElementById(id);
+            endNbr = Number(document.getElementById(id).innerHTML);
+            incNbrRec(0, endNbr, elt);
+        }
+
+        /*A recursive function to increase the number.*/
+        function incNbrRec(i, endNbr, elt) {
+            if (i <= endNbr) {
+                elt.innerHTML = i;
+                setTimeout(function () {//Delay a bit before calling the function again.
+                    incNbrRec(i + 1, endNbr, elt);
+                }, speed);
+            }
+        }
+
+
+
+        /*Function called on button click*/
+        function incNbr() {
+            incEltNbr("nbr");
+        }
+
+        incEltNbr("nbr"); /*Call this funtion with the ID-name for that element to increase the number within*/
+
+
+
+
+
+    </script>
+
+
 </head>
 <body>
     <button class="button2" ONCLICK="goBack()" style="float:left">Go Back</button>
@@ -281,28 +407,33 @@
             <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
             <a href="#about" onclick="gotowishlist()">Show WishList</a>
             <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
-            <p> Add To WishList  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
-    <span class="glyphicon glyphicon-heart"></span> Add To WishList
-</a>
+            <p>
+                Add To WishList  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
+                    <span class="glyphicon glyphicon-heart"></span> Add To WishList
+                </a>
             </p>
         </div>
-      
+
         <div id="intro">     </div>
-        <div id="data" ></div>
+        <div id="data"></div>
         <br /><br /><br />
-        <div id="calculate" style="background-color:red" >
-        
+        <div id="calculate">
+
         </div>
 
 
     </div>
-    <div>
 
-
-    </div>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 
+    <button id="b" onclick="hideb()">Click here to find!</button>
+
+    <div id="predict">
+        <p id="nbr"></p>
+
+    </div>
+    <!--<button id="b" onclick="incNbr()">Play Again</button>-->
 
 
 

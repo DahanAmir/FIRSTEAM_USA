@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:600');
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: #FFCC10;
+            text-align: center;
+        }
+
+        #nbr {
+            font-size: 62px;
+            margin: 44px 0 0 0;
+        }
+
+        button {
+            outline: none;
+            background: none;
+            border: 2px solid #000;
+            padding: 11px;
+            cursor: pointer;
+        }
+
+            button:active {
+                background: #000;
+                color: #FFCC10;
+            }
+
+    </style>
+    <script>
+       
+
+        $(document).ready(function () {
+            var x = document.getElementById("nbr");
+            x.style.display = "none";
+        });
+
+
+        var speed = 10;
+
+        function hideb() {
+            var x = document.getElementById("nbr");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+            incNbr();
+        }
+
+
+
+        /* Call this function with a string containing the ID name to
+         * the element containing the number you want to do a count animation on.*/
+        function incEltNbr(id) {
+            elt = document.getElementById(id);
+            endNbr = Number(document.getElementById(id).innerHTML);
+            incNbrRec(0, endNbr, elt);
+        }
+
+        /*A recursive function to increase the number.*/
+        function incNbrRec(i, endNbr, elt) {
+            if (i <= endNbr) {
+                elt.innerHTML = i;
+                setTimeout(function () {//Delay a bit before calling the function again.
+                    incNbrRec(i + 1, endNbr, elt);
+                }, speed);
+            }
+        }
+
+
+
+        /*Function called on button click*/
+        function incNbr() {
+            incEltNbr("nbr");
+        }
+
+        incEltNbr("nbr"); /*Call this funtion with the ID-name for that element to increase the number within*/
+
+    </script>
+</head>
+
+
+<body>
+
+    <p id="nbr">50</p>
+    <!--<button id="b" onclick="incNbr()">Play Again</button>-->
+    <button id="b" onclick="hideb()">Click here to find!</button>
+
+</body>
+</html>
