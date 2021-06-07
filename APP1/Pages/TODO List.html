@@ -247,7 +247,7 @@
         }
 
         function successWishlist() {
-            alert("successWishlist")
+         //   alert("successWishlist")
         }
 
 
@@ -330,7 +330,7 @@
 
 
         function successtodo() {
-            alert("in successtodo");
+          //  alert("in successtodo");
         }
 
         function errortodo() {
@@ -511,6 +511,56 @@
         }
 
 
+        $(document).ready(function () {
+            let email = localStorage.getItem("email");
+           // email = "adi@gmail.com";
+            name1 = email.split('@');
+          //  alert(name1[0]);
+
+
+            let api_todo = "../api/ToDoList/" + email + "/get_all_TODO";
+            ajaxCall("Get", api_todo, email, successTodo, errorTodo)
+
+
+        });
+
+        var str2 = "";
+        var name1 = [];
+        function successTodo(data) {
+        //    alert("in successTodo")
+            console.log(data);
+
+            //str2 += "<table id='miyazaki'>";
+            ////str2 += "<h3> My To Do List </h3>";
+            //str2 += "<thead>";
+            //str2 += "<tr><th>Task<th>Status<th>Due Date<tbody>"
+
+            for (var i = 0; i < data.length; i++) {
+
+                str2+= "<ul id='task-list' class='task-name'><li id='todo"+ i+ "'>"
+                str2 += "<p class='task-name'> "+  name1[0] + " Needs To " + data[i].Task + " By" + data[i].DueDate + "</p><span class='close' onclick='closef()'>x</span> </br>";
+                str2+= "</li></ul>"
+
+                // str2 += "<tr><td>" + data[i].;
+                //str2 += "<td>" + data[i].Status;
+                //str2 += "<td>" + data[i].DueDate + "<tr>";
+
+            }
+
+            // str += "<button class='button2' ONCLICK='alltodo()' style='float: left'> My To Do List  </button>";
+            document.getElementById("oldtask-list").innerHTML = str2;
+
+
+
+        }
+
+        function errorTodo() {
+            alert("in errorTodo")
+        }
+
+
+
+
     </script>
 
 
@@ -551,7 +601,7 @@
         <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
 
 
-        <div class="jumbotron page-header">
+        <div class="jumbotron page-header" style="        background-color: #034f84">
             <h2 style="margin:5px" width="50%">My To Do List</h2>
         </div>
         <form>
@@ -569,7 +619,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-3 pull-left">
-                    <button type="button" class="btn btn-primary" onclick="newElement()">Add Task</button>
+                    <button type="button" class="btn btn-primary" onclick="newElement()" style="        background-color: #034f84">Add Task</button>
                 </div>
                 <div class="dropdown col-xs-3 pull-left">
                     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="background-color:red">
@@ -590,8 +640,8 @@
         </form>
     </div>
     <div class="tasks">
-        <ul id="task-list">
-        </ul>
+        <ul id="oldtask-list">  </ul>
+        <ul id="task-list" class="task-name">  </ul>
     </div>
     <ul id="pagination" class="pagination pagination-lg"></ul>
 </body>
