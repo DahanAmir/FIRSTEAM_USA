@@ -202,11 +202,11 @@
     <Content Include="MatchCSS.css" />
     <Content Include="Pages\add-file.html" />
     <Content Include="Pages\Countdown.html" />
-    <Content Include="Pages\email.html" />
+    <Content Include="Pages\2email.html" />
     <Content Include="Pages\File Maneger.html" />
     <Content Include="Pages\file view.html" />
     <Content Include="Pages\1edit - class Ex solution.html" />
-    <Content Include="Pages\Calculat.html" />
+    <Content Include="Pages\2Calculat.html" />
     <Content Include="Pages\2ManagerDash - Copy.html" />
     <Content Include="Pages\Algo.html" />
     <Content Include="Pages\NewManagerDash.html" />
