@@ -33,13 +33,19 @@ namespace WebApplication2.Controllers
 
                     if (httpPostedFile != null)
                     {
+                        DateTime dt = DateTime.Now;
+
                         // Construct file save path  
                         //var fileSavePath = Path.Combine(HostingEnvironment.MapPath(ConfigurationManager.AppSettings["fileUploadFolder"]), httpPostedFile.FileName);
                         string fname = httpPostedFile.FileName.Split('\\').Last();
                         var fileSavePath = Path.Combine(HostingEnvironment.MapPath("~/uploaded_Files"), name);
-                        // Save the uploaded file  
+                        var bakfileSavePath = Path.Combine(HostingEnvironment.MapPath("~/uploaded_Files"), dt.Year + '-' + dt.Month + '-' + dt.Day + '-' + dt.Hour + '-' + dt.Minute + '-' + dt.Second + '-' + name);
+
+                        // Save the uploaded file
                         httpPostedFile.SaveAs(fileSavePath);
-                        imageLinks.Add("uploaded_Files/" + fname);
+                        httpPostedFile.SaveAs(bakfileSavePath);
+                        imageLinks.Add("uploaded_Files/" + dt.Year + '-' + dt.Month + '-' + dt.Day + '-' + dt.Hour + '-' + dt.Minute + '-' + dt.Second + '-' + fname);
+                        imageLinks.Add("uploaded_Files/"+ fname);
                     }
                 }
             }

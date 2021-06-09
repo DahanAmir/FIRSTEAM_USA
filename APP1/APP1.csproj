@@ -200,7 +200,7 @@
     <Content Include="Global.asax" />
     <Content Include="Gmail.max-1100x1100 %281%29.png" />
     <Content Include="MatchCSS.css" />
-    <Content Include="Pages\add-file.html" />
+    <Content Include="Pages\2add-file.html" />
     <Content Include="Pages\Countdown.html" />
     <Content Include="Pages\2email.html" />
     <Content Include="Pages\File Maneger.html" />
