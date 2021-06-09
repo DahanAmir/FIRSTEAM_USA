@@ -209,6 +209,7 @@
     <Content Include="Pages\2Calculat.html" />
     <Content Include="Pages\2ManagerDash - Copy.html" />
     <Content Include="Pages\Algo.html" />
+    <Content Include="Pages\Wishlist.html" />
     <Content Include="Pages\NewManagerDash.html" />
     <Content Include="Pages\2NewTeacher.html" />
     <Content Include="Pages\2Predict- old.html" />
@@ -251,7 +252,7 @@
     <Content Include="Pages\1To Do List New.html" />
     <Content Include="Pages\TODO List.html" />
     <Content Include="Pages\2UsersAndFiles.html" />
-    <Content Include="Pages\WishList.html" />
+    <Content Include="Pages\2WishListOld.html" />
     <Content Include="Scripts\ajaxCalls.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -3,19 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
-
+    <script src="../Scripts/jquery-3.4.1.js"></script>
     <script src="../Scripts/ajaxCalls.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
 
         * {
             font-family: 'Montserrat', sans-serif;
         }
+
         .btn-group button {
             background-color: #04AA6D; /* Green background */
             border: 1px solid green; /* Green border */
@@ -37,9 +32,9 @@
         }
 
         /* Add a background color on hover */
-        /*.btn-group button:hover {
+        .btn-group button:hover {
             background-color: #3e8e41;
-        }*/
+        }
     </style>
     <style>
 
@@ -84,26 +79,17 @@
                     background-color: #ddd;
                     color: black;
                 }
-                  .topnav active:hover {
-                    background-color: #ddd;
-                    color: black;
-                }
 
                 .topnav a.active {
                     background-color: red;
                     color: white;
                 }
 
-        .btn-info:hover {
-            color: #fff;
-            background-color: #31b0d5;
-            border-color: #f13333;
-        }
 
 
         #customers {
-/*            font-family: Arial, Helvetica, sans-serif;
-*/            border-collapse: collapse;
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
             width: 100%;
         }
 
@@ -162,10 +148,7 @@
         }
     </style>
 
-
     <script>
-        
-
         var arr = '';
         var university_id = '';
         var str = ''
@@ -277,6 +260,7 @@
                 console.log(data);
                 api_getlist = data;
 
+                alert("successShow2")
                 str += "<table id='customers' class='table' class='header'>";
                 str += "<thead><tr>";
                 str += "<th>School name</th>";
@@ -346,13 +330,13 @@
 
         }
 
+
         function ChangeFavorites() {
 
             window.open('FavRegion.html');
 
         }
 
-       
 
 
         function errorWishlist() {
@@ -369,10 +353,13 @@
         function gotowishlist() {
             window.open('WishList.html')
         }
+        function Algo() {
+            window.open('Algo.html')
+        }
 
 
-        function allprofiles() {
-            window.open('AllProfiles.html')
+        function PlyersQ() {
+            window.open('UsarDataQ.html')
         }
 
         function goBack() {
@@ -380,20 +367,25 @@
             window.close()
         }
 
+
+
+
     </script>
+
 
 </head>
 <body>
+
     <button class="button2" ONCLICK="goBack()" style="float:left"> Go Back  </button>
-    <br /><br />
+    <br /><br /><br /><br />
 
 
     <div class="imgcontainer">
 
         <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
         <div class="topnav">
-            <a href="#about" onclick="rend()" style="background-color:#034f84">Show Results</a>
-            <a class="active" href="#about" onclick="ChangeFavorites()">Change Favorites</a>
+            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
+            <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
             <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
             <a href="#about" onclick="gotowishlist()">Show WishList</a>
             <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
@@ -403,27 +395,16 @@
                 </a>
             </p>
         </div>
-        <h1 style="color:red"> WishList ❤️ </h1>
+        <h1 style="color:red"> Match Schools: </h1>
         <div id="intro">     </div>
 
 
     </div>
-    <div>
+    
 
-        <!--<div><button onclick="rend()" style="background-color:red; color:white">Show Results</button></div>
-        <div><button onclick="ChangeFavorites()" style="background-color: red; color:white">Change Favorites</button></div>
-        <div><button onclick="Wishlist()" style="background-color: Black; color:white">Add to WishList</button></div>
-        <div><button onclick="gotowishlist()" style="background-color: darkblue; color:white">Show WishList</button></div>
-        <div><button onclick="allprofiles()" style="background-color: darkblue; color:white">All Playres Profiles</button></div>-->
-        <div id="showfav">  </div>
-        <div id="api">  </div>
-    </div>
-    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-    <div id="ph"> </div>
+        <h1 style="color:red">WishList ❤️</h1>
 
-
-
-
+        <div id="ph"> </div>
 
 </body>
 </html>
