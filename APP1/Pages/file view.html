@@ -245,13 +245,26 @@
 
     <script>
         var id_edit;
-        function editBtn_Function(email) {
-            window.open("FileUpload_Form.HTML");
+
+        
+        function viewBtn_Function(email) {
+
+
+            window.open("Manager_uploadFiles.HTML");
             localStorage.setItem("fileemail", email);
             //id_edit=''
             //$("#editDiv").show();
             //id_edit = cam_id
-            
+
+        } function editBtn_Function(email) {
+
+
+            window.open("uploadFiles.HTML");
+            localStorage.setItem("fileemail", email);
+            //id_edit=''
+            //$("#editDiv").show();
+            //id_edit = cam_id
+
         }
 
 
@@ -381,8 +394,10 @@
 
                                 //let dataCampaign = "data-campaignId='" + data + "'";
                                 ids = row[0];
+                                view = row;
                                 editBtn = "<button type='button'  class = 'editBtn btn btn-success'    id='" + ids + "' onclick='editBtn_Function(id)'> Edit </button>";
-                                return editBtn;
+                                deleteBtn = "<button type='button' class = 'deleteBtn btn btn-danger'     id='" + view + "' onclick='viewBtn_Function(id)'> view </button>";
+                                return editBtn + deleteBtn;
                             }
                         },
 
@@ -520,14 +535,14 @@
                 <tr>
                     <th>     </th>
                     <th>name</th>
-                    <th>file1</th>
-                    <th>file2</th>
-                    <th>file3</th>
-                    <th>file4</th>
-                    <th>file5</th>
-                    <th>file6</th>
-                    <th>file7</th>
-                    <th>file8</th>
+                    <th>TOFEL</th>
+                    <th>ויזה</th>
+                    <th>בגרות</th>
+                    <th>ציונים</th>
+                    <th>מלגה</th>
+                    <th>SAT</th>
+                    <th>אחר</th>
+                    <th>תאריך רישום</th>
 
 
                 </tr>

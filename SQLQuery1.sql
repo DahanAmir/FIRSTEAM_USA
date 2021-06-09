@@ -1,1 +1,1 @@
-﻿select * from userdata
+﻿select * FROM FileType
