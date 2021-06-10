@@ -15,6 +15,178 @@
 
     <style type="text/css">
 
+        <style >
+        .btn-group button {
+            background-color: #04AA6D; /* Green background */
+            border: 1px solid green; /* Green border */
+            color: white; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+        }
+
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .btn-group button:not(:last-child) {
+            border-right: none; /* Prevent double borders */
+        }
+
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: #3e8e41;
+        }
+
+        .button2 {
+            background-color: white;
+            border: none;
+            color: darkblue;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            float: left;
+        }
+
+
+        /*כותרת*/
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: red;
+                    color: white;
+                }
+
+
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: black;
+                color: white;
+            }
+
+        #header {
+            background-color: red;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 0px auto;
+/*            width: 100%;
+*/            height: 100%;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            height: 60px;
+            color: white;
+            width: 180px;
+            float: left;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #f13333;
+            border-color: #f13333;
+        }
+        .sorting_1 {
+            width:20%;
+        }
+        /*        ניבוי
+        */
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:600');
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h4 {
+            background: #f13333;
+            text-align: center;
+            width: 10%;
+        }
+
+        #nbr {
+            font-size: 62px;
+            margin: 44px 0 0 0;
+        }
+
+        element.style {
+            /* background-color: red; */
+        }
+
+        button {
+            outline: none;
+            background-color: #034f84;
+            border: 2px solid #000;
+            padding: 11px;
+            cursor: pointer;
+        }
+
+            button:active {
+                background: #034f84;
+                color: white;
+            }
+
         * {
             font-family: 'Montserrat', sans-serif;
         }
@@ -285,39 +457,82 @@
 
         }
 
+
+        function Algo() {
+            window.open('Algo.html')
+        }
+
+        function gotowishlist() {
+            window.open('WishList.html')
+        }
+
+
+        function allprofiles() {
+            window.open('Profile_Show.html')
+        }
+
+        function goBack() {
+            window.history.back();
+            window.close()
+        }
+
     </script>
 </head>
 <body>
-    <div id="card">
-        <div class="container-fluid">
-            <table id="campaignsTable" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>   </th>
-                        <th>Full name</th>
-                        <th>Phone</th>
-                        <th>Register</th>
-                        <th>Position</th>
-                        <th>BirthDay</th>
-                        <th>Status</th>
-                        <th>EstimatedYear</th>
-                        <th>Active</th>
-                    </tr>
-                </thead>
 
-            </table>
-            <div id="editDiv">
-                <form id="carForm">
-                    <div class="form-group row">
-                        <div class="form-group col-sm-3">
+    <button class="button2" ONCLICK="goBack()" style="float:left">Go Back</button><img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+    <br /><br />
+
+
+    <div class="imgcontainer">
+
+        <div class="topnav">
+            <a href="#home" onclick="Algo()" style="background-color:#034f84">Smart Algo</a>
+            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
+            <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
+            <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
+            <a href="#about" onclick="gotowishlist()">Show WishList</a>
+            <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
+            <p>
+                Add To WishList  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
+                    <span class="glyphicon glyphicon-heart"></span> Add To WishList
+                </a>
+            </p>
+        </div>
+
+        </div>
+        <br /> <br />
+        <div id="card">
+            <div class="container-fluid">
+                <table id="campaignsTable" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>   </th>
+                            <th>Full name</th>
+                            <th>Phone</th>
+                            <th>Register</th>
+                            <th>Position</th>
+                            <th>BirthDay</th>
+                            <th>Status</th>
+                            <th>EstimatedYear</th>
+                            <th>Active</th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <div id="editDiv">
+                    <form id="carForm">
+                        <div class="form-group row">
+                            <div class="form-group col-sm-3">
+
+                            </div>
 
                         </div>
 
-                    </div>
-
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
