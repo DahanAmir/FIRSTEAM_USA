@@ -231,7 +231,7 @@
     <Content Include="Pages\1start.html" />
     <Content Include="Pages\1FavLocale.html" />
     <Content Include="Pages\1Favorites.html" />
-    <Content Include="Pages\API_GOOGLE.html" />
+    <Content Include="Pages\2API_GOOGLE.html" />
     <Content Include="Pages\2Favorites.html" />
     <Content Include="Pages\FavRegion.html" />
     <Content Include="Pages\FavLocale.html" />

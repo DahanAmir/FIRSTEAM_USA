@@ -84,16 +84,10 @@
 			window.location.href = "NewUserFormForOwner.html";
 		}
 		function login() {
-
-
 			email = $("#uname").val();
 			password = $("#psw").val();
-
 			let api = "../api/Users/" + email + '/' + password;
-
 			ajaxCall("Get", api, email + "" + password, successlogin, errorlogin)
-
-
 		}
 		function successlogin(data) {
 			if (data == 0) {

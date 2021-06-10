@@ -177,6 +177,10 @@
         var email
 
         $(document).ready(function () {
+            user = localStorage.getItem("user");
+            if (user=='מנהל') {
+
+            }
             email = localStorage.getItem("email");
             //email = "adi@gmail.com";
             let api_wishlist = "../api/University/" + email + "/get_wishlist";

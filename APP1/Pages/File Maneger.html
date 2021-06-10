@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html>
 <head>
     <script src="../Scripts/jquery-3.4.1.min.js"></script>
@@ -25,6 +26,7 @@
         * {
             font-family: 'Montserrat', sans-serif;
         }
+
         .p {
         }
 
@@ -127,153 +129,13 @@
         a:hover {
             text-decoration: none;
         }
-
-        @import url('https://fonts.googleapis.com/css?family=Montserrat:600');
-
-        * {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .btn-group button {
-            background-color: #04AA6D; /* Green background */
-            border: 1px solid green; /* Green border */
-            color: white; /* White text */
-            padding: 10px 24px; /* Some padding */
-            cursor: pointer; /* Pointer/hand icon */
-            float: left; /* Float the buttons side by side */
-        }
-
-        /* Clear floats (clearfix hack) */
-        .btn-group:after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        .btn-group button:not(:last-child) {
-            border-right: none; /* Prevent double borders */
-        }
-
-        /* Add a background color on hover */
-        .btn-group button:hover {
-            background-color: #3e8e41;
-        }
-
-        .button2 {
-            background-color: white;
-            border: none;
-            color: darkblue;
-            padding: 16px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-            float: left;
-        }
-
-
-        /*כותרת*/
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-        }
-
-            .topnav a {
-                float: left;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 17px;
-            }
-
-                .topnav a:hover {
-                    background-color: #ddd;
-                    color: black;
-                }
-
-                .topnav a.active {
-                    background-color: red;
-                    color: white;
-                }
-
-
-
-        #customers {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-            #customers td, #customers th {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
-
-            #customers tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-
-            #customers tr:hover {
-                background-color: #ddd;
-            }
-
-            #customers th {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: center;
-                background-color: black;
-                color: white;
-            }
-
-        #header {
-            background-color: red;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            text-align: center;
-            margin: 0px auto;
-            width: 100%;
-            height: 100%;
-        }
-
-        th, td {
-            padding: 5px;
-            text-align: left;
-            text-align: center;
-        }
-
-        button {
-            width: 100px;
-            height: 60px;
-            color: white;
-            width: 180px;
-            float: left;
-        }
-
-        .btn-info {
-            color: #fff;
-            background-color: #f13333;
-            border-color: #f13333;
-        }
-
     </style>
     <meta charset="utf-8" />
     <title></title>
     <script>
         $(document).ready(function () {
-            let email =localStorage.getItem("email")
-            //let email = 'nan177athe@queen.com';
+            //let email = localStorage.getItem("email")
+            let email = 'shdsadsfay@gmail.comdddd';
             //let api = "../api/UsersFile/get_user/emailfile";
             let api = "../api/UsersFile";
 
@@ -293,7 +155,7 @@
 
         });
         function successFiles(data) {
-            
+
 
             for (var i = 0; i < data.length; i++) {
                 elms = document.querySelectorAll("[id='" + data[i].Id + "']");
@@ -329,49 +191,13 @@
         }
         function downlord(file) {
             alert(file);
-            if (file !='')
+            if (file != '')
                 window.open("../uploaded_Files/" + file)
             else {
                 alert('חסר מסמך זה, אנא הוסף/י');
             }
-          
-        }
-
-        function ChangeFavorites() {
-
-            window.open('FavRegion.html');
 
         }
-
-
-
-        function errorWishlist() {
-            alert("Please Choose school to Save")
-        }
-
-        function successWishlist() {
-            alert("successWishlist")
-        }
-
-
-        function Algo() {
-            window.open('Algo.html')
-        }
-
-        function gotowishlist() {
-            window.open('WishList.html')
-        }
-
-
-        function allprofiles() {
-            window.open('AllProfiles.html')
-        }
-
-        function goBack() {
-            window.history.back();
-            window.close()
-        }
-
 
 
     </script>
@@ -379,256 +205,233 @@
 <body>
 
 
-    <button class="button2" ONCLICK="goBack()" style="float:left">Go Back</button><img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
-
-    <br /><br />
 
 
-    <div class="imgcontainer">
 
-        <div class="topnav">
-            <a href="#home" onclick="Algo()" style="background-color:#034f84">Smart Algo</a>
-            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
-            <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
-            <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
-            <a href="#about" onclick="gotowishlist()">Show WishList</a>
-            <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
-            <p>  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
-                    <span class="glyphicon glyphicon-heart"></span> Add To WishList
-                </a>
-            </p>
-        </div>
-        </div>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
+    <div id="main-content" class="file_manager">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="1" onclick="deldet(value)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="1" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="1" onclick="downlord(value)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
 
-    <br /><br /><br />
-        <!--<div id="intro">     </div>-->
-
-
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
-        <div id="main-content" class="file_manager">
-            <div class="container">
-                <div class="row clearfix">
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card">
-                            <div class="file">
-                                <a href="javascript:void(0);">
-                                    <div class="hover">
-                                        <button type="button" class="btn btn-icon btn-danger" id="1" onclick="deldet(value)">
-                                            <i class="fa fa-trash-o" title="Trash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="1" onclick="add(id)">
-                                            <i class="fa fa-file-pdf-o" title="Add"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="1" onclick="downlord(value)">
-                                            <i class=" fa fa-download" title="Download"></i>
-                                        </button>
-
-                                    </div>
-                                    <div class="image">
-                                        <img src="../IMAGE/SAT.png" alt="img" class="img-fluid" />
-                                    </div>
-                                    <div class="file-name">
-                                        <p class="m-b-5 text-muted">TAYP: SAT</p>
-                                        <p class="m-b-5 text-muted">Score: 1100</p>
-                                        <small> <span class="date text-muted">25/05/2021</span></small>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card">
-                            <div class="file">
-                                <a href="javascript:void(0);">
-                                    <div class="hover">
-                                        <button type="button" class="btn btn-icon btn-danger" id="2" onclick="deldet(value)">
-                                            <i class="fa fa-trash-o" title="Trash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="2" onclick="add(id)">
-                                            <i class="fa fa-file-pdf-o" title="Add"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="2" onclick="downlord(value)">
-                                            <i class=" fa fa-download" title="Download"></i>
-                                        </button>
-
-                                    </div>
-                                    <div class="image">
-
-                                        <img src="../IMAGE/PASSPORT.png" alt="img" class="img-fluid" />
-                                    </div>
-                                    <div class="file-name">
-                                        <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                        <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card">
-                            <div class="file">
-                                <a href="javascript:void(0);">
-                                    <div class="hover">
-                                        <button type="button" class="btn btn-icon btn-danger" id="3" onclick="deldet(value)">
-                                            <i class="fa fa-trash-o" title="Trash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="3" onclick="add(id)">
-                                            <i class="fa fa-file-pdf-o" title="Add"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="3" onclick="downlord(value)">
-                                            <i class=" fa fa-download" title="Download"></i>
-                                        </button>
-
-                                    </div>
-                                    <div class="image">
-                                        <img src="../IMAGE/TOEFL.png" alt="img" class="img-fluid" />
-                                    </div>
-                                    <div class="file-name">
-
-                                        <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                        <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card">
-                            <div class="file">
-                                <a href="javascript:void(0);">
-                                    <div class="hover">
-                                        <button type="button" class="btn btn-icon btn-danger" id="4" onclick="deldet(value)">
-                                            <i class="fa fa-trash-o" title="Trash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="4" onclick="add(id)">
-                                            <i class="fa fa-file-pdf-o" title="Add"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="4" onclick="downlord(value)">
-                                            <i class=" fa fa-download" title="Download"></i>
-                                        </button>
-
-                                    </div>
-                                    <div class="image">
-                                        <img src="https://via.placeholder.com/280x280/B0C4DE/000000" alt="img" class="img-fluid">
-                                    </div>
-                                    <div class="file-name">
-                                        <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                        <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card">
-                            <div class="file">
-                                <a href="javascript:void(0);">
-                                    <div class="hover">
-                                        <button type="button" class="btn btn-icon btn-danger" id="5" onclick="deldet(value)">
-                                            <i class="fa fa-trash-o" title="Trash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="5" onclick="add(id)">
-                                            <i class="fa fa-file-pdf-o" title="Add"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="5" onclick="downlord(value)">
-                                            <i class=" fa fa-download" title="Download"></i>
-                                        </button>
-                                    </div>
-                                    <div class="image">
-                                        <img src="https://via.placeholder.com/280x280/9370DB/000000" alt="img" class="img-fluid">
-                                    </div>
-                                    <div class="file-name">
-                                        <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                        <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card">
-                            <div class="file">
-                                <a href="javascript:void(0);">
-                                    <div class="hover">
-                                        <button type="button" class="btn btn-icon btn-danger" id="6" onclick="deldet(value)">
-                                            <i class="fa fa-trash-o" title="Trash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="6" onclick="add(id)">
-                                            <i class="fa fa-file-pdf-o" title="Add"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="6" onclick="downlord(value)">
-                                            <i class=" fa fa-download" title="Download"></i>
-                                        </button>
-                                    </div>
-                                    <div class="image">
-                                        <img src="https://via.placeholder.com/280x280/48D1CC/000000" alt="img" class="img-fluid">
-                                    </div>
-                                    <div class="file-name">
-                                        <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                        <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card">
-                            <div class="file">
-                                <a href="javascript:void(0);">
-                                    <div class="hover">
-                                        <button type="button" class="btn btn-icon btn-danger" id="7" onclick="deldet(value)">
-                                            <i class="fa fa-trash-o" title="Trash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="7" onclick="add(id)">
-                                            <i class="fa fa-file-pdf-o" title="Add"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="7" onclick="downlord(value)">
-                                            <i class=" fa fa-download" title="Download"></i>
-                                        </button>
-                                    </div>
-                                    <div class="image">
-                                        <img src="https://via.placeholder.com/280x280/DA70D6/000000" alt="img" class="img-fluid">
-                                    </div>
-                                    <div class="file-name">
-                                        <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                        <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card">
-                            <div class="file">
-                                <a href="javascript:void(0);">
-                                    <div class="hover">
-                                        <button type="button" class="btn btn-icon btn-danger" id="8" onclick="deldet(value)">
-                                            <i class="fa fa-trash-o" title="Trash"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="8" onclick="add(id)">
-                                            <i class="fa fa-file-pdf-o" title="Add"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" id="8" onclick="downlord(value)">
-                                            <i class=" fa fa-download" title="Download"></i>
-                                        </button>
-                                    </div>
-                                    <div class="image">
-                                        <img src="https://via.placeholder.com/280x280/DB7093/000000" alt="img" class="img-fluid">
-                                    </div>
-                                    <div class="file-name">
-                                        <p class="m-b-5 text-muted">img21545ds.jpg</p>
-                                        <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
-                                    </div>
-                                </a>
-                            </div>
+                                </div>
+                                <div class="image">
+                                    <img src="../IMAGE/SAT.png" alt="img" class="img-fluid" />
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">TAYP: SAT</p>
+                                    <p class="m-b-5 text-muted">Score: 1100</p>
+                                    <small> <span class="date text-muted">25/05/2021</span></small>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="2" onclick="deldet(value)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="2" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="2" onclick="downlord(value)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
 
+                                </div>
+                                <div class="image">
 
+                                    <img src="../IMAGE/PASSPORT.png" alt="img" class="img-fluid" />
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="3" onclick="deldet(value)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="3" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="3" onclick="downlord(value)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
+
+                                </div>
+                                <div class="image">
+                                    <img src="../IMAGE/TOEFL.png" alt="img" class="img-fluid" />
+                                </div>
+                                <div class="file-name">
+
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="4" onclick="deldet(value)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="4" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="4" onclick="downlord(value)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
+
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/B0C4DE/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="5" onclick="deldet(value)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="5" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="5" onclick="downlord(value)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/9370DB/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="6" onclick="deldet(value)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="6" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="6" onclick="downlord(value)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/48D1CC/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="7" onclick="deldet(value)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="7" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="7" onclick="downlord(value)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/DA70D6/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger" id="8" onclick="deldet(value)">
+                                        <i class="fa fa-trash-o" title="Trash"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="8" onclick="add(id)">
+                                        <i class="fa fa-file-pdf-o" title="Add"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-icon btn-danger" id="8" onclick="downlord(value)">
+                                        <i class=" fa fa-download" title="Download"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/DB7093/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">img21545ds.jpg</p>
+                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
         </div>
+    </div>
 </body>
 </html>

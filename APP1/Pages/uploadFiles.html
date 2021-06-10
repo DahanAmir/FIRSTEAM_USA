@@ -307,7 +307,7 @@
                 });
                 var file = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
                     Email: localStorage.getItem("email"),
-                    Filename: type + email + '.' + end[1],
+                    Filename: $("#type").val() + email + '.' + end[1],
                     Remark: $("#Remark").val(),
                     Score: $("#Score").val(),
                     FileType: $("#type option:selected").text(),
