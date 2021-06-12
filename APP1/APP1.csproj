@@ -199,6 +199,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Gmail.max-1100x1100 %281%29.png" />
+    <Content Include="IMAGE\much_studying.jpg" />
+    <Content Include="IMAGE\Other.png" />
+    <Content Include="IMAGE\PASSPORT.jpg" />
+    <Content Include="IMAGE\PASSPORT.png" />
+    <Content Include="IMAGE\SAT.png" />
+    <Content Include="IMAGE\scholarship.jpg" />
+    <Content Include="IMAGE\slide1-n.jpg" />
+    <Content Include="IMAGE\TeudatBagrut.jpg" />
+    <Content Include="IMAGE\TOEFL.png" />
+    <Content Include="IMAGE\ציונים.jpg" />
     <Content Include="MatchCSS.css" />
     <Content Include="Pages\2add-file.html" />
     <Content Include="Pages\Countdown.html" />
@@ -209,6 +219,7 @@
     <Content Include="Pages\2Calculat.html" />
     <Content Include="Pages\2ManagerDash - Copy.html" />
     <Content Include="Pages\Algo.html" />
+    <Content Include="Pages\new edit profile.html" />
     <Content Include="Pages\Wishlist.html" />
     <Content Include="Pages\NewManagerDash.html" />
     <Content Include="Pages\2NewTeacher.html" />
