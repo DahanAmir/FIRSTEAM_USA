@@ -547,7 +547,7 @@
                 d = data[i].DueDate.split("T");
                // alert(d[0]);
                 str2+= "<ul id='task-list' class='task-name'><li id='todo"+ i+ "'>"
-                str2 += "<p class='task-name'> " + name1[0] + " Needs To " + data[i].Task + " By " + d[0] + "<button class='close' onclick='closef(id)'>x</button> </br></p>";
+                str2 += "<p class='task-name'> " + name1[0] + " Needs To " + data[i].Task + " By " + d[0] + "<button class='close' onclick='closef("+data[i].Taskid+")'>x</button> </br></p>";
                 str2+= "</li></ul>"
 
                 // str2 += "<tr><td>" + data[i].;
@@ -568,16 +568,17 @@
         }
 
          var api_todo1 = "";
-        function closef(id) {
-            id = 44;
-            alert(id)
+        function closef(data) {
+         //  id = 44;
+            alert(data)
+            console.log(data)
 
 
             let api_todo1 = "../api/ToDoList/" + id + "/del";
             ajaxCall("DELETE", api_todo1, id , successdelTodo, errordelTodo)
         }
 
-        function successdelTodo() { alert("successdelTodo")}
+        function successdelTodo() { alert("Your ToDo has been delete!!!!")}
         function errordelTodo() { alert("errordelTodo")}
 
     </script>

@@ -244,7 +244,7 @@
             }
             ajaxCall("Put", "../api/UserData", JSON.stringify(u), successData, errorData);
             name1 = email.split('@');
-            name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
+          //  name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
             document.getElementById("intro").innerHTML = name;
             //   alert("email is: " + email);
             GetUserDate()
@@ -282,14 +282,14 @@
 
 
             let numberAcademic = (((data[0].Tofel + data[0].GPA) * 100 + data[0].Sat) ^ 0.4) * 0.4;
-            alert(numberAcademic);
+           // alert(numberAcademic);
 
             if (data[0].Position == 'מגן' || data[0].Position == 'כנף')
                 P = 1
             else P = 0;
 
             let numberPro = data[0].National * 30 + data[0].Captain * 20 + (data[0].Champions + data[0].Cups) * 10 + data[0].League * 10 + P * 30;
-            alert(numberPro);
+            //alert(numberPro);
 
             TotalNumber = numberAcademic + numberPro;
 
@@ -305,9 +305,9 @@
         var numberAcademic = 0;
         var arr = "";
         function calculateAlgo(TotalNumber) {
-            alert("in calculate")
+         //   alert("in calculate")
 
-            alert(TotalNumber);
+          //  alert(TotalNumber);
 
             document.getElementById("calculate").innerHTML = "<h4 id='nbr'>" + TotalNumber + "</h4>";
 
@@ -322,7 +322,7 @@
 
 
         function errorData(data) {
-            alert("errorData")
+          //  alert("errorData")
         }
 
 
@@ -342,7 +342,7 @@
         }
 
         function successWishlist() {
-            alert("successWishlist")
+          //  alert("successWishlist")
         }
 
 

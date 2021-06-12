@@ -471,7 +471,7 @@ namespace APP1.Models.DAL
         }
 
 
-        public int Delete_todo(ToDoList t)
+        public int Delete_todo(int id)
         {
             SqlConnection con;
             SqlCommand cmd;
@@ -486,7 +486,7 @@ namespace APP1.Models.DAL
                 throw (ex);
             }
 
-            String cStr = delete_ToDoList(t);      // helper method to build the insert string
+            String cStr = delete_ToDoList(id);      // helper method to build the insert string
 
             cmd = CreateCommand(cStr, con);             // create the command
 
@@ -514,19 +514,23 @@ namespace APP1.Models.DAL
 
         }
 
-        private String delete_ToDoList(ToDoList t)
+        private String delete_ToDoList(int id)
         {
 
-            string active;
-            if (t.Active == 1)
-            {
-                active = "0";
-            }
-            else
-            {
-                active = "0";
-            }
-            String prefix = "IF EXISTS(select* from UsersToDoList where email= '" + t.Email + "') begin UPDATE UsersToDoList SET email = " + t.Email + " ,Task ='" + t.Task + "' ,DueDate = '" + t.DueDate + "',status =" + t.Status + ",active =0 ";
+            //string active;
+            //if (t.Active == 1)
+            //{
+            //    active = "0";
+            //}
+            //else
+            //{
+            //    active = "0";
+            //}
+            //String prefix = "IF EXISTS(select* from UsersToDoList where taskid= '" + id + "') begin UPDATE UsersToDoList SET active = 0";
+
+
+            String prefix = "UPDATE UsersToDoList SET Active = 0 WHERE taskid =" + id;
+
 
             return prefix;
 

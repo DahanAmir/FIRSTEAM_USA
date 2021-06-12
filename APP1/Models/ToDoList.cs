@@ -53,11 +53,11 @@ namespace APP1.Models
             return dbs.Insert_ToDoList(t);
         }
 
-        public int Delete_todo(ToDoList t)
+        public int Delete_todo(int id)
         {
             DB_Services dbs = new DB_Services();
 
-            return dbs.Delete_todo(t); ;
+            return dbs.Delete_todo(id); ;
 
         }
     }

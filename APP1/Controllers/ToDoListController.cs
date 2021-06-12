@@ -55,11 +55,11 @@ namespace APP1.Controllers
         [Route("api/ToDoList/{id}/del")]
 
         // DELETE api/<controller>/5
-        public int Delete(ToDoList t)
+        public int Delete(int id)
         {
-         
 
-                return t.Delete_todo(t);
+            ToDoList td = new ToDoList();
+                return td.Delete_todo(id);
            
         }
 
