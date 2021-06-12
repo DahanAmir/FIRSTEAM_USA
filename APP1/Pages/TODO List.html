@@ -280,6 +280,8 @@
             'id': 'todo0'
         }];
 
+        var name = "";
+        var name1 = "";
         var pageList = new Array();
         var currentPage = 1;
         var numberPerPage = 10;
@@ -288,8 +290,26 @@
         function newElement() {
             email = localStorage.getItem("email");
 
+            var e = document.getElementById("players");
+            emailtosend = e.value
+
+            var name = e.value;
+            var n = name.split("@");
+            inputUser = n[0];
+
+            alert(emailtosend + "   " + inputUser)
+
+
+
+           // name1 = name.split('@');
+           // inputUser = name1[0];
+           // alert(inputUser)
+
+
+
             var inputTitle = document.getElementById('title').value,
-                inputUser = document.getElementById('usr').value,
+          
+               // inputUser = document.getElementById('usr').value,
                 inputDate = document.getElementById('due-date').value,
                 todo = '';
             if (inputTitle === '') {
@@ -313,7 +333,7 @@
 
 
             var todoSave = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
-                Email: email,
+                Email: emailtosend,
                 Task: $("#title").val(),
                 DueDate: $("#due-date").val()
 
@@ -514,6 +534,7 @@
             sortElementsById();
         }
 
+        var str1 = "";
 
         $(document).ready(function () {
             let email = localStorage.getItem("email");
@@ -526,7 +547,49 @@
             ajaxCall("Get", api_todo, email, successTodo, errorTodo)
 
 
+            str1 = "users_show"
+            let api = "../api/Users/" + str1 + "/Show_all_users";
+            ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
+
+
         });
+
+        function getSuccess(data) {
+
+            console.log(data);
+            rendusers(data);
+        }
+
+        function erroradd_list_r() {
+            alert("erroradd_list_r")
+        }
+
+
+        var arr = "";
+        function rendusers(data) {
+            arr += "<form>";
+            arr += "<label for='players'>  Who should do it:  </label>";
+            arr += "<select id = 'players' >";
+            for (var i = 0; i < data.length; i++) {
+
+                arr += "<option value='" + data[i].Email + "' onclick='gemail(this.value)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
+
+            }
+
+            arr += "</select >";
+            arr += "<form>";
+            document.getElementById("user").innerHTML = arr;
+           
+
+        }
+
+        function gemail(obj) {
+            alert("obj is: " + obj);
+        }
+
+
+
+
 
         var str2 = "";
         var name1 = [];
@@ -628,10 +691,13 @@
                 <label for="title">Task:</label>
                 <input type="text" id="title" class="form-control" placeholder="Add a title... ">
             </div>
-            <div class="form-group">
+
+           <div id="user"> </div>
+            <!--<div class="form-group">
                 <label for="usr">Who should do it:</label>
-                <input type="text" id="usr" class="form-control" placeholder="Add a user...">
-            </div>
+                <input type="text" id="user" class="form-control" placeholder="Add a user...">
+            </div>-->
+            <br />
             <div class="form-group">
                 <label for="usr">Due Date:</label>
                 <input type="date" id="due-date" class="form-control" placeholder="Due date">
