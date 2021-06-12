@@ -4,6 +4,7 @@
 
     <meta charset="utf-8" />
     <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/ajaxCalls.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -249,53 +250,87 @@
     </style>
 
     <script>
-        //const year = new Date().getFullYear();
-        //const fourthOfJuly = new Date(year, 6, 4).getTime();
-        //const fourthOfJulyNextYear = new Date(year + 1, 6, 4).getTime();
-        //const month = new Date().getMonth();
 
-        //// countdown
-        //let timer = setInterval(function () {
-
-        //    // get today's date
-        //    const today = new Date().getTime();
-
-        //    // get the difference
-        //    let diff;
-        //    if (month > 6) {
-        //        diff = fourthOfJulyNextYear - today;
-        //    } else {
-        //        diff = fourthOfJuly - today;
-        //    }
+        var email = "";
+        var str = "";
+        var estimated_year = "";
 
 
 
+        $(document).ready(function () {
 
-           // const year = new Date().getFullYear();
-          //  const fourthOfJuly = new Date(year, 6, 4).getTime();
-            var dd = new Date(2022, 6, 10).getTime();
-      
+           
+            // email = "adi@gmail.com";
+            str = "users_show"
+            let api = "../api/Users/" + str + "/Show_all_users";
+            ajaxCall("GET", api, "", sucessget, errorget)
+
+
+        });
+
+        
+
+        function sucessget(data) {
+            console.log(data);
+            alert("sucessget")
+
+            let email = localStorage.getItem("email");
+            alert(email);
+
+            var est = "";
+            for (var i = 0; i < data.length; i++)
+
+                if (data[i].Email == email)
+                    estimated_year = data[i].EstimatedYear
+                 //     else alert("Null");
+
+            est = estimated_year.split("T");
+            var date= est[0];
+
+            var dd = date.split("-")
+            var day = dd[2];
+            var month = dd[1];
+            var year = dd[0];
+
+            alert("date is is: " +year+ " " + month+ " " +day)
+
+
+            var newd = new Date(year, month-1, day).getTime();
+
+            alert("newd is: " + newd)
 
             // countdown
             let timer = setInterval(function () {
 
                 // get today's date
-                const today = new Date().getTime();
+                //  const today = new Date().getTime();
+
+
+                var today = new Date().getTime();
+
+
+
+                //var dd = today.getDate();
+                //var mm = today.getMonth() + 1; //January is 0!
+                //var yyyy = today.getFullYear();
+
+                //today = new Date(yyyy + ',' + mm + ',' + dd).getTime();
+
 
                 // get the difference
                 let diff;
-               
-                    diff = dd - today;
-               
-            // math
-            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            // display
-            document.getElementById("timer").innerHTML =
-                "<div class=\"days\"> \
+                diff = newd - today;
+
+                // math
+                let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                // display
+                document.getElementById("timer").innerHTML =
+                    "<div class=\"days\"> \
       <div class=\"numbers\">" + days + "</div>days</div> \
 <div class=\"hours\"> \
       <div class=\"numbers\">" + hours + "</div>hours</div> \
@@ -305,7 +340,19 @@
       <div class=\"numbers\">" + seconds + "</div>seconds</div> \
 </div>";
 
-        }, 1000);
+            }, 1000);
+
+        }
+
+
+        function errorget() {
+            alert("errorget")
+        }
+
+
+
+    
+
     </script>
 </head>
 <body>

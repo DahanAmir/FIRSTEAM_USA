@@ -431,7 +431,7 @@ namespace APP1.Models.DAL
             {
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
 
-                String selectSTR = "select top 5 * from UsersToDoList where email='" + email+ "'" ;
+                String selectSTR = "select * from UsersToDoList where email='" + email+ "' and active=1" ;
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
@@ -441,13 +441,15 @@ namespace APP1.Models.DAL
                 {
 
                     ToDoList t = new ToDoList();
-                  
+
+                    t.Taskid = Convert.ToInt32(dr["Taskid"]);
                     t.Email = (string)dr["Email"];
                     t.Task = (string)dr["Task"];
                     t.DueDate = (DateTime)dr["Duedate"];
                     t.Status = (string)dr["Status"];
+                    t.Active= Convert.ToInt32(dr["Active"]);
 
-                   
+
                     list_of_todo.Add(t);
                 }
                 ToDoList td = new ToDoList();
@@ -466,6 +468,68 @@ namespace APP1.Models.DAL
                     con.Close();
                 }
             }
+        }
+
+
+        public int Delete_todo(ToDoList t)
+        {
+            SqlConnection con;
+            SqlCommand cmd;
+
+            try
+            {
+                con = connect("DBConnectionString"); // create the connection
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            String cStr = delete_ToDoList(t);      // helper method to build the insert string
+
+            cmd = CreateCommand(cStr, con);             // create the command
+
+            try
+            {
+                int numEffected = cmd.ExecuteNonQuery(); // execute the command
+
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    // close the db connection
+                    con.Close();
+                }
+            }
+
+            return 1;
+
+        }
+
+        private String delete_ToDoList(ToDoList t)
+        {
+
+            string active;
+            if (t.Active == 1)
+            {
+                active = "0";
+            }
+            else
+            {
+                active = "0";
+            }
+            String prefix = "IF EXISTS(select* from UsersToDoList where email= '" + t.Email + "') begin UPDATE UsersToDoList SET email = " + t.Email + " ,Task ='" + t.Task + "' ,DueDate = '" + t.DueDate + "',status =" + t.Status + ",active =0 ";
+
+            return prefix;
+
         }
 
 
@@ -521,9 +585,9 @@ namespace APP1.Models.DAL
             StringBuilder sb = new StringBuilder();
             // use a string builder to create the dynamic string
           
-                sb.AppendFormat("Values('{0}', '{1}', '{2}', '{3}')", t.Email, t.Task, t.DueDate,"בתהליך");
+                sb.AppendFormat("Values('{0}', '{1}', '{2}', '{3}', '{4}')", t.Email, t.Task, t.DueDate, "בתהליך",1);
            
-            String prefix = "INSERT INTO [UsersToDoList] " + "(Email,Task, DueDate,Status)";
+            String prefix = "INSERT INTO [UsersToDoList] " + "(Email,Task, DueDate,Status,Active)";
             command = prefix + sb.ToString();
             return command;
 

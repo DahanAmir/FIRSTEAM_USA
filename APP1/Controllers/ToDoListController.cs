@@ -51,9 +51,16 @@ namespace APP1.Controllers
 
         }
 
+        [HttpDelete]
+        [Route("api/ToDoList/{id}/del")]
+
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public int Delete(ToDoList t)
         {
+         
+
+                return t.Delete_todo(t);
+           
         }
 
         [HttpPost]

@@ -276,7 +276,7 @@
     </script>
     <script>
         var todoList = [{
-            'todo': 'Do task 0',
+            'todo': ' ',
             'id': 'todo0'
         }];
 
@@ -298,10 +298,10 @@
             } else {
                 todo = inputTitle;
                 if (inputUser != '') {
-                    todo = inputUser + " צריך.ה " + inputTitle;
+                    todo = inputUser + " Need to " + inputTitle;
                 }
                 if (inputDate != '') {
-                    todo = todo + "  עד לתאריך " + inputDate
+                    todo = todo + "  By " + inputDate
                 }
             }
             var newTodoId = findNextId(),
@@ -327,13 +327,14 @@
             sortElementsById();
             clearFields();
             return false;
-
+            emai
         }
 
 
 
         function successtodo() {
-          //  alert("in successtodo");
+            alert("in successtodo");
+
         }
 
         function errortodo() {
@@ -530,6 +531,7 @@
         var str2 = "";
         var name1 = [];
         var d = '';
+        var id = 0;
         function successTodo(data) {
         //    alert("in successTodo")
             console.log(data);
@@ -541,10 +543,11 @@
 
             for (var i = 0; i < data.length; i++) {
 
+               id = data[i].Taskid;
                 d = data[i].DueDate.split("T");
                // alert(d[0]);
                 str2+= "<ul id='task-list' class='task-name'><li id='todo"+ i+ "'>"
-                str2 += "<p class='task-name'> "+  name1[0] + " Needs To " + data[i].Task + " By " + d[0] + "</p><span class='close' onclick='closef()'>x</span> </br>";
+                str2 += "<p class='task-name'> " + name1[0] + " Needs To " + data[i].Task + " By " + d[0] + "<button class='close' onclick='closef(id)'>x</button> </br></p>";
                 str2+= "</li></ul>"
 
                 // str2 += "<tr><td>" + data[i].;
@@ -556,7 +559,7 @@
             // str += "<button class='button2' ONCLICK='alltodo()' style='float: left'> My To Do List  </button>";
             document.getElementById("oldtask-list").innerHTML = str2;
 
-
+           
 
         }
 
@@ -564,8 +567,18 @@
             alert("in errorTodo")
         }
 
+         var api_todo1 = "";
+        function closef(id) {
+            id = 44;
+            alert(id)
 
 
+            let api_todo1 = "../api/ToDoList/" + id + "/del";
+            ajaxCall("DELETE", api_todo1, id , successdelTodo, errordelTodo)
+        }
+
+        function successdelTodo() { alert("successdelTodo")}
+        function errordelTodo() { alert("errordelTodo")}
 
     </script>
 
