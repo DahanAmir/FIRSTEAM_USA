@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
 
+        select {
+            margin: 40px;
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+        }
         * {
             font-family: 'Montserrat', sans-serif;
         }
@@ -190,6 +196,7 @@
         var wishlist = [];
         var name1 = [];
         var name = '';
+        var countime =0;
 
 
         var email = localStorage.getItem("email");
@@ -255,6 +262,11 @@
 
                     }
                     all_name_csv_universities += '&';
+                    if (countime == 4)
+                        alert('finish');
+                    else {
+                        countime = countime + 1
+                    }
                 }
             });
             var filename = "../NCAA/NCAA.csv"
@@ -306,13 +318,18 @@
                 api_District = api_District + '&'
             }
             MYDistrict = api_District
-
+            if (countime == 4)
+                alert('finish');
+            else {
+                countime = countime + 1
+            }
         }
 
         function errorState(data) {
             alert("ErrorDState")
         }
         function successState(data) {
+           
             MYStates = data
             // console.log(data);
             if (data.length == 0 || data.length == 57)
@@ -325,12 +342,18 @@
                 api_State = api_State + '&'
             }
             MYStates = api_State
+            if (countime == 4)
+                alert('finish');
+            else {
+                countime = countime + 1
+            }
         }
 
         function errorLocale(data) {
             alert("ErrorLocale")
         }
         function successLocale(data) {
+
             if (data.length == 0 || data.length == 6)
                 api_Locale = "";
             else {
@@ -341,7 +364,11 @@
                 api_Locale = api_Locale + '&'
             }
             MYLocale = api_Locale
-
+            if (countime == 4)
+                alert('finish');
+            else {
+                countime = countime + 1
+            }
         }
 
         //----Favotires----//
@@ -351,7 +378,11 @@
             alert("ErrorAll")
         }
         function successFavorites(data) {
-
+            if (countime == 4)
+                alert('finish');
+            else {
+                countime = countime + 1
+            }
             if (data.PriceMax) {
                 PriceMax = data.PriceMax
                 PriceMaxAPI = "2018.cost.tuition.out_of_state__range=0.." + data.PriceMax + '&';
@@ -395,20 +426,18 @@
         }
 
 
-        function rend() {
-
-            if (page==-1) {
+        function rend(numberofpage) {
+            if (numberofpage==-1) {
                 api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&";
 
             }
             else {
-                api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&page=" + page + "&";
-
+                api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&page=" + numberofpage + "&";
             }
 
             api_All = api_head + MYDistrict + MYStates + MYLocale + UniversityTypeAPI + PriceMaxAPI + UniversitySizeAPI + SatAPI + api_tail;
             $.get(api_All, function (data) {
-                page = parseInt(data.metadata.total/100)+1
+                page = parseInt(data.metadata.total/100)
                 console.log(data);
                 api_All = data;
                 let str = '';
@@ -430,11 +459,19 @@
                 str += "</tr></thead>";
                 str += " <tbody>";
                 let ownership
+                let cost
                 for (var i = 0; i < data.results.length; i++) {
                     if (data.results[i]["school.ownership"] == 1)
                         ownership = 'Public'
                     else {
                         ownership = 'Private'
+                    }
+                    if (data.results[i]["2018.cost.tuition.out_of_state"] > 1) {
+                        cost = data.results[i]["2018.cost.tuition.out_of_state"]+'$'
+
+                    }
+                    else {
+                        cost='null'
                     }
                     str += "<tr>";
                     str += "<td>" + data.results[i]["school.name"] + "</td>";
@@ -444,7 +481,7 @@
                     str += "<td>" +  ownership +                                                                                     "</td>";
                     //str += "<td> " + data.results[i]["school.region_id"] +                                                           "</td>";
                     str += "<td> " + data.results[i]["school.state"] +                                                               "</td>";
-                    str += "<td> " + data.results[i]["2018.cost.tuition.out_of_state"] + "$                                           </td>";
+                    str += "<td> " + cost +                                                                                               "</td>";
                     str += "<td> " + data.results[i]["2018.student.size"] +                                                          "</td>";
                     str += "<td> " + data.results[i]["2018.admissions.sat_scores.average.overall"] +                                 "</td>";
                     flag = 0
@@ -462,17 +499,23 @@
                     }
                     str += "<td> " + "<label> <input type='checkbox' id='" + data.results[i].id + "' class='radio' value='" + data.results[i]["school.name"] + "'/></label>" + "</td>";
                 }
-                str += "</tr></tbody></table>";
-                number = ' < div class="btn-group" > '
-                for (var j = 0; j < page; j++) {
-                    number += '  <button>'+j+'</button> '
-                }
-                number += ' </div> '
+                str += "</tr></tbody></table>  </div> ";
 
-                document.getElementById("showfav").innerHTML = str + number;
+
+
+                number = ' <div class="special" "><select name="Page" onchange="rend(this.value)" > '
+                number += '<option disabled="disabled" selected="selected">select one page</option>'
+
+                for (var j = 0; j < page + 1; j++) {
+                    number += ' <option value='+j+' id=' + j + '    >' + j +'</option> '
+                }
+                number += '</select></div> '
+
+                document.getElementById("showfav").innerHTML = number + str + number;
+                $('html,body').scrollTop(0);
+
             })
         }
-
 
         function ChangeFavorites() {
 
@@ -541,7 +584,7 @@
     <div class="imgcontainer">
 
         <div class="topnav">
-            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
+            <a href="#home" onclick="rend(id)" id="-1" style="background-color:#034f84">Show Results</a>
             <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
             <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
             <a href="#about" onclick="gotowishlist()">Show WishList</a>
@@ -553,7 +596,7 @@
             </p>
         </div>
         <h1 style="color:red"> Match Schools: </h1>
-        <div id="intro">     </div>
+        <div id="intro">  </div>
 
 
     </div>
@@ -570,7 +613,7 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 
-
+    
 
 
 </body>
