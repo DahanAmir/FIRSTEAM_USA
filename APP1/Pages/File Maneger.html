@@ -188,9 +188,9 @@
 
             }
             alert('in delete:  ' + filename);
-            if (id != '') {
-                let api = "../api/UsersFile/Delete"
-                ajaxCall("Delete", api, JSON.stringify(my_filename), successdelete, errorrdelete)
+            if (filename != '') {
+                let apiDelete = "../api/UsersFile"
+                ajaxCall("Delete", apiDelete, JSON.stringify(my_filename), successdelete, errorrdelete)
             }
             else {
                 alert('חסר מסמך זה, אנא הוסף/י');
@@ -202,7 +202,11 @@
 
 
         function successdelete(data) {
-            alert(data);
+            if (data == 1) {
+                alert('הקובץ נמחק בהצלחה!');
+            } if (data == -1) {
+                alert('הקובץ לא נמצא, אנא פנה לאחראי המערכת.');
+            }
         }
         function errorrdelete(data) {
             alert(data);

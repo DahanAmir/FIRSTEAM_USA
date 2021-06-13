@@ -52,8 +52,8 @@ namespace APP1.Controllers
         }
 
         //// DELETE api/<controller>/5
-        [HttpDelete]
-        [Route("api/UsersFile/Delete")]
+        //[HttpDelete]
+        //[Route("api/UsersFile/Delete")]
         public int Delete(File filename)
         {
             File f = new File();
