@@ -68,6 +68,18 @@
                 color: white;
             }
 
+
+        .close1 {
+           
+           float: left;
+        }
+
+            .close1:hover {
+                background-color: darkseagreen;
+                color: white;
+            }
+
+
         .jumbotron {
             background-color: #323064;
             text-align: center;
@@ -219,11 +231,11 @@
         }
 
         button {
-            width: 100px;
-            height: 60px;
+           /* width: 100px;
+            height: 60px;*/
             color: white;
-            width: 180px;
-            float: left;
+/*            width: 180px;
+*/            float: left;
         }
 
         .btn-info {
@@ -610,7 +622,7 @@
                 d = data[i].DueDate.split("T");
                // alert(d[0]);
                 str2+= "<ul id='task-list' class='task-name'><li id='todo"+ i+ "'>"
-                str2 += "<p class='task-name'> " + name1[0] + " Needs To " + data[i].Task + " By " + d[0] + "<button class='close' onclick='closef("+data[i].Taskid+")'>x</button> </br></p>";
+                str2 += "<p class='task-name'><button class='close1' onclick='edit(" + data[i].Taskid + ")'>Edit</button>  "   + name1[0] + " Needs To " + data[i].Task + " By " + d[0] + " <button class='close' onclick='closef(" + data[i].Taskid + ")'>x</button> </br></p>";
                 str2+= "</li></ul>"
 
                 // str2 += "<tr><td>" + data[i].;
@@ -642,7 +654,49 @@
         }
 
         function successdelTodo() { alert("Your ToDo has been delete!!!!")}
-        function errordelTodo() { alert("errordelTodo")}
+        function errordelTodo() { alert("errordelTodo") }
+
+        var newT = '';
+        var newR = '';
+        var newD = '';
+        var api_updatetodo = "";
+        function edit(data) {
+
+            id = data
+            alert(id);
+                var txt;
+                var newT = prompt("Please enter your new task:", newT);
+            var newR = prompt("Please enter your new Responsible Email:", newR);
+            var newD = prompt("Please enter your new Date: (YYYY-MM-DD)", newD);
+            if (newT == null || newT == "") {
+                if (newR == null || newT == "")
+                    if (newR == null || newD == "")
+                    txt = "User cancelled the prompt.";
+                } else {
+                    txt = "You want to change your task to: " + newT + ", New respinsibale: "+ newR + " ,new date: " +newD+ "?";
+                }
+            alert(txt);
+
+            let u = {
+                Taskid: id,
+                Task: newT,
+                Email: newR,
+                DueDate: newD
+            }
+
+            let api_updatetodo = "../api/ToDoList/" + id + "/update";
+            ajaxCall("PUT", api_updatetodo, JSON.stringify(u), successupTodo, errorupTodo)
+            
+
+        }
+
+
+        function successupTodo() {
+            alert("Your ToDo changes saved!!");
+        }
+        function errorupTodo() {
+            alert("errorupTodo");
+        }
 
     </script>
 
@@ -704,7 +758,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-3 pull-left">
-                    <button type="button" class="btn btn-primary" onclick="newElement()" style="        background-color: #034f84">Add Task</button>
+                    <button type="button" class="btn btn-primary" onclick="newElement()" style="background-color: #034f84">Add Task</button>
                 </div>
                 <div class="dropdown col-xs-3 pull-left">
                     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="background-color:red">
@@ -712,8 +766,8 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-list" onclick="sortElementsById()">Sort By ID</li>
-                        <li class="dropdown-list" onclick="sortElementsByName()">Sort By Name</li>
+                        <li class="dropdown-list" onclick="sortElementsById()" >Sort By ID</li>
+                        <li class="dropdown-list" onclick="sortElementsByName()" >Sort By Name</li>
                     </ul>
                 </div>
                 <div class="col-lg-6 pull-right">

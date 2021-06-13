@@ -13,6 +13,61 @@ namespace APP1.Models.DAL
     public class DB_Services
     {
 
+        public int update_todo(ToDoList u)
+        {
+
+            SqlConnection con;
+            SqlCommand cmd;
+
+            try
+            {
+                con = connect("DBConnectionString"); // create the connection
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            String cStr = BuildUpdateCommandtodo(u);      // helper method to build the insert string
+
+            cmd = CreateCommand(cStr, con);             // create the command
+
+            try
+            {
+                int numEffected = cmd.ExecuteNonQuery(); // execute the command
+                return numEffected;
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            finally
+            {
+                if (con != null) //אם אימייל כבר קיים שגיאה 500
+                {
+                    // close the db connection
+                    con.Close();
+                }
+            }
+
+        }
+
+        private String BuildUpdateCommandtodo(ToDoList u)
+        {
+            String command;
+
+            StringBuilder sb = new StringBuilder();
+            //string s = " IF EXISTS(SELECT * FROM UsersStatus WHERE Email = '" + u.Email + "') BEGIN  DELETE FROM UsersStatus WHERE Email = '" + u.Email + "'end";
+            //string status = " INSERT INTO UsersStatus (Email, Status)Values('" + u.Email + "', '" + u.Status + "')";
+            // use a string builder to create the dynamic string
+            String prefix = " UPDATE UsersToDoList SET Task = '" + u.Task+ "',DueDate = '" + u.DueDate + "',Email = '" + u.Email + "' WHERE taskid=" + u.Taskid ;
+            command = prefix;
+
+            return  command ;
+        }
 
 
         ///////////////////////Teachers////////////

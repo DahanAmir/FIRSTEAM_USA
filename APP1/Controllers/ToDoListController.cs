@@ -44,6 +44,20 @@ namespace APP1.Controllers
 
         }
 
+        [HttpPut]
+        [Route("api/ToDoList/{u}/update")]
+        public int PUT(ToDoList u)
+        {
+            return u.update_todo(u);
+        }
+
+
+
+
+
+
+
+
         // PUT api/<controller>/5
         public int Put(List<UsersStates> lus)
         {

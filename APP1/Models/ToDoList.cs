@@ -60,5 +60,13 @@ namespace APP1.Models
             return dbs.Delete_todo(id); ;
 
         }
+
+
+        public int update_todo(ToDoList u)
+        {
+            DB_Services dbs = new DB_Services();
+
+            return dbs.update_todo(u);
+        }
     }
 }
