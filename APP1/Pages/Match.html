@@ -160,6 +160,7 @@
 
 
     <script>
+        var number
         var flag
         var UniversityTypeAPI
         var JSON_ncaa = []
@@ -170,7 +171,7 @@
         var UniversityType
         var UniversityTypeAPI
         var PriceMax
-        var page;
+        var page=-1;
         var PriceMaxAPI
         var MYDistrict   //כל האזורים של משתמש
         var MYStates     //כל המדניות של משתמש
@@ -180,7 +181,7 @@
         var api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&";
         //        var api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&page=" + page + "&";
 
-        var api_tail = "fields=id,school.name,school.region_id,school.state_fips,school.ownership,school.locale,school.school_url,2018.student.size,2018.cost.tuition.out_of_state,2018.admissions.sat_scores.average.overall&api_key=tcw4YqKbgv55DmuUicwNWeBtGk3XwHzoCf2SbWne";
+        var api_tail = "fields=id,school.name,school.region_id,accreditor,school.state,school.ownership,school.locale,school.city,school.school_url,2018.student.size,2018.cost.tuition.out_of_state,2018.admissions.sat_scores.average.overall&api_key=tcw4YqKbgv55DmuUicwNWeBtGk3XwHzoCf2SbWne";
         var api_State
         var all_District
         var show_all_match
@@ -395,8 +396,19 @@
 
 
         function rend() {
+
+            if (page==-1) {
+                api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&";
+
+            }
+            else {
+                api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&page=" + page + "&";
+
+            }
+
             api_All = api_head + MYDistrict + MYStates + MYLocale + UniversityTypeAPI + PriceMaxAPI + UniversitySizeAPI + SatAPI + api_tail;
             $.get(api_All, function (data) {
+                page = parseInt(data.metadata.total/100)+1
                 console.log(data);
                 api_All = data;
                 let str = '';
@@ -405,9 +417,9 @@
                 str += "<th >School name</th>";
                 str += "<th >School Website </th>";
                 str += "<th> School ID </th>";
-                str += "<th> Locale </th>";
+                str += "<th> city </th>";
                 str += "<th>Ownership</th>";
-                str += "<th> Region </th> ";
+                //str += "<th> Region </th> ";
                 str += "<th> State </th>";
                 str += "<th> Cost </th>";
                 str += "<th> Size </th>";
@@ -417,20 +429,24 @@
                 str += "<th> WishList </th>";
                 str += "</tr></thead>";
                 str += " <tbody>";
-
+                let ownership
                 for (var i = 0; i < data.results.length; i++) {
-
+                    if (data.results[i]["school.ownership"] == 1)
+                        ownership = 'Public'
+                    else {
+                        ownership = 'Private'
+                    }
                     str += "<tr>";
                     str += "<td>" + data.results[i]["school.name"] + "</td>";
                     str += "<td><a href=" + data.results[i]["school.school_url"] + ">" + data.results[i]["school.school_url"] + "</a></td>";
-                    str += "<td>" + data.results[i].id + "</td>";
-                    str += "<td>" + data.results[i]["school.locale"] + "</td>";
-                    str += "<td>" + data.results[i]["school.ownership"] + "</td>";
-                    str += "<td> " + data.results[i]["school.region_id"] + "</td>";
-                    str += "<td> " + data.results[i]["school.state_fips"] + "</td>";
-                    str += "<td> " + data.results[i]["2018.cost.tuition.out_of_state"] + "$</td>";
-                    str += "<td> " + data.results[i]["2018.student.size"] + "</td>";
-                    str += "<td> " + data.results[i]["2018.admissions.sat_scores.average.overall"] + "</td>";
+                    str += "<td>" +  data.results[i].id +                                                                            "</td>";
+                    str += "<td>" +  data.results[i]["school.city"] +                                                                "</td>";
+                    str += "<td>" +  ownership +                                                                                     "</td>";
+                    //str += "<td> " + data.results[i]["school.region_id"] +                                                           "</td>";
+                    str += "<td> " + data.results[i]["school.state"] +                                                               "</td>";
+                    str += "<td> " + data.results[i]["2018.cost.tuition.out_of_state"] + "$                                           </td>";
+                    str += "<td> " + data.results[i]["2018.student.size"] +                                                          "</td>";
+                    str += "<td> " + data.results[i]["2018.admissions.sat_scores.average.overall"] +                                 "</td>";
                     flag = 0
                     for (var j = 0; j < JSON_ncaa.length; j++) {
                         if (JSON_ncaa[j].Full_School_Name == data.results[i]["school.name"] || JSON_ncaa[j].School == data.results[i]["school.name"]) {
@@ -447,7 +463,11 @@
                     str += "<td> " + "<label> <input type='checkbox' id='" + data.results[i].id + "' class='radio' value='" + data.results[i]["school.name"] + "'/></label>" + "</td>";
                 }
                 str += "</tr></tbody></table>";
-                number = '<div class="btn-group">  <button>1</button> <button>2</button><button>3</button> </div>'
+                number = ' < div class="btn-group" > '
+                for (var j = 0; j < page; j++) {
+                    number += '  <button>'+j+'</button> '
+                }
+                number += ' </div> '
 
                 document.getElementById("showfav").innerHTML = str + number;
             })
