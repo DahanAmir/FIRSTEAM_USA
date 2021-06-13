@@ -292,6 +292,63 @@ namespace APP1.Models.DAL
 
         }
 
+        
+
+            public int DeleteFile(string filename)
+        {
+
+            SqlConnection con;
+            SqlCommand cmd;
+
+            try
+            {
+                con = connect("DBConnectionString"); // create the connection
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            String cStr = "if exists ( select *  from Usersfile    where Filename = '"+filename+ "'    ) delete Usersfile where Filename = '" + filename + "'";
+
+
+                // helper method to build the insert string
+
+            cmd = CreateCommand(cStr, con);             // create the command
+
+            try
+            {
+                int numEffected = cmd.ExecuteNonQuery(); // execute the command
+                return numEffected;
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            finally
+            {
+                if (con != null) //אם אימייל כבר קיים שגיאה 500
+                {
+                    // close the db connection
+                    con.Close();
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         public int insertFile(File f)
         {

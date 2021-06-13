@@ -51,9 +51,13 @@ namespace APP1.Controllers
             return file.get_file_name(emailfile);
         }
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
+        //// DELETE api/<controller>/5
+        [HttpDelete]
+        [Route("api/UsersFile/Delete")]
+        public int Delete(File filename)
         {
+            File f = new File();
+            return f.DeleteFile(filename.FileName);
         }
     }
 }

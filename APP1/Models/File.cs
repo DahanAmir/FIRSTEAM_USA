@@ -61,13 +61,20 @@ namespace APP1.Models
 
             return dbs.get_UF(f);
         }
-        
+
         public int insertFile(File f)
         {
-            
+
             DB_Services dbs = new DB_Services();
 
             return dbs.insertFile(f);
+        }
+        public int DeleteFile(string filename)
+        {
+
+            DB_Services dbs = new DB_Services();
+
+            return dbs.DeleteFile(filename);
         }
 
 

@@ -177,12 +177,38 @@
             alert("errorFiles");
 
         }
-        function deldet(id) {
-            window.open("../uploaded_Files/" + file)
+        function deldet(filename) {
+            var my_filename = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                Email: '',
+                Filename: filename,
+                Remark: '',
+                Score: '',
+                FileType: '',
+                Id: ''
 
-            alert('delete' + id);
+            }
+            alert('in delete:  ' + filename);
+            if (id != '') {
+                let api = "../api/UsersFile/Delete"
+                ajaxCall("Delete", api, JSON.stringify(my_filename), successdelete, errorrdelete)
+            }
+            else {
+                alert('חסר מסמך זה, אנא הוסף/י');
+            }
+           
 
         }
+
+
+
+        function successdelete(data) {
+            alert(data);
+        }
+        function errorrdelete(data) {
+            alert(data);
+
+        }
+
         function add(id) {
             alert('add' + id);
 
