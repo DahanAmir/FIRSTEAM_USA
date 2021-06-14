@@ -446,6 +446,9 @@
 
             api_All = api_head + MYDistrict + MYStates + MYLocale + UniversityTypeAPI + PriceMaxAPI + UniversitySizeAPI + SatAPI + api_tail;
             $.get(api_All, function (data) {
+                if (data.metadata.total==0) {
+                    alert('לא נמצאו אוניברסטאות, אנא עדכן את הסינונים של האוניברסיטה');
+                }
                 page = parseInt(data.metadata.total/100)
                 console.log(data);
                 api_All = data;
