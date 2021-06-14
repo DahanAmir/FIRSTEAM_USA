@@ -221,7 +221,6 @@
             localStorage.setItem('password', $("#passwordTB").val())
             window.open("FavRegion.html");
 
-            return false;
 
         }
 
@@ -237,9 +236,8 @@
 
 
         function AddCost() { // הכנסת יוזר חדש
-            var date = $("#birthday").val().split("-")
 
-            alert(date);
+         
 
             var sex = document.getElementById('sex')
             let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
@@ -260,7 +258,8 @@
             }
 
             ajaxCall("Put", "../api/Users", JSON.stringify(u), success, error); //נוסיף לשרת את היוזר
-
+            return false;
+        }
             function showImages(data) {
                 console.log(data);
 
@@ -272,7 +271,7 @@
             }
 
 
-        }
+        
 
 
         function f1() {
