@@ -219,7 +219,9 @@
             swal("Submitted to the server!", "Great Job", "success");
             localStorage.setItem('email', $("#mailTB").val())
             localStorage.setItem('password', $("#passwordTB").val())
+      
             window.open("FavRegion.html");
+            
 
 
         }
@@ -432,7 +434,7 @@
 
             <div class="form-group">
                 <label for="HeightTB"><span class="red-star" required>★ </span>Height (Meters)</label>
-                <input type="number" step="0.01" placeholder="CM" class="form-control" id="HeightTB" max="3"
+                <input type="number" step="0.01" placeholder="M" class="form-control" id="HeightTB" max="3"
                        oninvalid="this.setCustomValidity('Enter Your Height')"
                        oninput="this.setCustomValidity('')" required />
 

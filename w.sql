@@ -1,0 +1,1 @@
+﻿select * from userdata where email='shani12@gmail.com'
