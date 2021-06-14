@@ -81,7 +81,7 @@
 		});
 
 		function signup() {
-			window.location.href = "NewUserFormForOwner.html";
+            window.location.href = "NewUser.html";
 		}
 		function login() {
 			email = $("#uname").val();
@@ -90,6 +90,7 @@
 			ajaxCall("Get", api, email + "" + password, successlogin, errorlogin)
 		}
 		function successlogin(data) {
+  
 			if (data == 0) {
 				alert("Hello player");
 				localStorage.setItem("email", email);
@@ -101,13 +102,13 @@
 				alert("Hello manager");
 				localStorage.setItem("email", email);
 				localStorage.setItem("password", password);
-				window.open("FavLocale.html")
+                window.open("NewManagerDash.html")
 				window.close();
 			}
 
 
 			else {
-				alert("dont found");
+				alert("not found");
 			}
 
 
