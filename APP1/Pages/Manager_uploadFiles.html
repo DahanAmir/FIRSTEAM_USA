@@ -106,7 +106,7 @@
     
 
         function Show_all_users(data) {
-            alert("in sucess");
+         //   alert("in sucess");
             console.log(data);
             rendusers(data);
         }
@@ -119,7 +119,7 @@
 
           
             let arr = "<h4>"
-            alert("in rendusers")
+        //    alert("in rendusers")
             arr += "<label  for='players'> Choose a Player:</label>";
             arr += "</h4>"
 
@@ -154,7 +154,7 @@
             let api = "../api/Users/" + str1 + "/Show_all_users";
             ajaxCall("GET", api, str1, Show_all_users, erroradd_list_r)
 
-            alert(localStorage.getItem("email"));
+       //     alert(localStorage.getItem("email"));
 
              api = "../api/UsersFile/get_all_File_Type";
 
@@ -206,7 +206,7 @@
         
         function showImages(data) {
 
-            alert($("#type option:selected").text());
+       //     alert($("#type option:selected").text());
 
         } function errorinsert_F_DBS(data) {
 

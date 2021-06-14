@@ -213,13 +213,13 @@
     <Content Include="Pages\2add-file.html" />
     <Content Include="Pages\Countdown.html" />
     <Content Include="Pages\2email.html" />
-    <Content Include="Pages\File Maneger.html" />
-    <Content Include="Pages\file view.html" />
+    <Content Include="Pages\FileManeger.html" />
+    <Content Include="Pages\fileview.html" />
     <Content Include="Pages\1edit - class Ex solution.html" />
     <Content Include="Pages\2Calculat.html" />
     <Content Include="Pages\2ManagerDash - Copy.html" />
     <Content Include="Pages\Algo.html" />
-    <Content Include="Pages\new edit profile.html" />
+    <Content Include="Pages\neweditprofile.html" />
     <Content Include="Pages\Wishlist.html" />
     <Content Include="Pages\NewManagerDash.html" />
     <Content Include="Pages\2NewTeacher.html" />

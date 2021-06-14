@@ -521,7 +521,7 @@
 
 
         function rendusers(data) {
-            alert("in rendusers")
+         //   alert("in rendusers")
             arr += "<form>";
             arr += "<h4>"
             arr += "<label for='players'> Choose a Player:</label>";
@@ -568,7 +568,7 @@
 
         var str2 = "";
         function successTodo(data) {
-            alert("in successTodo")
+          //  alert("in successTodo")
             console.log(data);
 
             str2 += "<table id='miyazaki'>";
@@ -603,7 +603,7 @@
         }
 
         function successWishlist() {
-            alert("successWishlist")
+          //  alert("successWishlist")
         }
 
         function gotowishlist() {
@@ -723,6 +723,29 @@
 
         }
 
+        function algo() {
+
+            window.open('Algo.html')
+
+        }
+
+        function Mupload() {
+
+            window.open('Manager_uploadFiles.html')
+
+        }
+
+        function filesview() {
+
+            window.open('file view.html')
+
+        }
+        function match() {
+
+            window.open('Match.html')
+
+        }
+
 
     </script>
 
@@ -738,15 +761,23 @@
     <div class="imgcontainer">
 
         <div class="topnav">
-            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
-            <a class="active" href="#news" onclick="Mytodo()">My To Do List</a>
-            <a class="active" href="#news" onclick="Alltodo()">All To Do List</a>
+            <!--<a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>-->
+            <a href="#home" onclick="match()" style="background-color:#034f84">Show Match Results</a>
+            <!--<a href="#home" onclick="algo()" style="background-color:#034f84">Smart Algo</a>--> <!--להוסיף לאיזה שחקן-->
+            <a href="#home" onclick="Mupload()" style="background-color:#034f84">Manager Upload Files</a>
+            <a class="active" href="#news" onclick="filesview()">Files view</a>
+
+
+            <!--<a class="active" href="#news" onclick="Mytodo()">My To Do List</a>-->
+            <a class="active" href="#news" onclick="Alltodo()">To Do List</a>
             <!--<a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>-->
-            <a href="#about" onclick="gotowishlist()">Show WishList</a>
+            <!--<a href="#about" onclick="gotowishlist()">Show WishList</a>-->  <!--להוסיף לאיזה שחקן-->
             <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
+
             <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
                 <span class="glyphicon glyphicon-heart"></span>Add To WishList
             </a>
+        </div>
         </div>
         <div id="intro">     </div>
 

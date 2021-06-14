@@ -263,7 +263,8 @@
                     }
                     all_name_csv_universities += '&';
                     if (countime == 4)
-                        alert('finish');
+                       // alert('finish');
+                        document.getElementById("null").innerHTML = "";
                     else {
                         countime = countime + 1
                     }
@@ -319,7 +320,9 @@
             }
             MYDistrict = api_District
             if (countime == 4)
-                alert('finish');
+               // alert('finish');
+            document.getElementById("null").innerHTML = "";
+
             else {
                 countime = countime + 1
             }
@@ -343,7 +346,9 @@
             }
             MYStates = api_State
             if (countime == 4)
-                alert('finish');
+               // alert('finish');
+                document.getElementById("null").innerHTML = "";
+
             else {
                 countime = countime + 1
             }
@@ -365,7 +370,9 @@
             }
             MYLocale = api_Locale
             if (countime == 4)
-                alert('finish');
+              //  alert('finish');
+                document.getElementById("null").innerHTML = "";
+
             else {
                 countime = countime + 1
             }
@@ -379,7 +386,9 @@
         }
         function successFavorites(data) {
             if (countime == 4)
-                alert('finish');
+               // alert('finish');
+                document.getElementById("null").innerHTML = "";
+
             else {
                 countime = countime + 1
             }
@@ -558,19 +567,72 @@
 
 
 
-        function gotowishlist() {
-            window.open('WishList.html')
+        function Gotowish() {
+            window.open('Wishlist.html')
         }
 
 
         function allprofiles() {
-            window.open('Profile_Show.html')
+            window.open('AllProfiles.html')
         }
 
         function goBack() {
             window.history.back();
             window.close()
         }
+
+        function Countdown() {
+
+            window.open('Countdown.html')
+
+        }
+           function managerdash() {
+
+               window.open('NewManagerDash.html')
+
+        }
+           function algo() {
+
+               window.open('Algo.html')
+
+        }
+
+        //function Mupload() {
+
+        //    window.open('Manager_uploadFiles.html')
+
+        //}
+
+            function useruploadfile() {
+
+                window.open('FileManeger.html')
+
+        }
+
+        function filesview() {
+
+            window.open('fileview.html')
+
+        }
+
+        function playerprofile() {
+
+            window.open('neweditprofile.html')
+
+        }
+
+        function ToDoManager() {
+
+            window.open('TODO List.html')
+
+        }
+        function UsarDataQ() {
+
+                window.open('UsarDataQ.html')
+
+        }
+
+
 
     </script>
 
@@ -584,11 +646,22 @@
     <div class="imgcontainer">
 
         <div class="topnav">
-            <a href="#home" onclick="rend(id)" id="-1" style="background-color:#034f84">Show Results</a>
-            <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
+            <a href="#home" onclick="managerdash()" id="-1" style="background-color:#034f84">Manager Dashboard</a>
+
+            <!--<a href="#home" onclick="rend(id)" id="-1" style="background-color:#034f84">Show Results</a>-->
+            <a href="#home" onclick="Countdown()" id="-1" style="background-color:#034f84">Countdown</a>
+            <a class="active" href="#news" onclick="ChangeFavorites()" style="background-color:#034f84">Change Favorites</a>
+            <!--<a class="active" href="#news" onclick="algo()">Smart Algo</a>
+    <a class="active" href="#news" onclick="Mupload()">Manager Upload Files</a>-->
+            <a class="active" href="#news" onclick="useruploadfile()">Player Upload Files</a>
+            <!--<a class="active" href="#news" onclick="filesview()">Files view</a>-->
             <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
-            <a href="#about" onclick="gotowishlist()">Show WishList</a>
-            <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
+            <a href="#about" class="active" onclick="Gotowish()">Show WishList</a>
+            <!--<a href="#about" onclick="allprofiles()">All Playres Profiles</a>-->
+            <a href="#about" onclick="playerprofile()">Player Profile</a>
+            <!--<a href="#about" onclick="ToDoManager()">To Do Manager</a>-->
+            <a href="#about" onclick="UsarDataQ()">Predict Your Scholarship %</a>
+            <a href="#about" onclick="Algo()">Run Smart Algo</a>
             <p>
                 Add To WishList  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
                     <span class="glyphicon glyphicon-heart"></span> Add To WishList
@@ -613,7 +686,7 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 
-    
+    <div id="null" ></div>
 
 
 </body>
