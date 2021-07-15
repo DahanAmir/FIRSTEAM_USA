@@ -141,7 +141,10 @@
             var select = '<div class="panel-body"> <div class="form-group" >'
             select = '<select name = "type" id ="type" class="form-control">'
             for (var i = 0; i < data.length; i++) {
-                select += '  <option value="' + data[i].Id + '">' + data[i].Filetype + '</option>'
+                if (data.Active!=-1) {
+                    select += '  <option value="' + data[i].Id + '">' + data[i].Filetype + '</option>'
+
+                }
             }
             select += ' </select> </div> </div>'
             document.getElementById("ph").innerHTML = select
