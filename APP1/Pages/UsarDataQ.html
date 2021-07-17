@@ -171,7 +171,439 @@
             color: red;
         }
     </style>
+    <style>
+                /* Resets */
+                * {
+                    margin: 0;
+                    padding: 0;
+                }
 
+                body {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 400;
+                    background: rgba(0,0,0,0.045);
+                }
+
+                a {
+                    text-decoration: none;
+                }
+                /* Resets */
+
+
+
+                .alert {
+                    color: #666;
+                    text-align: center;
+                    margin: 50px 0;
+                }
+
+                /* @media handheld, screen and (min-width: 641px) {
+                    .no_scroll {
+                        overflow-y: hidden;
+                    }
+        */
+                .abrir_menu {
+                    display: none;
+                }
+
+                #menu {
+                    /*                max-width: 960px;
+        */ height: 70px;
+                    margin: 0 auto;
+                }
+
+                #navigator {
+                    height: 70px;
+                    line-height: 50px;
+                    /**/ /*box-shadow: 0 7px 6px -7px #373435;
+                        -webkit-box-shadow: 0 7px 6px -7px #373435;
+                        -moz-box-shadow: 0 7px 6px -7px #373435;*/
+                }
+
+
+                    #navigator .title {
+                        display: none;
+                    }
+
+                    #navigator ul {
+                        list-style: none;
+                    }
+
+                    #navigator > ul > li {
+                        width: 250px;
+                        float: left;
+                    }
+
+                        #navigator > ul > li > a {
+                            color: #fefefe;
+                            font-size: 15px;
+                            font-family: 'Montserrat', sans-serif;
+                            text-transform: uppercase;
+                            letter-spacing: 0.5px;
+                            text-align: center;
+                            display: block;
+                            background: #333;
+                        }
+
+                        #navigator > ul > li:hover > a {
+                            background: #555;
+                        }
+
+                    #navigator ul li > ul,
+                    #navigator ul li li > ul,
+                    #navigator ul li li li > ul,
+                    #navigator ul li li li li > ul,
+                    #navigator ul li li li li li > ul {
+                        display: none;
+                    }
+
+                    #navigator ul li:hover > ul,
+                    #navigator ul li li:hover > ul,
+                    #navigator ul li li li:hover > ul,
+                    #navigator ul li li li li:hover > ul,
+                    #navigator ul li li li li li:hover > ul {
+                        position: absolute;
+                        z-index: 10;
+                        width: 500px;
+                        line-height: 20px;
+                        display: block;
+                        background: #555;
+                        box-shadow: 0 7px 6px -7px #373435;
+                        -webkit-box-shadow: 0 7px 6px -7px #373435;
+                        -moz-box-shadow: 0 7px 6px -7px #373435;
+                    }
+
+                #menu ul ul li ul {
+                    top: 0;
+                    left: 179px;
+                    min-height: 100%;
+                    border-left: 1px solid #444;
+                }
+
+                #menu ul ul li { /*position: relative;*/
+                }
+
+                    #menu ul ul li a {
+                        color: #fefefe;
+                        font-size: 12px;
+                        font-family: 'Open Sans Condensed', sans-serif;
+                        text-transform: uppercase;
+                        display: block;
+                        padding: 12px 7px;
+                        border-top: 1px solid rgba(255,255,255,0.045);
+                        border-bottom: 1px solid rgba(0,0,0,0.045);
+                        text-transform: uppercase;
+                    }
+
+                    #menu ul ul li:hover > a {
+                        background: #444;
+                        width: 100%
+                    }
+
+                    #menu ul ul li li:hover > a {
+                    }
+
+                    #menu ul ul li li li:hover > a {
+                    }
+
+                    #menu ul ul li li li li:hover > a {
+                    }
+
+                    #menu ul ul li li li li li:hover > a {
+                    }
+
+                a {
+                    width: 100%;
+                }
+
+                }
+
+
+
+                @media handheld, screen and (max-width: 100%) {
+
+                    /* [ Open/Close =====================================*/
+                    /* ==================================================*/
+                    .abrir_menu {
+                        display: block;
+                    }
+
+                        .abrir_menu span {
+                            color: #fefefe;
+                            font-size: 20px;
+                            font-family: 'Open Sans Condensed', sans-serif;
+                            text-align: center;
+                            letter-spacing: 5px;
+                            position: absolute;
+                            z-index: 99;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 50px;
+                            line-height: 50px;
+                            margin: 0 auto;
+                            display: block;
+                            cursor: pointer;
+                            background: #333 url() no-repeat 10px center;
+                            box-shadow: 0 7px 3px -7px #373435;
+                            -webkit-box-shadow: 0 7px 3px -7px #373435;
+                            -moz-box-shadow: 0 7px 3px -7px #373435;
+                        }
+
+                    .open > .abrir_menu {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        background: rgba(225,225,225,0.85);
+                    }
+
+                        .open > .abrir_menu span {
+                            opacity: 0.1 !important;
+                        }
+
+                    .menu_aberto {
+                        position: fixed;
+                        z-index: 99;
+                        top: 0;
+                        left: -300px;
+                        width: 600px;
+                        height: 100%;
+                        overflow-x: hidden;
+                        overflow-y: scroll;
+                        background: #555;
+                        transition: 0.3s;
+                        box-shadow: -4px 0 15px 0px #373435;
+                        -webkit-box-shadow: -4px 0 15px 0px #373435;
+                        -moz-box-shadow: -4px 0 15px 0px #373435;
+                        box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        -ms-box-sizing: border-box;
+                    }
+
+                    .open > .menu_aberto {
+                        left: 0;
+                    }
+
+                    /* Open/Close ] =====================================*/
+                    /* ==================================================*/
+
+
+                    /* [ Menu ===========================================*/
+                    /* ==================================================*/
+                    #navigator .title {
+                        color: #666;
+                        font-size: 20px;
+                        font-family: 'Open Sans Condensed', sans-serif;
+                        text-transform: uppercase;
+                        text-shadow: 0.8px 0.8px 3px #111;
+                        height: 60px;
+                        line-height: 62px;
+                        display: block;
+                        padding: 0 20px;
+                        border-bottom: 1px solid rgba(0,0,0,0.045);
+                        background: #333 url() no-repeat 20px center;
+                        box-shadow: -4px 0 5px 0px #373435;
+                        -webkit-box-shadow: -4px 0 5px 0px #373435;
+                        -moz-box-shadow: -4px 0 5px 0px #373435;
+                    }
+
+                    #navigator ul li > ul,
+                    #navigator ul li li > ul,
+                    #navigator ul li li li > ul,
+                    #navigator ul li li li li > ul,
+                    #navigator ul li li li li li > ul {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        margin: 0;
+                        padding: 0;
+                        border: none;
+                        background: rgba(0,0,0,0.1);
+                        box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        -ms-box-sizing: border-box;
+                    }
+
+                    #navigator ul li {
+                        float: none;
+                        display: block;
+                    }
+
+                        #navigator ul li a {
+                            color: #999;
+                            font-size: 14px;
+                            display: block;
+                            padding: 20px;
+                            border-top: 1px solid rgba(255,255,255,0.045) !important;
+                            border-bottom: 1px solid rgba(0,0,0,0.045) !important;
+                        }
+
+                    #navigator > ul > li:hover > a {
+                        color: #aaa;
+                        background: #444;
+                    }
+
+
+                    /* Styles (Links/Hover/Ativo Sub Menu) ==============*/
+                    /* ==================================================*/
+                    #navigator > ul > li > .parent,
+                    #navigator > ul > li:hover > .parent,
+                    #navigator > ul > li.hover > .parent,
+                    #navigator ul li li > .parent,
+                    #navigator ul li li:hover > .parent,
+                    #navigator ul li li.hover > .parent {
+                        background-repeat: no-repeat;
+                        background-position: 260px center;
+                    }
+
+                    #navigator > ul > li > .parent,
+                    #navigator > ul > li:hover > .parent {
+                        color: #aaa;
+                        background-color: inherit;
+                        background-image: url();
+                    }
+
+                    #navigator > ul > li.hover > .parent {
+                        color: #aaa;
+                        background-color: #444;
+                        background-image: url();
+                    }
+
+
+                    /* Styles (Links/Hover/Ativo Sub>Sub Menu) ==========*/
+                    /* ==================================================*/
+                    #navigator ul li li a {
+                        color: #aaa;
+                        font-size: 12px;
+                    }
+
+                    #navigator ul li li > .parent,
+                    #navigator ul li li:hover > .parent {
+                        color: #aaa;
+                        background-color: inherit;
+                        background-image: url();
+                    }
+
+                    #navigator ul li li.hover > .parent {
+                        color: #aaa;
+                        background-color: rgba(0,0,0,0.1);
+                        background-image: url();
+                    }
+
+                    .nav ul {
+                        display: none;
+                        left: -9999px;
+                    }
+
+                    .nav li.hover > ul,
+                    .nav li li.hover > ul,
+                    .nav li li li.hover > ul,
+                    .nav li li li li.hover > ul,
+                    .nav li li li li li.hover > ul,
+                    .nav li li li li li li.hover > ul {
+                        position: static !important;
+                        display: block !important;
+                    }
+                    /* Menu ] ===========================================*/
+                    /* ==================================================*/
+                }
+
+                @media handheld, screen and (max-width: 600px) {
+
+                    .open > .menu_aberto {
+                        width: 600px;
+                    }
+
+                    #menu > ul > li > .parent,
+                    #menu > ul > li:hover > .parent,
+                    #menu > ul > li.hover > .parent,
+                    #menu ul li li > .parent,
+                    #menu ul li li:hover > .parent,
+                    #menu ul li li.hover > .parent {
+                        background-repeat: no-repeat;
+                        background-position: 210px center;
+                    }
+                }
+
+                @media handheld, screen and (max-width: 600px) {
+
+                    .open > .menu_aberto {
+                        width: 200px;
+                    }
+
+                    #menu > ul > li > .parent,
+                    #menu > ul > li:hover > .parent,
+                    #menu > ul > li.hover > .parent,
+                    #menu ul li li > .parent,
+                    #menu ul li li:hover > .parent,
+                    #menu ul li li.hover > .parent {
+                        background-repeat: no-repeat;
+                        background-position: 150px center;
+                    }
+                }
+    </style>
+
+    <script>
+        function SmartAlgo() {
+            window.open('UsarDataQ.html')
+        }
+
+        function ShowResults() {
+            window.open('Match.html')
+        }
+        function ChangeRegion() {
+            window.open('FavRegion.html')
+        }
+        function ChangeLocale() {
+            window.open('FavLocale.html')
+        }
+        function ChangeState() {
+            window.open('FavState.html')
+        }
+        function ChangeFav() {
+            window.open('FavUser.html')
+        }
+        function Wishlist() {
+            window.open('Wishlist.html')
+        }
+        function Predict() {
+            window.open('Algo.html')
+        }
+        function ManagerDashboard() {
+            window.open('NewManagerDash.html')
+        }
+        function PlayerDashboard() {
+            window.open('NewPlayerDash.html')
+        }
+        function ToDo() {
+            window.open('TODO List.html')
+        }
+        function FilesSummary() {
+            window.open('fileview.html')
+        }
+        function uploadFiles() {
+            window.open('Manager_uploadFiles.html')
+        }
+
+        function NewPlayer() {
+            window.open('NewUser.html')
+        }
+
+        function AllProfiles() {
+            window.open('AllProfiles.html')
+        }
+        function ChangeStatus() {
+            window.open('Status.html')
+        }
+
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -243,10 +675,10 @@
                 Tofel: $("#Tofel").val(),
                 Sat: $("#Sat").val(),
                 Gpa: $("#GPA").val()
-                
+
             }
 
-          //  alert("info is: " + u.National);
+            //  alert("info is: " + u.National);
 
             ajaxCall("POST", "../api/UserData", JSON.stringify(u), successData, errorData); //נוסיף לשרת את היוזר
 
@@ -285,25 +717,7 @@
             alert("successWishlist")
         }
 
-        function Algo() {
-            window.open('Algo.html')
-        }
 
-
-
-        function gotowishlist() {
-            window.open('WishList.html')
-        }
-
-
-        function allprofiles() {
-            window.open('Profile_Show.html')
-        }
-
-        function goBack() {
-            window.history.back();
-            window.close()
-        }
 
 
 
@@ -313,31 +727,78 @@
 </head>
 <body>
 
-    <button class="button2" ONCLICK="goBack()" style="float:left">Go Back</button><img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
 
-    <br /><br />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+    <!--<div id="logo">
+        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+    </div>-->
+    <div id="menu" style="width:100% ; float:left">
+        <div class="abrir_menu" style="width:170% ; float:left"><span>MENU</span></div>
+
+        <div class="menu_aberto" style="width: 170%; float:left">
+            <div id="navigator" style="width: 100%; float:left">
+                <ul class="nav" style="width: 100%; float:left">
+                    <!--li>
+                        <a href="#" title=""> </a>
+                        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+                    </li>-->
+                    <li style="width:450px">
+                        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+                    </li>
+                    <li><a href="#" title="" onclick="NewPlayer()">Insert new Player</a></li>
+                    <li><a href="#" title="" onclick="ToDo()">To Do List</a></li>
+                    <li><a href="#" title="" onclick="AllProfiles()">All Profiles</a></li>
+
+                    <li>
+                        <a href="#" title="" style="border:none;">Smart Algo</a>
+                        <ul>
+                            <li><a href="#" title="" onclick="SmartAlgo()">Insert new Data</a></li>
+                            <li><a href="#" title="" onclick="Predict()">Predict scholarship %</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" title="">Files</a>
+                        <ul>
+                            <li><a href="#" title="" onclick="FilesSummary()">Files Summary</a></li>
+                            <li><a href="#" title="" onclick="uploadFiles()">Upload Files</a></li>
+                            <li><a href="#" title="" onclick="ChangeStatus()">Change Status</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" title="">Favorites</a>
+                        <ul>
+                            <li><a href="#" title=""  onclick="ChangeRegion()">Change Region</a></li>
+                            <li><a href="#" title="" onclick="ChangeLocale()">Change Locale</a></li>
+                            <li><a href="#" title="" onclick="ChangeFav()">Change Other Favorites</a></li>
+                            <li><a href="#" title="" onclick="ShowResults()">Show Results</a></li>
+
+                        </ul>
+
+                    </li>
+                    <!--<li><a href="#" title="" onclick="Wishlist()">Show Wishlist</a></li>-->
+                    <!--<li><a href="#" title="">Add to whishlist</a></li>-->
+                    <!--<li><a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a></li>-->
+                    <!--<li><a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a></li>-->
 
 
-    <div class="imgcontainer">
 
-        <div class="topnav">
-            <a href="#home" onclick="Algo()" style="background-color:#034f84">Smart Algo</a>
-            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
-            <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
-            <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
-            <a href="#about" onclick="gotowishlist()">Show WishList</a>
-            <a href="#about" onclick="allprofiles()">All Playres Profiles</a>
-            <p>
-                Add To WishList  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
-                    <span class="glyphicon glyphicon-heart"></span> Add To WishList
-                </a>
-            </p>
+                </ul>
+            </div>
         </div>
-
-        <div id="intro">     </div>
-
-
     </div>
+
+
+
+    <div id="intro">     </div>
+
+
     <div>
 
 
@@ -347,10 +808,9 @@
 
 
     <!--<a href="LogIn.html">Go Back To Home Page</a>-->
-    <div class="container">
+    <div class="container" style="float:left">
         <form id="pForm">
-            <h1 style="color:red">Insert User Data</h1>
-            <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+            <br /> <br />
 
             <!--<div class="form-group">
                 <label for="nameTB"><span class="red-star">★ </span>First Name</label>
