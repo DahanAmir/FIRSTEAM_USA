@@ -224,6 +224,7 @@
     <Content Include="Pages\Newbuttons.html" />
     <Content Include="Pages\neweditprofile.html" />
     <Content Include="Pages\NewPlayerDash.html" />
+    <Content Include="Pages\profile user.html" />
     <Content Include="Pages\Status.html" />
     <Content Include="Pages\Wishlist.html" />
     <Content Include="Pages\NewManagerDash.html" />
