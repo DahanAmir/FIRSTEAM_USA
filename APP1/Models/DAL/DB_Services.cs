@@ -28,7 +28,7 @@ namespace APP1.Models.DAL
             {
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
 
-                String selectSTR = "select * from Status";
+                String selectSTR = "select * from Status where Active=1";
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
@@ -110,16 +110,15 @@ namespace APP1.Models.DAL
 
         }
       
-        private String BuildUpdateCommandstatus(Status s)
+        private String BuildUpdateCommandstatus(Status st)
         {
             String command;
 
             StringBuilder sb = new StringBuilder();
-            //string s = " IF EXISTS(SELECT * FROM UsersStatus WHERE Email = '" + u.Email + "') BEGIN  DELETE FROM UsersStatus WHERE Email = '" + u.Email + "'end";
+            //string s = " IF EXISTS(SELECT * FROM Status WHERE Status = '" + S.Email + "') BEGIN  DELETE FROM UsersStatus WHERE Email = '" + u.Email + "'end";
             //string status = " INSERT INTO UsersStatus (Email, Status)Values('" + u.Email + "', '" + u.Status + "')";
-            // use a string builder to create the dynamic string
-            //String prefix = " UPDATE UsersToDoList SET Task = '" + u.Task + "',DueDate = '" + u.DueDate + "',Email = '" + u.Email + "' WHERE taskid=" + u.Taskid;
-            String prefix="asd";
+            //use a string builder to create the dynamic string
+           String prefix = " UPDATE Status SET Active = " + 0 + " WHERE Status='" + st.Statusname+"'";
             command = prefix;
 
             return command;
@@ -813,10 +812,10 @@ namespace APP1.Models.DAL
 
             StringBuilder sb = new StringBuilder();
             // use a string builder to create the dynamic string
+            String prefix = " IF EXISTS(SELECT* FROM Status WHERE Status = '" + s.Statusname + "' )     UPDATE Status  SET Active=1     WHERE Status = '" + s.Statusname + "' ELSE     INSERT INTO[Status] " + "(Status, Active)";
 
-            sb.AppendFormat("Values('{0}', '{1}', '{2}',')", s.Statusname, s.Active);
+            sb.AppendFormat("Values('{0}', '{1}')", s.Statusname, 1);
 
-            String prefix = "INSERT INTO [UsersToDoList] " + "(Email,Task, DueDate,Status,Active)";
             command = prefix + sb.ToString();
             return command;
 

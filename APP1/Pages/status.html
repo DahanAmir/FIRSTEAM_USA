@@ -1,0 +1,440 @@
+﻿﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Files Upload Example</title>
+    <meta charset="utf-8">
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!--@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900');-->
+
+
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+    </script>
+
+
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js'></script>
+
+
+    <style type="text/css">
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            margin-top: 20px;
+            background: #f5f5f5;
+        }
+
+        .panel {
+            box-shadow: none;
+        }
+
+        .panel-heading {
+            border-bottom: 0;
+        }
+
+        .panel-title {
+            font-size: 17px;
+        }
+
+            .panel-title > small {
+                font-size: .75em;
+                color: #999999;
+            }
+
+        .panel-body *:first-child {
+            margin-top: 0;
+        }
+
+        .panel-footer {
+            border-top: 0;
+        }
+
+        .panel-default > .panel-heading {
+            color: #333333;
+            background-color: transparent;
+            border-color: rgba(0, 0, 0, 0.07);
+        }
+
+        form label {
+            color: #999999;
+            font-weight: 400;
+        }
+
+        .form-horizontal .form-group {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        @media (min-width: 768px) {
+            .form-horizontal .control-label {
+                text-align: right;
+                margin-bottom: 0;
+                padding-top: 7px;
+            }
+        }
+
+        .profile__contact-info-icon {
+            float: left;
+            font-size: 18px;
+            color: #999999;
+        }
+
+        .profile__contact-info-body {
+            overflow: hidden;
+            padding-left: 20px;
+            color: #999999;
+        }
+
+        .profile-avatar {
+            width: 200px;
+            position: relative;
+            margin: 0px auto;
+            margin-top: 196px;
+            border: 4px solid #f3f3f3;
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:600');
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-group button {
+            background-color: #04AA6D; /* Green background */
+            border: 1px solid green; /* Green border */
+            color: white; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+        }
+
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .btn-group button:not(:last-child) {
+            border-right: none; /* Prevent double borders */
+        }
+
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: #3e8e41;
+        }
+
+
+        .button2 {
+            background-color: white;
+            border: none;
+            color: darkblue;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            float: left;
+        }
+
+
+        /*כותרת*/
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: red;
+                    color: white;
+                }
+
+
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: black;
+                color: white;
+            }
+
+        #header {
+            background-color: red;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 0px auto;
+            width: 100%;
+            height: 100%;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            height: 60px;
+            color: black;
+            width: 180px;
+            float: left;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #f13333;
+            border-color: #f13333;
+        }
+    </style>
+
+
+   
+    <style type="text/css">
+    </style>
+    <script>
+        function successType(data) {
+            var select = '<div class="panel-body"> <div class="form-group" >'
+            select = '<select name = "type" id ="type" class="form-control">'
+            for (var i = 0; i < data.length; i++) {
+                select += '  <option value="' + data[i].Id + '">' + data[i].Statusname + '</option>'
+            }
+            select += ' </select> </div> </div>'
+            document.getElementById("ph").innerHTML = select
+        }
+        function errorType(data) {
+            alert('errorType');
+        }
+        $(document).ready(function () {
+           // alert(localStorage.getItem("email"));
+
+            let api = "../api/Status";
+
+            ajaxCall("Get", api, "", successType, errorType)
+            var email = localStorage.getItem("email").replace(".", "dot");
+            //var type = localStorage.getItem("type");
+            var end
+
+            $('#buttonew').on('click', function () {
+
+                var Status = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+
+                    Statusname: $("#Status").val(),
+                    Id: $("#type").val(),
+                    Active: 0
+
+                }
+                api = "../api/Status";
+
+                ajaxCall("Post", api, JSON.stringify(Status), successinsert_F_DBS, errorinsert_F_DBS)
+                return false;
+            });
+
+            $('#buttonUpload').on('click', function () {
+
+                var Status = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+
+                    Id: $("#type").val(),
+                    Active: 0,
+                    Statusname: $("#type option:selected").text()
+
+                }
+                api = "../api/Status";
+
+                ajaxCall("Put", api, JSON.stringify(Status), successinsert_F_DBS, errorinsert_F_DBS)
+                return false;
+            });
+
+        });
+
+
+        function showImages(data) {
+
+            alert($("#type option:selected").text());
+
+        } function errorinsert_F_DBS(data) {
+
+            alert('errorinsert_F_DBS');
+
+        } function successinsert_F_DBS(data) {
+
+            alert('Your file upload successfully!');
+
+        }
+
+        function error(data) {
+            console.log(data);
+        }
+
+
+        function ChangeFavorites() {
+
+            window.open('FavRegion.html');
+
+        }
+
+
+
+        function errorWishlist() {
+            alert("Please Choose school to Save")
+        }
+
+        function successWishlist() {
+            alert("successWishlist")
+        }
+
+
+
+
+        function gotowishlist() {
+            window.open('WishList.html')
+        }
+        function Algo() {
+            window.open('Algo.html')
+        }
+
+
+        function PlyersQ() {
+            window.open('UsarDataQ.html')
+        }
+
+        function goBack() {
+            window.history.back();
+            window.close()
+        }
+    </script>
+
+</head>
+<body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <button class="button2" ONCLICK="goBack()" style="float:left">Go Back</button><img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+    <br /><br />
+
+
+    <div class="imgcontainer">
+
+        <div class="topnav">
+            <a href="#home" onclick="Algo()" style="background-color:#034f84">Smart Algo</a>
+            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
+            <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
+            <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
+            <a href="#about" onclick="gotowishlist()">Show WishList</a>
+            <a href="#about" onclick="PlyersQ()">Predict your scholarship %</a>
+            <p>
+                Add To WishList  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
+                    <span class="glyphicon glyphicon-heart"></span> Add To WishList
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div id="intro">     </div>
+
+
+
+
+
+    <div class="container bootstrap snippets bootdeys">
+
+
+
+        <form method="post" enctype="multipart/form-data" id="formUpload">
+            <div class="panel-heading">
+                <div class="panel panel-default">
+                    <div id="ph"></div>
+
+              
+                    <button type="button" id="buttonUpload">Delete Status</button>
+                    <br /><br /><br />
+                </div>
+                <div class="panel panel-default">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Status</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="Status" id="Status">
+                        </div>
+                    </div>
+                    <br />
+               
+                    <button type="button" id="buttonew">New Status</button>
+                </div>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+
+</body>
+</html>
