@@ -158,6 +158,7 @@
     <Compile Include="Controllers\businessesController.cs" />
     <Compile Include="Controllers\FavoritesController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Controllers\ToDoListController.cs" />
     <Compile Include="Controllers\UserDataController.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UsersLocale.cs" />
     <Compile Include="Models\UsersDistrict.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\UsersStates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
