@@ -1,0 +1,788 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title></title>
+
+    <style>
+        body {
+            margin: 0;
+            min-width: 250px;
+        }
+
+        a {
+            display: inline-block;
+        }
+
+        .tasks {
+            margin: 30px 5px 5px 5px;
+        }
+
+            .tasks ul {
+                margin: 0;
+                padding: 0;
+            }
+
+                .tasks ul li {
+                    cursor: pointer;
+                    position: relative;
+                    padding: 12px 8px 12px 40px;
+                    background: #eee;
+                    font-size: 18px;
+                    transition: 0.2s;
+                }
+
+                    .tasks ul li:nth-child(odd) {
+                        background: #f9f9f9;
+                    }
+
+                    .tasks ul li:hover {
+                        background: #ddd;
+                    }
+
+        .dropdown-list {
+            padding: 5px 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+        }
+
+            .close:hover {
+                background-color: #f44336;
+                color: white;
+            }
+
+
+        .close1 {
+           
+           float: left;
+        }
+
+            .close1:hover {
+                background-color: darkseagreen;
+                color: white;
+            }
+
+
+        .jumbotron {
+            background-color: #323064;
+            text-align: center;
+            color: #fff;
+        }
+
+        .btn-primary,
+        .btn-success {
+            width: 100%;
+            border-color: black;
+        }
+
+        .pagination {
+            padding-left: 40px !important;
+            cursor: pointer !important;
+        }
+    </style>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:600');
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-group button {
+            background-color: #04AA6D; /* Green background */
+            border: 1px solid green; /* Green border */
+            color: white; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+        }
+
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .btn-group button:not(:last-child) {
+            border-right: none; /* Prevent double borders */
+        }
+
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+    <style>
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .button2 {
+            background-color: white;
+            border: none;
+            color: darkblue;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            float: left;
+        }
+
+
+        /*כותרת*/
+        body {
+            margin: 0;
+/*            font-family: Arial, Helvetica, sans-serif;
+*/        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: red;
+                    color: white;
+                }
+
+
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: black;
+                color: white;
+            }
+
+        #header {
+            background-color: red;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 0px auto;
+            width: 100%;
+            height: 100%;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            text-align: center;
+        }
+
+        button {
+           /* width: 100px;
+            height: 60px;*/
+            color: white;
+/*            width: 180px;
+*/            float: left;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #f13333;
+            border-color: #f13333;
+        }
+    </style>
+
+    <script>
+
+
+
+        function ChangeFavorites() {
+
+            window.open('FavRegion.html');
+
+        }
+
+
+
+        function errorWishlist() {
+            alert("Please Choose school to Save")
+        }
+
+        function successWishlist() {
+         //   alert("successWishlist")
+        }
+
+
+
+
+        function gotowishlist() {
+            window.open('WishList.html')
+        }
+        function Algo() {
+            window.open('Algo.html')
+        }
+
+
+        function PlyersQ() {
+            window.open('UsarDataQ.html')
+        }
+
+        function goBack() {
+            window.history.back();
+            window.close()
+        }
+
+    </script>
+    <script>
+        var todoList = [{
+            'todo': ' ',
+            'id': 'todo0'
+        }];
+
+        var name = "";
+        var name1 = "";
+        var pageList = new Array();
+        var currentPage = 1;
+        var numberPerPage = 10;
+        var numberOfPages = 0;
+        var email = "";
+        function newElement() {
+            email = localStorage.getItem("email");
+
+            var e = document.getElementById("players");
+            emailtosend = e.value
+
+            var name = e.value;
+            var n = name.split("@");
+            inputUser = n[0];
+
+            alert(emailtosend + "   " + inputUser)
+
+
+
+           // name1 = name.split('@');
+           // inputUser = name1[0];
+           // alert(inputUser)
+
+
+
+            var inputTitle = document.getElementById('title').value,
+          
+               // inputUser = document.getElementById('usr').value,
+                inputDate = document.getElementById('due-date').value,
+                todo = '';
+            if (inputTitle === '') {
+                alert("Please write a task");
+                return;
+            } else {
+                todo = inputTitle;
+                if (inputUser != '') {
+                    todo = inputUser + " Need to " + inputTitle;
+                }
+                if (inputDate != '') {
+                    todo = todo + "  By " + inputDate
+                }
+            }
+            var newTodoId = findNextId(),
+                newTodo = {
+                    'todo': todo,
+                    'id': 'todo' + newTodoId
+                };
+            todoList.push(newTodo);
+
+
+            var todoSave = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                Email: emailtosend,
+                Task: $("#title").val(),
+                DueDate: $("#due-date").val()
+
+            }
+            //alert("Todois: " + todoSave);
+            let api = "../api/ToDoList";
+
+            ajaxCall("Post", api, JSON.stringify(todoSave), successtodo, errortodo)
+
+
+            sortElementsById();
+            clearFields();
+            return false;
+            emai
+        }
+
+
+
+        function successtodo() {
+            alert("in successtodo");
+
+        }
+
+        function errortodo() {
+            alert("in errortodo");
+        }
+
+        //function newElement() {
+        //    var inputTitle = document.getElementById('title').value,
+        //        inputUser = document.getElementById('usr').value,
+        //        inputDate = document.getElementById('due-date').value,
+        //        todo = '';
+        //    if (inputTitle === '') {
+        //        alert("Please write a task");
+        //        return;
+        //    } else {
+        //        todo = inputTitle;
+        //        if (inputUser != '') {
+        //            todo = inputUser + " needs to " + inputTitle;
+        //        }
+        //        if (inputDate != '') {
+        //            todo = todo + " by " + inputDate
+        //        }
+        //    }
+        //    var newTodoId = findNextId(),
+        //        newTodo = {
+        //            'todo': todo,
+        //            'id': 'todo' + newTodoId
+        //        };
+        //    todoList.push(newTodo);
+        //    sortElementsById();
+        //    clearFields();
+        //}
+
+        function fetchIdFromObj(todo) {
+            return parseInt(todo.id.slice(4));
+        }
+
+        function findNextId() {
+            if (todoList.length === 0) {
+                return 0;
+            }
+            var lastElementId = fetchIdFromObj(todoList[todoList.length - 1]),
+                firstElementId = fetchIdFromObj(todoList[0]);
+            return (firstElementId >= lastElementId) ? (firstElementId + 1) : (lastElementId + 1);
+        }
+
+        function clearFields() {
+            document.getElementById('title').value = '';
+            document.getElementById('usr').value = '';
+            document.getElementById('due-date').value = '';
+        }
+
+        function deleteElement(event) {
+            var idOfEltToBeDeleted = event.target.parentElement.id;
+            var arrayIndex = todoList.findIndex(function (singleTodo) {
+                return singleTodo.id === idOfEltToBeDeleted;
+            });
+            if (arrayIndex !== -1) {
+                todoList.splice(arrayIndex, 1);
+            }
+            load(todoList);
+        }
+
+        function displayOneElement(todoObject) {
+            var li_element = document.createElement("li");
+            var p_element = document.createElement("p");
+            p_element.className = "task-name";
+            li_element.appendChild(p_element);
+            li_element.setAttribute("id", todoObject.id);
+            var text_node = document.createTextNode(todoObject.todo);
+            p_element.appendChild(text_node);
+            var span_element = document.createElement("SPAN");
+            span_element.className = "close";
+            var txt_node = document.createTextNode("\u00D7");
+            span_element.appendChild(txt_node);
+            span_element.onclick = deleteElement;
+            li_element.appendChild(span_element);
+            document.getElementById("task-list").appendChild(li_element);
+        }
+
+        function sortElementsById() {
+            var manyTodos = todoList.sort(function (a, b) {
+                var x = fetchIdFromObj(a);
+                var y = fetchIdFromObj(b);
+
+                if (x > y) {
+                    return -1;
+                }
+                if (x < y) {
+                    return 1;
+                }
+                return 0;
+            })
+            load(manyTodos);
+        }
+
+        function sortElementsByName() {
+            var manyTodos = todoList.sort(function (a, b) {
+                var x = a.todo.toLowerCase();
+                var y = b.todo.toLowerCase();
+                if (x < y) {
+                    return -1;
+                }
+                if (x > y) {
+                    return 1;
+                }
+                return 0;
+            })
+            load(manyTodos);
+        }
+
+        function searchInList() {
+            var str = document.getElementById('search-text').value.toLowerCase();
+            var searchResultList = [];
+            for (var j = 0; j < todoList.length; j++) {
+                if (todoList[j].todo.toLowerCase().match(str))
+                    searchResultList.push(todoList[j]);
+            }
+            load(searchResultList);
+        }
+
+        function getNumberOfPages(manyTodos) {
+            return Math.ceil(manyTodos.length / numberPerPage);
+        }
+
+        function gotoPage(event) {
+            currentPage = parseInt(event.target.id);
+            loadList(todoList);
+        }
+
+        function refreshPaginations() {
+            var paginationTarget = document.getElementById('pagination'),
+                setActiveClass = false;
+            paginationTarget.innerHTML = '';
+            for (var i = 1; i <= numberOfPages; i++) {
+                var li_element = document.createElement("li"),
+                    a_element = document.createElement('a');
+                if (i === currentPage) {
+                    li_element.className = 'active';
+                    setActiveClass = true;
+                } else {
+                    a_element.onclick = gotoPage;
+                }
+                a_element.setAttribute('id', i);
+                a_element.innerHTML = i;
+                li_element.appendChild(a_element);
+                paginationTarget.appendChild(li_element);
+            }
+            if (numberOfPages > 0 && setActiveClass === false) {
+                currentPage = 1;
+                refreshPaginations();
+                loadList(todoList);
+            }
+        }
+
+        function loadList(manyTodos) {
+            var begin = ((currentPage - 1) * numberPerPage);
+            var end = begin + numberPerPage;
+            pageList = manyTodos.slice(begin, end);
+            refreshPaginations();
+            drawList(pageList);
+        }
+
+        function drawList(manyTodos) {
+            document.getElementById("task-list").innerHTML = "";
+            manyTodos.forEach(function (singleTodo) {
+                displayOneElement(singleTodo);
+            });
+        }
+
+        function load(manyTodos) {
+            numberOfPages = getNumberOfPages(manyTodos);
+            loadList(manyTodos);
+        }
+
+        window.onload = function () {
+            sortElementsById();
+        }
+
+        var str1 = "";
+
+        $(document).ready(function () {
+            let email = localStorage.getItem("email");
+           // email = "adi@gmail.com";
+            name1 = email.split('@');
+          //  alert(name1[0]);
+
+
+            let api_todo = "../api/ToDoList/" + email + "/get_all_TODO";
+            ajaxCall("Get", api_todo, email, successTodo, errorTodo)
+
+
+            str1 = "users_show"
+            let api = "../api/Users/" + str1 + "/Show_all_users";
+            ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
+
+
+        });
+
+        function getSuccess(data) {
+
+            console.log(data);
+            rendusers(data);
+        }
+
+        function erroradd_list_r() {
+            alert("erroradd_list_r")
+        }
+
+
+        var arr = "";
+        function rendusers(data) {
+            arr += "<form>";
+            arr += "<label for='players'>  Who should do it:  </label>";
+            arr += "<select id = 'players' >";
+            for (var i = 0; i < data.length; i++) {
+
+                arr += "<option value='" + data[i].Email + "' onclick='gemail(this.value)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
+
+            }
+
+            arr += "</select >";
+            arr += "<form>";
+            document.getElementById("user").innerHTML = arr;
+           
+
+        }
+
+        function gemail(obj) {
+            alert("obj is: " + obj);
+        }
+
+
+
+
+
+        var str2 = "";
+        var name1 = [];
+        var d = '';
+        var id = 0;
+        function successTodo(data) {
+        //    alert("in successTodo")
+            console.log(data);
+
+            //str2 += "<table id='miyazaki'>";
+            ////str2 += "<h3> My To Do List </h3>";
+            //str2 += "<thead>";
+            //str2 += "<tr><th>Task<th>Status<th>Due Date<tbody>"
+
+            for (var i = 0; i < data.length; i++) {
+
+               id = data[i].Taskid;
+                d = data[i].DueDate.split("T");
+               // alert(d[0]);
+                str2+= "<ul id='task-list' class='task-name'><li id='todo"+ i+ "'>"
+                str2 += "<p class='task-name'><button class='close1' onclick='edit(" + data[i].Taskid + ")'>Edit</button>  "   + name1[0] + " Needs To " + data[i].Task + " By " + d[0] + " <button class='close' onclick='closef(" + data[i].Taskid + ")'>x</button> </br></p>";
+                str2+= "</li></ul>"
+
+                // str2 += "<tr><td>" + data[i].;
+                //str2 += "<td>" + data[i].Status;
+                //str2 += "<td>" + data[i].DueDate + "<tr>";
+
+            }
+
+            // str += "<button class='button2' ONCLICK='alltodo()' style='float: left'> My To Do List  </button>";
+            document.getElementById("oldtask-list").innerHTML = str2;
+
+           
+
+        }
+
+        function errorTodo() {
+            alert("in errorTodo")
+        }
+
+         var api_todo1 = "";
+        function closef(data) {
+         //  id = 44;
+            alert(data)
+            console.log(data)
+
+
+            let api_todo1 = "../api/ToDoList/" + id + "/del";
+            ajaxCall("DELETE", api_todo1, id , successdelTodo, errordelTodo)
+        }
+
+        function successdelTodo() { alert("Your ToDo has been delete!!!!")}
+        function errordelTodo() { alert("errordelTodo") }
+
+        var newT = '';
+        var newR = '';
+        var newD = '';
+        var api_updatetodo = "";
+        function edit(data) {
+
+            id = data
+            alert(id);
+                var txt;
+                var newT = prompt("Please enter your new task:", newT);
+            var newR = prompt("Please enter your new Responsible Email:", newR);
+            var newD = prompt("Please enter your new Date: (YYYY-MM-DD)", newD);
+            if (newT == null || newT == "") {
+                if (newR == null || newT == "")
+                    if (newR == null || newD == "")
+                    txt = "User cancelled the prompt.";
+                } else {
+                    txt = "You want to change your task to: " + newT + ", New respinsibale: "+ newR + " ,new date: " +newD+ "?";
+                }
+            alert(txt);
+
+            let u = {
+                Taskid: id,
+                Task: newT,
+                Email: newR,
+                DueDate: newD
+            }
+
+            let api_updatetodo = "../api/ToDoList/" + id + "/update";
+            ajaxCall("PUT", api_updatetodo, JSON.stringify(u), successupTodo, errorupTodo)
+            
+
+        }
+
+
+        function successupTodo() {
+            alert("Your ToDo changes saved!!");
+        }
+        function errorupTodo() {
+            alert("errorupTodo");
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+    <button class="button2" ONCLICK="goBack()" style="float:left">Go Back</button><img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+    <br /><br />
+
+
+    <div class="imgcontainer">
+
+        <div class="topnav">
+            <a href="#home" onclick="Algo()" style="background-color:#034f84">Smart Algo</a>
+            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
+            <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
+            <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
+            <a href="#about" onclick="gotowishlist()">Show WishList</a>
+            <a href="#about" onclick="PlyersQ()">Predict your scholarship %</a>
+            <p>
+                Add To WishList  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
+                    <span class="glyphicon glyphicon-heart"></span> Add To WishList
+                </a>
+            </p>
+        </div>
+
+        <div id="intro">     </div>
+
+
+    </div>
+    <div>
+
+
+    </div>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <div class="container">
+
+
+        <div class="jumbotron page-header" style="        background-color: #034f84">
+            <h2 style="margin:5px" width="50%">My To Do List</h2>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="title">Task:</label>
+                <input type="text" id="title" class="form-control" placeholder="Add a title... ">
+            </div>
+
+           <div id="user"> </div>
+            <!--<div class="form-group">
+                <label for="usr">Who should do it:</label>
+                <input type="text" id="user" class="form-control" placeholder="Add a user...">
+            </div>-->
+            <br />
+            <div class="form-group">
+                <label for="usr">Due Date:</label>
+                <input type="date" id="due-date" class="form-control" placeholder="Due date">
+            </div>
+            <div class="row">
+                <div class="col-xs-3 pull-left">
+                    <button type="button" class="btn btn-primary" onclick="newElement()" style="background-color: #034f84">Add Task</button>
+                </div>
+                <div class="dropdown col-xs-3 pull-left">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="background-color:red">
+                        Sort
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-list" onclick="sortElementsById()" >Sort By ID</li>
+                        <li class="dropdown-list" onclick="sortElementsByName()" >Sort By Name</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 pull-right">
+                    <div class="input-group">
+                        <input id="search-text" onkeyup="searchInList()" type="text" class="form-control" placeholder="Search..." name="search">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="tasks">
+        <ul id="oldtask-list">  </ul>
+        <ul id="task-list" class="task-name">  </ul>
+    </div>
+    <ul id="pagination" class="pagination pagination-lg"></ul>
+</body>
+
+</html>

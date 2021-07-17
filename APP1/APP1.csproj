@@ -222,6 +222,8 @@
     <Content Include="Pages\2ManagerDash - Copy.html" />
     <Content Include="Pages\Algo.html" />
     <Content Include="Pages\neweditprofile.html" />
+    <Content Include="Pages\Status.html" />
+    <Content Include="Pages\Status1.html" />
     <Content Include="Pages\Wishlist.html" />
     <Content Include="Pages\NewManagerDash.html" />
     <Content Include="Pages\2NewTeacher.html" />
