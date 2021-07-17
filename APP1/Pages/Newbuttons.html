@@ -16,15 +16,16 @@
         }
 
         body {
-            font-family: 'Ubuntu', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 400;
-            background: #ddd;
+            background: rgba(0,0,0,0.045);
         }
 
         a {
             text-decoration: none;
         }
         /* Resets */
+
 
 
         .alert {
@@ -44,7 +45,7 @@
 
             #menu {
                 max-width: 960px;
-                height: 50px;
+                height: 150px;
                 margin: 0 auto;
             }
 
@@ -73,7 +74,7 @@
                     #navigator > ul > li > a {
                         color: #fefefe;
                         font-size: 15px;
-                        font-family: 'Open Sans Condensed', sans-serif;
+                        font-family: 'Montserrat', sans-serif;
                         text-transform: uppercase;
                         letter-spacing: 0.5px;
                         text-align: center;
@@ -121,7 +122,7 @@
 
                 #menu ul ul li a {
                     color: #fefefe;
-                    font-size: 14px;
+                    font-size: 12px;
                     font-family: 'Open Sans Condensed', sans-serif;
                     text-transform: uppercase;
                     display: block;
@@ -416,9 +417,9 @@
             window.open('NewManagerDash.html')
         }
         function PlayerDashboard(){
-            window.open('PlayerDashboard.html')
+            window.open('NewPlayerDash.html')
         }
-            function PlayerDashboard(){
+            function ToDo(){
                 window.open('TODO List.html')
         }
         function FilesSummary(){
@@ -445,27 +446,36 @@
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+    <!--<div id="logo">
+        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
 
+    </div>-->
     <div id="menu" style="width:100% ; float:left">
-        <div class="abrir_menu"><span>MENU</span></div>
+        <div class="abrir_menu" style="width:100% ; float:left"><span>MENU</span></div>
 
-        <div class="menu_aberto" style="width: 150%; float:left">
-            <div id="navigator" style="width: 100%">
-                <ul class="nav" style="width: 100%">
+        <div class="menu_aberto" style="width: 170%; float:left">
+            <div id="navigator" style="width: 100%; float:left">
+                <ul class="nav" style="width: 100%; float:left">
+                    <!--li>
+        <a href="#" title=""> </a>
+        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+    </li>-->
+                    <li style="width:450px"><img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+                    </li>
                     <li>
-                        <a href="#" title="" style="border:none;" >Algo</a>
+                        <a href="#" title="" style="border:none;">Algo</a>
                         <ul>
                             <li><a href="#" title="" onclick="SmartAlgo()">Insert new Data</a></li>
                             <li><a href="#" title="" onclick="Predict()">Predict scholarship %</a></li>
-                            </ul>
-                         </li>
+                        </ul>
+                    </li>
                     <li><a href="#" title="" onclick="ShowResults()">Show Results</a></li>
                     <li>
                         <a href="#" title="">Change Favorites</a>
                         <ul>
                             <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
                             <li><a href="#" title="" onclick="ChangeLocale()">Change Locale</a></li>
-                            <li><a href="#" title="" onclick="ChangeState()">Change State</a></li>
                             <li><a href="#" title="" onclick="ChangeFav()">Change Other Favorites</a></li>
                         </ul>
 
@@ -475,7 +485,7 @@
                     <li><a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a></li>
                     <li><a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a></li>
                     <li>
-                        <a href="#" title="" >Files</a>
+                        <a href="#" title="">Files</a>
                         <ul>
                             <li><a href="#" title="" onclick="FilesSummary()">Files Summary</a></li>
                             <li><a href="#" title="" onclick="uploadFiles()">Upload Files</a></li>
@@ -489,6 +499,8 @@
             </div>
         </div>
     </div>
+
+
 
    
 </body>
