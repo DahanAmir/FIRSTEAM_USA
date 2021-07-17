@@ -202,21 +202,21 @@
             <option value="0">Choose..</option>
             <option value="1">Public</option>
             <option value="2,3">Private</option>
-            <!--<option value="1,2,3">Both</option>-->
+            <option value="1,2,3">Both</option>
 
         </select>
 
         <br /><br />
 
         <label for="size">Size:</label>
-        <input type="text" id="size" name="size" onchange="showH(this.value)"><br><br>
+        <input type="text" id="size" name="size"  pattern="[0-9]{4,8}" required oninvalid="this.setCustomValidity('Format should be max 10 char')"   oninput="this.setCustomValidity('')"   ><br><br>
 
 
         <label for="cost">Max Price for year:</label>
-        <input type="text" id="cost" name="cost" onchange="showH(this.value)"><br><br>
+        <input type="text" id="cost" name="cost" pattern="[0-9]{0,8}" required  placeholder="Please enter number" onchange="showH(this.value)"><br><br>
 
         <label for="SAT">SAT Score:</label>
-        <input type="text" id="SAT" name="SAT" onchange="showH(this.value)"><br><br>
+        <input type="text" id="SAT" name="SAT" pattern="[0-9]{0,5}" required placeholder="Please enter number" onchange="showH(this.value)"><br><br>
 
         <label for="division">Devision:</label>
         <select name="division" id="division" onchange="showH(this.value)">
