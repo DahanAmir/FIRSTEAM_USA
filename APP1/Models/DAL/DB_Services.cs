@@ -118,7 +118,8 @@ namespace APP1.Models.DAL
             //string s = " IF EXISTS(SELECT * FROM UsersStatus WHERE Email = '" + u.Email + "') BEGIN  DELETE FROM UsersStatus WHERE Email = '" + u.Email + "'end";
             //string status = " INSERT INTO UsersStatus (Email, Status)Values('" + u.Email + "', '" + u.Status + "')";
             // use a string builder to create the dynamic string
-            String prefix = " UPDATE UsersToDoList SET Task = '" + u.Task + "',DueDate = '" + u.DueDate + "',Email = '" + u.Email + "' WHERE taskid=" + u.Taskid;
+            //String prefix = " UPDATE UsersToDoList SET Task = '" + u.Task + "',DueDate = '" + u.DueDate + "',Email = '" + u.Email + "' WHERE taskid=" + u.Taskid;
+            String prefix="asd";
             command = prefix;
 
             return command;
