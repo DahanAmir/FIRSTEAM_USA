@@ -40,10 +40,11 @@
             font-family: 'Montserrat', sans-serif;
         }
 
+
         body {
             margin-top: 20px;
-            background: #f5f5f5;
-        }
+            background: #ddd;
+        }	
 
         .panel {
             box-shadow: none;
@@ -261,8 +262,8 @@
     </style>
     <script>
         function successType(data) {
-            var select = '<div class="panel-body"> <div class="form-group" >'
-            select = '<select name = "type" id ="type" class="form-control">'
+            var select = '<div class="panel-body"> <div class="form-group" > '
+            select = '<select name = "type" id ="type" > '
             for (var i = 0; i < data.length; i++) {
                 select += '  <option value="' + data[i].Id + '">' + data[i].Filetype + '</option>'
             }
@@ -381,43 +382,17 @@
 
 </head>
 <body>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <button class="button2" ONCLICK="goBack()" style="float:left">Go Back</button><img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
-    <br /><br />
+
+    <div class="container bootdey">
+        <div class="row">
+            <div class="col-md-8 col-sm-12">
+                <div class="well">
 
 
-    <div class="imgcontainer">
-
-        <div class="topnav">
-            <a href="#home" onclick="Algo()" style="background-color:#034f84">Smart Algo</a>
-            <a href="#home" onclick="rend()" style="background-color:#034f84">Show Results</a>
-            <a class="active" href="#news" onclick="ChangeFavorites()">Change Favorites</a>
-            <!--<a href="#contact" onclick="Wishlist()">Add to WishList</a>-->
-            <a href="#about" onclick="gotowishlist()">Show WishList</a>
-            <a href="#about" onclick="PlyersQ()">Predict your scholarship %</a>
-            <p>
-                Add To WishList  <a href="#" class="btn btn-info btn-lg" onclick="Wishlist()">
-                    <span class="glyphicon glyphicon-heart"></span> Add To WishList
-                </a>
-            </p>
-        </div>
-    </div>
-
-    <div id="intro">     </div>
-
-
-
-
-
-    <div class="container bootstrap snippets bootdeys">
-
-
-
-        <form method="post" enctype="multipart/form-data" id="formUpload">
-            <div class="panel-heading">
-                <div class="panel panel-default">
+                    <h4>Select file</h4>
                     <div id="ph"></div>
-
+                    <br />
+                    <br />
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Score</label>
                         <div class="col-sm-10">
@@ -431,21 +406,27 @@
                         <div class="col-sm-10">
                             <input type="text" class="Remark" id="Remark">
                         </div>
+
                     </div>
+
                     <div>
+
                         <br />
                         <br />
+                                                <button type="button" id="buttonUpload" class="btn btn-info pull-right">Upload files</button>
+
                         <label for="files">Files</label>
                         <input type="file" id="files" name="files" multiple="multiple" />
+
                     </div>
-                    <br />
-                    <button type="button" id="buttonUpload">Upload files</button>
+
                 </div>
             </div>
-
-        </form>
-
+        </div>
     </div>
+
+
+   
 
 
 
