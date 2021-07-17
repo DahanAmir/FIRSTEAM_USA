@@ -13,6 +13,118 @@ namespace APP1.Models.DAL
     public class DB_Services
     {
 
+
+
+
+
+
+        
+        public List<Status> get_status()
+        {
+            List<Status> list_of_Status = new List<Status>();
+            SqlConnection con = null;
+
+            try
+            {
+                con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
+
+                String selectSTR = "select * from Status";
+                SqlCommand cmd = new SqlCommand(selectSTR, con);
+
+                // get a reader
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection); // CommandBehavior.CloseConnection: the connection will be closed after reading has reached the end
+
+                while (dr.Read())
+                {
+
+                    Status s = new Status();
+                    s.Statusname = (string)dr["Status"];
+                    s.Active = Convert.ToInt32(dr["Active"]);
+                    s.Id = Convert.ToInt32(dr["Id"]);
+
+
+
+                    list_of_Status.Add(s);
+                }
+
+                return list_of_Status;
+
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+        }
+
+
+
+
+
+        public int update_status(Status s)
+        {
+
+            SqlConnection con;
+            SqlCommand cmd;
+
+            try
+            {
+                con = connect("DBConnectionString"); // create the connection
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            String cStr = BuildUpdateCommandstatus(s);      // helper method to build the insert string
+
+            cmd = CreateCommand(cStr, con);             // create the command
+
+            try
+            {
+                int numEffected = cmd.ExecuteNonQuery(); // execute the command
+                return numEffected;
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            finally
+            {
+                if (con != null) //אם אימייל כבר קיים שגיאה 500
+                {
+                    // close the db connection
+                    con.Close();
+                }
+            }
+
+        }
+      
+        private String BuildUpdateCommandstatus(Status s)
+        {
+            String command;
+
+            StringBuilder sb = new StringBuilder();
+            //string s = " IF EXISTS(SELECT * FROM UsersStatus WHERE Email = '" + u.Email + "') BEGIN  DELETE FROM UsersStatus WHERE Email = '" + u.Email + "'end";
+            //string status = " INSERT INTO UsersStatus (Email, Status)Values('" + u.Email + "', '" + u.Status + "')";
+            // use a string builder to create the dynamic string
+            String prefix = " UPDATE UsersToDoList SET Task = '" + u.Task + "',DueDate = '" + u.DueDate + "',Email = '" + u.Email + "' WHERE taskid=" + u.Taskid;
+            command = prefix;
+
+            return command;
+        }
+
+
         public int update_todo(ToDoList u)
         {
 
@@ -71,7 +183,6 @@ namespace APP1.Models.DAL
 
 
         ///////////////////////Teachers////////////
-
 
         public List<Teachers> Show_Teachers()
         {
@@ -648,7 +759,67 @@ namespace APP1.Models.DAL
 
         }
 
+        
 
+
+        public int Insert_status(Status s)
+        {
+            SqlConnection con;
+            SqlCommand cmd;
+
+            try
+            {
+                con = connect("DBConnectionString"); // create the connection
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            String cStr = BuildInsert_Status(s);      // helper method to build the insert string
+
+            cmd = CreateCommand(cStr, con);             // create the command
+
+            try
+            {
+                int numEffected = cmd.ExecuteNonQuery(); // execute the command
+
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            finally
+            {
+                if (con != null)
+                {
+                    // close the db connection
+                    con.Close();
+                }
+            }
+
+            return 1;
+
+        }
+
+
+        private String BuildInsert_Status(Status s)
+        {
+            String command;
+
+            StringBuilder sb = new StringBuilder();
+            // use a string builder to create the dynamic string
+
+            sb.AppendFormat("Values('{0}', '{1}', '{2}',')", s.Statusname, s.Active);
+
+            String prefix = "INSERT INTO [UsersToDoList] " + "(Email,Task, DueDate,Status,Active)";
+            command = prefix + sb.ToString();
+            return command;
+
+        }
 
 
         public int Insert_ToDoList(ToDoList t)
@@ -1678,7 +1849,6 @@ namespace APP1.Models.DAL
 
             return command + status;
         }
-
         public int update_New_Users(Users u)
         {
 
