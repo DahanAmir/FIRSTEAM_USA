@@ -221,6 +221,7 @@
     <Content Include="Pages\2Calculat.html" />
     <Content Include="Pages\2ManagerDash - Copy.html" />
     <Content Include="Pages\Algo.html" />
+    <Content Include="Pages\Newbuttons.html" />
     <Content Include="Pages\neweditprofile.html" />
     <Content Include="Pages\Wishlist.html" />
     <Content Include="Pages\NewManagerDash.html" />

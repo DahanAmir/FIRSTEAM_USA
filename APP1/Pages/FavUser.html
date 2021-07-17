@@ -108,10 +108,8 @@
        
         email = localStorage.getItem('email');
 
-        function save() {
-      
-     
 
+        function saveF() {
             var fav = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
                 Email: email,
                 UniversityType: $("#kindUni").val(),
@@ -124,6 +122,25 @@
 
             ajaxCall("Post", api, JSON.stringify(fav), successFav, errorFav)
         }
+
+        function save() {
+
+            if ($("#size").val() >= 0 & $("#size").val() < 100000000 &) 
+                if ($("#cost").val() >=0  & $("#cost").val() < 100000000)
+                    if ($("#SAT").val() >= 0 & $("#SAT").val() < 100000000)
+                         saveF()
+          
+            else  
+            alert("Please enter numbers in the fields");
+            alert("Please enter numbers");
+
+
+
+
+              
+            }
+       
+
 
 
 
@@ -167,6 +184,8 @@
             window.history.back();
             window.close()
         }
+
+       
         
   </script>
 
@@ -209,14 +228,14 @@
         <br /><br />
 
         <label for="size">Size:</label>
-        <input type="text" id="size" name="size"  pattern="[0-9]{4,8}" required oninvalid="this.setCustomValidity('Format should be max 10 char')"   oninput="this.setCustomValidity('')"   ><br><br>
+        <input type="number" id="size" name="size"  pattern="[0-9]{4,8}" required oninvalid="this.setCustomValidity('Format should be max 10 char')"   oninput="this.setCustomValidity('')"    ><br><br>
 
 
         <label for="cost">Max Price for year:</label>
-        <input type="text" id="cost" name="cost" pattern="[0-9]{0,8}" required  placeholder="Please enter number" onchange="showH(this.value)"><br><br>
+        <input type="number" id="cost" name="cost" pattern="[0-9]{0,8}" required  placeholder="Please enter number" onchange="showH(this.value)"><br><br>
 
         <label for="SAT">SAT Score:</label>
-        <input type="text" id="SAT" name="SAT" pattern="[0-9]{0,5}" required placeholder="Please enter number" onchange="showH(this.value)"><br><br>
+        <input type="number" id="SAT" name="SAT" pattern="[0-9]{0,5}" required placeholder="Please enter number" onchange="showH(this.value)"><br><br>
 
         <label for="division">Devision:</label>
         <select name="division" id="division" onchange="showH(this.value)">
