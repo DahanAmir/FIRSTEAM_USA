@@ -826,24 +826,23 @@
         }
 
         function editBtn_Function(id) {
+            var item
             for (i = 0; i < universityss.length; i++) { //כל פעם שנלחץ לשמור נעבור על כל התכונות ונראה מי 0 מי 1
                 if (universityss[i].id==id) {
 
                     item = {
                         Id: universityss[i].id,
-                        UniversityName: universityss[i].value,
+                        UniversityName: universityss[i]["school.name"],
                         Email: email
                     }
 
-                    wishlist.push(item)
 
 
                 }
 
-
             }
             let api_WishList = "../api/University";
-            ajaxCall("POST", api_WishList, JSON.stringify(wishlist), successWishlist, errorWishlist)
+            ajaxCall("POST", api_WishList, JSON.stringify(item), successWishlist, errorWishlist)
 
         }
 
@@ -950,7 +949,7 @@
         var show_all_match
         var District
         var all_name_csv_universities
-        var wishlist = [];
+        var wishlist;
         var name1 = [];
         var name = '';
         var countime = 0;
@@ -1310,9 +1309,9 @@
 
                                     let dataCampaign = "data-campaignId='" + row.Email + "'";
                                     ids = meta.row;
-                                    editBtn = "<button type='button'  class = 'editBtn btn btn-edit'   id='" + row.id + "' onclick='editBtn_Function(id)'> Add To Wishlist </button>";
+                                    editBtn = "<button type='button'  class = 'editBtn btn btn-edit'   id='" + row.id + "' onclick='editBtn_Function(id)'> Add To Wishlist </button>  ";
                                     deleteBtn = "<a href='https://" + row["school.school_url"]+"'> <button type='button'  class = 'deleteBtn btn btn-danger'  > To web </button>";
-                                    return deleteBtn + editBtn;
+                                    return editBtn + deleteBtn  ;
                                 }
                             },
                             {

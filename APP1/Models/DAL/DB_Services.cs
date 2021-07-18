@@ -881,7 +881,7 @@ namespace APP1.Models.DAL
         }
 
         //===============================University========================
-        public void Insert_University_Email(List<University> IUE)
+        public void Insert_University_Email(University IUE)
         {
             SqlConnection con;
             SqlCommand cmd;
@@ -922,18 +922,17 @@ namespace APP1.Models.DAL
 
         }
 
-        private String BuildInsert_University_Email(List<University> IUE)
+        private String BuildInsert_University_Email(University IUE)
         {
             String command;
 
             StringBuilder sb = new StringBuilder();
             // use a string builder to create the dynamic string
-            for (int i = 0; i < IUE.Count; i++)
-            {
-                sb.AppendFormat("Values('{0}', '{1}', '{2}')", IUE[i].Email, IUE[i].UniversityName, IUE[i].Id);
-            }
+          
+                sb.AppendFormat("Values('{0}', '{1}', '{2}')", IUE.Email, IUE.UniversityName, IUE.Id);
+           
             String prefix = "INSERT INTO [UsersUniversity] " + "(Email,UniversityName, Id)";
-            String delete = "DELETE FROM [UsersUniversity] WHERE Email=" + IUE[0].Email + " ";
+            String delete = "IF NOT EXISTS(select * from UsersUniversity where email='"+ IUE.Email + "' and id="+IUE.Id+ ") BEGIN ";
             command = delete + " " + prefix + sb.ToString();
             return command;
 
@@ -980,7 +979,7 @@ namespace APP1.Models.DAL
 
         }
 
-        public int SaveWishList(List<University> u)
+        public int SaveWishList(University u)
         {
 
             SqlConnection con;
@@ -1022,34 +1021,18 @@ namespace APP1.Models.DAL
 
         }
 
-        private String BuildInsertWishList(List<University> u)
+        private String BuildInsertWishList(University IUE)
         {
             String command;
-            string tmp;
-            string sbud = "";
-            StringBuilder append_UsersDistrict = new StringBuilder();
+
+            StringBuilder sb = new StringBuilder();
             // use a string builder to create the dynamic string
-            for (int i = 0; i < u.Count; i++)
-            {
-                if (i == 0) // הראשון
-                    sbud = "Values('" + u[i].Email + "', '" + u[i].UniversityName + "', '" + u[i].Id + "')";
-                else
-                {
-                    tmp = ",('" + u[i].Email + "', '" + u[i].UniversityName + "', '" + u[i].Id + "')";
-                    sbud = append(sbud, tmp);
 
-                }
-            }
+            sb.AppendFormat("Values('{0}', '{1}', '{2}')", IUE.Email, IUE.UniversityName, IUE.Id);
 
-
-
-            String prefix_UsersDistrict = "INSERT INTO [UsersUniversity] " + "(Email,UniversityName, Id)";
-
-
-            String delete = "DELETE FROM [UsersUniversity] WHERE Email='" + u[0].Email + "' ";
-            delete = " IF EXISTS (SELECT * FROM [UsersUniversity] WHERE Email = '" + u[0].Email + "' ) DELETE FROM [UsersUniversity] WHERE Email = '" + u[0].Email + "'";
-            command = delete + prefix_UsersDistrict + sbud;
-
+            String prefix = "INSERT INTO [UsersUniversity] " + "(Email,UniversityName, Id)";
+            String delete = "IF NOT EXISTS(select * from UsersUniversity where email='" + IUE.Email + "' and id=" + IUE.Id + ")  ";
+            command = delete + " " + prefix + sb.ToString();
             return command;
         }
 
