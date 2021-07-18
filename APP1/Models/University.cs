@@ -55,7 +55,7 @@ namespace APP1.Models
         public string Email { get => email; set => email = value; }
         public int Id { get => id; set => id = value; }
 
-        public void  Insert_University_Email(List<University> IUE)
+        public void  Insert_University_Email(University IUE)
         {
             DB_Services db = new DB_Services();
                 db.Insert_University_Email(IUE);
@@ -90,7 +90,7 @@ namespace APP1.Models
 
 
 
-        public int SaveWishList(List <University>  u)
+        public int SaveWishList(University  u)
         {
             DB_Services dbs = new DB_Services();
 

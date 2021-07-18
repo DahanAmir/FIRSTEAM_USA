@@ -49,7 +49,7 @@ namespace APP1.Controllers
 
         [HttpPost]
         [Route("api/University")]
-        public int Post(List<University> wishlist)
+        public int Post(University wishlist)
         {
             University un = new University();
 
