@@ -86,8 +86,11 @@ namespace APP1.Controllers
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("api/University")]
+        public void Delete(University wishlist)
         {
+            wishlist.Delete(wishlist);
         }
     }
 }

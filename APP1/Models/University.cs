@@ -107,5 +107,11 @@ namespace APP1.Models
             return dbs.getR();
         }
 
+        public void Delete (University u)
+        {
+            DB_Services dbs = new DB_Services();
+            dbs.Delete_from_wishlist(u);
+        }
+
     }
 }

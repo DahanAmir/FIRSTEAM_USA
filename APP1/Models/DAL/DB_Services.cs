@@ -13,12 +13,6 @@ namespace APP1.Models.DAL
     public class DB_Services
     {
 
-
-
-
-
-
-        
         public List<Status> get_status()
         {
             List<Status> list_of_Status = new List<Status>();
@@ -63,10 +57,6 @@ namespace APP1.Models.DAL
                 }
             }
         }
-
-
-
-
 
         public int update_status(Status s)
         {
@@ -458,9 +448,69 @@ namespace APP1.Models.DAL
 
         }
 
+
         
 
-            public int DeleteFile(string filename)
+        public int Delete_from_wishlist(University u)
+        {
+
+            SqlConnection con;
+            SqlCommand cmd;
+            String cStr = "";
+            if (u.States != "all")
+            {
+                 cStr = "if exists ( select *  from UsersUniversity    where Email = '" + u.Email + "' and id = '" + u.Id + "'  ) delete UsersUniversity where  Email = '" + u.Email + "' and Id = '" + u.Id + "'";
+            }
+            else
+            {
+                 cStr = "if exists ( select *  from UsersUniversity    where Email = '" + u.Email + "'   ) delete UsersUniversity where  Email = '" + u.Email + "' ";
+
+            }
+            try
+            {
+                con = connect("DBConnectionString"); // create the connection
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+           
+
+            // helper method to build the insert string
+
+            cmd = CreateCommand(cStr, con);             // create the command
+
+            try
+            {
+                int numEffected = cmd.ExecuteNonQuery(); // execute the command
+                return numEffected;
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            finally
+            {
+                if (con != null) //אם אימייל כבר קיים שגיאה 500
+                {
+                    // close the db connection
+                    con.Close();
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+        public int DeleteFile(string filename)
         {
 
             SqlConnection con;
