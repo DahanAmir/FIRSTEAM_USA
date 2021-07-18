@@ -101,5 +101,13 @@ namespace APP1.Models
 
         }
         
+            public List<Users> Get_all_wish()
+        {
+
+            DB_Services dbs = new DB_Services();
+            List<Users> cList = dbs.Get_all_wish();
+            return cList;
+
+        }
     }
 }

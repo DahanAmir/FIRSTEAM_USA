@@ -23,6 +23,13 @@ namespace APP1.Controllers
             University un = new University();
             return un.getdiv();
         }
+        [HttpGet]
+        [Route("api/University/Get_all_wish")]
+        public List<Users> Get_all_wish()
+        {
+            Users un = new Users();
+            return un.Get_all_wish();
+        }
 
         [HttpGet]
         [Route("api/University/getrank")]

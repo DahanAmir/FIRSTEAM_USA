@@ -881,6 +881,87 @@ namespace APP1.Models.DAL
         }
 
         //===============================University========================
+
+        public List<Users> Get_all_wish()
+        {
+            List<Users> list_of_user = new List<Users>();
+            SqlConnection con = null;
+
+            try
+            {
+                con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
+
+                String selectSTR = "SELECT * FROM UsersUniversity left JOIN Users ON Users.Email = UsersUniversity.Email where active=1 ";
+                SqlCommand cmd = new SqlCommand(selectSTR, con);
+
+                // get a reader
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection); // CommandBehavior.CloseConnection: the connection will be closed after reading has reached the end
+
+                while (dr.Read())
+                {
+
+                    Users ul = new Users();
+                    ul.FirstName = (string)dr["FirstName"] +" "  +(string)dr["LastName"];
+                    ul.LastName = (string)dr["UniversityName"];
+                    ul.Email = (string)dr["Email"];
+                    ul.Active = Convert.ToInt32(dr["Id"]);
+                    ul.Sex = (string)dr["sex"];
+                    ul.Phone = (string)dr["Phone"];
+                    ul.Position = (string)dr["Position"];
+                    ul.BirthDay = (DateTime)dr["birthDay"];
+                    ul.Register = (DateTime)dr["Register"];
+
+                    if (dr["EstimatedYear"].GetType() != typeof(DBNull))
+                        ul.EstimatedYear = (DateTime)dr["EstimatedYear"];
+
+                    //if (dr["Active"].GetType() != typeof(DBNull))
+                    //    ul.Active = Convert.ToInt32(dr["Active"]);
+
+
+                    if (dr["Address"].GetType() != typeof(DBNull))
+                        ul.Address = (string)dr["Address"];
+
+                    //if (dr["Password"].GetType() != typeof(DBNull))
+                    //    ul.Password = (string)dr["Password"];
+
+                    //if (dr["Status"].GetType() != typeof(DBNull))
+                    //    ul.Status = (string)dr["Status"];
+
+
+                    //if (dr["Height"].GetType() != typeof(DBNull))
+                    //    ul.Height = (float)(double)dr["Height"];
+
+
+                    //if (dr["Active"].GetType() == typeof(DBNull) || Convert.ToInt32(dr["Active"]) != -1)
+                    //    ul.Active = 1;
+                    //else
+                    //    ul.Active = -1;
+
+
+                    list_of_user.Add(ul);
+                }
+                Users ule = new Users();
+                return list_of_user;
+
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close();
+                }
+            }
+        }
+
+
+
+
+
         public void Insert_University_Email(University IUE)
         {
             SqlConnection con;

@@ -213,6 +213,7 @@
     <Content Include="IMAGE\ציונים.jpg" />
     <Content Include="MatchCSS.css" />
     <Content Include="Pages\2add-file.html" />
+    <Content Include="Pages\AllWishlist.html" />
     <Content Include="Pages\Countdown.html" />
     <Content Include="Pages\2email.html" />
     <Content Include="Pages\FileManeger.html" />
