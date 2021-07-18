@@ -252,7 +252,7 @@
     <Content Include="Pages\2Favorites.html" />
     <Content Include="Pages\FavRegion.html" />
     <Content Include="Pages\FavLocale.html" />
-    <Content Include="Pages\FavState.html" />
+    <Content Include="Pages\1FavState.html" />
     <Content Include="Pages\FavUser.html" />
     <Content Include="Pages\LogIn.html" />
     <Content Include="Pages\2LOGINGMAIL.html" />
