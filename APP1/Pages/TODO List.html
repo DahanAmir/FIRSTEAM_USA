@@ -126,7 +126,11 @@
 
         /* Add a background color on hover */
         .btn-group button:hover {
-            background-color: #3e8e41;
+            background-color: #f13333;
+        }
+
+        .close11{
+            background-color: #f13333;
         }
     </style>
     <style>
@@ -740,8 +744,7 @@
             var n = name.split("@");
             inputUser = n[0];
 
-            alert(emailtosend + "   " + inputUser)
-
+            //alert(emailtosend + "   " + inputUser)
 
 
             // name1 = name.split('@');
@@ -772,7 +775,12 @@
                     'todo': todo,
                     'id': 'todo' + newTodoId
                 };
+            //todoList.fill(newTodo);
             todoList.push(newTodo);
+            location.reload();
+            //alert("reload")
+
+       
 
 
             var todoSave = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
@@ -986,6 +994,8 @@
             //  alert(name1[0]);
 
 
+
+
             let api_todo = "../api/ToDoList/" + email + "/get_all_TODO";
             ajaxCall("Get", api_todo, email, successTodo, errorTodo)
 
@@ -1027,7 +1037,7 @@
         }
 
         function gemail(obj) {
-            alert("obj is: " + obj);
+        //    alert("obj is: " + obj);
         }
 
 
@@ -1053,7 +1063,7 @@
                 d = data[i].DueDate.split("T");
                 // alert(d[0]);
                 str2 += "<ul id='task-list' class='task-name'><li id='todo" + i + "'>"
-                str2 += "<p class='task-name'><button class='close1' onclick='edit(" + data[i].Taskid + ")'>Edit</button>  " + name1[0] + " Needs To " + data[i].Task + " By " + d[0] + " <button class='close' onclick='closef(" + data[i].Taskid + ")'>x</button> </br></p>";
+                str2 += "<p class='task-name'><button class='close11' onclick='edit(" + data[i].Taskid + ")'>Edit</button>  " + name1[0] + " Needs To " + data[i].Task + " By " + d[0] + " <button class='close' onclick='closef(" + data[i].Taskid + ")'>x</button> </br></p>";
                 str2 += "</li></ul>"
 
                 // str2 += "<tr><td>" + data[i].;
@@ -1063,6 +1073,8 @@
             }
 
             // str += "<button class='button2' ONCLICK='alltodo()' style='float: left'> My To Do List  </button>";
+            document.getElementById("todo0").style.visibility = "hidden";
+
             document.getElementById("oldtask-list").innerHTML = str2;
 
 
@@ -1076,7 +1088,7 @@
         var api_todo1 = "";
         function closef(data) {
             //  id = 44;
-            alert(data)
+            //alert(data)
             console.log(data)
 
 
@@ -1084,7 +1096,7 @@
             ajaxCall("DELETE", api_todo1, id, successdelTodo, errordelTodo)
         }
 
-        function successdelTodo() { alert("Your ToDo has been delete!!!!") }
+        function successdelTodo() { alert("Your ToDo has been delete!!") }
         function errordelTodo() { alert("errordelTodo") }
 
         var newT = '';
@@ -1094,10 +1106,11 @@
         function edit(data) {
 
             id = data
-            alert(id);
+            //alert(id);
             var txt;
             var newT = prompt("Please enter your new task:", newT);
-            var newR = prompt("Please enter your new Responsible Email:", newR);
+            var newR = localStorage.getItem("email");
+            //var newR = prompt("Please enter your new Responsible Email:", newR);
             var newD = prompt("Please enter your new Date: (YYYY-MM-DD)", newD);
             if (newT == null || newT == "") {
                 if (newR == null || newT == "")
@@ -1106,7 +1119,7 @@
             } else {
                 txt = "You want to change your task to: " + newT + ", New respinsibale: " + newR + " ,new date: " + newD + "?";
             }
-            alert(txt);
+            //alert(txt);
 
             let u = {
                 Taskid: id,
@@ -1224,9 +1237,9 @@
 
             <div id="user"> </div>
             <!--<div class="form-group">
-                <label for="usr">Who should do it:</label>
-                <input type="text" id="user" class="form-control" placeholder="Add a user...">
-            </div>-->
+        <label for="usr">Who should do it:</label>
+        <input type="text" id="user" class="form-control" placeholder="Add a user...">
+    </div>-->
             <br />
             <div class="form-group">
                 <label for="usr">Due Date:</label>
@@ -1252,13 +1265,14 @@
                     </div>
                 </div>
             </div>
+            <div class="tasks">
+                <ul id="oldtask-list">  </ul>
+                <ul id="task-list" class="task-name">  </ul>
+            </div>
+            <ul id="pagination" class="pagination pagination-lg" style="float:left"></ul>
         </form>
     </div>
-    <div class="tasks">
-        <ul id="oldtask-list">  </ul>
-        <ul id="task-list" class="task-name">  </ul>
-    </div>
-    <ul id="pagination" class="pagination pagination-lg" style="float:left"></ul>
+   
 </body>
 
 </html>

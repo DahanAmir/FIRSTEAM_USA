@@ -223,6 +223,7 @@
     <Content Include="Pages\Algo.html" />
     <Content Include="Pages\Newbuttons.html" />
     <Content Include="Pages\neweditprofile.html" />
+    <Content Include="Pages\NewPlayerDash - Copy.html" />
     <Content Include="Pages\NewPlayerDash.html" />
     <Content Include="Pages\profile user.html" />
     <Content Include="Pages\Status.html" />
