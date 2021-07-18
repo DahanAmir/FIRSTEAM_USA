@@ -555,22 +555,22 @@
             ajaxCall("Post", api, JSON.stringify(fav), successFav, errorFav)
         }
 
-        function save() {
+        //function save() {
 
-            if ($("#size").val() >= 0 & $("#size").val() < 100000000 &)
-                if ($("#cost").val() >= 0 & $("#cost").val() < 100000000)
-                    if ($("#SAT").val() >= 0 & $("#SAT").val() < 100000000)
-                        saveF()
+        //    if ($("#size").val() >= 0 & $("#size").val() < 100000000 &)
+        //        if ($("#cost").val() >= 0 & $("#cost").val() < 100000000)
+        //            if ($("#SAT").val() >= 0 & $("#SAT").val() < 100000000)
+        //                saveF()
 
-                    else
-                        alert("Please enter numbers in the fields");
-            alert("Please enter numbers");
-
-
+        //            else
+        //                alert("Please enter numbers in the fields");
+        //    alert("Please enter numbers");
 
 
 
-        }
+
+
+        //}
 
 
 
@@ -635,7 +635,7 @@
                             <li><a href="#" title="" onclick="uploadFiles()">Upload Files</a></li>
                         </ul>
                     </li>
-                    <!--<li>
+                    <li>
                         <a href="#" title="">Favorites</a>
                         <ul>
                             <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
@@ -645,7 +645,7 @@
 
                         </ul>
 
-                    </li>-->
+                    </li>
                     <!--<li><a href="#" title="" onclick="Wishlist()">Show Wishlist</a></li>-->
                     <!--<li><a href="#" title="">Add to whishlist</a></li>-->
                     <!--<li><a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a></li>-->
@@ -704,7 +704,7 @@
     </div>
 
     <div>
-        <button type="submit" class="button button1" ONCLICK="save()">
+        <button type="submit" class="button button1" ONCLICK="saveF()">
 
             Save!
         </button>
