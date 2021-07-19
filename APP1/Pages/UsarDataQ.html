@@ -612,6 +612,8 @@
 
             // activate a custom validation function when the element looses focus.
             //    $("#discountCodeTB").on("blur", checkCode);
+            var email = localStorage.getItem("email")
+            document.getElementById("mail").innerHTML= "<h3> Youre email is: " + email + "</h3>"
         });
 
         function checkCode() {
@@ -660,12 +662,12 @@
 
         function AddData() { // הכנסת יוזר חדש
 
-
+       
 
 
             let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
                 // FirstName: $("#nameTB").val(),
-                Email: $("#mailTB").val(),
+                Email: localStorage.getItem("email"),
                 National: $("#NT").val(),
                 Cnational1: $("#CNT").val(),
                 League: $("#league").val(),
@@ -673,13 +675,13 @@
                 Cups: $("#Cups").val(),
                 Position: $("#Position").val(),
                 Tofel: $("#Tofel").val(),
-                Sat: $("#Sat").val(),
+                Sat: $("#SAT").val(),
                 Gpa: $("#GPA").val()
 
             }
 
             //  alert("info is: " + u.National);
-
+            console.log(u)
             ajaxCall("POST", "../api/UserData", JSON.stringify(u), successData, errorData); //נוסיף לשרת את היוזר
 
             return false;
@@ -818,13 +820,16 @@
                        oninput="this.setCustomValidity('')" placeholder="Enter your name">
             </div>-->
 
+            <div id="mail"></div>
 
-            <div class="form-group">
+            <!---------------מייייל------------>
+
+            <!--<div class="form-group">
                 <label for="mailTB"><span class="red-star" required>★ </span>mail</label>
                 <input type="text" class="form-control" id="mailTB" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter the mail. Format should be: XXXX@XXXX." required />
-            </div>
+            </div>-->
 
-
+            
             <!--<div class="form-group">
                 <label for="user"><span class="red-star" required>★ </span>Gender</label><br />
                 <select id="Gender" name="leaveCode">
@@ -837,7 +842,7 @@
 
 
             <div class="form-group">
-                <label for="user"><span class="red-star" required>★ </span>In National Team?</label><br />
+                <label for="user"><span class="red-star" > </span>In National Team?</label><br />
                 <select id="NT" name="leaveCode">
                     <option value="0">No</option>
                     <option value="1">Yes</option>
@@ -846,7 +851,7 @@
 
 
             <div class="form-group">
-                <label for="user"><span class="red-star" required>★ </span>In Captain National Team?</label><br />
+                <label for="user"><span class="red-star" > </span>In Captain National Team?</label><br />
                 <select id="CNT" name="leaveCode">
                     <option value="0">No</option>
                     <option value="1">Yes</option>
@@ -876,7 +881,7 @@
 
             <div>
                 <label for="Position">Choose Your Position:</label>
-                <select name="league" id="league">
+                <select name="Position" id="Position">
                     <option value="0">Choose..</option>
                     <option value="שוער">שוער</option>
                     <option value="בלם">בלם</option>

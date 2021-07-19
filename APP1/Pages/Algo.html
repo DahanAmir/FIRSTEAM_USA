@@ -660,6 +660,7 @@
             x.style.display = "none";
             $("#nbr").hide();
             $("h4").hide();
+            $("#b").show();
 
 
             $("#nbr").click(function () {
@@ -725,6 +726,9 @@
             //alert(numberPro);
 
             TotalNumber = numberAcademic + numberPro;
+            if (TotalNumber >= 100)
+                TotalNumber = 100
+            else TotalNumber;
 
 
             document.getElementById("data").innerHTML = str;
@@ -805,6 +809,7 @@
         var speed = 10;
 
         function hideb() {
+            $("#b").hide();
             var x = document.getElementById("calculate");
             if (x.style.display === "none") {
                 x.style.display = "block";
@@ -844,7 +849,7 @@
         incEltNbr("nbr"); /*Call this funtion with the ID-name for that element to increase the number within*/
 
 
-
+       
 
 
     </script>
