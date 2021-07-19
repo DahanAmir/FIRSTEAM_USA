@@ -1,0 +1,935 @@
+﻿﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Files Upload Example</title>
+    <meta charset="utf-8">
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!--@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900');-->
+
+
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+    </script>
+
+
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js'></script>
+
+
+    <style type="text/css">
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+
+        body {
+            margin-top: 20px;
+            background: #ddd;
+        }
+
+        .panel {
+            box-shadow: none;
+        }
+
+        .panel-heading {
+            border-bottom: 0;
+        }
+
+        .panel-title {
+            font-size: 17px;
+        }
+
+            .panel-title > small {
+                font-size: .75em;
+                color: #999999;
+            }
+
+        .panel-body *:first-child {
+            margin-top: 0;
+        }
+
+        .panel-footer {
+            border-top: 0;
+        }
+
+        .panel-default > .panel-heading {
+            color: #333333;
+            background-color: transparent;
+            border-color: rgba(0, 0, 0, 0.07);
+        }
+
+        form label {
+            color: #999999;
+            font-weight: 400;
+        }
+
+        .form-horizontal .form-group {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        @media (min-width: 768px) {
+            .form-horizontal .control-label {
+                text-align: right;
+                margin-bottom: 0;
+                padding-top: 7px;
+            }
+        }
+
+        .profile__contact-info-icon {
+            float: left;
+            font-size: 18px;
+            color: #999999;
+        }
+
+        .profile__contact-info-body {
+            overflow: hidden;
+            padding-left: 20px;
+            color: #999999;
+        }
+
+        .profile-avatar {
+            width: 200px;
+            position: relative;
+            margin: 0px auto;
+            margin-top: 196px;
+            border: 4px solid #f3f3f3;
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:600');
+
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-group button {
+            background-color: #04AA6D; /* Green background */
+            border: 1px solid green; /* Green border */
+            color: white; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+        }
+
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .btn-group button:not(:last-child) {
+            border-right: none; /* Prevent double borders */
+        }
+
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: #034f84;
+        }
+
+
+        .button2 {
+            background-color: white;
+            border: none;
+            color: darkblue;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            float: left;
+        }
+
+
+        /*כותרת*/
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #034f84;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: red;
+                    color: white;
+                }
+
+
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #034f84;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: black;
+                color: white;
+            }
+
+        #header {
+            background-color: red;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 0px auto;
+            width: 100%;
+            height: 100%;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            height: 60px;
+            color: black;
+            width: 180px;
+            float: left;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #f13333;
+            border-color: #f13333;
+        }
+    </style>
+
+
+>
+
+    <style>
+                /* Resets */
+                * {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                body {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 400;
+                    background: rgba(0,0,0,0.045);
+                }
+
+                a {
+                    text-decoration: none;
+                }
+                /* Resets */
+
+
+
+                .alert {
+                    color: #666;
+                    text-align: center;
+                    margin: 50px 0;
+                }
+
+                /* @media handheld, screen and (min-width: 641px) {
+                    .no_scroll {
+                        overflow-y: hidden;
+                    }
+        */
+                .abrir_menu {
+                    display: none;
+                }
+
+                #menu {
+                    /*                max-width: 960px;
+        */ height: 70px;
+                    margin: 0 auto;
+                }
+
+                #navigator {
+                    height: 70px;
+                    line-height: 50px;
+                    /**/ /*box-shadow: 0 7px 6px -7px #373435;
+                        -webkit-box-shadow: 0 7px 6px -7px #373435;
+                        -moz-box-shadow: 0 7px 6px -7px #373435;*/
+                }
+
+
+                    #navigator .title {
+                        display: none;
+                    }
+
+                    #navigator ul {
+                        list-style: none;
+                    }
+
+                    #navigator > ul > li {
+                        width: 250px;
+                        float: left;
+                    }
+
+                        #navigator > ul > li > a {
+                            color: #fefefe;
+                            font-size: 15px;
+                            font-family: 'Montserrat', sans-serif;
+                            text-transform: uppercase;
+                            letter-spacing: 0.5px;
+                            text-align: center;
+                            display: block;
+                            background: #333;
+                        }
+
+                        #navigator > ul > li:hover > a {
+                            background: #555;
+                        }
+
+                    #navigator ul li > ul,
+                    #navigator ul li li > ul,
+                    #navigator ul li li li > ul,
+                    #navigator ul li li li li > ul,
+                    #navigator ul li li li li li > ul {
+                        display: none;
+                    }
+
+                    #navigator ul li:hover > ul,
+                    #navigator ul li li:hover > ul,
+                    #navigator ul li li li:hover > ul,
+                    #navigator ul li li li li:hover > ul,
+                    #navigator ul li li li li li:hover > ul {
+                        position: absolute;
+                        z-index: 10;
+                        width: 500px;
+                        line-height: 20px;
+                        display: block;
+                        background: #555;
+                        box-shadow: 0 7px 6px -7px #373435;
+                        -webkit-box-shadow: 0 7px 6px -7px #373435;
+                        -moz-box-shadow: 0 7px 6px -7px #373435;
+                    }
+
+                #menu ul ul li ul {
+                    top: 0;
+                    left: 179px;
+                    min-height: 100%;
+                    border-left: 1px solid #444;
+                }
+
+                #menu ul ul li { /*position: relative;*/
+                }
+
+                    #menu ul ul li a {
+                        color: #fefefe;
+                        font-size: 12px;
+                        font-family: 'Open Sans Condensed', sans-serif;
+                        text-transform: uppercase;
+                        display: block;
+                        padding: 12px 7px;
+                        border-top: 1px solid rgba(255,255,255,0.045);
+                        border-bottom: 1px solid rgba(0,0,0,0.045);
+                        text-transform: uppercase;
+                    }
+
+                    #menu ul ul li:hover > a {
+                        background: #444;
+                        width: 100%
+                    }
+
+                    #menu ul ul li li:hover > a {
+                    }
+
+                    #menu ul ul li li li:hover > a {
+                    }
+
+                    #menu ul ul li li li li:hover > a {
+                    }
+
+                    #menu ul ul li li li li li:hover > a {
+                    }
+
+                a {
+                    width: 100%;
+                }
+
+                }
+
+
+
+                @media handheld, screen and (max-width: 100%) {
+
+                    /* [ Open/Close =====================================*/
+                    /* ==================================================*/
+                    .abrir_menu {
+                        display: block;
+                    }
+
+                        .abrir_menu span {
+                            color: #fefefe;
+                            font-size: 20px;
+                            font-family: 'Open Sans Condensed', sans-serif;
+                            text-align: center;
+                            letter-spacing: 5px;
+                            position: absolute;
+                            z-index: 99;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 50px;
+                            line-height: 50px;
+                            margin: 0 auto;
+                            display: block;
+                            cursor: pointer;
+                            background: #333 url() no-repeat 10px center;
+                            box-shadow: 0 7px 3px -7px #373435;
+                            -webkit-box-shadow: 0 7px 3px -7px #373435;
+                            -moz-box-shadow: 0 7px 3px -7px #373435;
+                        }
+
+                    .open > .abrir_menu {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        background: rgba(225,225,225,0.85);
+                    }
+
+                        .open > .abrir_menu span {
+                            opacity: 0.1 !important;
+                        }
+
+                    .menu_aberto {
+                        position: fixed;
+                        z-index: 99;
+                        top: 0;
+                        left: -300px;
+                        width: 600px;
+                        height: 100%;
+                        overflow-x: hidden;
+                        overflow-y: scroll;
+                        background: #555;
+                        transition: 0.3s;
+                        box-shadow: -4px 0 15px 0px #373435;
+                        -webkit-box-shadow: -4px 0 15px 0px #373435;
+                        -moz-box-shadow: -4px 0 15px 0px #373435;
+                        box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        -ms-box-sizing: border-box;
+                    }
+
+                    .open > .menu_aberto {
+                        left: 0;
+                    }
+
+                    /* Open/Close ] =====================================*/
+                    /* ==================================================*/
+
+
+                    /* [ Menu ===========================================*/
+                    /* ==================================================*/
+                    #navigator .title {
+                        color: #666;
+                        font-size: 20px;
+                        font-family: 'Open Sans Condensed', sans-serif;
+                        text-transform: uppercase;
+                        text-shadow: 0.8px 0.8px 3px #111;
+                        height: 60px;
+                        line-height: 62px;
+                        display: block;
+                        padding: 0 20px;
+                        border-bottom: 1px solid rgba(0,0,0,0.045);
+                        background: #333 url() no-repeat 20px center;
+                        box-shadow: -4px 0 5px 0px #373435;
+                        -webkit-box-shadow: -4px 0 5px 0px #373435;
+                        -moz-box-shadow: -4px 0 5px 0px #373435;
+                    }
+
+                    #navigator ul li > ul,
+                    #navigator ul li li > ul,
+                    #navigator ul li li li > ul,
+                    #navigator ul li li li li > ul,
+                    #navigator ul li li li li li > ul {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        margin: 0;
+                        padding: 0;
+                        border: none;
+                        background: rgba(0,0,0,0.1);
+                        box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        -ms-box-sizing: border-box;
+                    }
+
+                    #navigator ul li {
+                        float: none;
+                        display: block;
+                    }
+
+                        #navigator ul li a {
+                            color: #999;
+                            font-size: 14px;
+                            display: block;
+                            padding: 20px;
+                            border-top: 1px solid rgba(255,255,255,0.045) !important;
+                            border-bottom: 1px solid rgba(0,0,0,0.045) !important;
+                        }
+
+                    #navigator > ul > li:hover > a {
+                        color: #aaa;
+                        background: #444;
+                    }
+
+
+                    /* Styles (Links/Hover/Ativo Sub Menu) ==============*/
+                    /* ==================================================*/
+                    #navigator > ul > li > .parent,
+                    #navigator > ul > li:hover > .parent,
+                    #navigator > ul > li.hover > .parent,
+                    #navigator ul li li > .parent,
+                    #navigator ul li li:hover > .parent,
+                    #navigator ul li li.hover > .parent {
+                        background-repeat: no-repeat;
+                        background-position: 260px center;
+                    }
+
+                    #navigator > ul > li > .parent,
+                    #navigator > ul > li:hover > .parent {
+                        color: #aaa;
+                        background-color: inherit;
+                        background-image: url();
+                    }
+
+                    #navigator > ul > li.hover > .parent {
+                        color: #aaa;
+                        background-color: #444;
+                        background-image: url();
+                    }
+
+
+                    /* Styles (Links/Hover/Ativo Sub>Sub Menu) ==========*/
+                    /* ==================================================*/
+                    #navigator ul li li a {
+                        color: #aaa;
+                        font-size: 12px;
+                    }
+
+                    #navigator ul li li > .parent,
+                    #navigator ul li li:hover > .parent {
+                        color: #aaa;
+                        background-color: inherit;
+                        background-image: url();
+                    }
+
+                    #navigator ul li li.hover > .parent {
+                        color: #aaa;
+                        background-color: rgba(0,0,0,0.1);
+                        background-image: url();
+                    }
+
+                    .nav ul {
+                        display: none;
+                        left: -9999px;
+                    }
+
+                    .nav li.hover > ul,
+                    .nav li li.hover > ul,
+                    .nav li li li.hover > ul,
+                    .nav li li li li.hover > ul,
+                    .nav li li li li li.hover > ul,
+                    .nav li li li li li li.hover > ul {
+                        position: static !important;
+                        display: block !important;
+                    }
+                    /* Menu ] ===========================================*/
+                    /* ==================================================*/
+                }
+
+                @media handheld, screen and (max-width: 600px) {
+
+                    .open > .menu_aberto {
+                        width: 600px;
+                    }
+
+                    #menu > ul > li > .parent,
+                    #menu > ul > li:hover > .parent,
+                    #menu > ul > li.hover > .parent,
+                    #menu ul li li > .parent,
+                    #menu ul li li:hover > .parent,
+                    #menu ul li li.hover > .parent {
+                        background-repeat: no-repeat;
+                        background-position: 210px center;
+                    }
+                }
+
+                @media handheld, screen and (max-width: 600px) {
+
+                    .open > .menu_aberto {
+                        width: 200px;
+                    }
+
+                    #menu > ul > li > .parent,
+                    #menu > ul > li:hover > .parent,
+                    #menu > ul > li.hover > .parent,
+                    #menu ul li li > .parent,
+                    #menu ul li li:hover > .parent,
+                    #menu ul li li.hover > .parent {
+                        background-repeat: no-repeat;
+                        background-position: 150px center;
+                    }
+                }
+    </style>
+
+
+
+    <script>
+        function SmartAlgo() {
+            window.open('UsarDataQ.html')
+        }
+
+        function ShowResults() {
+            window.open('Match.html')
+        }
+        function ChangeRegion() {
+            window.open('FavRegion.html')
+        }
+        function ChangeLocale() {
+            window.open('FavLocale.html')
+        }
+        function ChangeState() {
+            window.open('FavState.html')
+        }
+        function ChangeFav() {
+            window.open('FavUser.html')
+        }
+        function Wishlist() {
+            window.open('Wishlist.html')
+        }
+        function Predict() {
+            window.open('Algo.html')
+        }
+        function ManagerDashboard() {
+            window.open('NewManagerDash.html')
+        }
+        function PlayerDashboard() {
+            window.open('NewPlayerDash.html')
+        }
+        function ToDo() {
+            window.open('TODO List.html')
+        }
+        function FilesSummary() {
+            window.open('fileview.html')
+        }
+        function uploadFiles() {
+            window.open('Manager_uploadFiles.html')
+        }
+
+        function NewPlayer() {
+            window.open('NewUser.html')
+        }
+
+        function AllProfiles() {
+            window.open('AllProfiles.html')
+        }
+
+        function ChangeStatus() {
+            window.open('Status.html')
+        }
+
+    </script>
+    <script>
+        function successType(data) {
+            var select = '<div class="panel-body"> <div class="form-group" > '
+            select = '<select name = "type" id ="type" > '
+            for (var i = 0; i < data.length; i++) {
+                select += '  <option value="' + data[i].Id + '">' + data[i].Filetype + '</option>'
+            }
+            select += ' </select> </div> </div>'
+            document.getElementById("ph").innerHTML = select
+        }
+        function errorType(data) {
+            alert('errorType');
+        }
+        $(document).ready(function () {
+            // alert(localStorage.getItem("email"));
+
+            let api = "../api/UsersFile/get_all_File_Type";
+
+            ajaxCall("Delete", api, "", successType, errorType)
+            var email = localStorage.getItem("email").replace(".", "dot");
+            //var type = localStorage.getItem("type");
+            var end
+
+            $('#buttonUpload').on('click', function () {
+                var data = new FormData();
+                var files = $("#files").get(0).files;
+                // Add the uploaded file to the form data collection
+                if (files.length > 0) {
+                    for (f = 0; f < files.length; f++) {
+
+                        data.append("UploadedImage", files[f]);
+                        end = files[f].name.split(".")
+                    }
+                    data.append("name", $("#type").val() + email + '.' + end[1]); // append what ever data you want to send along with the files. See how you extract it in the controller.
+                }
+
+                // Ajax upload
+                $.ajax({
+                    type: "POST",
+                    url: "../Api/FileUpload",
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: showImages,
+                    error: error
+                });
+                var file = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                    Email: localStorage.getItem("email"),
+                    Filename: $("#type").val() + email + '.' + end[1],
+                    Remark: $("#Remark").val(),
+                    Score: $("#Score").val(),
+                    FileType: $("#type option:selected").text(),
+                    Id: $("#type").val()
+
+                }
+                api = "../api/UsersFile/Post_Favorite/insert/save";
+
+                ajaxCall("Post", api, JSON.stringify(file), successinsert_F_DBS, errorinsert_F_DBS)
+                return false;
+            });
+
+        });
+
+
+        function showImages(data) {
+
+            alert($("#type option:selected").text());
+
+        } function errorinsert_F_DBS(data) {
+
+            alert('errorinsert_F_DBS');
+
+        } function successinsert_F_DBS(data) {
+
+            alert('Your file upload successfully!');
+
+        }
+
+        function error(data) {
+            console.log(data);
+        }
+
+
+        function ChangeFavorites() {
+
+            window.open('FavRegion.html');
+
+        }
+
+
+
+        function errorWishlist() {
+            alert("Please Choose school to Save")
+        }
+
+        function successWishlist() {
+            alert("successWishlist")
+        }
+
+
+
+
+        function gotowishlist() {
+            window.open('WishList.html')
+        }
+        function Algo() {
+            window.open('Algo.html')
+        }
+
+
+        function PlyersQ() {
+            window.open('UsarDataQ.html')
+        }
+
+        function goBack() {
+            window.history.back();
+            window.close()
+        }
+    </script>
+
+</head>
+<body>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+    <!--<div id="logo">
+        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+    </div>-->
+    <div id="menu" style="width:100% ; float:left">
+        <div class="abrir_menu" style="width:100% ; float:left"><span>MENU</span></div>
+
+        <div class="menu_aberto" style="width: 170%; float:left">
+            <div id="navigator" style="width: 100%; float:left">
+                <ul class="nav" style="width: 100%; float:left">
+                    <!--li>
+                        <a href="#" title=""> </a>
+                        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+
+                    </li>-->
+                    <li style="width:450px">
+                        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+                    </li>
+                    <li><a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a></li>
+                    <li><a href="#" title="" onclick="ToDo()">To Do List</a></li>
+                    <li><a href="#" title="" onclick="Myfiles()">My Files</a></li>
+
+
+                    <li>
+                        <a href="#" title="" style="border:none;">Algo</a>
+                        <ul>
+                            <li><a href="#" title="" onclick="SmartAlgo()">Insert new Data</a></li>
+                            <li><a href="#" title="" onclick="Predict()">Predict scholarship %</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" title="">Favorites</a>
+                        <ul>
+                            <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
+                            <li><a href="#" title="" onclick="ChangeLocale()">Change Locale</a></li>
+                            <li><a href="#" title="" onclick="ChangeFav()">Change Other Favorites</a></li>
+                            <li><a href="#" title="" onclick="ShowResults()">Show Results</a></li>
+
+                        </ul>
+
+                    </li>
+                    <li><a href="#" title="" onclick="Wishlist()">Show Wishlist</a></li>
+                    <!--<li><a href="#" title="">Add to whishlist</a></li>-->
+                    <!--<li><a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a></li>-->
+                    <!--<li>
+                        <a href="#" title="">Files</a>
+                        <ul>
+                            <li><a href="#" title="" onclick="FilesSummary()">Files Summary</a></li>
+                            <li><a href="#" title="" onclick="uploadFiles()">Upload Files</a></li>
+                            <li><a href="#" title="" onclick="ChangeStatus()">Change Status</a></li>
+                            <li><a href="#" title="" onclick="ChangeStatus()">Change Status</a></li>
+                        </ul>
+                    </li>-->
+                    <!--<li><a href="#" title="" onclick="NewPlayer()">Insert new Player</a></li>
+                    <li><a href="#" title="" onclick="AllProfiles()">All Profiles</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <br /><br /><br /><br />
+
+    <div class="container bootdey">
+        <div class="row">
+            <div class="col-md-8 col-sm-12">
+                <div class="well">
+
+
+                    <h4>Select file</h4>
+                    <div id="ph"></div>
+                    <br />
+                    <br />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Score</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="Score" id="Score">
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Remark</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="Remark" id="Remark">
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <br />
+                        <br />
+                        <button type="button" id="buttonUpload" class="btn btn-info pull-right">Upload files</button>
+
+                        <label for="files">Files</label>
+                        <input type="file" id="files" name="files" multiple="multiple" />
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+</html>
