@@ -20,7 +20,7 @@ namespace APP1.Controllers
 
        
         [HttpGet]
-        [Route("api/ToDoList/{email}/get_all_TODO1")]
+        [Route("api/ToDoList/{email}/get_all_TODO")]
         public List<ToDoList> Get(string email)
         {
             ToDoList u = new ToDoList();

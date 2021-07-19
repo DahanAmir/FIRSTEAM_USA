@@ -989,15 +989,35 @@
 
         $(document).ready(function () {
             let email = localStorage.getItem("email");
+            let dd = localStorage.getItem("email");
             // email = "adi@gmail.com";
             name1 = email.split('@');
             //  alert(name1[0]);
 
+        
+            
+            let api_todo = "../api/ToDoList/" + email+"/get_all_TODO";
+            ajaxCall("Get", api_todo, email , successTodo, errorTodo)
 
 
 
-            let api_todo = "../api/ToDoList/" + email + "/get_all_TODO";
-            ajaxCall("Get", api_todo, email, successTodo, errorTodo)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             str1 = "users_show"
@@ -1013,7 +1033,8 @@
             rendusers(data);
         }
 
-        function erroradd_list_r() {
+        function erroradd_list_r(data) {
+            alert(data);
             alert("erroradd_list_r")
         }
 
@@ -1081,7 +1102,7 @@
 
         }
 
-        function errorTodo() {
+        function errorTodo(data) {
             alert("in errorTodo")
         }
 

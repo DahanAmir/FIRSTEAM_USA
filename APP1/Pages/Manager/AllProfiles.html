@@ -669,7 +669,7 @@
             if (users[i].Register) {
                 Register = users[i].Register.split('T00:00:00')
             }
-            status_select = '<select id="Status" name="Status"><option value="candidate">candidate</option><option value="I20">I20</option> <option value="בניית פרופיל אישי">בניית פרופיל אישי</option> <option value="חתימה על NLI, LOI">חתימה על NLI, LOI</option> <option value="שגרירות">שגרירות</option> <option value="שיחות עם מאמנים">שיחות עם מאמנים</option> </select >'
+            //status_select = '<select id="Status" name="Status"><option value="candidate">candidate</option><option value="I20">I20</option> <option value="בניית פרופיל אישי">בניית פרופיל אישי</option> <option value="חתימה על NLI, LOI">חתימה על NLI, LOI</option> <option value="שגרירות">שגרירות</option> <option value="שיחות עם מאמנים">שיחות עם מאמנים</option> </select >'
             date = ''
             EstimatedYear = ''
             if (users[i].BirthDay) { date = users[i].BirthDay.split('T00:00:00') }
@@ -702,10 +702,23 @@
             let api = "../api/Users/" + str + "/Show_all_users";
             ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
 
+             api = "../api/Status";
 
+            ajaxCall("Get", api, "", successType, errorType)
 
         });
-
+        function successType(data) {
+             status_select = '<div class="panel-body"> <div class="form-group" >'
+            status_select = '<select name = "type" id ="type" >'
+            for (var i = 0; i < data.length; i++) {
+                status_select += '  <option value="' + data[i].Id + '">' + data[i].Statusname + '</option>'
+            }
+            status_select += ' </select> </div> </div>'
+            //document.getElementById("ph").innerHTML = select
+        }
+        function errorType(data) {
+            alert('errorType');
+        }
 
         function buttonEvents() {
 
