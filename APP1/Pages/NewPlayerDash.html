@@ -1706,12 +1706,10 @@
 
             name1 = email.split('@');
             name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
-            document.getElementById("intro").innerHTML = name;
+            //document.getElementById("intro").innerHTML = name;
             str1 = "users_show"
-            alert("CFSDSD")
             let api = "../api/Users/" + str1 + "/Show_all_users";
             ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
-            alert("CDSCSsd")
             stodo();
 
 
@@ -1766,8 +1764,7 @@
         }
 
         function stodo() {
-            alert(email);
-            alert("Ddddddddddd");
+            
             let api_todo = "../api/ToDoList/" + email + "/get_all_TODO1";
             ajaxCall("Get", api_todo, email, successTodo, errorTodo)
 
