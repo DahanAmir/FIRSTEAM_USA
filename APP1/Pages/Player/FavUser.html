@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <title></title>
 
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
     <style>
 
         body {
@@ -550,7 +550,7 @@
                 Sat: $("#SAT").val(),
                 UniversityLevel: $("#division").val()
             }
-            let api = "../api/Favorites/Post_Favorite/insert/save";
+            let api = "../../api/Favorites/Post_Favorite/insert/save";
 
             ajaxCall("Post", api, JSON.stringify(fav), successFav, errorFav)
         }

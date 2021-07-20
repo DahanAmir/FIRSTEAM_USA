@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
 
 
     <title>DataTable Campaign</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
@@ -219,8 +219,8 @@
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
     <style>
                 /* Resets */
                 * {
@@ -667,14 +667,14 @@
 
 
         //function a() {
-        //    let api = "../api/campaign/" + i + '/' + b;
+        //    let api = "../../api/campaign/" + i + '/' + b;
         //    ajaxCall("GET", api, "", success1, errorr1)
         //}
         $(document).ready(function () {
 
             
 
-            let api = "../api/Status";
+            let api = "../../api/Status";
 
             ajaxCall("Get", api, "", successType, errorType)
 
@@ -684,7 +684,7 @@
 
         function successType(data) {
             str = "users_show"
-             api = "../api/Users/" + str + "/Show_all_users";
+             api = "../../api/Users/" + str + "/Show_all_users";
             ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
 
             status_select = '<div class="panel-body"> <div class="form-group" >'
@@ -719,7 +719,7 @@
             var x = confirm("Are you sure you want to delete?");
             if (x) {
 
-                let api = "../api/Users/Delete";
+                let api = "../../api/Users/Delete";
                 ajaxCall("Delete", api, JSON.stringify(users[i]), delsucess, delerrorr)
 
 
@@ -817,7 +817,7 @@
             console.log(u)
             //console.log(u)
             //let x = $("#files").get(0).files[0].name
-            ajaxCall("POST", "../api/Users/update", JSON.stringify(u), success_update, error_update); //נוסיף לשרת את היוזר
+            ajaxCall("POST", "../../api/Users/update", JSON.stringify(u), success_update, error_update); //נוסיף לשרת את היוזר
         }
 
         function sleep(num) {

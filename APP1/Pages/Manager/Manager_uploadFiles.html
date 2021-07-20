@@ -4,11 +4,11 @@
 <head>
     <title>Files Upload Example</title>
     <meta charset="utf-8">
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
@@ -888,12 +888,12 @@
         }
         $(document).ready(function () {
             str1 = "users_show"
-            let api = "../api/Users/" + str1 + "/Show_all_users";
+            let api = "../../api/Users/" + str1 + "/Show_all_users";
             ajaxCall("GET", api, str1, Show_all_users, erroradd_list_r)
 
             //     alert(localStorage.getItem("email"));
 
-            api = "../api/UsersFile/get_all_File_Type";
+            api = "../../api/UsersFile/get_all_File_Type";
 
             ajaxCall("Delete", api, "", successType, errorType)
             var email = localStorage.getItem("email").replace(".", "dot");
@@ -916,7 +916,7 @@
                 // Ajax upload
                 $.ajax({
                     type: "POST",
-                    url: "../Api/FileUpload",
+                    url: "../../Api/FileUpload",
                     contentType: false,
                     processData: false,
                     data: data,
@@ -932,7 +932,7 @@
                     Id: $("#type").val()
 
                 }
-                api = "../api/UsersFile/Post_Favorite/insert/save";
+                api = "../../api/UsersFile/Post_Favorite/insert/save";
 
                 ajaxCall("Post", api, JSON.stringify(file), successinsert_F_DBS, errorinsert_F_DBS)
                 return false;

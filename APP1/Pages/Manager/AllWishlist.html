@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
 
 
     <title>DataTable Campaign</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
@@ -469,8 +469,8 @@
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
 
     <script>
         var id_edit;
@@ -511,7 +511,7 @@
         //}
         $(document).ready(function () {
             str = "users_show"
-            let api = "../api/University/Get_all_wish";
+            let api = "../../api/University/Get_all_wish";
             ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
 
 
@@ -553,7 +553,7 @@
                 reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
-                    let api = "../api/Users/Delete";
+                    let api = "../../api/Users/Delete";
                     ajaxCall("Delete", api, JSON.stringify(users[i]), delsucess, delerrorr)
                     swalWithBootstrapButtons.fire(
                         'change!',
@@ -672,7 +672,7 @@
             console.log(u)
             //console.log(u)
             //let x = $("#files").get(0).files[0].name
-            ajaxCall("POST", "../api/Users/update", JSON.stringify(u), success_update, error_update); //נוסיף לשרת את היוזר
+            ajaxCall("POST", "../../api/Users/update", JSON.stringify(u), success_update, error_update); //נוסיף לשרת את היוזר
         }
 
 

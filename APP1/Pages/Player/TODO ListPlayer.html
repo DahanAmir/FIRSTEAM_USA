@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <script src="../Scripts/ajaxCalls.js"></script>
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -811,7 +811,7 @@
 
             }
             //alert("Todois: " + todoSave);
-            let api = "../api/ToDoList";
+            let api = "../../api/ToDoList";
 
             ajaxCall("Post", api, JSON.stringify(todoSave), successtodo, errortodo)
 
@@ -1017,7 +1017,7 @@
 
         
             
-            let api_todo = "../api/ToDoList/" + email+"/get_all_TODO";
+            let api_todo = "../../api/ToDoList/" + email+"/get_all_TODO";
             ajaxCall("Get", api_todo, email , successTodo, errorTodo)
 
 
@@ -1042,7 +1042,7 @@
 
 
             str1 = "users_show"
-            let api = "../api/Users/" + str1 + "/Show_all_users";
+            let api = "../../api/Users/" + str1 + "/Show_all_users";
             ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
 
 
@@ -1134,7 +1134,7 @@
             console.log(data)
 
 
-            let api_todo1 = "../api/ToDoList/" + id + "/del";
+            let api_todo1 = "../../api/ToDoList/" + id + "/del";
             ajaxCall("DELETE", api_todo1, id, successdelTodo, errordelTodo)
         }
 
@@ -1170,7 +1170,7 @@
                 DueDate: newD
             }
 
-            let api_updatetodo = "../api/ToDoList/" + id + "/update";
+            let api_updatetodo = "../../api/ToDoList/" + id + "/update";
             ajaxCall("PUT", api_updatetodo, JSON.stringify(u), successupTodo, errorupTodo)
 
 

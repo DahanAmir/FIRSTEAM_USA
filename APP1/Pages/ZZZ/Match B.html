@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
 
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -620,7 +620,7 @@
 
 
             }
-            let api_WishList = "../api/University";
+            let api_WishList = "../../api/University";
             ajaxCall("POST", api_WishList, JSON.stringify(wishlist), successWishlist, errorWishlist)
 
         }
@@ -759,7 +759,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "../NCAA/NCAA.csv",
+                url: "../../NCAA/NCAA.csv",
                 dataType: "text",
                 success: function (data) {
                     var lines = data.split("\n");
@@ -805,12 +805,12 @@
                     }
                 }
             });
-            var filename = "../NCAA/NCAA.csv"
+            var filename = "../../NCAA/NCAA.csv"
             var request = new XMLHttpRequest();
 
 
             file = request.open('GET', filename, true);
-            let api_Districts = "../api/UsersDistrict/" + email + "/get_all_District";
+            let api_Districts = "../../api/UsersDistrict/" + email + "/get_all_District";
             ajaxCall("Get", api_Districts, "", successDistrict, errorDistrict)
                       
         }
@@ -858,7 +858,7 @@
             else {
                 countime = countime + 1
             }
-            let api_Locale = "../api/UsersLocale/" + email + "/get_all_Locale";
+            let api_Locale = "../../api/UsersLocale/" + email + "/get_all_Locale";
             ajaxCall("Get", api_Locale, "", successLocale, errorLocale)
 
         }
@@ -911,7 +911,7 @@
             else {
                 countime = countime + 1
             }
-            let api_fav = "../api/Favorites/" + email + "/get_all_Favorites"
+            let api_fav = "../../api/Favorites/" + email + "/get_all_Favorites"
             ajaxCall("Get", api_fav, "", successFavorites, errorFavorites)
         }
 

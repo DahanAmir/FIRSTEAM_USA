@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
 
 
     <title>DataTable Campaign</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
@@ -658,8 +658,8 @@
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
 
     <script>
         function SmartAlgo() {
@@ -762,10 +762,10 @@
             //}
             var email = localStorage.getItem("email");
             //email = "adi@gmail.com";
-            let api_wishlist = "../api/University/" + email + "/get_wishlist";
+            let api_wishlist = "../../api/University/" + email + "/get_wishlist";
             ajaxCall("Get", api_wishlist, email, successShow, errorShow)
 
-            var filename = "../NCAA/NCAA.csv"
+            var filename = "../../NCAA/NCAA.csv"
             var request = new XMLHttpRequest();
             file = request.open('GET', filename, true);
             get_all_uni_data()
@@ -794,7 +794,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "../NCAA/NCAA.csv",
+                url: "../../NCAA/NCAA.csv",
                 dataType: "text",
                 success: function (data) {
                     var lines = data.split("\n");
@@ -1046,7 +1046,7 @@
                 }
 
             }
-            let api_WishList = "../api/University";
+            let api_WishList = "../../api/University";
             ajaxCall("Delete", api_WishList, JSON.stringify(item), successWishlist, errorWishlist)
 
         }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
     <style>
         * {
             font-family: 'Montserrat', sans-serif;
@@ -580,7 +580,7 @@
 
 
                 if (list_user_districts.length != 0) {
-                    let api = "../api/UsersDistrict/1";
+                    let api = "../../api/UsersDistrict/1";
                     JSON.stringify(list_user_districts)
                     ajaxCall("POST", api, JSON.stringify(list_user_districts), SuccessInsertDistricts, ErrorInsertDistricts);
 

@@ -236,7 +236,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
     <style>
                 /* Resets */
                 * {
@@ -709,14 +709,14 @@
 
 
         function a() {
-            let api = "../api/campaign/" + i + '/' + b;
+            let api = "../../api/campaign/" + i + '/' + b;
             ajaxCall("GET", api, "", success1, errorr1)
         }
         $(document).ready(function () {
 
             let email = localStorage.getItem("email");
             // email = "adi@gmail.com";
-            let api = "../api/UsersFile/get_all_UF";
+            let api = "../../api/UsersFile/get_all_UF";
             ajaxCall("Get", api, "", successFiles, errorFiles)
 
 
@@ -750,7 +750,7 @@
             var x = confirm("Are you sure you want to delete?");
             if (x) {
 
-                let api = "../api/campaign/delete/" + cam_id + '/0';
+                let api = "../../api/campaign/delete/" + cam_id + '/0';
                 ajaxCall("Delete", api, "", delsucess, delerrorr)
 
 
@@ -908,7 +908,7 @@
             var newb = document.getElementById("Budget").value;
             alert("new budget is:" + newb + " for rest: " + id_edit);
 
-            let api = "../api/campaign/" + id_edit + '/' + newb;
+            let api = "../../api/campaign/" + id_edit + '/' + newb;
             ajaxCall("GET", api, "", success1, errorr1)
 
 

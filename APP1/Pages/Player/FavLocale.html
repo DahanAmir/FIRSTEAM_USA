@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
     <style>
                 * {
                     font-family: 'Montserrat', sans-serif;
@@ -579,7 +579,7 @@
                 }
             }
             if (list_Users_States.length != 0) {
-                let api = "../api/UsersLocale/list_user_Locale";
+                let api = "../../api/UsersLocale/list_user_Locale";
                 ajaxCall("Post", api, JSON.stringify(list_Users_States), SuccessInsertLocale, ErrorInsertLocale)
             }
             else {
