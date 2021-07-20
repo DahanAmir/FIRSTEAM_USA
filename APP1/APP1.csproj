@@ -216,7 +216,7 @@
     <Content Include="Pages\Manager\Connectasplayer.html" />
     <Content Include="Pages\NewbuttonsM.html" />
     <Content Include="Pages\Player\Countdown.html" />
-    <Content Include="Pages\Player\1FileManeger.html" />
+    <Content Include="Pages\Player\FileManeger.html" />
     <Content Include="Pages\Manager\fileview.html" />
     <Content Include="Pages\Manager\Algo.html" />
     <Content Include="Pages\Player\Match.html" />

@@ -5,7 +5,9 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../Scripts/jquery-3.4.1.min.js"></script>
-
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/jquery-3.3.1.min.js"></script>
     <script src="../Scripts/ajaxCalls.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="../Scripts/ajaxCalls.js"></script>
@@ -1164,9 +1166,9 @@
     </style>
 
     <style>
-                /*        @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900');
+        /*        @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900');
         */
-                /*   $font: 'Lato', sans-serif;
+        /*   $font: 'Lato', sans-serif;
                 $big: 'Montserrat', sans-serif;
 
                 $red: #EF2F3C;
@@ -1177,7 +1179,7 @@
 
                 $star: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);*/
 
-                /*   html {
+        /*   html {
                     display: grid;
                     min-height: 100%;
                 }
@@ -1187,18 +1189,18 @@
                     background-color: #183059;
                 }*/
 
-                .countdown {
-                    position: relative;
-                    margin: auto;
-                    overflow: hidden;
-                    width: 650px;
-                    height: 3000px;
-                    display: grid;
-                    /*            background-color: #183059;
+        .countdown {
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+            width: 650px;
+            height: 3000px;
+            display: grid;
+            /*            background-color: #183059;
         */
-                }
+        }
 
-                /*h1 {
+        /*h1 {
                     font-family: $font;
                     text-align: center;
                     margin-top: 2em;
@@ -1208,152 +1210,152 @@
                     color: #F6F4F3;
                 }*/
 
-                #timer {
-                    color: #F6F4F3;
-                    text-align: center;
-                    text-transform: uppercase;
-                    font-family: 'Lato', sans-serif;
-                    font-size: .7em;
-                    letter-spacing: 5px;
-                    /*            margin-top: 25%;
+        #timer {
+            color: #F6F4F3;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Lato', sans-serif;
+            font-size: .7em;
+            letter-spacing: 5px;
+            /*            margin-top: 25%;
         */
-                }
+        }
 
-                .days, .hours, .minutes, .seconds {
-                    display: inline-block;
-                    padding: 20px;
-                    width: 100px;
-                    border-radius: 5px;
-                    /*            border-color: darkblue;
+        .days, .hours, .minutes, .seconds {
+            display: inline-block;
+            padding: 20px;
+            width: 100px;
+            border-radius: 5px;
+            /*            border-color: darkblue;
         */ border: solid 1px darkblue;
-                }
+        }
 
-                .days {
-                    background-color: #EF2F3C;
-                }
+        .days {
+            background-color: #EF2F3C;
+        }
 
-                .hours {
-                    color: darkblue;
-                    background-color: #F6F4F3;
-                }
+        .hours {
+            color: darkblue;
+            background-color: #F6F4F3;
+        }
 
-                .minutes {
-                    background: #276FBF;
-                    border-color: darkblue;
-                }
+        .minutes {
+            background: #276FBF;
+            border-color: darkblue;
+        }
 
-                .seconds {
-                    background: #ff708a;
-                }
+        .seconds {
+            background: #ff708a;
+        }
 
-                .numbers {
-                    font-family: 'Montserrat', sans-serif;
-                    /*            color: darkblue;
+        .numbers {
+            font-family: 'Montserrat', sans-serif;
+            /*            color: darkblue;
         */ font-size: 4em;
-                }
+        }
 
-                .white {
-                    position: absolute;
-                    background-color: #F6F4F3;
-                    height: 85px;
-                    width: 75px;
-                    left: 30%;
-                    top: 2%;
-                    border-bottom: 14px solid #F6F4F3;
-                }
+        .white {
+            position: absolute;
+            background-color: #F6F4F3;
+            height: 85px;
+            width: 75px;
+            left: 30%;
+            top: 2%;
+            border-bottom: 14px solid #F6F4F3;
+        }
 
-                .string {
-                    background: #F6F4F3;
-                    border: 1px solid #F6F4F3;
-                }
+        .string {
+            background: #F6F4F3;
+            border: 1px solid #F6F4F3;
+        }
 
 
 
-                .red {
-                    position: absolute;
-                    background-color: #EF2F3C;
-                    left: 18%;
-                    top: 9%;
-                    height: 65px;
-                    width: 70px;
-                    border-bottom: 14px solid #EF2F3C;
-                }
+        .red {
+            position: absolute;
+            background-color: #EF2F3C;
+            left: 18%;
+            top: 9%;
+            height: 65px;
+            width: 70px;
+            border-bottom: 14px solid #EF2F3C;
+        }
 
-                /*  .string {
+        /*  .string {
                     background: #EF2F3C;
                     border: 1px solid #EF2F3C;
                 }
 
         */
 
-                .blue {
-                    position: absolute;
-                    background-color: #276FBF;
-                    height: 80px;
-                    width: 80px;
-                    left: 60%;
-                    top: 5%;
-                    border-bottom: 14px solid #276FBF;
-                }
+        .blue {
+            position: absolute;
+            background-color: #276FBF;
+            height: 80px;
+            width: 80px;
+            left: 60%;
+            top: 5%;
+            border-bottom: 14px solid #276FBF;
+        }
 
-                .string {
-                    background-color: #276FBF;
-                    border: 1px solid #276FBF;
-                }
-
-
-
-                .balloon {
-                    border: 1px solid #000;
-                    border-radius: 50% 50% 50% 1% 40% 60% 60%;
-                    z-index: 2;
-                }
-
-                .eye {
-                    position: absolute;
-                    width: 7px;
-                    height: 7px;
-                    top: 40%;
-                    left: 22%;
-                    background: #000;
-                    border-radius: 50%;
-                    content: '';
-                    left: 35px;
-                    width: 7px;
-                    height: 7px;
-                    border-radius: 50%;
-                    background: #000;
-                    position: absolute;
-                }
+        .string {
+            background-color: #276FBF;
+            border: 1px solid #276FBF;
+        }
 
 
 
-                .mouth {
-                    position: absolute;
-                    top: 45%;
-                    left: 43%;
-                    width: 7px;
-                    height: 7px;
-                    border-radius: 50%;
-                }
+        .balloon {
+            border: 1px solid #000;
+            border-radius: 50% 50% 50% 1% 40% 60% 60%;
+            z-index: 2;
+        }
 
-                .happy {
-                    border: 2px solid;
-                    border-color: transparent #000 #000 transparent;
-                    transform: rotate(45deg);
-                }
+        .eye {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            top: 40%;
+            left: 22%;
+            background: #000;
+            border-radius: 50%;
+            content: '';
+            left: 35px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #000;
+            position: absolute;
+        }
 
-                .triangle {
-                    position: absolute;
-                    left: 40%;
-                    bottom: -10%;
-                    width: 0;
-                    height: 0;
-                    border-left: 7px solid transparent;
-                    border-right: 7px solid transparent;
-                }
 
-                /*.string {
+
+        .mouth {
+            position: absolute;
+            top: 45%;
+            left: 43%;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        .happy {
+            border: 2px solid;
+            border-color: transparent #000 #000 transparent;
+            transform: rotate(45deg);
+        }
+
+        .triangle {
+            position: absolute;
+            left: 40%;
+            bottom: -10%;
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+        }
+
+        /*.string {
                     position: absolute;
                     height: 70px;
                     width: 1px;
@@ -1362,21 +1364,21 @@
                     z-index: -1;
                 }*/
 
-                .star {
-                    width: 20px;
-                    height: 20px;
-                    background: #F6F4F3;
-                }
+        .star {
+            width: 20px;
+            height: 20px;
+            background: #F6F4F3;
+        }
 
-                .star-red {
-                    width: 30px;
-                    height: 30px;
-                    margin-left: 51px;
-                    margin-top: -5px;
-                    background: #EF2F3C;
-                }
+        .star-red {
+            width: 30px;
+            height: 30px;
+            margin-left: 51px;
+            margin-top: -5px;
+            background: #EF2F3C;
+        }
 
-                /*footer {
+        /*footer {
                     position: fixed;
                     bottom: 0;
                     right: 0;
@@ -1385,7 +1387,7 @@
                     font-family: $font;
                     font-size: 0.7em;
                 }*/
-                /*
+        /*
                 p {
                     letter-spacing: 3px;
                     color: #EF2F3C;
@@ -1481,13 +1483,13 @@
                 // display
                 document.getElementById("timer").innerHTML =
                     "<div class=\"days\"> \
-              <div class=\"numbers\">" + days + "</div>days</div> \
+                  <div class=\"numbers\">" + days + "</div>days</div> \
 <div class=\"hours\"> \
-              <div class=\"numbers\">" + hours + "</div>hours</div> \
+                  <div class=\"numbers\">" + hours + "</div>hours</div> \
 <div class=\"minutes\"> \
-              <div class=\"numbers\">" + minutes + "</div>minutes</div> \
+                  <div class=\"numbers\">" + minutes + "</div>minutes</div> \
 <div class=\"seconds\"> \
-              <div class=\"numbers\">" + seconds + "</div>seconds</div> \
+                  <div class=\"numbers\">" + seconds + "</div>seconds</div> \
 </div>";
 
             }, 1000);
@@ -2002,13 +2004,23 @@
             window.open('TODO ListPlayer.html')
         }
 
+        function EditProfileP() {
+            window.open('neweditprofile.html')
+        }
+        function ToDoP() {
+            window.open('TODO ListPlayer.html')
+        }
+
+        function Myfiles() {
+            window.open('FileManeger.html')
+        }
+
     </script>
 
 </head>
 <body>
 
     <!-----------------------כפתורים------------------------>
-
 
     <meta name="viewport" content="width=device-width, user-scalable=no" />
 
@@ -2046,6 +2058,18 @@
                     <li><a href="#" title="" onclick="ToDoP()">To Do List</a></li>
 
                     <li>
+                        <a href="#" title="">Files</a>
+                        <ul>
+                            <li><a href="#" title="" onclick="Myfiles()">My Files</a></li>
+                            <li><a href="#" title="" onclick="uploadFilesP()">Upload Files</a></li>
+
+
+                        </ul>
+
+                    </li>
+
+
+                    <li>
                         <a href="#" title="">Favorites</a>
                         <ul>
                             <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
@@ -2060,12 +2084,12 @@
                     <li><a href="#" title="" onclick="Wishlist()">My Wishlist ❤️ </a></li>
 
 
-                    <li><a href="#" title="" onclick="uploadFilesP()">Upload Files</a></li>
 
                 </ul>
             </div>
         </div>
     </div>
+
 
 
 
