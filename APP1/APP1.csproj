@@ -213,13 +213,15 @@
     <Content Include="IMAGE\ציונים.jpg" />
     <Content Include="MatchCSS.css" />
     <Content Include="Pages\Manager\AllWishlist.html" />
+    <Content Include="Pages\NewbuttonsM.html" />
     <Content Include="Pages\Player\Countdown.html" />
     <Content Include="Pages\Player\FileManeger.html" />
     <Content Include="Pages\Manager\fileview.html" />
     <Content Include="Pages\Manager\Algo.html" />
     <Content Include="Pages\Player\Match.html" />
+    <Content Include="Pages\Player\TODO ListPlayer.html" />
     <Content Include="Pages\ZZZ\Match B.html" />
-    <Content Include="Pages\Newbuttons.html" />
+    <Content Include="Pages\NewbuttonsP.html" />
     <Content Include="Pages\Player\neweditprofile.html" />
     <Content Include="Pages\ZZZ\NewPlayerDash - Copy.html" />
     <Content Include="Pages\Player\NewPlayerDash.html" />
