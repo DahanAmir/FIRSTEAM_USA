@@ -811,7 +811,7 @@
 
             }
             //alert("Todois: " + todoSave);
-            let api = "../../api/ToDoList";
+            let api = "../../api/ToDoList/";
 
             ajaxCall("Post", api, JSON.stringify(todoSave), successtodo, errortodo)
 
@@ -1115,7 +1115,7 @@
             }
 
             // str += "<button class='button2' ONCLICK='alltodo()' style='float: left'> My To Do List  </button>";
-            document.getElementById("todo0").style.visibility = "hidden";
+            //document.getElementById("todo0").style.visibility = "hidden";
 
             document.getElementById("oldtask-list").innerHTML = str2;
 

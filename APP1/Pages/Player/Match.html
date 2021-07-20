@@ -32,10 +32,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
 
-    <script src="sweetalert2.all.min.js"></script>
-    <script src="sweetalert2.min.js"></script>
+  
     <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style type="text/css">
@@ -963,7 +962,7 @@
         var api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&";
         //        var api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&page=" + page + "&";
 
-        var api_tail = "fields=id,school.name,school.region_id,accreditor,school.state,school.ownership,school.locale,school.city,school.school_url,2018.student.size,2018.cost.tuition.out_of_state,2018.admissions.sat_scores.average.overall&api_key=tcw4YqKbgv55DmuUicwNWeBtGk3XwHzoCf2SbWne";
+        var api_tail = "fields=school.region_id,accreditor,school.state,id,school.name,school.ownership,school.locale,school.city,school.school_url,2018.student.size,2018.cost.tuition.out_of_state,2018.admissions.sat_scores.average.overall&api_key=tcw4YqKbgv55DmuUicwNWeBtGk3XwHzoCf2SbWne";
         var api_State
         var all_District
         var show_all_match
@@ -1081,6 +1080,7 @@
             alert("ErrorDistrict")
         }
         function successDistrict(data) {
+
             MYDistrict
             if (data.length == 0 || data.length == 8)
                 api_District = "";
@@ -1089,7 +1089,7 @@
                 for (var i = 1; i < data.length; i++) {
                     api_District = api_District + ',' + data[i].Id
                 }
-                api_District = api_District + '&'
+                api_District = api_District 
             }
             MYDistrict = api_District
             if (countime == 4)
@@ -1142,7 +1142,7 @@
                 for (var i = 1; i < data.length; i++) {
                     arapi_Locale = api_Locale + ',' + data[i].Id
                 }
-                api_Locale = api_Locale + '&'
+                api_Locale = api_Locale 
             }
             MYLocale = api_Locale
             if (countime == 4)
@@ -1163,26 +1163,20 @@
             alert("ErrorAll")
         }
         function successFavorites(data) {
-            if (countime == 4)
-                alert('Your Results are ready! Click Show Results button');
-            //   document.getElementById("null").innerHTML = "";
-
-            else {
-                countime = countime + 1
-            }
-            if (data.PriceMax) {
+           
+            if (data.PriceMax || data.PriceMax>0) {
+          
                 PriceMax = data.PriceMax
-                PriceMaxAPI = "2018.cost.tuition.out_of_state__range=0.." + data.PriceMax + '&';
+                PriceMaxAPI = "2018.cost.tuition.out_of_state__range=0.." + data.PriceMax + "&" ;
             }
             else
                 PriceMaxAPI = '';
 
 
-            if (data.UniversityType) {
-
+            if (data.UniversityType=="" && data.UniversityTypeAPI!="1,2,3") {
+                
                 UniversityType = data.UniversityType
-                UniversityTypeAPI = "school.ownership=" + data.UniversityType + '&';
-
+                UniversityTypeAPI = "school.ownership=" + data.UniversityType + "&"
 
             }
             else {
@@ -1193,36 +1187,35 @@
             if (data.Sat) {
 
                 Sat = data.Sat
-                SatAPI = "2018.admissions.sat_scores.average.overall__range=0.." + data.Sat + '&';
+                SatAPI = "2018.admissions.sat_scores.average.overall__range=0.." + data.Sat + "&" ;
             }
             else
                 SatAPI = '';
 
-            if (data.UniversitySize) {
+            if (data.UniversitySize || data.UniversitySize>5) {
 
                 UniversitySize = data.UniversitySize
-                UniversitySizeAPI = "2018.student.size__range=0.." + data.UniversitySize + '&';
+                UniversitySizeAPI = "2018.student.size__range=0.." + data.UniversitySize + "&" ;
             }
             else
                 UniversitySizeAPI = '';
-
-
-            MYFavorite = data
-
-            rend()
+            rend(-1)
         }
 
 
         function rend(numberofpage) {
             if (numberofpage == -1) {
                 api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&";
+                numberofpage=2
 
             }
             else {
                 api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&page=" + numberofpage + "&";
+                numberofpage = numberofpage+1
             }
-
+      
             api_All = api_head + MYDistrict + MYLocale + UniversityTypeAPI + PriceMaxAPI + UniversitySizeAPI + SatAPI + api_tail;
+
             $.get(api_All, function (data) {
 
 
@@ -1233,23 +1226,23 @@
                 console.log(data);
                 api_All = data;
                 let str = '';
-                str += "<table id='customers' class='table' class='header'>";
-                str += "<thead><tr>";
-                str += "<th >School name</th>";
-                str += "<th >School Website </th>";
-                str += "<th> School ID </th>";
-                str += "<th> city </th>";
-                str += "<th>Ownership</th>";
-                //str += "<th> Region </th> ";
-                str += "<th> State </th>";
-                str += "<th> Cost </th>";
-                str += "<th> Size </th>";
-                str += "<th> SAT </th>";
-                str += "<th> Rank </th>";
-                str += "<th> Div </th>";
-                str += "<th> WishList </th>";
-                str += "</tr></thead>";
-                str += " <tbody>";
+                //str += "<table id='customers' class='table' class='header'>";
+                //str += "<thead><tr>";
+                //str += "<th >School name</th>";
+                //str += "<th >School Website </th>";
+                //str += "<th> School ID </th>";
+                //str += "<th> city </th>";
+                //str += "<th>Ownership</th>";
+                ////str += "<th> Region </th> ";
+                //str += "<th> State </th>";
+                //str += "<th> Cost </th>";
+                //str += "<th> Size </th>";
+                //str += "<th> SAT </th>";
+                //str += "<th> Rank </th>";
+                //str += "<th> Div </th>";
+                //str += "<th> WishList </th>";
+                //str += "</tr></thead>";
+                //str += " <tbody>";
                 let ownership
                 let cost
                 for (var i = 0; i < data.results.length; i++) {
@@ -1265,17 +1258,17 @@
                     else {
                         cost = 'null'
                     }
-                    str += "<tr>";
-                    str += "<td>" + data.results[i]["school.name"] + "</td>";
-                    str += "<td><a href=" + data.results[i]["school.school_url"] + ">" + data.results[i]["school.school_url"] + "</a></td>";
-                    str += "<td>" + data.results[i].id + "</td>";
-                    str += "<td>" + data.results[i]["school.city"] + "</td>";
-                    str += "<td>" + ownership + "</td>";
+                    //str += "<tr>";
+                    //str += "<td>" + data.results[i]["school.name"] + "</td>";
+                    //str += "<td><a href=" + data.results[i]["school.school_url"] + ">" + data.results[i]["school.school_url"] + "</a></td>";
+                    //str += "<td>" + data.results[i].id + "</td>";
+                    //str += "<td>" + data.results[i]["school.city"] + "</td>";
+                    //str += "<td>" + ownership + "</td>";
                     //str += "<td> " + data.results[i]["school.region_id"] +                                                           "</td>";
-                    str += "<td> " + data.results[i]["school.state"] + "</td>";
-                    str += "<td> " + cost + "</td>";
-                    str += "<td> " + data.results[i]["2018.student.size"] + "</td>";
-                    str += "<td> " + data.results[i]["2018.admissions.sat_scores.average.overall"] + "</td>";
+                    //str += "<td> " + data.results[i]["school.state"] + "</td>";
+                    //str += "<td> " + cost + "</td>";
+                    //str += "<td> " + data.results[i]["2018.student.size"] + "</td>";
+                    //str += "<td> " + data.results[i]["2018.admissions.sat_scores.average.overall"] + "</td>";
                     flag = 0
                     for (var j = 0; j < JSON_ncaa.length; j++) {
                         if (JSON_ncaa[j].Full_School_Name == data.results[i]["school.name"] || JSON_ncaa[j].School == data.results[i]["school.name"]) {
@@ -1287,122 +1280,30 @@
                             j = JSON_ncaa.length;
                         }
                     }
-                    if (flag == 0) {
-                        str += "<td> " + "null" + "</td>";
-                        str += "<td> " + "null" + "</td>";
-                    }
-                    str += "<td> " + "<label> <input type='checkbox' id='" + data.results[i].id + "' class='radio' value='" + data.results[i]["school.name"] + "'/></label>" + "</td>";
+                    //if (flag == 0) {
+                    //    str += "<td> " + "null" + "</td>";
+                    //    str += "<td> " + "null" + "</td>";
+                    //}
+                    //str += "<td> " + "<label> <input type='checkbox' id='" + data.results[i].id + "' class='radio' value='" + data.results[i]["school.name"] + "'/></label>" + "</td>";
                 }
                 str += "</tr></tbody></table>  </div> ";
 
 
-                //number = ' <div class="special" "><select name="Page" onchange="rend(this.value)" > '
-                //number += '<option disabled="disabled" selected="selected">select a page</option>'
-
-                //for (var j = 0; j < page + 1; j++) {
-                //    number += ' <option value='+j+' id=' + j + '    >' + j +'</option> '
+       
+          
+                  universityss = data.results
+                //else {
+                //    universityss.push(data.results)
                 //}
-                //number += '</select></div> '
-                //document.getElementById("showfav").innerHTML = str + number;
-                //document.getElementById("showfav").innerHTML = number + str + number;
-                $('html,body').scrollTop(0);
 
 
 
-
-                universityss = data.results;
-
-                try {
-                    tbl = $('#campaignsTable').DataTable({
-                        data: universityss,
-                        pageLength: 9,
-                        action: function (e, dt, node) {
-
-                            $(dt.table().node()).toggleClass('cards');
-                            $('.fa', node).toggleClass(['fa-table', 'fa-id-badge']);
-
-                            dt.draw('page');
-                        },
-                        columns: [
-                            {
-                                render: function (data, type, row, meta) {
-
-                                    let dataCampaign = "data-campaignId='" + row.Email + "'";
-                                    ids = meta.row;
-                                    editBtn = "<button type='button'  class = 'editBtn btn btn-edit'   id='" + row.id + "' onclick='editBtn_Function(id)'> Add To Wishlist </button>  ";
-                                    deleteBtn = "<a href='https://" + row["school.school_url"]+"'> <button type='button'  class = 'deleteBtn btn btn-danger'  > To web </button>";
-                                    return editBtn + deleteBtn  ;
-                                }
-                            },
-                            {
-                                data: function (jsonDate) {
-                                    d = jsonDate["school.name"]
-                                    return d
-                                }
-
-                            },
-                            {
-                                data: function (jsonDate) {
-                                    d = jsonDate["2018.student.size"]
-                                    return d
-                                }
-                            },
-
-                            {
-                                 data: function (jsonDate) {
-                                    d = jsonDate["school.city"]
-                                    return d
-                                }
-                            },
-                            {
-                                data: function (jsonDate) {
-                                    d = jsonDate["school.state"]
-                                    return d
-                                }
-                            },
-
-                            {
-                                data: function (jsonDate) {
-                                    d = jsonDate["2018.cost.tuition.out_of_state"] + '$'
-                                    return d
-                                }                            },
-                            {
-                                data: function (jsonDate) {
-                                    d = jsonDate["2018.admissions.sat_scores.average.overall"]
-                                    return d
-                                }                            },
-                            {
-                                data: function (jsonDate) {
-                                    if (jsonDate["Division"]>0) {
-                                        d = jsonDate["Division"]
-                                        return d
-                                    }
-                                    return null
-                                }
-                            },
-                            {
-                                data: function (jsonDate) {
-                                    if (jsonDate["Rank"] > 0) {
-                                        d = jsonDate["Rank"]
-                                        return d
-                                    }
-                                    return null
-
-                                }
-                            }, {
-                                data: function (jsonDate) {
-                                    return jsonDate["school.school_url"]
-
-
-                                }
-                            },
-                        ],
-                    });
-
-                }
-                catch (err) {
-                    alert(err);
-                }
+                //if (parseInt(numberofpage) < parseInt(page) || numberofpage<5 )
+                //{ 
+                addtoDataTable(universityss)
+            //}
+                
+            //    else {   addtoDataTable(universityss) }
 
             })
 
@@ -1410,7 +1311,103 @@
 
         }
 
+        function addtoDataTable(univ) {
+            universityss = univ
+            try {
+                tbl = $('#campaignsTable').DataTable({
+                    data: universityss,
+                    pageLength: 9,
+                    action: function (e, dt, node) {
 
+                        $(dt.table().node()).toggleClass('cards');
+                        $('.fa', node).toggleClass(['fa-table', 'fa-id-badge']);
+
+                        dt.draw('page');
+                    },
+                    columns: [
+                        {
+                            render: function (data, type, row, meta) {
+
+                                let dataCampaign = "data-campaignId='" + row.Email + "'";
+                                ids = meta.row;
+                                editBtn = "<button type='button'  class = 'editBtn btn btn-edit'   id='" + row.id + "' onclick='editBtn_Function(id)'> Add To Wishlist </button>  ";
+                                deleteBtn = "<a href='https://" + row["school.school_url"] + "'> <button type='button'  class = 'deleteBtn btn btn-danger'  > To web </button>";
+                                return editBtn + deleteBtn;
+                            }
+                        },
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate["school.name"]
+                                return d
+                            }
+
+                        },
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate["2018.student.size"]
+                                return d
+                            }
+                        },
+
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate["school.city"]
+                                return d
+                            }
+                        },
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate["school.state"]
+                                return d
+                            }
+                        },
+
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate["2018.cost.tuition.out_of_state"] + '$'
+                                return d
+                            }
+                        },
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate["2018.admissions.sat_scores.average.overall"]
+                                return d
+                            }
+                        },
+                        {
+                            data: function (jsonDate) {
+                                if (jsonDate["Division"] > 0) {
+                                    d = jsonDate["Division"]
+                                    return d
+                                }
+                                return null
+                            }
+                        },
+                        {
+                            data: function (jsonDate) {
+                                if (jsonDate["Rank"] > 0) {
+                                    d = jsonDate["Rank"]
+                                    return d
+                                }
+                                return null
+
+                            }
+                        }, {
+                            data: function (jsonDate) {
+                                return jsonDate["school.school_url"]
+
+
+                            }
+                        },
+                    ],
+                });
+
+            }
+            catch (err) {
+                alert(err);
+            }
+
+        }
         function buttonEvents() {
 
             $(document).on("click", ".editBtn", function () {

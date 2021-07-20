@@ -591,7 +591,7 @@
                     }
                 }
     </style>
-
+    
     <script>
         function SmartAlgo() {
             window.open('UsarDataQ.html')
@@ -665,8 +665,23 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../../Scripts/bootstrap.min.js"></script>
     <script src="../../Scripts/bootstrap.js"></script>
-
     <script>
+
+       
+
+    </script>
+    <script>
+        function Open(id) {
+            alert("asdasd");
+            alert("asdasd");
+            alert(users[id].Email);
+
+            localStorage.setItem('email', users[id].Email)
+            window.open('../Player/NewPlayerDash.html')
+
+
+
+        }
         var id_edit;
         function editBtn_Function(i) {
 
@@ -777,7 +792,7 @@
                     )
                 }
             })
-            
+
 
         }
         function delsucess(data) {
@@ -820,8 +835,9 @@
                                 let dataCampaign = "data-campaignId='" + row.Email + "'";
                                 ids = meta.row;
                                 editBtn = "<button type='button'  class = 'editBtn btn btn-edit'  " + list_users + " id='" + ids + "' onclick='editBtn_Function(id)'> Edit </button>";
+                                openBtn = "<button type='button'  class = ' btn btn-success'  " + list_users + " id='" + ids + "' onclick='Open(id)'> Open </button>";
                                 deleteBtn = "<button type='button' class = 'deleteBtn btn btn-danger' " + list_users + " id='" + ids + "' onclick='del(id)'> Active </button>";
-                                return deleteBtn + editBtn;
+                                return deleteBtn + editBtn + openBtn;
                             }
                         },
                         {
@@ -1063,14 +1079,13 @@
 
             </table>
             <div id="editDiv">
-                <form id="carForm">
+                <form id="carForm" >
                     <div class="form-group row">
-                        <div class="form-group col-sm-3">
+                        <div class="form-group col-sm-3" >
 
                         </div>
 
                     </div>
-
                 </form>
             </div>
         </div>

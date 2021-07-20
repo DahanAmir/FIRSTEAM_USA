@@ -586,11 +586,11 @@
                 alert('Please chooase at least one options');
             }
         }
-        function SuccessInsertLocale() {
+        function SuccessInsertLocale(data) {
             alert("Your locales added successfully!");
             window.open("FavUser.html")
         }
-        function ErrorInsertLocale() {
+        function ErrorInsertLocale(data) {
             alert("Sorry something is wrong");
             flag = 0;
             window.close()
@@ -683,12 +683,12 @@
         <h3><label for="region" style="color:red">Choose Locale: </label></h3><br />
 
         <div class="locale">
-            <label> <input type="checkbox" id="11" class="radio" value="11" /> Large City</label><br /><br />
-            <label> <input type="checkbox" id="12" class="radio" value="12" /> Mid City</label><br /><br />
-            <label> <input type="checkbox" id="13" class="radio" value="13" /> Small City</label><br /><br />
-            <label> <input type="checkbox" id="21,22,23" class="radio" value="21,22,23" /> Suburb</label><br /><br />
-            <label> <input type="checkbox" id="31,32,33" class="radio" value="31,32,33" /> Town</label><br /><br />
-            <label> <input type="checkbox" id="41,42,43" class="radio" value="41,42,43" /> Rural</label><br /><br />
+            <label> <input type="checkbox" id="11" class="radio" value="11" />Large City</label><br /><br />
+            <label> <input type="checkbox" id="12" class="radio" value="12" />Mid City</label><br /><br />
+            <label> <input type="checkbox" id="13" class="radio" value="13" />Small City</label><br /><br />
+            <label> <input type="checkbox" id="21,22,23" class="radio" value="21,22,23" />Suburb</label><br /><br />
+            <label> <input type="checkbox" id="31,32,33" class="radio" value="31,32,33" />Town</label><br /><br />
+            <label> <input type="checkbox" id="41,42,43" class="radio" value="41,42,43" />Rural</label><br /><br />
 
 
         </div>

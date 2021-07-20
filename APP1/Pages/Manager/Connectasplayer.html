@@ -446,6 +446,95 @@
         }
 
     </script>
+    <script>
+
+        $(document).ready(function () {
+            str = "users_show"
+            let api = "../../api/Users/" + str + "/Show_all_users";
+            ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
+
+        });
+    </script>
+
+    <script>
+        function getSuccess(list_users) { //הכנסת נתונים מהשרת לטבלה
+            localStorage.setItem('list_users', list_users)
+            users = list_users;
+
+            try {
+                tbl = $('#campaignsTable').DataTable({
+                    data: list_users,
+                    pageLength: 9,
+                    action: function (e, dt, node) {
+
+                        $(dt.table().node()).toggleClass('cards');
+                        $('.fa', node).toggleClass(['fa-table', 'fa-id-badge']);
+
+                        dt.draw('page');
+                    },
+                    columns: [
+                        {
+                            render: function (data, type, row, meta) {
+
+                                let dataCampaign = "data-campaignId='" + row.Email + "'";
+                                ids = meta.row;
+                                editBtn = "<button type='button'  class = 'editBtn btn btn-edit'  " + list_users + " id='" + ids + "' onclick='editBtn_Function(id)'> Edit </button>";
+                                deleteBtn = "<button type='button' class = 'deleteBtn btn btn-danger' " + list_users + " id='" + ids + "' onclick='del(id)'> Active </button>";
+                                return deleteBtn + editBtn;
+                            }
+                        },
+                        {
+                            data: function (jsonDate) {
+                                return jsonDate.LastName + " " + jsonDate.FirstName
+                            }
+                        },
+                        { data: "Phone" },
+
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate.Register.split('T00:00:00')
+                                return d[0]
+                            }
+                        },
+                        { data: "Position" },
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate.BirthDay.split('T00:00:00')
+                                return d[0]
+                            }
+                        },
+                        {
+                            data: "Status"
+                        },
+                        {
+                            data: function (jsonDate) {
+                                d = jsonDate.EstimatedYear.split('T00:00:00')
+                                if ('0001-01-01' != d[0])
+                                    return d[0]
+                                else {
+                                    return 'No Estimated'
+                                }
+                            }
+                        },
+                        {
+                            data: function (jsonDate) {
+                                if (jsonDate.Active == -1)
+                                    return 'No'
+                                else {
+                                    return 'Yes'
+                                }
+                            }
+                        },
+                    ],
+                });
+
+            }
+            catch (err) {
+                alert(err);
+            }
+        }
+
+    </script>
 </head>
 <body>
     <meta name="viewport" content="width=device-width, user-scalable=no" />

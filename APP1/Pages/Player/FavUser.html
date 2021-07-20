@@ -548,7 +548,7 @@
                 UniversitySize: $("#size").val(),
                 PriceMAX: $("#cost").val(),
                 Sat: $("#SAT").val(),
-                UniversityLevel: $("#division").val()
+                UniversityLevel: 1
             }
             let api = "../../api/Favorites/Post_Favorite/insert/save";
 
@@ -714,13 +714,13 @@
         <label for="SAT">SAT Score:</label>
         <input type="number" id="SAT" name="SAT" pattern="[0-9]{0,5}" required placeholder="Please enter number" onchange="showH(this.value)"><br><br>
 
-        <label for="division">Devision:</label>
+        <!--<label for="division">Devision:</label>
         <select name="division" id="division" onchange="showH(this.value)">
             <option value="0">Choose Devision</option>
             <option id="1" value="1">D1</option>
             <option id="2" value="2">D2</option>
             <option id="1,2" value="1,2">Both</option>
-        </select>
+        </select>-->
 
         <br /><br />
 
