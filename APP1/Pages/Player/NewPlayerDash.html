@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
 
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -1405,18 +1405,41 @@
         var estimated_year = "";
 
 
-
         $(document).ready(function () {
+            str = "users_show"
+            api = "../api/Users/" + str + "/Show_all_users";
+            ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
+            name1 = email.split('@');
+            name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
+            //document.getElementById("intro").innerHTML = name;
+            str1 = "users_show"
+            api = "../api/Users/" + str1 + "/Show_all_users";
+            ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
+            stodo();
+            $('#qrIos').qrcode({
+                width: 200,
+                height: 200,
+                text: "iOS_URL_HERE"
+            });
+            $('#qrAndroid').qrcode({
+                width: 200,
+                height: 200,
+                text: "DROID_URL_HERE"
+            });
+            $('#qrWeb').qrcode({
+                width: 200,
+                height: 200,
+                text: "WINDOWS_URL_HERE"
+            });
 
 
             // email = "adi@gmail.com";
             str = "users_show"
-            let api = "../api/Users/" + str + "/Show_all_users";
+            api = "../api/Users/" + str + "/Show_all_users";
             ajaxCall("GET", api, "", sucessget, errorget)
 
-
         });
-
+       
 
 
         function sucessget(data) {
@@ -1506,15 +1529,7 @@
     </script>
     <script>
 
-        $(document).ready(function () {
-
-            str = "users_show"
-            let api = "../api/Users/" + str + "/Show_all_users";
-            ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
-
-
-
-        });
+       
         function erroradd_list_r(data) {
             alert(data);
 
@@ -1607,24 +1622,9 @@
     </script>
 
     <script>
+      
 
-        $(document).ready(function () {
-            $('#qrIos').qrcode({
-                width: 200,
-                height: 200,
-                text: "iOS_URL_HERE"
-            });
-            $('#qrAndroid').qrcode({
-                width: 200,
-                height: 200,
-                text: "DROID_URL_HERE"
-            });
-            $('#qrWeb').qrcode({
-                width: 200,
-                height: 200,
-                text: "WINDOWS_URL_HERE"
-            });
-        });
+        
 
         function rotateCard(btn) {
             var $card = $(btn).closest('.card-container');
@@ -1702,19 +1702,7 @@
         var obj = "";
 
 
-        $(document).ready(function () {
-
-            name1 = email.split('@');
-            name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
-            //document.getElementById("intro").innerHTML = name;
-            str1 = "users_show"
-            let api = "../api/Users/" + str1 + "/Show_all_users";
-            ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
-            stodo();
-
-
-        });
-
+        
         //function getSuccess(data) {
         //    alert("in sucess");
         //    console.log(data);
@@ -2096,7 +2084,7 @@
                     <div class="card-box">
                         <i class="icon-layers float-right text-muted"></i>
                         <h6 class="text-muted text-uppercase mt-0">Send Email</h6>
-                        <img src="../Gmail.max-1100x1100 (1).png" style="height:50px" />
+                        <img src="../../Gmail.max-1100x1100 (1).png" style="height:50px" />
                         <br />
                         <label for="players"><span class="red-star" required> </span>Email to: </label>
                         <input type="text" class="form-control" id="players" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required placeholder=" "

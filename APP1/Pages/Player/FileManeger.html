@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="../Scripts/ajaxCalls.js"></script>
+    <script src="../../Scripts/ajaxCalls.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
@@ -137,7 +137,7 @@
             //let email = localStorage.getItem("email")
             let email = 'shdsadsfay@gmail.comdddd';
             //let api = "../api/UsersFile/get_user/emailfile";
-            let api = "../api/UsersFile";
+            let api = "../../api/UsersFile";
 
 
             var my_email = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
@@ -189,7 +189,7 @@
             }
             alert('in delete:  ' + filename);
             if (filename != '') {
-                let apiDelete = "../api/UsersFile"
+                let apiDelete = "../../api/UsersFile"
                 ajaxCall("Delete", apiDelete, JSON.stringify(my_filename), successdelete, errorrdelete)
             }
             else {
@@ -221,7 +221,7 @@
         }
         function downlord(file) {
             if (file != '')
-                window.open("../uploaded_Files/" + file)
+                window.open("../../uploaded_Files/" + file)
             else {
                 alert('חסר מסמך זה, אנא הוסף/י');
             }
@@ -259,7 +259,7 @@
 
                                 </div>
                                 <div class="image">
-                                    <img src="../IMAGE/TOEFL.png" alt="img" class="img-fluid" />
+                                    <img src="../../IMAGE/TOEFL.png" alt="img" class="img-fluid" />
                                 </div>
                                 <div class="file-name">
                                     <p class="m-b-5 text-muted">TAYP: SAT</p>
@@ -288,7 +288,7 @@
                                 </div>
                                 <div class="image">
 
-                                    <img src="../IMAGE/PASSPORT.png" alt="img" class="img-fluid" />
+                                    <img src="../../IMAGE/PASSPORT.png" alt="img" class="img-fluid" />
                                 </div>
                                 <div class="file-name">
                                     <p class="m-b-5 text-muted">img21545ds.jpg</p>
@@ -315,7 +315,7 @@
 
                                 </div>
                                 <div class="image">
-                                    <img src="../IMAGE/slide1-n.jpg" alt="img" class="img-fluid" />
+                                    <img src="../../IMAGE/slide1-n.jpg" alt="img" class="img-fluid" />
                                 </div>
                                 <div class="file-name">
 
@@ -343,7 +343,7 @@
 
                                 </div>
                                 <div class="image">
-                                    <img src="../IMAGE/ציונים.jpg" alt="img" class="img-fluid" />
+                                    <img src="../../IMAGE/ציונים.jpg" alt="img" class="img-fluid" />
                                 </div>
                                 <div class="file-name">
                                     <p class="m-b-5 text-muted">img21545ds.jpg</p>
@@ -369,7 +369,7 @@
                                     </button>
                                 </div>
                                 <div class="image">
-                                    <img src="../IMAGE/scholarship.jpg" alt="img" class="img-fluid">
+                                    <img src="../../IMAGE/scholarship.jpg" alt="img" class="img-fluid">
                                 </div>
                                 <div class="file-name">
                                     <p class="m-b-5 text-muted">img21545ds.jpg</p>
@@ -395,7 +395,7 @@
                                     </button>
                                 </div>
                                 <div class="image">
-                                    <img src="../IMAGE/SAT.png" alt="img" class="img-fluid">
+                                    <img src="../../IMAGE/SAT.png" alt="img" class="img-fluid">
                                 </div>
                                 <div class="file-name">
                                     <p class="m-b-5 text-muted">img21545ds.jpg</p>
@@ -421,7 +421,7 @@
                                     </button>
                                 </div>
                                 <div class="image">
-                                    <img src="../IMAGE/Other.png" alt="img" class="img-fluid">
+                                    <img src="../../IMAGE/Other.png" alt="img" class="img-fluid">
                                 </div>
                                 <div class="file-name">
                                     <p class="m-b-5 text-muted">img21545ds.jpg</p>
@@ -447,7 +447,7 @@
                                     </button>
                                 </div>
                                 <div class="image">
-                                    <img src="../IMAGE/Other.png" alt="img" class="img-fluid">
+                                    <img src="../../IMAGE/Other.png" alt="img" class="img-fluid">
                                 </div>
                                 <div class="file-name">
                                     <p class="m-b-5 text-muted">img21545ds.jpg</p>

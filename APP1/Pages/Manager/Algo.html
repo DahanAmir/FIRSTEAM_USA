@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../../Scripts/jquery-3.4.1.min.js"></script>
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
     <script src="../../Scripts/ajaxCalls.js"></script>
 
 
@@ -677,7 +677,7 @@
                 // FirstName: $("#nameTB").val(),
                 Email: email,
             }
-            ajaxCall("Put", "../api/UserData", JSON.stringify(u), successData, errorData);
+            ajaxCall("Put", "../../api/UserData", JSON.stringify(u), successData, errorData);
             name1 = email.split('@');
             //  name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
             document.getElementById("intro").innerHTML = name;
