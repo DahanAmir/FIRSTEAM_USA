@@ -1,12 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <meta charset="utf-8" />
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <style>
         /* Resets */
@@ -34,124 +32,125 @@
             margin: 50px 0;
         }
 
-       /* @media handheld, screen and (min-width: 641px) {
-            .no_scroll {
-                overflow-y: hidden;
-            }
-*/
-            .abrir_menu {
+        /* @media handheld, screen and (min-width: 641px) {
+                    .no_scroll {
+                        overflow-y: hidden;
+                    }
+        */
+        .abrir_menu {
+            display: none;
+        }
+
+        #menu {
+            /*                max-width: 960px;
+        */ height: 70px;
+            margin: 0 auto;
+        }
+
+        #navigator {
+            height: 70px;
+            line-height: 50px;
+            /**/ /*box-shadow: 0 7px 6px -7px #373435;
+                        -webkit-box-shadow: 0 7px 6px -7px #373435;
+                        -moz-box-shadow: 0 7px 6px -7px #373435;*/
+        }
+
+
+            #navigator .title {
                 display: none;
             }
 
-            #menu {
-/*                max-width: 960px;
-*/                height: 70px;
-                margin: 0 auto;
+            #navigator ul {
+                list-style: none;
             }
 
-            #navigator {
-                height: 70px;
-                line-height: 50px;
-/**/                /*box-shadow: 0 7px 6px -7px #373435;
-                -webkit-box-shadow: 0 7px 6px -7px #373435;
-                -moz-box-shadow: 0 7px 6px -7px #373435;*/
+            #navigator > ul > li {
+                width: 250px;
+                float: left;
             }
 
-
-                #navigator .title {
-                    display: none;
-                }
-
-                #navigator ul {
-                    list-style: none;
-                }
-
-                #navigator > ul > li {
-                    width: 250px;
-                    float: left;
-                }
-
-                    #navigator > ul > li > a {
-                        color: #fefefe;
-                        font-size: 15px;
-                        font-family: 'Montserrat', sans-serif;
-                        text-transform: uppercase;
-                        letter-spacing: 0.5px;
-                        text-align: center;
-                        display: block;
-                        background: #333;
-                    }
-
-                    #navigator > ul > li:hover > a {
-                        background: #555;
-                    }
-
-                #navigator ul li > ul,
-                #navigator ul li li > ul,
-                #navigator ul li li li > ul,
-                #navigator ul li li li li > ul,
-                #navigator ul li li li li li > ul {
-                    display: none;
-                }
-
-                #navigator ul li:hover > ul,
-                #navigator ul li li:hover > ul,
-                #navigator ul li li li:hover > ul,
-                #navigator ul li li li li:hover > ul,
-                #navigator ul li li li li li:hover > ul {
-                    position: absolute;
-                    z-index: 10;
-                    width: 500px;
-                    line-height: 20px;
-                    display: block;
-                    background: #555;
-                    box-shadow: 0 7px 6px -7px #373435;
-                    -webkit-box-shadow: 0 7px 6px -7px #373435;
-                    -moz-box-shadow: 0 7px 6px -7px #373435;
-                }
-
-            #menu ul ul li ul {
-                top: 0;
-                left: 179px;
-                min-height: 100%;
-                border-left: 1px solid #444;
-            }
-
-            #menu ul ul li { /*position: relative;*/
-            }
-
-                #menu ul ul li a {
+                #navigator > ul > li > a {
                     color: #fefefe;
-                    font-size: 12px;
-                    font-family: 'Open Sans Condensed', sans-serif;
+                    font-size: 15px;
+                    font-family: 'Montserrat', sans-serif;
                     text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    text-align: center;
                     display: block;
-                    padding: 12px 7px;
-                    border-top: 1px solid rgba(255,255,255,0.045);
-                    border-bottom: 1px solid rgba(0,0,0,0.045);
-                    text-transform: uppercase;
+                    background: #333;
                 }
 
-                #menu ul ul li:hover > a {
-                    background: #444;
-                    width: 100%
+                #navigator > ul > li:hover > a {
+                    background: #555;
                 }
 
-                #menu ul ul li li:hover > a {
-                }
+            #navigator ul li > ul,
+            #navigator ul li li > ul,
+            #navigator ul li li li > ul,
+            #navigator ul li li li li > ul,
+            #navigator ul li li li li li > ul {
+                display: none;
+            }
 
-                #menu ul ul li li li:hover > a {
-                }
+            #navigator ul li:hover > ul,
+            #navigator ul li li:hover > ul,
+            #navigator ul li li li:hover > ul,
+            #navigator ul li li li li:hover > ul,
+            #navigator ul li li li li li:hover > ul {
+                position: absolute;
+                z-index: 10;
+                width: 500px;
+                line-height: 20px;
+                display: block;
+                background: #555;
+                box-shadow: 0 7px 6px -7px #373435;
+                -webkit-box-shadow: 0 7px 6px -7px #373435;
+                -moz-box-shadow: 0 7px 6px -7px #373435;
+            }
 
-                #menu ul ul li li li li:hover > a {
-                }
+        #menu ul ul li ul {
+            top: 0;
+            left: 179px;
+            min-height: 100%;
+            border-left: 1px solid #444;
+        }
 
-                #menu ul ul li li li li li:hover > a {
-                }
+        #menu ul ul li { /*position: relative;*/
+        }
 
-                a{
-                    width:100%;
-                }
+            #menu ul ul li a {
+                color: #fefefe;
+                font-size: 12px;
+                font-family: 'Open Sans Condensed', sans-serif;
+                text-transform: uppercase;
+                display: block;
+                padding: 12px 7px;
+                border-top: 1px solid rgba(255,255,255,0.045);
+                border-bottom: 1px solid rgba(0,0,0,0.045);
+                text-transform: uppercase;
+            }
+
+            #menu ul ul li:hover > a {
+                background: #444;
+                width: 100%
+            }
+
+            #menu ul ul li li:hover > a {
+            }
+
+            #menu ul ul li li li:hover > a {
+            }
+
+            #menu ul ul li li li li:hover > a {
+            }
+
+            #menu ul ul li li li li li:hover > a {
+            }
+
+        a {
+            width: 100%;
+        }
+
         }
 
 
@@ -384,45 +383,44 @@
                 background-position: 150px center;
             }
         }
-
     </style>
 
     <script>
-        function SmartAlgo(){
+        function SmartAlgo() {
             window.open('UsarDataQ.html')
         }
 
-        function ShowResults(){
+        function ShowResults() {
             window.open('Match.html')
         }
-        function ChangeRegion(){
+        function ChangeRegion() {
             window.open('FavRegion.html')
         }
-            function ChangeLocale(){
+        function ChangeLocale() {
             window.open('FavLocale.html')
         }
-              function ChangeState(){
+        function ChangeState() {
             window.open('FavState.html')
         }
-        function ChangeFav(){
+        function ChangeFav() {
             window.open('FavUser.html')
         }
-        function Wishlist(){
+        function Wishlist() {
             window.open('Wishlist.html')
         }
-        function Predict(){
+        function Predict() {
             window.open('Algo.html')
         }
-        function ManagerDashboard(){
+        function ManagerDashboard() {
             window.open('NewManagerDash.html')
         }
-        function PlayerDashboard(){
+        function PlayerDashboard() {
             window.open('NewPlayerDash.html')
         }
-            function ToDo(){
-                window.open('TODO List.html')
+        function ToDo() {
+            window.open('TODO List.html')
         }
-        function FilesSummary(){
+        function FilesSummary() {
             window.open('fileview.html')
         }
         function uploadFiles() {
@@ -432,11 +430,11 @@
         function NewPlayer() {
             window.open('NewUser.html')
         }
-        
+
         function AllProfiles() {
             window.open('AllProfiles.html')
         }
-            
+
         function ChangeStatus() {
             window.open('Status.html')
         }
@@ -450,7 +448,6 @@
     </script>
 </head>
 <body>
-
     <meta name="viewport" content="width=device-width, user-scalable=no" />
 
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
@@ -467,10 +464,10 @@
             <div id="navigator" style="width: 100%; float:left">
                 <ul class="nav" style="width: 100%; float:left">
                     <!--li>
-        <a href="#" title=""> </a>
-        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+                        <a href="#" title=""> </a>
+                        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
 
-    </li>-->
+                    </li>-->
                     <li style="width:450px">
                         <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
                     </li>
@@ -505,16 +502,16 @@
                         </ul>
                     </li>
                     <!--<li>
-        <a href="#" title="">Favorites</a>
-        <ul>
-            <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
-            <li><a href="#" title="" onclick="ChangeLocale()">Change Locale</a></li>
-            <li><a href="#" title="" onclick="ChangeFav()">Change Other Favorites</a></li>
-            <li><a href="#" title="" onclick="ShowResults()">Show Results</a></li>
+                        <a href="#" title="">Favorites</a>
+                        <ul>
+                            <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
+                            <li><a href="#" title="" onclick="ChangeLocale()">Change Locale</a></li>
+                            <li><a href="#" title="" onclick="ChangeFav()">Change Other Favorites</a></li>
+                            <li><a href="#" title="" onclick="ShowResults()">Show Results</a></li>
 
-        </ul>
+                        </ul>
 
-    </li>-->
+                    </li>-->
                     <!--<li><a href="#" title="" onclick="Wishlist()">Show Wishlist</a></li>-->
                     <!--<li><a href="#" title="">Add to whishlist</a></li>-->
                     <!--<li><a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a></li>-->
@@ -527,7 +524,5 @@
     </div>
 
 
-
-   
 </body>
 </html>

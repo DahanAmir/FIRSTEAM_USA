@@ -474,6 +474,11 @@
                         background-position: 150px center;
                     }
                 }
+
+        input.radio {
+            width: 15px;
+            height: 15px;
+        }
     </style>
 
     <script>
@@ -664,6 +669,13 @@
             window.close()
         }
 
+        function EditProfileP() {
+            window.open('neweditprofile.html')
+        }
+        function ToDoP() {
+            window.open('TODO ListPlayer.html')
+        }
+
     </script>
 
 
@@ -671,7 +683,8 @@
 </head>
 <body>
 
-  
+
+
     <meta name="viewport" content="width=device-width, user-scalable=no" />
 
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
@@ -682,7 +695,7 @@
 
     </div>-->
     <div id="menu" style="width:100% ; float:left">
-        <div class="abrir_menu" style="width:170% ; float:left"><span>MENU</span></div>
+        <div class="abrir_menu" style="width:100% ; float:left"><span>MENU</span></div>
 
         <div class="menu_aberto" style="width: 170%; float:left">
             <div id="navigator" style="width: 100%; float:left">
@@ -695,24 +708,18 @@
                     <li style="width:450px">
                         <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
                     </li>
-                    <li><a href="#" title="" onclick="NewPlayer()">Insert new Player</a></li>
-                    <li><a href="#" title="" onclick="ToDo()">To Do List</a></li>
-                    <li><a href="#" title="" onclick="AllProfiles()">All Profiles</a></li>
 
                     <li>
-                        <a href="#" title="" style="border:none;">Smart Algo</a>
+                        <a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a>
                         <ul>
-                            <li><a href="#" title="" onclick="SmartAlgo()">Insert new Data</a></li>
-                            <li><a href="#" title="" onclick="Predict()">Predict scholarship %</a></li>
+                            <li><a href="#" title="" onclick="EditProfileP()">Edit Profile</a></li>
+
+
                         </ul>
+
                     </li>
-                    <li>
-                        <a href="#" title="">Files</a>
-                        <ul>
-                            <li><a href="#" title="" onclick="FilesSummary()">Files Summary</a></li>
-                            <li><a href="#" title="" onclick="uploadFiles()">Upload Files</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#" title="" onclick="ToDoP()">To Do List</a></li>
+
                     <li>
                         <a href="#" title="">Favorites</a>
                         <ul>
@@ -724,32 +731,32 @@
                         </ul>
 
                     </li>
-                    <!--<li><a href="#" title="" onclick="Wishlist()">Show Wishlist</a></li>-->
-                    <!--<li><a href="#" title="">Add to whishlist</a></li>-->
-                    <!--<li><a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a></li>-->
-                    <!--<li><a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a></li>-->
+
+                    <li><a href="#" title="" onclick="Wishlist()">My Wishlist ❤️ </a></li>
 
 
+                    <li><a href="#" title="" onclick="uploadFilesP()">Upload Files</a></li>
 
                 </ul>
             </div>
         </div>
     </div>
 
+
     <br /> <br />
     <div class="highlightsDiv">
 
-        <h3><label for="region" style="color:red">Choose District:</label> </h3>
+        <h3><label for="region" style="color:red">Choose District:</label> </h3><br />
 
         <div class="region">
-            <label> <input type="checkbox" id="New England" class="radio" value="1" />New England (CT, ME, MA, NH, RI, VT)  </label><br />
-            <label> <input type="checkbox" id="Mid East" class="radio" value="2" />Mid East (DE, DC, MD, NJ, NY, PA)  </label><br />
-            <label> <input type="checkbox" id="Great Lakes" class="radio" value="3" />Great Lakes (IL, IN, MI, OH, WI)  </label><br />
-            <label> <input type="checkbox" id="Plains" class="radio" value="4" />Plains (IA, KS, MN, MO, NE, ND, SD)  </label><br />
-            <label> <input type="checkbox" id="Southeast" class="radio" value="5" />Southeast (AL, AR, FL, GA, KY, LA, MS, NC, SC, TN, VA, WV)  </label><br />
-            <label> <input type="checkbox" id="Southwest" class="radio" value="6" />Southwest (AZ, NM, OK, TX)  </label><br />
-            <label> <input type="checkbox" id="Rocky Mountains" class="radio" value="7" />Rocky Mountains (CO, ID, MT, UT, WY)  </label><br />
-            <label> <input type="checkbox" id="Far West" class="radio" value="8" />Far West (AK, CA, HI, NV, OR, WA)  </label><br />
+            <label> <input type="checkbox" id="New England" class="radio" value="1" /> New England (CT, ME, MA, NH, RI, VT)  </label><br /><br />
+            <label> <input type="checkbox" id="Mid East" class="radio" value="2" /> Mid East (DE, DC, MD, NJ, NY, PA)  </label><br /><br />
+            <label> <input type="checkbox" id="Great Lakes" class="radio" value="3" /> Great Lakes (IL, IN, MI, OH, WI)  </label><br /><br />
+            <label> <input type="checkbox" id="Plains" class="radio" value="4" /> Plains (IA, KS, MN, MO, NE, ND, SD)  </label><br /><br />
+            <label> <input type="checkbox" id="Southeast" class="radio" value="5" /> Southeast (AL, AR, FL, GA, KY, LA, MS, NC, SC, TN, VA, WV)  </label><br /><br />
+            <label> <input type="checkbox" id="Southwest" class="radio" value="6" /> Southwest (AZ, NM, OK, TX)  </label><br /><br />
+            <label> <input type="checkbox" id="Rocky Mountains" class="radio" value="7" /> Rocky Mountains (CO, ID, MT, UT, WY)  </label><br /><br />
+            <label> <input type="checkbox" id="Far West" class="radio" value="8" /> Far West (AK, CA, HI, NV, OR, WA)  </label><br /><br />
 
         </div>
     </div>

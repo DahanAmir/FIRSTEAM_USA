@@ -919,6 +919,13 @@
 
         }
 
+        function EditProfileP() {
+            window.open('neweditprofile.html')
+        }
+        function ToDoP() {
+            window.open('TODO ListPlayer.html')
+        }
+
     </script>
 
     <script>
@@ -1411,6 +1418,7 @@
 
 </head>
 <body>
+
     <meta name="viewport" content="width=device-width, user-scalable=no" />
 
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
@@ -1434,18 +1442,18 @@
                     <li style="width:450px">
                         <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
                     </li>
-                    <li><a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a></li>
-                    <li><a href="#" title="" onclick="ToDo()">To Do List</a></li>
-                    <li><a href="#" title="" onclick="Myfiles()">My Files</a></li>
-
 
                     <li>
-                        <a href="#" title="" style="border:none;">Algo</a>
+                        <a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a>
                         <ul>
-                            <li><a href="#" title="" onclick="SmartAlgo()">Insert new Data</a></li>
-                            <li><a href="#" title="" onclick="Predict()">Predict scholarship %</a></li>
+                            <li><a href="#" title="" onclick="EditProfileP()">Edit Profile</a></li>
+
+
                         </ul>
+
                     </li>
+                    <li><a href="#" title="" onclick="ToDoP()">To Do List</a></li>
+
                     <li>
                         <a href="#" title="">Favorites</a>
                         <ul>
@@ -1457,13 +1465,18 @@
                         </ul>
 
                     </li>
-                    <li><a href="#" title="" onclick="Wishlist()">Show Wishlist</a></li>
+
+                    <li><a href="#" title="" onclick="Wishlist()">My Wishlist ❤️ </a></li>
+
+
+                    <li><a href="#" title="" onclick="uploadFilesP()">Upload Files</a></li>
 
                 </ul>
             </div>
         </div>
     </div>
-    
+
+
 
     <!--<h1 style="color:red"> Match Schools: </h1>-->
     <div id="intro">  </div>

@@ -602,6 +602,12 @@
         function ChangeStatus() {
             window.open('Status.html')
         }
+        function AllWhishLists() {
+            window.open('AllWishlist.html')
+        }
+        function connectasplayer() {
+            window.open('Connectasplayer.html')
+        }
 
     </script>
 
@@ -729,7 +735,6 @@
 </head>
 <body>
 
-
     <meta name="viewport" content="width=device-width, user-scalable=no" />
 
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
@@ -740,7 +745,7 @@
 
     </div>-->
     <div id="menu" style="width:100% ; float:left">
-        <div class="abrir_menu" style="width:170% ; float:left"><span>MENU</span></div>
+        <div class="abrir_menu" style="width:100% ; float:left"><span>MENU</span></div>
 
         <div class="menu_aberto" style="width: 170%; float:left">
             <div id="navigator" style="width: 100%; float:left">
@@ -753,40 +758,49 @@
                     <li style="width:450px">
                         <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
                     </li>
-                    <li><a href="#" title="" onclick="NewPlayer()">Insert new Player</a></li>
+                    <li><a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a></li>
                     <li><a href="#" title="" onclick="ToDo()">To Do List</a></li>
-                    <li><a href="#" title="" onclick="AllProfiles()">All Profiles</a></li>
 
                     <li>
-                        <a href="#" title="" style="border:none;">Smart Algo</a>
+                        <a href="#" title="">Players</a>
                         <ul>
-                            <li><a href="#" title="" onclick="SmartAlgo()">Insert new Data</a></li>
-                            <li><a href="#" title="" onclick="Predict()">Predict scholarship %</a></li>
+                            <li><a href="#" title="" onclick="NewPlayer()">Insert new Player</a></li>
+                            <li><a href="#" title="" onclick="AllProfiles()">All Profiles</a></li>
+                            <li><a href="#" title="" onclick="AllWhishLists()">All WhishLists</a></li>
+                            <li><a href="#" title="" onclick="connectasplayer()">Connect as Player</a></li>
+                            <li><a href="#" title="" onclick="ChangeStatus()">Add Status</a></li>
+
+
                         </ul>
                     </li>
+
                     <li>
                         <a href="#" title="">Files</a>
                         <ul>
                             <li><a href="#" title="" onclick="FilesSummary()">Files Summary</a></li>
                             <li><a href="#" title="" onclick="uploadFiles()">Upload Files</a></li>
-                            <li><a href="#" title="" onclick="ChangeStatus()">Change Status</a></li>
-
                         </ul>
                     </li>
                     <li>
+                        <a href="#" title="" style="border:none;">Algo</a>
+                        <ul>
+                            <li><a href="#" title="" onclick="SmartAlgo()">Algo Questionnaire</a></li>
+                            <li><a href="#" title="" onclick="Predict()">Predict scholarship %</a></li>
+                        </ul>
+                    </li>
+                    <!--<li>
                         <a href="#" title="">Favorites</a>
                         <ul>
-                            <li><a href="#" title=""  onclick="ChangeRegion()">Change Region</a></li>
+                            <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
                             <li><a href="#" title="" onclick="ChangeLocale()">Change Locale</a></li>
                             <li><a href="#" title="" onclick="ChangeFav()">Change Other Favorites</a></li>
                             <li><a href="#" title="" onclick="ShowResults()">Show Results</a></li>
 
                         </ul>
 
-                    </li>
+                    </li>-->
                     <!--<li><a href="#" title="" onclick="Wishlist()">Show Wishlist</a></li>-->
                     <!--<li><a href="#" title="">Add to whishlist</a></li>-->
-                    <!--<li><a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a></li>-->
                     <!--<li><a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a></li>-->
 
 
@@ -795,6 +809,7 @@
             </div>
         </div>
     </div>
+
 
 
 
@@ -823,13 +838,10 @@
             <div id="mail"></div>
 
             <!---------------מייייל------------>
-
             <!--<div class="form-group">
                 <label for="mailTB"><span class="red-star" required>★ </span>mail</label>
                 <input type="text" class="form-control" id="mailTB" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter the mail. Format should be: XXXX@XXXX." required />
             </div>-->
-
-            
             <!--<div class="form-group">
                 <label for="user"><span class="red-star" required>★ </span>Gender</label><br />
                 <select id="Gender" name="leaveCode">
@@ -842,7 +854,7 @@
 
 
             <div class="form-group">
-                <label for="user"><span class="red-star" > </span>In National Team?</label><br />
+                <label for="user"><span class="red-star"> </span>In National Team?</label><br />
                 <select id="NT" name="leaveCode">
                     <option value="0">No</option>
                     <option value="1">Yes</option>
@@ -851,7 +863,7 @@
 
 
             <div class="form-group">
-                <label for="user"><span class="red-star" > </span>In Captain National Team?</label><br />
+                <label for="user"><span class="red-star"> </span>In Captain National Team?</label><br />
                 <select id="CNT" name="leaveCode">
                     <option value="0">No</option>
                     <option value="1">Yes</option>

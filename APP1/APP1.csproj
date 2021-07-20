@@ -213,9 +213,10 @@
     <Content Include="IMAGE\ציונים.jpg" />
     <Content Include="MatchCSS.css" />
     <Content Include="Pages\Manager\AllWishlist.html" />
+    <Content Include="Pages\Manager\Connectasplayer.html" />
     <Content Include="Pages\NewbuttonsM.html" />
     <Content Include="Pages\Player\Countdown.html" />
-    <Content Include="Pages\Player\FileManeger.html" />
+    <Content Include="Pages\Player\1FileManeger.html" />
     <Content Include="Pages\Manager\fileview.html" />
     <Content Include="Pages\Manager\Algo.html" />
     <Content Include="Pages\Player\Match.html" />
@@ -231,8 +232,8 @@
     <Content Include="Pages\Manager\NewManagerDash.html" />
     <Content Include="Pages\Teamplate.html" />
     <Content Include="Pages\Manager\Manager_uploadFiles.html" />
-    <Content Include="Pages\uploadFiles.html" />
-    <Content Include="Pages\Player\UsarDataQ.html" />
+    <Content Include="Pages\Player\uploadFiles.html" />
+    <Content Include="Pages\Manager\UsarDataQ.html" />
     <Content Include="Pages\Manager\AllProfiles.html" />
     <Content Include="Pages\Player\FavRegion.html" />
     <Content Include="Pages\Player\FavLocale.html" />
@@ -240,7 +241,7 @@
     <Content Include="Pages\LogIn.html" />
     <Content Include="Pages\ZZZ\Match old.html" />
     <Content Include="Pages\Manager\NewUser.html" />
-    <Content Include="Pages\TODO List.html" />
+    <Content Include="Pages\Manager\TODO List.html" />
     <Content Include="Scripts\ajaxCalls.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
