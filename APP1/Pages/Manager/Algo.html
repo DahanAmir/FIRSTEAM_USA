@@ -699,21 +699,60 @@
             rend(data)
         }
 
+
+        function show() {
+            document.getElementById("calculate").style.display = "block";
+            document.getElementById("b").style.display = "none";
+
+        }
+
         var TotalNumber = 0;
         var P = 0;
         var str = "";
+        
+
         function rend(data) {
             str += "<h3> Your Data is: </h3>";
-            str += "Gender: " + data[0].Gender + "</br>";
-            str += "National: " + data[0].National + "</br>";
-            str += "Captain: " + data[0].Captain + "</br>";
-            str += "League: " + data[0].League + "</br>";
+            if (data[0].Gender==0)
+            //str += "Gender: " + data[0].Gender + "</br>";
+                str += "Gender: Female" + "</br>";
+            else
+                str += "Gender: Men" + "</br>";
+            if (data[0].National == 0)
+
+            //str += "National: " + data[0].National + "</br>";
+                str += "National: No " + "</br>";
+            else
+                str += "National: Yes " + "</br>";
+
+            if (data[0].Captain == 0)
+
+                //str += "National: " + data[0].National + "</br>";
+                str += "Captain in national team: No " + "</br>";
+            else
+                str += "Captain in national team: Yes " + "</br>";
+
+            //str += "Captain: " + data[0].Captain + "</br>";
+
+            if (data[0].League == 1)
+                str += "League: Other"  + "</br>";
+            else if (data[0].League == 2)
+                str += "League: A" + "</br>";
+            else if (data[0].League == 3)
+                str += "League: Leumit" + "</br>";
+
+            else str += "League: First" + "</br>";
+
+
+
+            //str += "League: " + data[0].League + "</br>";
             str += "Championships: " + data[0].Champions + "</br>";
             str += "Cups: " + data[0].Cups + "</br>";
             str += "Position: " + data[0].Position + "</br>";
             str += "TOFEL: " + data[0].Tofel + "</br>";
             str += "SAT: " + data[0].Sat + "</br>";
             str += "GPA: " + data[0].Gpa + "</br>";
+
 
 
             let numberAcademic = (((data[0].Tofel + data[0].GPA) * 100 + data[0].Sat) ^ 0.4) * 0.4;
@@ -732,25 +771,28 @@
             else TotalNumber;
 
 
+
+
             document.getElementById("data").innerHTML = str;
-
-
-
-            calculateAlgo(TotalNumber)
-        }
-
-        var numberPro = 0;
-        var numberAcademic = 0;
-        var arr = "";
-        function calculateAlgo(TotalNumber) {
-            //   alert("in calculate")
-
-            //  alert(TotalNumber);
-
             document.getElementById("calculate").innerHTML = "<h4 id='nbr'>" + TotalNumber + "% </h4>";
 
 
+
+        //    calculateAlgo(TotalNumber)
         }
+
+        //var numberPro = 0;
+        //var numberAcademic = 0;
+        //var arr = "";
+        //function calculateAlgo(TotalNumber) {
+        //    //   alert("in calculate")
+
+        //    //  alert(TotalNumber);
+
+        //    document.getElementById("calculate").innerHTML = "<h4 id='nbr'>" + TotalNumber + "% </h4>";
+
+
+        //}
 
 
 
@@ -809,58 +851,7 @@
         }
     </script>
 
-    <!--<script>
-
-
-        var speed = 10;
-
-        function hideb() {
-            $("#b").hide();
-            var x = document.getElementById("calculate");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-            incNbr();
-        }
-
-
-
-        /* Call this function with a string containing the ID name to
-         * the element containing the number you want to do a count animation on.*/
-        function incEltNbr(id) {
-            elt = document.getElementById(id);
-            endNbr = Number(document.getElementById(id).innerHTML);
-            incNbrRec(0, endNbr, elt);
-        }
-
-        /*A recursive function to increase the number.*/
-        function incNbrRec(i, endNbr, elt) {
-            if (i <= endNbr) {
-                elt.innerHTML = i;
-                setTimeout(function () {//Delay a bit before calling the function again.
-                    incNbrRec(i + 1, endNbr, elt);
-                }, speed);
-            }
-        }
-
-
-
-        /*Function called on button click*/
-        function incNbr() {
-            incEltNbr("nbr");
-        }
-
-        incEltNbr("nbr"); /*Call this funtion with the ID-name for that element to increase the number within*/
-
-
-
-
-
-    </script>-->
-
-
+  
 </head>
 <body>
     <meta name="viewport" content="width=device-width, user-scalable=no" />
@@ -940,25 +931,24 @@
 
 
     <br /><br />    <br /><br />
+
     <div id="intro">     </div>
     <div id="data"></div>
+
     <br /><br /><br />
-    <div id="calculate">
 
-    </div>
-
-
+    <div id="calculate">   </div>
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
-
-    <button id="b">Click here to find!</button>
+    <button id="b" onclick="show()">Click here to find!</button>
+    <br />   <br />   <br /><br />
+    <button id="b" onclick="SmartAlgo()" style="float:left">Have incorecct data? Click here to change</button>
 
     <div id="predict">
         <p id="nbr"></p>
 
     </div>
-    <!--<button id="b" onclick="incNbr()">Play Again</button>-->
 
 
 

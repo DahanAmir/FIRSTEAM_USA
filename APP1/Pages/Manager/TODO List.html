@@ -865,16 +865,21 @@
         }
 
         function deleteElement(event) {
-            var idOfEltToBeDeleted = event.target.parentElement.id;
-            var arrayIndex = todoList.findIndex(function (singleTodo) {
-                return singleTodo.id === idOfEltToBeDeleted;
-            });
-            if (arrayIndex !== -1) {
-                todoList.splice(arrayIndex, 1);
-            }
-            load(todoList);
-        }
 
+            var result = confirm("Want to delete?");
+            if (result) {
+
+                var idOfEltToBeDeleted = event.target.parentElement.id;
+                var arrayIndex = todoList.findIndex(function (singleTodo) {
+                    return singleTodo.id === idOfEltToBeDeleted;
+                });
+                if (arrayIndex !== -1) {
+                    todoList.splice(arrayIndex, 1);
+                }
+                load(todoList);
+            }
+
+        }
         function displayOneElement(todoObject) {
             var li_element = document.createElement("li");
             var p_element = document.createElement("p");
