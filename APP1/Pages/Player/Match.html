@@ -32,11 +32,37 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
-   
 
-  
+
+
     <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+            #myBtn:hover {
+                background-color: #555;
+            }
+    </style>
     <style type="text/css">
 
         .btn-group button {
@@ -827,7 +853,7 @@
         function editBtn_Function(id) {
             var item
             for (i = 0; i < universityss.length; i++) { //כל פעם שנלחץ לשמור נעבור על כל התכונות ונראה מי 0 מי 1
-                if (universityss[i].id==id) {
+                if (universityss[i].id == id) {
 
                     item = {
                         Id: universityss[i].id,
@@ -939,6 +965,29 @@
 
 
     </script>
+
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
 
     <script>
         var number
@@ -1089,38 +1138,12 @@
                     api_District = api_District + ',' + data[i].Id
                 }
             }
-            MYDistrict = api_District+"&"
-         
+            MYDistrict = api_District + "&"
+
             let api_Locale = "../../api/UsersLocale/" + email + "/get_all_Locale";
             ajaxCall("Get", api_Locale, "", successLocale, errorLocale)
 
         }
-
-        //function errorState(data) {
-        //    alert("ErrorDState")
-        //}
-        //function successState(data) {
-
-        //    MYStates = data
-        //    // console.log(data);
-        //    if (data.length == 0 || data.length == 57)
-        //        api_State = "";
-        //    else {
-        //        api_State = "school.state_fips=" + data[0].Id
-        //        for (var i = 1; i < data.length; i++) {
-        //            api_State = api_State + ',' + data[i].Id
-        //        }
-        //        api_State = api_State + '&'
-        //    }
-        //    MYStates = api_State
-        //    if (countime == 4)
-        //        alert('Your Results are ready! Click Show Results button');
-        //      //  document.getElementById("null").innerHTML = "";
-
-        //    else {
-        //        countime = countime + 1
-        //    }
-        //}
 
         function errorLocale(data) {
             alert("ErrorLocale")
@@ -1134,10 +1157,10 @@
                 for (var i = 1; i < data.length; i++) {
                     arapi_Locale = api_Locale + ',' + data[i].Id
                 }
-                api_Locale = api_Locale 
+                api_Locale = api_Locale
             }
             MYLocale = api_Locale
-          
+
             let api_fav = "../../api/Favorites/" + email + "/get_all_Favorites"
             ajaxCall("Get", api_fav, "", successFavorites, errorFavorites)
         }
@@ -1149,19 +1172,19 @@
             alert("ErrorAll")
         }
         function successFavorites(data) {
-           
-            if (data.PriceMAX || data.PriceMAX>0) {
-          
+
+            if (data.PriceMAX || data.PriceMAX > 0) {
+
                 PriceMax = data.PriceMAX
-                PriceMaxAPI = "2018.cost.tuition.out_of_state__range=0.." + data.PriceMAX + "&" ;
+                PriceMaxAPI = "2018.cost.tuition.out_of_state__range=0.." + data.PriceMAX + "&";
             }
             else
                 PriceMaxAPI = '';
 
 
-            if (data.UniversityType=="" || data.UniversityTypeAPI=="1,2,3") {
+            if (data.UniversityType == "" || data.UniversityTypeAPI == "1,2,3") {
                 UniversityTypeAPI = ''
-               
+
 
             }
             else {
@@ -1173,15 +1196,15 @@
             if (data.Sat) {
 
                 Sat = data.Sat
-                SatAPI = "2018.admissions.sat_scores.average.overall__range=0.." + data.Sat + "&" ;
+                SatAPI = "2018.admissions.sat_scores.average.overall__range=0.." + data.Sat + "&";
             }
             else
                 SatAPI = '';
 
-            if (data.UniversitySize || data.UniversitySize>5) {
+            if (data.UniversitySize || data.UniversitySize > 5) {
 
                 UniversitySize = data.UniversitySize
-                UniversitySizeAPI = "2018.student.size__range=0.." + data.UniversitySize + "&" ;
+                UniversitySizeAPI = "2018.student.size__range=0.." + data.UniversitySize + "&";
             }
             else
                 UniversitySizeAPI = '';
@@ -1192,14 +1215,14 @@
         function rend(numberofpage) {
             if (numberofpage == -1) {
                 api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&";
-                numberofpage=2
+                numberofpage = 1
 
             }
             else {
                 api_head = "https://api.data.gov/ed/collegescorecard/v1/schools.json?per_page=100&page=" + numberofpage + "&";
-                numberofpage = numberofpage+1
+                numberofpage = numberofpage + 1
             }
-      
+
             api_All = api_head + MYDistrict + MYLocale + UniversityTypeAPI + PriceMaxAPI + UniversitySizeAPI + SatAPI + api_tail;
 
             $.get(api_All, function (data) {
@@ -1208,7 +1231,14 @@
                 if (data.metadata.total == 0) {
                     alert('We could not find university that match your request, please change your favorites');
                 }
-                page = parseInt(data.metadata.total / 100)
+                if (data.metadata.total % 100)
+                    page =data.metadata.total
+
+                    else {
+                    page = parseInt(data.metadata.total / 100) + 1
+
+                }
+
                 console.log(data);
                 api_All = data;
                 let str = '';
@@ -1216,9 +1246,9 @@
                 let ownership
                 let cost
                 for (var i = 0; i < data.results.length; i++) {
-                   
-                    
-                  
+
+
+
                     flag = 0
                     for (var j = 0; j < JSON_ncaa.length; j++) {
                         if (JSON_ncaa[j].Full_School_Name == data.results[i]["school.name"] || JSON_ncaa[j].School == data.results[i]["school.name"]) {
@@ -1229,10 +1259,10 @@
                             j = JSON_ncaa.length;
                         }
                     }
-                  
+
                 }
 
-                if (numberofpage == 2) {
+                if (numberofpage == 1) {
                     universityss = data.results
 
                 }
@@ -1241,7 +1271,7 @@
                         universityss.push(data.results[i])
                     }
                 }
-                if (numberofpage >= page || numberofpage>=3) {
+                if (numberofpage >= page || numberofpage >= 3) {
                     addtoDataTable(universityss)
 
                 }
@@ -1249,15 +1279,15 @@
                     rend(numberofpage)
 
                 }
-            //}
-                
-            //    else {   addtoDataTable(universityss) }
+                //}
+
+                //    else {   addtoDataTable(universityss) }
 
             })
         }
 
         function addtoDataTable(univ) {
-            universityss = univ 
+            universityss = univ
             try {
                 tbl = $('#campaignsTable').DataTable({
                     data: universityss,
@@ -1309,8 +1339,13 @@
 
                         {
                             data: function (jsonDate) {
-                                d = jsonDate["2018.cost.tuition.out_of_state"] + '$'
-                                return d
+                                if (jsonDate["2018.cost.tuition.out_of_state"]) {
+                                    d = jsonDate["2018.cost.tuition.out_of_state"] + '$'
+                                    return d
+                                }
+                                return null
+
+                              
                             }
                         },
                         {
@@ -1321,7 +1356,7 @@
                         },
                         {
                             data: function (jsonDate) {
-                                d=null
+                                d = null
                                 if (jsonDate["Division"] == 1) {
                                     d = "One"
                                 } if (jsonDate["Division"] == 2) {
@@ -1333,19 +1368,13 @@
                         {
                             data: function (jsonDate) {
                                 if (jsonDate["Rank"] > 0) {
-                                    d = jsonDate["Rank"] +"th"
+                                    d = jsonDate["Rank"] + "th"
                                     return d
                                 }
                                 return null
 
                             }
-                        }, {
-                            data: function (jsonDate) {
-                                return jsonDate["school.school_url"]
-
-
-                            }
-                        },
+                        }, 
                     ],
                 });
 
@@ -1454,6 +1483,8 @@
 
     <div id="null"></div>
     <div id="card">
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
         <div class="container">
             <table id="campaignsTable" class="display" style="width:100%">
                 <thead>
@@ -1463,11 +1494,10 @@
                         <th>Student Number</th>
                         <th>City</th>
                         <th>State</th>
-                        <th>Cost Tuition</th>
+                        <th>Cost</th>
                         <th>SAT</th>
-                        <th>Division</th>
+                        <th>Div</th>
                         <th>Rank</th>
-                        <th>URL</th>
                     </tr>
                 </thead>
 
@@ -1486,6 +1516,6 @@
         </div>
     </div>
 
-
+    
 </body>
 </html>
