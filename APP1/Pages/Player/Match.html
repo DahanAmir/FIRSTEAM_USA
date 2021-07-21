@@ -1080,8 +1080,7 @@
             alert("ErrorDistrict")
         }
         function successDistrict(data) {
-
-            MYDistrict
+            var api_District
             if (data.length == 0 || data.length == 8)
                 api_District = "";
             else {
@@ -1089,16 +1088,9 @@
                 for (var i = 1; i < data.length; i++) {
                     api_District = api_District + ',' + data[i].Id
                 }
-                api_District = api_District 
             }
-            MYDistrict = api_District
-            if (countime == 4)
-                alert('Your Results are ready! Click Show Results button');
-            // document.getElementById("null").innerHTML = "";
-
-            else {
-                countime = countime + 1
-            }
+            MYDistrict = api_District+"&"
+         
             let api_Locale = "../../api/UsersLocale/" + email + "/get_all_Locale";
             ajaxCall("Get", api_Locale, "", successLocale, errorLocale)
 
@@ -1145,13 +1137,7 @@
                 api_Locale = api_Locale 
             }
             MYLocale = api_Locale
-            if (countime == 4)
-                alert('Your Results are ready! Click Show Results button');
-            // document.getElementById("null").innerHTML = "";
-
-            else {
-                countime = countime + 1
-            }
+          
             let api_fav = "../../api/Favorites/" + email + "/get_all_Favorites"
             ajaxCall("Get", api_fav, "", successFavorites, errorFavorites)
         }
@@ -1164,23 +1150,23 @@
         }
         function successFavorites(data) {
            
-            if (data.PriceMax || data.PriceMax>0) {
+            if (data.PriceMAX || data.PriceMAX>0) {
           
-                PriceMax = data.PriceMax
-                PriceMaxAPI = "2018.cost.tuition.out_of_state__range=0.." + data.PriceMax + "&" ;
+                PriceMax = data.PriceMAX
+                PriceMaxAPI = "2018.cost.tuition.out_of_state__range=0.." + data.PriceMAX + "&" ;
             }
             else
                 PriceMaxAPI = '';
 
 
-            if (data.UniversityType=="" && data.UniversityTypeAPI!="1,2,3") {
-                
-                UniversityType = data.UniversityType
-                UniversityTypeAPI = "school.ownership=" + data.UniversityType + "&"
+            if (data.UniversityType=="" || data.UniversityTypeAPI=="1,2,3") {
+                UniversityTypeAPI = ''
+               
 
             }
             else {
-                UniversityTypeAPI = ''
+                UniversityType = data.UniversityType
+                UniversityTypeAPI = "school.ownership=" + data.UniversityType + "&"
             }
 
 
@@ -1226,93 +1212,52 @@
                 console.log(data);
                 api_All = data;
                 let str = '';
-                //str += "<table id='customers' class='table' class='header'>";
-                //str += "<thead><tr>";
-                //str += "<th >School name</th>";
-                //str += "<th >School Website </th>";
-                //str += "<th> School ID </th>";
-                //str += "<th> city </th>";
-                //str += "<th>Ownership</th>";
-                ////str += "<th> Region </th> ";
-                //str += "<th> State </th>";
-                //str += "<th> Cost </th>";
-                //str += "<th> Size </th>";
-                //str += "<th> SAT </th>";
-                //str += "<th> Rank </th>";
-                //str += "<th> Div </th>";
-                //str += "<th> WishList </th>";
-                //str += "</tr></thead>";
-                //str += " <tbody>";
+
                 let ownership
                 let cost
                 for (var i = 0; i < data.results.length; i++) {
-                    if (data.results[i]["school.ownership"] == 1)
-                        ownership = 'Public'
-                    else {
-                        ownership = 'Private'
-                    }
-                    if (data.results[i]["2018.cost.tuition.out_of_state"] > 1) {
-                        cost = data.results[i]["2018.cost.tuition.out_of_state"] + '$'
-
-                    }
-                    else {
-                        cost = 'null'
-                    }
-                    //str += "<tr>";
-                    //str += "<td>" + data.results[i]["school.name"] + "</td>";
-                    //str += "<td><a href=" + data.results[i]["school.school_url"] + ">" + data.results[i]["school.school_url"] + "</a></td>";
-                    //str += "<td>" + data.results[i].id + "</td>";
-                    //str += "<td>" + data.results[i]["school.city"] + "</td>";
-                    //str += "<td>" + ownership + "</td>";
-                    //str += "<td> " + data.results[i]["school.region_id"] +                                                           "</td>";
-                    //str += "<td> " + data.results[i]["school.state"] + "</td>";
-                    //str += "<td> " + cost + "</td>";
-                    //str += "<td> " + data.results[i]["2018.student.size"] + "</td>";
-                    //str += "<td> " + data.results[i]["2018.admissions.sat_scores.average.overall"] + "</td>";
+                   
+                    
+                  
                     flag = 0
                     for (var j = 0; j < JSON_ncaa.length; j++) {
                         if (JSON_ncaa[j].Full_School_Name == data.results[i]["school.name"] || JSON_ncaa[j].School == data.results[i]["school.name"]) {
                             flag = 1
-                            str += "<td> " + JSON_ncaa[j]["Adj. RPI"] + "</td>";
-                            str += "<td> " + JSON_ncaa[j].Division + "</td>";
+
                             data.results[i].Division = JSON_ncaa[j].Division
                             data.results[i].Rank = JSON_ncaa[j]["Adj. RPI"]
                             j = JSON_ncaa.length;
                         }
                     }
-                    //if (flag == 0) {
-                    //    str += "<td> " + "null" + "</td>";
-                    //    str += "<td> " + "null" + "</td>";
-                    //}
-                    //str += "<td> " + "<label> <input type='checkbox' id='" + data.results[i].id + "' class='radio' value='" + data.results[i]["school.name"] + "'/></label>" + "</td>";
+                  
                 }
-                str += "</tr></tbody></table>  </div> ";
 
+                if (numberofpage == 2) {
+                    universityss = data.results
 
-       
-          
-                  universityss = data.results
-                //else {
-                //    universityss.push(data.results)
-                //}
+                }
+                else {
+                    for (var i = 0; i < data.results.length; i++) {
+                        universityss.push(data.results[i])
+                    }
+                }
+                if (numberofpage >= page || numberofpage>=3) {
+                    addtoDataTable(universityss)
 
+                }
+                else {
+                    rend(numberofpage)
 
-
-                //if (parseInt(numberofpage) < parseInt(page) || numberofpage<5 )
-                //{ 
-                addtoDataTable(universityss)
+                }
             //}
                 
             //    else {   addtoDataTable(universityss) }
 
             })
-
-
-
         }
 
         function addtoDataTable(univ) {
-            universityss = univ
+            universityss = univ 
             try {
                 tbl = $('#campaignsTable').DataTable({
                     data: universityss,
@@ -1376,17 +1321,19 @@
                         },
                         {
                             data: function (jsonDate) {
-                                if (jsonDate["Division"] > 0) {
-                                    d = jsonDate["Division"]
-                                    return d
+                                d=null
+                                if (jsonDate["Division"] == 1) {
+                                    d = "One"
+                                } if (jsonDate["Division"] == 2) {
+                                    d = "Two"
                                 }
-                                return null
+                                return d
                             }
                         },
                         {
                             data: function (jsonDate) {
                                 if (jsonDate["Rank"] > 0) {
-                                    d = jsonDate["Rank"]
+                                    d = jsonDate["Rank"] +"th"
                                     return d
                                 }
                                 return null
