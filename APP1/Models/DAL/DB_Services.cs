@@ -704,7 +704,7 @@ namespace APP1.Models.DAL
             {
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
 
-                String selectSTR = "select * from UsersToDoList where email='" + email+ "' and active=1" ;
+                String selectSTR = "select * from UsersToDoList where email='" + email+ "' and active=1 order by DueDate asc";
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader

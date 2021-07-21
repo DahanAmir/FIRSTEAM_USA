@@ -1,1 +1,1 @@
-﻿select * FROM FileType
+﻿select * from UsersToDoList where email='shani@gmail.com' and active=1 order by DueDate asc 
