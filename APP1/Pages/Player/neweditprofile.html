@@ -601,6 +601,11 @@
     </style>
 
     <script>
+        function LogOut() {
+            localStorage.clear();
+            window.open('LogIn.html');
+            window.close();
+        }
         function SmartAlgo() {
             window.open('UsarDataQ.html')
         }

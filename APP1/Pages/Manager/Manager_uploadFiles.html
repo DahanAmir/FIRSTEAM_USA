@@ -831,7 +831,11 @@
         function connectasplayer() {
             window.open('Connectasplayer.html')
         }
-
+        function LogOut() {
+            localStorage.clear();
+            window.open('LogIn.html');
+            window.close();
+        }
 
     </script>
 
@@ -979,14 +983,22 @@
             <div id="navigator" style="width: 100%; float:left">
                 <ul class="nav" style="width: 100%; float:left">
                     <!--li>
-                        <a href="#" title=""> </a>
-                        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+        <a href="#" title=""> </a>
+        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
 
-                    </li>-->
+    </li>-->
                     <li style="width:450px">
                         <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
                     </li>
-                    <li><a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a></li>
+                    <!--<li><a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a></li>-->
+                    <li>
+                        <a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a>
+                        <ul>
+                            <li><a href="#" title="" onclick="LogOut()">Log Out</a></li>
+
+
+                        </ul>
+                    </li>
                     <li><a href="#" title="" onclick="ToDo()">To Do List</a></li>
 
                     <li>
@@ -1017,16 +1029,16 @@
                         </ul>
                     </li>
                     <!--<li>
-                        <a href="#" title="">Favorites</a>
-                        <ul>
-                            <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
-                            <li><a href="#" title="" onclick="ChangeLocale()">Change Locale</a></li>
-                            <li><a href="#" title="" onclick="ChangeFav()">Change Other Favorites</a></li>
-                            <li><a href="#" title="" onclick="ShowResults()">Show Results</a></li>
+        <a href="#" title="">Favorites</a>
+        <ul>
+            <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
+            <li><a href="#" title="" onclick="ChangeLocale()">Change Locale</a></li>
+            <li><a href="#" title="" onclick="ChangeFav()">Change Other Favorites</a></li>
+            <li><a href="#" title="" onclick="ShowResults()">Show Results</a></li>
 
-                        </ul>
+        </ul>
 
-                    </li>-->
+    </li>-->
                     <!--<li><a href="#" title="" onclick="Wishlist()">Show Wishlist</a></li>-->
                     <!--<li><a href="#" title="">Add to whishlist</a></li>-->
                     <!--<li><a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a></li>-->

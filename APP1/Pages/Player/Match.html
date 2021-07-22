@@ -850,6 +850,12 @@
 
         }
 
+        function LogOut() {
+            localStorage.clear();
+            window.open('LogIn.html');
+            window.close();
+        }
+
         function editBtn_Function(id) {
             var item
             for (i = 0; i < universityss.length; i++) { //כל פעם שנלחץ לשמור נעבור על כל התכונות ונראה מי 0 מי 1
@@ -1433,6 +1439,8 @@
                         <a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a>
                         <ul>
                             <li><a href="#" title="" onclick="EditProfileP()">Edit Profile</a></li>
+                            <li><a href="#" title="" onclick="LogOut()">Log Out</a></li>
+
 
 
                         </ul>

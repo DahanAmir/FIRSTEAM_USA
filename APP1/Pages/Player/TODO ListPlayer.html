@@ -684,6 +684,12 @@
             window.open('FileManeger.html')
         }
 
+        function LogOut() {
+            localStorage.clear();
+            window.open('LogIn.html');
+            window.close();
+        }
+
     </script>
     <script>
 
@@ -1204,6 +1210,8 @@
                         <a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a>
                         <ul>
                             <li><a href="#" title="" onclick="EditProfileP()">Edit Profile</a></li>
+                            <li><a href="#" title="" onclick="LogOut()">Log Out</a></li>
+
 
 
                         </ul>
