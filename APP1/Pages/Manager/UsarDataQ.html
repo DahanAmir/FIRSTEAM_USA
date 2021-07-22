@@ -619,8 +619,43 @@
             // activate a custom validation function when the element looses focus.
             //    $("#discountCodeTB").on("blur", checkCode);
             var email = localStorage.getItem("email")
-            document.getElementById("mail").innerHTML= "<h3> Youre email is: " + email + "</h3>"
+            //document.getElementById("mail").innerHTML = "<h3> Youre email is: " + email + "</h3>"
+            str1 = "users_show"
+            let api = "../../api/Users/" + str1 + "/Show_all_users";
+            ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
         });
+
+        function getSuccess(data) {
+
+            console.log(data);
+            rendusers(data);
+        }
+
+        function erroradd_list_r() {
+            alert("erroradd_list_r")
+        }
+
+
+        var arr = "";
+
+        function rendusers(data) {
+            //   alert("in rendusers")
+            arr += "<form>";
+            arr += "<h4>"
+            arr += "<label for='players'> Choose a Player: </label>";
+            arr += "</h4>"
+
+            arr += "<select id = 'players' >";
+            for (var i = 0; i < data.length; i++) {
+
+                arr += "<option value='" + data[i].Email + "' onclick='gemail(this.id)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
+
+            }
+
+            arr += "</select >";
+            arr += "<form>";
+            document.getElementById("Show").innerHTML = arr;
+        }
 
         function checkCode() {
             if (this.value % 3 != 0) { // an example of validation that the code divides by 3
@@ -668,12 +703,14 @@
 
         function AddData() { // הכנסת יוזר חדש
 
-       
+            var e = document.getElementById("players");
+            var email = e.value;
 
+            alert(email);
 
             let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
                 // FirstName: $("#nameTB").val(),
-                Email: localStorage.getItem("email"),
+                Email: email,
                 National: $("#NT").val(),
                 Cnational1: $("#CNT").val(),
                 League: $("#league").val(),
@@ -815,7 +852,6 @@
 
     <div id="intro">     </div>
 
-
     <div>
 
 
@@ -825,31 +861,36 @@
 
 
     <!--<a href="LogIn.html">Go Back To Home Page</a>-->
+
+<br /> <br />
+
+
     <div class="container" style="float:left">
         <form id="pForm">
-            <br /> <br />
+            <br />
 
             <!--<div class="form-group">
-                <label for="nameTB"><span class="red-star">★ </span>First Name</label>
-                <input type="text" class="form-control" id="nameTB" pattern="[A-Za-z].{1,10}" required oninvalid="this.setCustomValidity('Format should be max 10 char')"
-                       oninput="this.setCustomValidity('')" placeholder="Enter your name">
-            </div>-->
-
-            <div id="mail"></div>
+        <label for="nameTB"><span class="red-star">★ </span>First Name</label>
+        <input type="text" class="form-control" id="nameTB" pattern="[A-Za-z].{1,10}" required oninvalid="this.setCustomValidity('Format should be max 10 char')"
+               oninput="this.setCustomValidity('')" placeholder="Enter your name">
+    </div>-->
+            <!--<div id="mail"></div>-->
+            <div id="Show"></div>
+            <br />
 
             <!---------------מייייל------------>
             <!--<div class="form-group">
-                <label for="mailTB"><span class="red-star" required>★ </span>mail</label>
-                <input type="text" class="form-control" id="mailTB" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter the mail. Format should be: XXXX@XXXX." required />
-            </div>-->
+        <label for="mailTB"><span class="red-star" required>★ </span>mail</label>
+        <input type="text" class="form-control" id="mailTB" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter the mail. Format should be: XXXX@XXXX." required />
+    </div>-->
             <!--<div class="form-group">
-                <label for="user"><span class="red-star" required>★ </span>Gender</label><br />
-                <select id="Gender" name="leaveCode">
-                    <option value="999">Please Choose option</option>
-                    <option value="0">Male</option>
-                    <option value="1">Female</option>
-                </select>
-            </div>-->
+        <label for="user"><span class="red-star" required>★ </span>Gender</label><br />
+        <select id="Gender" name="leaveCode">
+            <option value="999">Please Choose option</option>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+        </select>
+    </div>-->
 
 
 
@@ -884,7 +925,7 @@
 
             <div>
                 <label for="champions">Champions Num:</label><br>
-                <input type="number" id="champions" name="champions" ><br>
+                <input type="number" id="champions" name="champions"><br>
             </div>
             <div>
                 <label for="cups">Cups Num:</label><br>
@@ -920,15 +961,10 @@
             </div>
 
 
-
-
-
-
-
-
             <br />
 
             <input type="submit" id="buttonUpload" value="Submit BTN" />
+
 
         </form>
 
