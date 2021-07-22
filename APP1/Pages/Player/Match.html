@@ -1291,7 +1291,12 @@
 
             })
         }
-
+        function openurl(url) {
+            var windowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
+            window.open('https://'+url, '_blank', windowFeatures)
+            //window.open('http://www.speedtest.net/', '_blank');
+            //window.open('www.speedtest.net/', '_blank');
+        }
         function addtoDataTable(univ) {
             universityss = univ
             try {
@@ -1311,8 +1316,11 @@
 
                                 let dataCampaign = "data-campaignId='" + row.Email + "'";
                                 ids = meta.row;
+
                                 editBtn = "<button type='button'  class = 'editBtn btn btn-edit'   id='" + row.id + "' onclick='editBtn_Function(id)'> Add To Wishlist </button>  ";
-                                deleteBtn = "<a href='https://" + row["school.school_url"] + "'> <button type='button'  class = 'deleteBtn btn btn-danger'  > To web </button>";
+                                deleteBtn = "<button type='button'  class = 'deleteBtn btn btn-danger'   id='" + row["school.school_url"] + "' onclick='openurl(id)'> To web </button>  ";
+
+                                //deleteBtn = "<button type='button' class='deleteBtn btn btn-danger' onclick='" + openurl(id) + "' id='" + row["school.school_url"] + "' > To web </button>";
                                 return editBtn + deleteBtn;
                             }
                         },

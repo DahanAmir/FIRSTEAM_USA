@@ -948,11 +948,10 @@
                         columns: [
                             {
                                 render: function (data, type, row, meta) {
-
                                     let dataCampaign = "data-campaignId='" + row.Email + "'";
                                     ids = meta.row;
                                     editBtn = "<button type='button'  class = 'editBtn btn btn-edit'   id='" + row.id + "' onclick='Delete_Function(id)'> Delete </button>  ";
-                                    deleteBtn = "<a href='https://" + row["school.school_url"] + "'> <button type='button'  class = 'deleteBtn btn btn-danger'  > To web </button>";
+                                    deleteBtn = "<button type='button'  class = 'deleteBtn btn btn-danger'   id='" + row["school.school_url"] + "' onclick='openurl(id)'> To web </button>  ";
                                     return editBtn + deleteBtn;
                                 }
                             },
@@ -1027,7 +1026,12 @@
 
         }
 
-
+        function openurl(url) {
+            var windowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
+            window.open('https://' + url, '_blank', windowFeatures)
+            //window.open('http://www.speedtest.net/', '_blank');
+            //window.open('www.speedtest.net/', '_blank');
+        }
     </script>
 
 

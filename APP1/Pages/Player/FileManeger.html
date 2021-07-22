@@ -595,7 +595,11 @@
     <script>
         $(document).ready(function () {
             //let email = localStorage.getItem("email")
-            let email = 'shdsadsfay@gmail.comdddd';
+            let email = localStorage.getItem("email");
+            if (email=='') {
+                alert('אנא התחבר מחדש');
+                location.window("LogIn.html")
+            }
             //let api = "../api/UsersFile/get_user/emailfile";
             let api = "../../api/UsersFile";
 
