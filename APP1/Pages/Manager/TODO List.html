@@ -747,7 +747,7 @@
         var numberOfPages = 0;
         var email = "";
         function newElement(Who) {
-            alert(Who);
+        //    alert(Who);
             var e 
             if (Who=='me') {
                 emailtosend = localStorage.getItem("email");
@@ -790,14 +790,14 @@
                     todo = todo + "  By " + inputDate
                 }
             }
-            var newTodoId = findNextId(),
-                newTodo = {
-                    'todo': todo,
-                    'id': 'todo' + newTodoId
-                };
-            //todoList.fill(newTodo);
-            todoList.push(newTodo);
-            //alert("reload")
+            //var newTodoId = findNextId(),
+            //    newTodo = {
+            //        'todo': todo,
+            //        'id': 'todo' + newTodoId
+            //    };
+            ////todoList.fill(newTodo);
+            //todoList.push(newTodo);
+            ////alert("reload")
 
        
 
@@ -813,10 +813,8 @@
 
             ajaxCall("Post", api, JSON.stringify(todoSave), successtodo, errortodo)
 
-
-            sortElementsById();
-            clearFields();
             location.reload();
+
 
             return false;
             emai
@@ -1042,7 +1040,7 @@
         }
 
         function erroradd_list_r(data) {
-            alert(data);
+          //  alert(data);
             alert("erroradd_list_r")
         }
 
