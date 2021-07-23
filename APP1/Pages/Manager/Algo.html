@@ -657,6 +657,37 @@
            window.close();
         }
 
+        var arr = "";
+
+        function rendusers(data) {
+            //   alert("in rendusers")
+            arr += "<form>";
+            arr += "<h4>"
+            arr += "<label for='players'> Choose a Player: </label>";
+            arr += "</h4>"
+
+            arr += "<select id = 'players' >";
+            for (var i = 0; i < data.length; i++) {
+
+                arr += "<option value='" + data[i].Email + "' onclick='gemail(this.id)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
+
+            }
+
+            arr += "</select >";
+            arr += "<form>";
+            document.getElementById("Show").innerHTML = arr;
+        }
+
+        function getSuccess(data) {
+
+            console.log(data);
+            rendusers(data);
+        }
+
+        function erroradd_list_r() {
+            alert("erroradd_list_r")
+        }
+
 
 
     </script>
@@ -670,6 +701,9 @@
             $("#nbr").hide();
             $("h4").hide();
             $("#b").show();
+            str1 = "users_show"
+            let api = "../../api/Users/" + str1 + "/Show_all_users";
+            ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
 
 
             $("#nbr").click(function () {
@@ -681,30 +715,30 @@
             var name = "";
             var email = localStorage.getItem("email")
             //var email = "adi@gmail.com";
-            let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
-                // FirstName: $("#nameTB").val(),
-                Email: email,
-            }
-            ajaxCall("Put", "../../api/UserData", JSON.stringify(u), successData, errorData);
-            name1 = email.split('@');
-            //  name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
-            document.getElementById("intro").innerHTML = name;
-            //   alert("email is: " + email);
-            GetUserDate()
+            //let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+            //    // FirstName: $("#nameTB").val(),
+            //    Email: email,
+            //}
+            //ajaxCall("Put", "../../api/UserData", JSON.stringify(u), successData, errorData);
+            //name1 = email.split('@');
+            ////  name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
+            //document.getElementById("intro").innerHTML = name;
+            ////   alert("email is: " + email);
+            //GetUserDate()
 
         });
 
 
-        function GetUserDate() {
+        //function GetUserDate() {
 
 
 
-        }
+        //}
 
         function successData(data) {
-            console.log(data)
-            //   alert("successData")
-            rend(data)
+            if (data)
+                rend(data)
+          else  alert('Please insert data for this player');
         }
 
 
@@ -720,6 +754,18 @@
         
 
         function rend(data) {
+
+            console.log(data)
+          
+
+            //for (var i = 0; i < data.length; i++) {
+
+            //    if (data[i].Email = emailtosend)
+            //        alert("true")
+
+            //}
+
+
             str += "<h3> Your Data is: </h3>";
             if (data[0].Gender==0)
             //str += "Gender: " + data[0].Gender + "</br>";
@@ -857,6 +903,28 @@
         function connectasplayer() {
             window.open('Connectasplayer.html')
         }
+
+        var emailtosend = "";
+        function savemail() {
+            var e = document.getElementById("players");
+            var emailtosend = e.value;
+
+            let u = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
+                // FirstName: $("#nameTB").val(),
+                Email: emailtosend,
+            }
+
+            alert(emailtosend);
+
+            ajaxCall("Put", "../../api/UserData", JSON.stringify(u), successData, errorData);
+            //name1 = email.split('@');
+            //  name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
+            //document.getElementById("intro").innerHTML = name;
+            //   alert("email is: " + email);
+            //GetUserDate()
+
+
+        }
     </script>
 
   
@@ -878,10 +946,10 @@
             <div id="navigator" style="width: 100%; float:left">
                 <ul class="nav" style="width: 100%; float:left">
                     <!--li>
-        <a href="#" title=""> </a>
-        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
+                        <a href="#" title=""> </a>
+                        <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
 
-    </li>-->
+                    </li>-->
                     <li style="width:450px">
                         <img src="https://static.wixstatic.com/media/8e2f85_921a5cb67d12433aaa378ae195ffe667~mv2.png/v1/fill/w_446,h_63,al_c,q_85,usm_0.66_1.00_0.01/shutterstock_7439920422-11.webp" alt="logo" class="logo">
                     </li>
@@ -890,7 +958,7 @@
                         <a href="#" title="" onclick="ManagerDashboard()">Manager Dashboard</a>
                         <ul>
                             <li><a href="#" title="" onclick="LogOut()">Log Out</a></li>
-                           
+
 
                         </ul>
                     </li>
@@ -928,16 +996,16 @@
                         </ul>
                     </li>
                     <!--<li>
-        <a href="#" title="">Favorites</a>
-        <ul>
-            <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
-            <li><a href="#" title="" onclick="ChangeLocale()">Change Locale</a></li>
-            <li><a href="#" title="" onclick="ChangeFav()">Change Other Favorites</a></li>
-            <li><a href="#" title="" onclick="ShowResults()">Show Results</a></li>
+                        <a href="#" title="">Favorites</a>
+                        <ul>
+                            <li><a href="#" title="" onclick="ChangeRegion()">Change Region</a></li>
+                            <li><a href="#" title="" onclick="ChangeLocale()">Change Locale</a></li>
+                            <li><a href="#" title="" onclick="ChangeFav()">Change Other Favorites</a></li>
+                            <li><a href="#" title="" onclick="ShowResults()">Show Results</a></li>
 
-        </ul>
+                        </ul>
 
-    </li>-->
+                    </li>-->
                     <!--<li><a href="#" title="" onclick="Wishlist()">Show Wishlist</a></li>-->
                     <!--<li><a href="#" title="">Add to whishlist</a></li>-->
                     <!--<li><a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a></li>-->
@@ -953,6 +1021,7 @@
     <br /><br />    <br /><br />
 
     <div id="intro">     </div>
+    <div id="Show" onchange="savemail()"></div>
     <div id="data"></div>
 
     <br /><br /><br />
