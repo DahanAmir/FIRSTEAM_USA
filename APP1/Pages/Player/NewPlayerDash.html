@@ -1405,118 +1405,11 @@
         var estimated_year = "";
 
 
-        $(document).ready(function () {
-            str = "users_show"
-            api = "../../api/Users/" + str + "/Show_all_users";
-            ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
-            name1 = email.split('@');
-            name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
-            //document.getElementById("intro").innerHTML = name;
-            str1 = "users_show"
-            api = "../../api/Users/" + str1 + "/Show_all_users";
-            ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
-            stodo();
-            $('#qrIos').qrcode({
-                width: 200,
-                height: 200,
-                text: "iOS_URL_HERE"
-            });
-            $('#qrAndroid').qrcode({
-                width: 200,
-                height: 200,
-                text: "DROID_URL_HERE"
-            });
-            $('#qrWeb').qrcode({
-                width: 200,
-                height: 200,
-                text: "WINDOWS_URL_HERE"
-            });
-
-
-            // email = "adi@gmail.com";
-            str = "users_show"
-            api = "../../api/Users/" + str + "/Show_all_users";
-            ajaxCall("GET", api, "", sucessget, errorget)
-
-        });
+      
        
 
 
-        function sucessget(data) {
-            console.log(data);
-            //  alert("sucessget")
-
-            let email = localStorage.getItem("email");
-            // alert(email);
-
-            var est = "";
-            for (var i = 0; i < data.length; i++)
-
-                if (data[i].Email == email)
-                    estimated_year = data[i].EstimatedYear
-            console.log(estimated_year)
-            //     else alert("Null");
-
-            est = estimated_year.split("T");
-            var date = est[0];
-
-            var dd = date.split("-")
-            var day = dd[2];
-            var month = dd[1];
-            var year = dd[0];
-
-            // alert("date is is: " +year+ " " + month+ " " +day)
-
-
-            var newd = new Date(year, month - 1, day).getTime();
-
-            // alert("newd is: " + newd)
-
-            // countdown
-            let timer = setInterval(function () {
-
-                // get today's date
-                //  const today = new Date().getTime();
-
-
-                var today = new Date().getTime();
-
-
-
-                //var dd = today.getDate();
-                //var mm = today.getMonth() + 1; //January is 0!
-                //var yyyy = today.getFullYear();
-
-                //today = new Date(yyyy + ',' + mm + ',' + dd).getTime();
-
-
-                // get the difference
-                let diff;
-
-                diff = newd - today;
-
-                // math
-                let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                // display
-                document.getElementById("timer").innerHTML =
-                    "<div class=\"days\"> \
-              <div class=\"numbers\">" + days + "</div>days</div> \
-<div class=\"hours\"> \
-              <div class=\"numbers\">" + hours + "</div>hours</div> \
-<div class=\"minutes\"> \
-              <div class=\"numbers\">" + minutes + "</div>minutes</div> \
-<div class=\"seconds\"> \
-              <div class=\"numbers\">" + seconds + "</div>seconds</div> \
-</div>";
-
-            }, 1000);
-
-        }
-
+//       
 
         function errorget() {
             alert("errorget")
@@ -1534,32 +1427,32 @@
             alert(data);
 
         }
-        function getSuccess(list_users) { //הכנסת נתונים מהשרת לטבלה
-            var Register = null
-            var BirthDay1 = 'null'
-            localStorage.setItem('list_users', list_users)
-            users = list_users;
-            let email = localStorage.getItem("email")
+        //function getSuccessbio(list_users) { //הכנסת נתונים מהשרת לטבלה
+        //    var Register = null
+        //    var BirthDay1 = 'null'
+        //    localStorage.setItem('list_users', list_users)
+        //    users = list_users;
+        //    let email = localStorage.getItem("email")
 
-            for (var i = 0; i < list_users.length; i++) {
-                if (email == list_users[i].Email) {
-                    if (users[i].Register) { Register1 = users[i].Register.split('T00:00:00') }
-                    if (users[i].BirthDay) { BirthDay1 = users[i].BirthDay.split('T00:00:00') }
-                    if (users[i].EstimatedYear) { EstimatedYear1 = users[i].EstimatedYear.split('T00:00:00') }
-                    $("#Email")[0].innerHTML = '<p id="Email"><span> Email </span>: ' + users[i].Email + "</p>"
+        //    for (var i = 0; i < list_users.length; i++) {
+        //        if (email == list_users[i].Email) {
+        //            if (users[i].Register) { Register1 = users[i].Register.split('T00:00:00') }
+        //            if (users[i].BirthDay) { BirthDay1 = users[i].BirthDay.split('T00:00:00') }
+        //            if (users[i].EstimatedYear) { EstimatedYear1 = users[i].EstimatedYear.split('T00:00:00') }
+        //            $("#Email")[0].innerHTML = '<p id="Email"><span> Email </span>: ' + users[i].Email + "</p>"
 
-                    $("#Firstname")[0].innerHTML = '<p id="Firstname"><span>First Name </span>: ' + list_users[i].FirstName + "</p>"
-                    $("#Lasttname")[0].innerHTML = '<p id="Lasttname"><span>Last Name </span>: ' + list_users[i].LastName + "</p>"
-                    $("#Sex")[0].innerHTML = '<p id="Sex"><span>Sex </span>: ' + list_users[i].Sex + "</p>"
-                    $("#Position")[0].innerHTML = '<p id="Position"><span>Position </span>: ' + list_users[i].Position + "</p>"
-                    $("#Address")[0].innerHTML = '<p id="Address"><span>Address </span>: ' + list_users[i].Address + "</p>"
-                    $("#Register")[0].innerHTML = '<p id="Register"><span> Register </span>: ' + Register1[0] + "</p>"
-                    $("#EstimatedYear")[0].innerHTML = '<p id="BirthDay"><span>Estimated Year </span>: ' + EstimatedYear1[0] + "</p>"
-                    $("#BirthDay")[0].innerHTML = '<p id="BirthDay"><span> BirthDay </span>: ' + BirthDay1[0] + "</p>"
-                    $("#header")[0].innerText = 'Welcome back ' + list_users[i].LastName + ' ' + list_users[i].FirstName
-                }
-            }
-        }
+        //            $("#Firstname")[0].innerHTML = '<p id="Firstname"><span>First Name </span>: ' + list_users[i].FirstName + "</p>"
+        //            $("#Lasttname")[0].innerHTML = '<p id="Lasttname"><span>Last Name </span>: ' + list_users[i].LastName + "</p>"
+        //            $("#Sex")[0].innerHTML = '<p id="Sex"><span>Sex </span>: ' + list_users[i].Sex + "</p>"
+        //            $("#Position")[0].innerHTML = '<p id="Position"><span>Position </span>: ' + list_users[i].Position + "</p>"
+        //            $("#Address")[0].innerHTML = '<p id="Address"><span>Address </span>: ' + list_users[i].Address + "</p>"
+        //            $("#Register")[0].innerHTML = '<p id="Register"><span> Register </span>: ' + Register1[0] + "</p>"
+        //            $("#EstimatedYear")[0].innerHTML = '<p id="BirthDay"><span>Estimated Year </span>: ' + EstimatedYear1[0] + "</p>"
+        //            $("#BirthDay")[0].innerHTML = '<p id="BirthDay"><span> BirthDay </span>: ' + BirthDay1[0] + "</p>"
+        //            $("#header")[0].innerText = 'Welcome back ' + list_users[i].LastName + ' ' + list_users[i].FirstName
+        //        }
+        //    }
+        //}
     </script>
 
     <script>
@@ -1709,35 +1602,13 @@
 
 
         
-        //function getSuccess(data) {
-        //    alert("in sucess");
-        //    console.log(data);
-        //    rendusers(data);
-        //}
+      
 
         function erroradd_list_r() {
             alert("erroradd_list_r")
         }
 
 
-        //function rendusers(data) {
-        // //   alert("in rendusers")
-        //    arr += "<form>";
-        //    arr += "<h4>"
-        //    arr += "<label for='players'> Choose a Player:</label>";
-        //    arr += "</h4>"
-
-        //    arr += "<select id = 'players' >";
-        //    for (var i = 0; i < data.length; i++) {
-
-        //        arr += "<option value='" + data[i].Email + "' onclick='gemail(this.id)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
-
-        //    }
-
-        //    arr += "</select >";
-        //    arr += "<form>";
-        //    document.getElementById("Show").innerHTML = arr;
-        //}
 
         function send() {
 
@@ -1831,19 +1702,140 @@
         //email
 
         var str = "";
-        //$(document).ready(function () {
-        //    str = "users_show"
-        //    let api = "../api/Users/" + str + "/Show_all_users";
-        //    ajaxCall("GET", api, str, getSuccess, erroradd_list_r1)
+     
+        $(document).ready(function () {
+            //str = "users_show"
+            //api = "../../api/Users/" + str + "/Show_all_users";
+            //ajaxCall("GET", api, "", sucessget, errorget)
+
+            str = "users_show"
+            api = "../../api/Users/" + str + "/Show_all_users";
+            ajaxCall("GET", api, str, getSuccess, erroradd_list_r)
+            name1 = email.split('@');
+            name = "<h2 style='border: 2px'> Hello " + name1[0] + ", </h2>";
+        
+            stodo();
+            $('#qrIos').qrcode({
+                width: 200,
+                height: 200,
+                text: "iOS_URL_HERE"
+            });
+            $('#qrAndroid').qrcode({
+                width: 200,
+                height: 200,
+                text: "DROID_URL_HERE"
+            });
+            $('#qrWeb').qrcode({
+                width: 200,
+                height: 200,
+                text: "WINDOWS_URL_HERE"
+            });
 
 
+            // email = "adi@gmail.com";
+           
 
-        //});
-
+        });
         function getSuccess(data) {
+            let email = localStorage.getItem("email");
+            var est = "";
+            for (var i = 0; i < data.length; i++)
 
-            console.log(data);
-            rendusers(data);
+                if (data[i].Email == email)
+                    estimated_year = data[i].EstimatedYear
+            console.log(estimated_year)
+            //     else alert("Null");
+
+            est = estimated_year.split("T");
+            var date = est[0];
+
+            var dd = date.split("-")
+            var day = dd[2];
+            var month = dd[1];
+            var year = dd[0];
+
+
+
+            var newd = new Date(year, month - 1, day).getTime();
+
+
+            let timer = setInterval(function () {
+
+
+
+                var today = new Date().getTime();
+
+
+
+
+                let diff;
+
+                diff = newd - today;
+
+                // math
+                let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                // display
+                document.getElementById("timer").innerHTML =          "<div class=\"days\"> \
+              <div class=\"numbers\">" + days + "</div>days</div> \
+<div class=\"hours\"> \
+              <div class=\"numbers\">" + hours + "</div>hours</div> \
+<div class=\"minutes\"> \
+              <div class=\"numbers\">" + minutes + "</div>minutes</div> \
+<div class=\"seconds\"> \
+              <div class=\"numbers\">" + seconds + "</div>seconds</div> \
+</div>";
+
+            }, 1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //rendusers(data);
+
+            var Register = null
+            var BirthDay1 = 'null'
+            users = data;
+            let email = localStorage.getItem("email")
+
+            for (var i = 0; i < users.length; i++) {
+                if (email == users[i].Email) {
+                    if (users[i].Register) { Register1 = users[i].Register.split('T00:00:00') }
+                    if (users[i].BirthDay) { BirthDay1 = users[i].BirthDay.split('T00:00:00') }
+                    if (users[i].EstimatedYear) { EstimatedYear1 = users[i].EstimatedYear.split('T00:00:00') }
+                    $("#Email")[0].innerHTML = '<p id="Email"><span> Email </span>: ' + users[i].Email + "</p>"
+
+                    $("#Firstname")[0].innerHTML = '<p id="Firstname"><span>First Name </span>: ' + users[i].FirstName + "</p>"
+                    $("#Lasttname")[0].innerHTML = '<p id="Lasttname"><span>Last Name </span>: ' + users[i].LastName + "</p>"
+                    $("#Sex")[0].innerHTML = '<p id="Sex"><span>Sex </span>: ' + users[i].Sex + "</p>"
+                    $("#Position")[0].innerHTML = '<p id="Position"><span>Position </span>: ' + users[i].Position + "</p>"
+                    $("#Address")[0].innerHTML = '<p id="Address"><span>Address </span>: ' + users[i].Address + "</p>"
+                    $("#Register")[0].innerHTML = '<p id="Register"><span> Register </span>: ' + Register1[0] + "</p>"
+                    $("#EstimatedYear")[0].innerHTML = '<p id="BirthDay"><span>Estimated Year </span>: ' + EstimatedYear1[0] + "</p>"
+                    $("#BirthDay")[0].innerHTML = '<p id="BirthDay"><span> BirthDay </span>: ' + BirthDay1[0] + "</p>"
+                    $("#header")[0].innerText = 'Welcome back ' + users[i].LastName + ' ' + users[i].FirstName
+                    i=users.length
+                }
+            }
+
+
+
         }
 
         function erroradd_list_r1() {
@@ -2032,7 +2024,7 @@
                         <a href="#" title="" onclick="PlayerDashboard()">Player Dashboard</a>
                         <ul>
                             <li><a href="#" title="" onclick="EditProfileP()">Edit Profile</a></li>
-                            <li><a href="#" title="" onclick="LogOut()">Log Out</a></li>
+                                                        <li><a href="#" title="" onclick="LogOut()">Log Out</a></li>
 
 
 

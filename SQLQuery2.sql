@@ -1,1 +1,1 @@
-﻿select * from UserData where email='maayanb@gmail.com'
+﻿select * from Users

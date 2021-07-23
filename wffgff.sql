@@ -1,4 +1,2 @@
-﻿select * from UsersToDoList
-
-
-
+﻿
+select * from users

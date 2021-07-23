@@ -752,6 +752,7 @@
             var e = document.getElementById("players");
             emailtosend = e.value
 
+
             var name = e.value;
             var n = name.split("@");
             inputUser = n[0];
@@ -1052,6 +1053,7 @@
             arr += "</select >";
             arr += "<form>";
             document.getElementById("user").innerHTML = arr;
+            alert("dsfds");
 
 
         }
@@ -1274,10 +1276,10 @@
             </div>
 
             <div id="user"> </div>
-            <!--<div class="form-group">
+            <div class="form-group">
                 <label for="usr">Who should do it:</label>
                 <input type="text" id="user" class="form-control" placeholder="Add a user...">
-            </div>-->
+            </div>
             <br />
             <div class="form-group">
                 <label for="usr">Due Date:</label>
@@ -1287,7 +1289,7 @@
                 <div class="col-xs-3 pull-left">
                     <button type="button" class="btn btn-primary" onclick="newElement()" style="background-color: #034f84">Add Task</button>
                 </div>
-                <div class="dropdown col-xs-3 pull-left">
+                <!--<div class="dropdown col-xs-3 pull-left">
                     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="background-color:red">
                         Sort
                         <span class="caret"></span>
@@ -1296,7 +1298,7 @@
                         <li class="dropdown-list" onclick="sortElementsById()">Sort By ID</li>
                         <li class="dropdown-list" onclick="sortElementsByName()">Sort By Name</li>
                     </ul>
-                </div>
+                </div>-->
                 <div class="col-lg-6 pull-right">
                     <div class="input-group">
                         <input id="search-text" onkeyup="searchInList()" type="text" class="form-control" placeholder="Search..." name="search">

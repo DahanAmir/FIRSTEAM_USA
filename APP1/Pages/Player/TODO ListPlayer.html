@@ -1126,8 +1126,8 @@
             console.log(data)
 
 
-            let api_todo1 = "../../api/ToDoList/" + id + "/del";
-            ajaxCall("DELETE", api_todo1, id, successdelTodo, errordelTodo)
+            let api_todo1 = "../../api/ToDoList/" + data + "/del";
+            ajaxCall("DELETE", api_todo1, data, successdelTodo, errordelTodo)
         }
 
         function successdelTodo() { alert("Your ToDo has been delete!!") }
@@ -1289,7 +1289,7 @@
                 <div class="col-xs-3 pull-left">
                     <button type="button" class="btn btn-primary" onclick="newElement()" style="background-color: #034f84">Add Task</button>
                 </div>
-                <div class="dropdown col-xs-3 pull-left">
+                <!--<div class="dropdown col-xs-3 pull-left">
                     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="background-color:red">
                         Sort
                         <span class="caret"></span>
@@ -1298,7 +1298,7 @@
                         <li class="dropdown-list" onclick="sortElementsById()">Sort By ID</li>
                         <li class="dropdown-list" onclick="sortElementsByName()">Sort By Name</li>
                     </ul>
-                </div>
+                </div>-->
                 <div class="col-lg-6 pull-right">
                     <div class="input-group">
                         <input id="search-text" onkeyup="searchInList()" type="text" class="form-control" placeholder="Search..." name="search">
