@@ -637,7 +637,7 @@
             //let email = localStorage.getItem("email")
             let email = localStorage.getItem("email");
             if (email=='') {
-                alert('אנא התחבר מחדש');
+                alert('Please reconnect');
                 location.window("LogIn.html")
             }
             //let api = "../api/UsersFile/get_user/emailfile";
@@ -697,7 +697,7 @@
                 ajaxCall("Delete", apiDelete, JSON.stringify(my_filename), successdelete, errorrdelete)
             }
             else {
-                alert('חסר מסמך זה, אנא הוסף/י');
+                alert('Please add a document!');
             }
 
 
@@ -707,9 +707,9 @@
 
         function successdelete(data) {
             if (data == 1) {
-                alert('הקובץ נמחק בהצלחה!');
+                alert('Your file deleted successfuly!');
             } if (data == -1) {
-                alert('הקובץ לא נמצא, אנא פנה לאחראי המערכת.');
+                alert('File was not found');
             }
         }
         function errorrdelete(data) {
