@@ -746,15 +746,23 @@
         var numberPerPage = 10;
         var numberOfPages = 0;
         var email = "";
-        function newElement() {
-            email = localStorage.getItem("email");
+        function newElement(Who) {
+            alert(Who);
+            var e 
+            if (Who=='me') {
+                emailtosend = localStorage.getItem("email");
 
-            var e = document.getElementById("players");
-            emailtosend = e.value
+
+            }
+            else {
+                e = document.getElementById("players");
+                emailtosend = e.value
+
+            }
 
 
-            var name = e.value;
-            var n = name.split("@");
+
+            var n = emailtosend.split("@");
             inputUser = n[0];
 
             //alert(emailtosend + "   " + inputUser)
@@ -790,7 +798,6 @@
                 };
             //todoList.fill(newTodo);
             todoList.push(newTodo);
-            location.reload();
             //alert("reload")
 
        
@@ -810,6 +817,8 @@
 
             sortElementsById();
             clearFields();
+            location.reload();
+
             return false;
             emai
         }
@@ -1286,18 +1295,21 @@
             </div>
             <div class="row">
                 <div class="col-xs-3 pull-left">
-                    <button type="button" class="btn btn-primary" onclick="newElement()" style="background-color: #034f84">Add Task</button>
+                    <button type="button" class="btn btn-primary" onclick="newElement('player')" style="background-color: #034f84">Add Task</button>
+                </div> <div class="col-xs-3 pull-left">
+                    <button type="button" class="btn btn-primary" onclick="newElement('me')" style="background-color: #034f84">Add Task Form Me</button>
                 </div>
+
                 <!--<div class="dropdown col-xs-3 pull-left">
-                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="background-color:red">
-                        Sort
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-list" onclick="sortElementsById()">Sort By ID</li>
-                        <li class="dropdown-list" onclick="sortElementsByName()">Sort By Name</li>
-                    </ul>
-                </div>-->
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="background-color:red">
+            Sort
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-list" onclick="sortElementsById()">Sort By ID</li>
+            <li class="dropdown-list" onclick="sortElementsByName()">Sort By Name</li>
+        </ul>
+    </div>-->
                 <div class="col-lg-6 pull-right">
                     <div class="input-group">
                         <input id="search-text" onkeyup="searchInList()" type="text" class="form-control" placeholder="Search..." name="search">
