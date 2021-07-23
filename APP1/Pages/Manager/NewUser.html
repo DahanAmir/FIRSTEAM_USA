@@ -571,6 +571,23 @@
 
     <script>
         $(document).ready(function () {
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("birthday").setAttribute("max", today);
+            document.getElementById("EstimatedYear").setAttribute("min", today);
+            //$("#birthday").max = new Date().toISOString().split("T")[0];
+
             //   $("#dyn").click(dynStaff);
             $("#pForm").submit(f1); // bind the submit event to a function called f1
 
@@ -900,7 +917,11 @@
                 <label for="FnameTB"><span class="red-star">★ </span>Last Name</label>
                 <input type="text" class="form-control" id="FnameTB" pattern="[A-Za-z].{1,10}" required placeholder="Enter the family name">
             </div>
+             <div class="form-group">
+                 <label for="birthday">BirthDay:</label>
+                <input type="date" placeholder="MM-dd-yyyy" id="birthday" max='2000-13-13' required >
 
+            </div>
 
             <div class="form-group">
                 <label for="dealerPhone"><span class="red-star">★ </span>Your Phone (using a pattern validator)</label>
