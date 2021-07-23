@@ -1398,31 +1398,16 @@
                 }*/
     </style>
 
+
     <script>
 
         var email = "";
         var str = "";
         var estimated_year = "";
-
-
-      
-       
-
-
-//       
-
         function errorget() {
             alert("errorget")
         }
 
-
-
-
-
-    </script>
-    <script>
-
-       
         function erroradd_list_r(data) {
             alert(data);
 
@@ -1519,12 +1504,118 @@
         }
 
     </script>
+    <script>
 
+        function tofel() {
+
+            window.open('https://www.ets.org/toefl');
+
+        }
+
+        function SAT() {
+
+            window.open('https://collegereadiness.collegeboard.org/sat');
+
+        }
+
+        function visa() {
+
+            window.open('https://il.usembassy.gov/visas/');
+
+        }
+
+        function homepage() {
+
+            window.open('https://www.firsteamusa.com');
+
+        }
+
+        function algo() {
+
+            window.open('Algo.html')
+
+        }
+
+        function Mupload() {
+
+            window.open('Manager_uploadFiles.html')
+
+        }
+
+        function filesview() {
+
+            window.open('fileview.html')
+
+        }
+        function match() {
+
+            window.open('Match.html')
+
+        }
+
+
+        function facebook() {
+            window.open('https://www.facebook.com/search/top?q=firsteam%20usa%20-%20%D7%9E%D7%9C%D7%92%D7%95%D7%AA%20%D7%A1%D7%A4%D7%95%D7%A8%D7%98%20%D7%91%D7%9E%D7%9B%D7%9C%D7%9C%D7%95%D7%AA%20%D7%91%D7%90%D7%A8%D7%94%22%D7%91')
+        }
+
+        function instegram() {
+            window.open('https://www.instagram.com/firsteam.usa/?utm_medium=copy_link')
+        }
+
+        function youtube() {
+            window.open('https://www.youtube.com/channel/UCGlXq-PPHZU1EJUYTB7NxGw')
+        }
+        function editprofile() {
+            window.open('neweditprofile.html')
+        }
+        function addnewtodo() {
+            window.open('TODO ListPlayer.html')
+        }
+
+        function EditProfileP() {
+            window.open('neweditprofile.html')
+        }
+        function ToDoP() {
+            window.open('TODO ListPlayer.html')
+        }
+
+        function errorTodo() {
+            alert("in errorTodo")
+        }
+
+
+        function errorWishlist() {
+            alert("Please Choose school to Save")
+        }
+
+        function successWishlist() {
+            //  alert("successWishlist")
+        }
+
+        function gotowishlist() {
+            window.open('WishList.html')
+        }
+
+
+        function allprofiles() {
+            window.open('Allprofiles.html')
+        }
+
+        function goBack() {
+            window.history.back();
+            window.close()
+        }
+
+        function Mytodo() {
+            window.open('NewToDo.html')
+        }
+
+        function Alltodo() {
+            window.open('TODO List.html')
+        }
+    </script>
     <script>
       
-
-        
-
         function rotateCard(btn) {
             var $card = $(btn).closest('.card-container');
             console.log($card);
@@ -1612,19 +1703,9 @@
 
         function send() {
 
-            var e = document.getElementById("players");
-            var email = e.value;
-
-
-
-
-
-            console.log(email);
-            //  console.log(subject);
-            //  console.log(body);
-
-            // window.open('mailto:' + email + '?subject=' + subject + '&body=' + body);
-            window.open('mailto:' + email);
+             e = document.getElementById("players");
+           
+            window.open('mailto:' + e.value);
 
         }
 
@@ -1663,47 +1744,15 @@
 
         }
 
-        function errorTodo() {
-            alert("in errorTodo")
-        }
+      
 
 
-        function errorWishlist() {
-            alert("Please Choose school to Save")
-        }
-
-        function successWishlist() {
-            //  alert("successWishlist")
-        }
-
-        function gotowishlist() {
-            window.open('WishList.html')
-        }
-
-
-        function allprofiles() {
-            window.open('Allprofiles.html')
-        }
-
-        function goBack() {
-            window.history.back();
-            window.close()
-        }
-
-        function Mytodo() {
-            window.open('NewToDo.html')
-        }
-
-        function Alltodo() {
-            window.open('TODO List.html')
-        }
-
-
-        //email
 
         var str = "";
      
         $(document).ready(function () {
+            let email = localStorage.getItem("email")
+
             //str = "users_show"
             //api = "../../api/Users/" + str + "/Show_all_users";
             //ajaxCall("GET", api, "", sucessget, errorget)
@@ -1732,54 +1781,49 @@
             });
 
 
-            // email = "adi@gmail.com";
            
 
         });
         function getSuccess(data) {
-            let email = localStorage.getItem("email");
             var est = "";
             for (var i = 0; i < data.length; i++)
 
                 if (data[i].Email == email)
                     estimated_year = data[i].EstimatedYear
-            console.log(estimated_year)
-            //     else alert("Null");
-
             est = estimated_year.split("T");
             var date = est[0];
-
             var dd = date.split("-")
-            var day = dd[2];
-            var month = dd[1];
-            var year = dd[0];
+            if (dd[0] >2020) {
+                //     else alerat("Null");
+             
+                var day = dd[2];
+                var month = dd[1];
+                var year = dd[0];
+
+                var newd = new Date(year, month - 1, day).getTime();
+
+
+                let timer = setInterval(function () {
 
 
 
-            var newd = new Date(year, month - 1, day).getTime();
-
-
-            let timer = setInterval(function () {
-
-
-
-                var today = new Date().getTime();
+                    var today = new Date().getTime();
 
 
 
 
-                let diff;
+                    let diff;
 
-                diff = newd - today;
+                    diff = newd - today;
 
-                // math
-                let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                    // math
+                    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-                // display
-                document.getElementById("timer").innerHTML =          "<div class=\"days\"> \
+                    // display
+                    document.getElementById("timer").innerHTML = "<div class=\"days\"> \
               <div class=\"numbers\">" + days + "</div>days</div> \
 <div class=\"hours\"> \
               <div class=\"numbers\">" + hours + "</div>hours</div> \
@@ -1789,30 +1833,16 @@
               <div class=\"numbers\">" + seconds + "</div>seconds</div> \
 </div>";
 
-            }, 1000);
+                }, 1000);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            }
+           
             //rendusers(data);
 
             var Register = null
             var BirthDay1 = 'null'
             users = data;
-            let email = localStorage.getItem("email")
 
             for (var i = 0; i < users.length; i++) {
                 if (email == users[i].Email) {
@@ -1842,151 +1872,14 @@
             alert("erroradd_list_r")
         }
 
-        var arr = "";
-        //function rendusers(data) {
-        //    arr += "<form>";
-        //    arr += "<label for='players'> Choose a Player:</label>";
-        //    arr += "<select id = 'players' >";
-        //    for (var i = 0; i < data.length; i++) {
-
-        //        arr += "<option value='" + data[i].Email + "' onclick='gemail(this.id)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
-
-        //    }
-
-        //    arr += "</select >";
-        //    arr += "<form>";
-        //    document.getElementById("Show").innerHTML = arr;
-
-
-
-        //}
-
-
-
-        var obj = "";
+       
         function gemail(obj) {
             alert("obj is: " + obj);
         }
 
-        function send() {
-
-            var e = document.getElementById("players");
-            var email = e.value;
-            //alert(email + "in send")
-            //    ValidateEmail(email)
-            console.log(email);
-            window.open('mailto:' + email);
-
-        }
+       
 
 
-        //function ValidateEmail(email) {
-        //    //var e = document.getElementById("players");
-        //    //var email = e.value;
-        //  /*  alert(email)*/
-        //    console.log(email);
-        //    //alert(email + "in v")
-
-        //        //if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(myForm.email.value)) {
-        //        //    //return (true)
-        //        //    alert("TRUE")
-        //        //    window.open('mailto:' + email)
-
-        //        //}
-        //        //alert("You have entered an invalid email address!")
-        //        //return (false)
-        //    }
-
-
-
-        //var s = document.getElementById("subject");
-        //var subject = s.value;
-
-        //var b = document.getElementById("body");
-        //var body = b.value;
-
-
-
-        //    console.log(subject);
-        //   console.log(body);
-
-
-        //   window.open('mailto:' + email + '?subject=' + subject + '&body=' + body);
-
-
-
-        function tofel() {
-
-            window.open('https://www.ets.org/toefl');
-
-        }
-
-        function SAT() {
-
-            window.open('https://collegereadiness.collegeboard.org/sat');
-
-        }
-
-        function visa() {
-
-            window.open('https://il.usembassy.gov/visas/');
-
-        }
-
-        function homepage() {
-
-            window.open('https://www.firsteamusa.com');
-
-        }
-
-        function algo() {
-
-            window.open('Algo.html')
-
-        }
-
-        function Mupload() {
-
-            window.open('Manager_uploadFiles.html')
-
-        }
-
-        function filesview() {
-
-            window.open('fileview.html')
-
-        }
-        function match() {
-
-            window.open('Match.html')
-
-        }
-
-
-        function facebook() {
-            window.open('https://www.facebook.com/search/top?q=firsteam%20usa%20-%20%D7%9E%D7%9C%D7%92%D7%95%D7%AA%20%D7%A1%D7%A4%D7%95%D7%A8%D7%98%20%D7%91%D7%9E%D7%9B%D7%9C%D7%9C%D7%95%D7%AA%20%D7%91%D7%90%D7%A8%D7%94%22%D7%91')
-        }
-
-        function instegram() {
-            window.open('https://www.instagram.com/firsteam.usa/?utm_medium=copy_link')
-        }
-
-        function youtube() {
-            window.open('https://www.youtube.com/channel/UCGlXq-PPHZU1EJUYTB7NxGw')
-        }
-        function editprofile() {
-            window.open('neweditprofile.html')
-        }
-        function addnewtodo() {
-            window.open('TODO List.html')
-        }
-
-        function EditProfileP() {
-            window.open('neweditprofile.html')
-        }
-        function ToDoP() {
-            window.open('TODO ListPlayer.html')
-        }
 
     </script>
 
@@ -2137,31 +2030,31 @@
                                 <h1>Bio Graph</h1>
                                 <div class="row" style="width:100%">
                                     <div class="bio-row">
-                                        <p id="Firstname"><p id="Firstname"><span>First Name </span>: maayan</p></p>
+                                        <p id="Firstname"><p id="Firstname">
                                     </div>
                                     <div class="bio-row">
-                                        <p id="Lasttname"><p id="Lasttname"><span>Last Name </span>: bre</p></p>
+                                        <p id="Lasttname"><p id="Lasttname">
                                     </div>
                                     <div class="bio-row">
-                                        <p id="Sex"><p id="Sex"><span>Sex </span>: Female</p></p>
+                                        <p id="Sex"><p id="Sex">
                                     </div>
                                     <div class="bio-row">
-                                        <p id="BirthDay"><p id="BirthDay"><span> BirthDay </span>: 0001-01-01</p></p>
+                                        <p id="BirthDay"><p id="BirthDay">
                                     </div>
                                     <div class="bio-row">
-                                        <p id="Position"><p id="Position"><span>Position </span>: goalkeeper</p></p>
+                                        <p id="Position"><p id="Position">
                                     </div>
                                     <div class="bio-row">
-                                        <p id="Email"><p id="Email"><span> Email </span>: maayanb@gmail.com</p></p>
+                                        <p id="Email"><p id="Email">
                                     </div>
                                     <div class="bio-row">
-                                        <p id="Address"><p id="Address"><span>Address </span>: Mapiley maroco</p></p>
+                                        <p id="Address"><p id="Address">
                                     </div>
                                     <div class="bio-row">
-                                        <p id="Register"><p id="Register"><span> Register </span>: 2021-06-15</p></p>
+                                        <p id="Register"><p id="Register">
                                     </div>
                                     <div class="bio-row">
-                                        <p id="EstimatedYear"><p id="BirthDay"><span>Estimated Year </span>: 2021-09-09</p></p>
+                                        <p id="EstimatedYear"><p id="BirthDay">
                                     </div>
 
                                 </div>
