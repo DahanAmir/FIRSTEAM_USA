@@ -94,14 +94,14 @@
 			if (data == 0) {
 				alert("Hello player");
 				localStorage.setItem("email", email);
-				//localStorage.setItem("password", password);
-                window.open("Player/FavLocale.html")
+				localStorage.setItem("password", password);
+                window.open("Player/NewPlayerDash.html")
 				window.close()
 			}
 			if (data == 1) {
 				alert("Hello manager");
 				localStorage.setItem("email", email);
-				//localStorage.setItem("password", password);
+				localStorage.setItem("password", password);
                 window.open("Manager/NewManagerDash.html")
 				window.close();
 			}
@@ -151,7 +151,7 @@
 	</div>
 
 	<div class="container" style="background-color:#f1f1f1">
-		<button type="button" class="cancelbtn" style="background-color:darkblue" onclick="signup()">Sign up</button>
+		<!--<button type="button" class="cancelbtn" style="background-color:darkblue" onclick="signup()">Sign up</button>-->
 		<!--<button type="button" class="cancelbtn" style="background-color:red">Cancel</button>-->
 		<button type="button" class="cancelbtn" style="background-color:red" onclick="contact()">Contact Us!</button>
 		<!--<span class="psw"> <a href="#">Forgot password?</a></span>-->
