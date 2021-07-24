@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8" />
 	<title></title>
-	<script src="../../Scripts/ajaxCalls.js"></script>
-	<script src="../../Scripts/jquery-3.4.1.min.js"></script>
+	<script src="../Scripts/ajaxCalls.js"></script>
+	<script src="../Scripts/jquery-3.4.1.min.js"></script>
 	<style>
 
 		body {
@@ -86,7 +86,7 @@
 		function login() {
 			email = $("#uname").val();
 			password = $("#psw").val();
-            let api = "../../api/Users/" + email + '/' + password;
+            let api = "../api/Users/" + email + '/' + password;
 			ajaxCall("Get", api, email + "" + password, successlogin, errorlogin)
 		}
 		function successlogin(data) {
@@ -151,7 +151,7 @@
 	</div>
 
 	<div class="container" style="background-color:#f1f1f1">
-		<button type="button" class="cancelbtn" style="background-color:darkblue" onclick="signup()">Sign up</button>
+		<!--<button type="button" class="cancelbtn" style="background-color:darkblue" onclick="signup()">Sign up</button>-->
 		<!--<button type="button" class="cancelbtn" style="background-color:red">Cancel</button>-->
 		<button type="button" class="cancelbtn" style="background-color:red" onclick="contact()">Contact Us!</button>
 		<!--<span class="psw"> <a href="#">Forgot password?</a></span>-->
