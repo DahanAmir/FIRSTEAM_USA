@@ -212,9 +212,8 @@
     <Content Include="IMAGE\TOEFL.png" />
     <Content Include="IMAGE\ציונים.jpg" />
     <Content Include="MatchCSS.css" />
-    <Content Include="Pages\Manager\Algo - Copy.html" />
     <Content Include="Pages\Manager\AllWishlist.html" />
-    <Content Include="Pages\Manager\Connectasplayer.html" />
+    <Content Include="Pages\ZZZ\Connectasplayer.html" />
     <Content Include="Pages\Manager\LogIn.html" />
     <Content Include="Pages\NewbuttonsM.html" />
     <Content Include="Pages\Player\Countdown.html" />
@@ -272,6 +271,9 @@
     <Content Include="NCAA\NCAA.csv" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile3.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

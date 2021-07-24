@@ -22,7 +22,7 @@ namespace APP1.Models.DAL
             {
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
 
-                String selectSTR = "select * from Status where Active=1";
+                String selectSTR = "select * from Status where Active!=-1";
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
@@ -389,7 +389,7 @@ namespace APP1.Models.DAL
             {
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
 
-                String selectSTR = "select *,uf.Email  as 'EmailFile' ,u.email as 'UEmail' from users u left join UsersFile uf on u.email= uf.Email  where u.Active is null or u.Active=1 order by FileName";
+                String selectSTR = "select *,uf.Email  as 'EmailFile' ,u.email as 'UEmail' from users u left join UsersFile uf on u.email= uf.Email  where u.Active!=-1";
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
@@ -704,7 +704,7 @@ namespace APP1.Models.DAL
             {
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
 
-                String selectSTR = "select * from UsersToDoList where email='" + email+ "' and active=1 order by DueDate asc";
+                String selectSTR = "select * from UsersToDoList where email='" + email+ "' and active!=-1 order by DueDate asc";
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
@@ -862,7 +862,7 @@ namespace APP1.Models.DAL
 
             StringBuilder sb = new StringBuilder();
             // use a string builder to create the dynamic string
-            String prefix = " IF EXISTS(SELECT* FROM Status WHERE Status = '" + s.Statusname + "' )     UPDATE Status  SET Active=1     WHERE Status = '" + s.Statusname + "' ELSE     INSERT INTO[Status] " + "(Status, Active)";
+            String prefix = " IF EXISTS(SELECT* FROM Status WHERE Status = '" + s.Statusname + "' )     UPDATE Status  SET Active!=-1     WHERE Status = '" + s.Statusname + "' ELSE     INSERT INTO[Status] " + "(Status, Active)";
 
             sb.AppendFormat("Values('{0}', '{1}')", s.Statusname, 1);
 
@@ -941,7 +941,7 @@ namespace APP1.Models.DAL
             {
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
 
-                String selectSTR = "SELECT * FROM UsersUniversity left JOIN Users ON Users.Email = UsersUniversity.Email where active=1 ";
+                String selectSTR = "SELECT * FROM UsersUniversity left JOIN Users ON Users.Email = UsersUniversity.Email where active!=-1 ";
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
@@ -1835,14 +1835,20 @@ namespace APP1.Models.DAL
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
                 if (users_show== "users_show_algo")
                 {
-                     selectSTR = "SELECT * FROM Users left JOIN UserData ON  UserData.Email=Users.Email where UserData.Email IS NOT NULL";
+                     selectSTR = "SELECT * FROM Users left JOIN UserData ON  UserData.Email=Users.Email where UserData.Email IS NOT NULL and active!=-1";
 
                 }
-                else
+                if (users_show== "users_show" || users_show ==null)
                 {
-                     selectSTR = "SELECT * FROM Users left JOIN UsersStatus ON Users.Email = UsersStatus.Email ";
+                    selectSTR = "SELECT * FROM Users";
 
                 }
+                if (users_show == "users_show_all")
+                {
+                    selectSTR = "SELECT * FROM Users left JOIN UsersStatus ON Users.Email = UsersStatus.Email ";
+
+                }
+             
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
@@ -1852,7 +1858,7 @@ namespace APP1.Models.DAL
                 {
                   
                     Users ul = new Users();
-                    if (users_show == "users_show_algo")
+                    if (users_show == "users_show_algo" || users_show == "users_show" || users_show == null)
                     {
                         ul.FirstName = (string)dr["FirstName"];
                         ul.LastName = (string)dr["LastName"];

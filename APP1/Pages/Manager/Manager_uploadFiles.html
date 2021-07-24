@@ -929,7 +929,7 @@
             alert('errorType');
         }
         $(document).ready(function () {
-            str1 = "users_show"
+           let str1 = "users_show"
             let api = "../../api/Users/" + str1 + "/Show_all_users";
             ajaxCall("GET", api, str1, Show_all_users, erroradd_list_r)
 
@@ -938,11 +938,14 @@
             api = "../../api/UsersFile/get_all_File_Type";
 
             ajaxCall("Delete", api, "", successType, errorType)
-            var email = localStorage.getItem("email").replace(".", "dot");
+            //var email = localStorage.getItem("fileemail").replace(".", "dot");
+
             //var type = localStorage.getItem("type");
             var end
 
             $('#buttonUpload').on('click', function () {
+                 e = document.getElementById("players");
+                 email = e.value;
                 var data = new FormData();
                 var files = $("#files").get(0).files;
                 // Add the uploaded file to the form data collection
@@ -966,7 +969,7 @@
                     error: error
                 });
                 var file = { // Note that the name of the fields must be identical to the names of the properties of the object in the server
-                    Email: localStorage.getItem("email"),
+                    Email: email,
                     Filename: type + email + '.' + end[1],
                     Remark: $("#Remark").val(),
                     Score: $("#Score").val(),
@@ -994,6 +997,9 @@
         } function successinsert_F_DBS(data) {
 
             alert('Your file upload successfully!');
+ 
+            window.close();
+
 
         }
 
