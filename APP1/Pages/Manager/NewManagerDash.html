@@ -900,15 +900,18 @@
             //   alert("in rendusers")
             arr += "<form>";
             arr += "<h4>"
-            arr += "<label for='players'> Choose a Player: </label>";
+            arr += "<label for='players'> Choose a Player:  </label>";
             arr += "</h4>"
 
             arr += "<select id = 'players' >";
+            arr += "<option value='def' onclick='gemail()'> Choose.. </option>";
+
+
             for (var i = 0; i < data.length; i++) {
 
                 arr += "<option value='" + data[i].Email + "' onclick='gemail(this.id)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
 
-            }
+            } 
 
             arr += "</select >";
             arr += "<form>";
@@ -1032,8 +1035,9 @@
         var arr = "";
         function rendusers(data) {
             arr += "<form>";
-            arr += "<label for='players'> Choose a Player:</label>";
+            arr += "<label for='players'> Choose a Player:   </label>";
             arr += "<select id = 'players' >";
+            arr += "<option> Choose... </option>";
             for (var i = 0; i < data.length; i++) {
 
                 arr += "<option value='" + data[i].Email + "' onclick='gemail(this.id)'>" + data[i].FirstName + " " + data[i].LastName + "</option>";
