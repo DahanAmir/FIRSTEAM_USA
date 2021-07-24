@@ -745,7 +745,7 @@
             $("#nbr").hide();
             $("h4").hide();
             $("#b").show();
-            str1 = "users_show_algo"
+            str1 = "users_show"
             let api = "../../api/Users/" + str1 + "/Show_all_users";
             ajaxCall("GET", api, str1, getSuccess, erroradd_list_r)
 
@@ -798,7 +798,7 @@
         
 
         function rend(data) {
-            str=''
+
             console.log(data)
           
 
@@ -958,7 +958,7 @@
                 Email: emailtosend,
             }
 
-            //alert(emailtosend);
+            alert(emailtosend);
 
             ajaxCall("Put", "../../api/UserData", JSON.stringify(u), successData, errorData);
             //name1 = email.split('@');

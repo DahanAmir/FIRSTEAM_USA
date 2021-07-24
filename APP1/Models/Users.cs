@@ -78,11 +78,11 @@ namespace APP1.Models
 
             return dbs.Insert_New_Users(u);
         }
-        public List<Users> Show_Users()
+        public List<Users> Show_Users(string users_show)
         {
 
             DB_Services dbs = new DB_Services();
-            List<Users> cList = dbs.Show_Users();
+            List<Users> cList = dbs.Show_Users(users_show);
             return cList;
 
         }

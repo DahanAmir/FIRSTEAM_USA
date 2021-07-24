@@ -30,7 +30,7 @@ namespace APP1.Controllers
         public List<Users> Get(string users_show)
         {
             Users u = new Users();
-            return u.Show_Users();
+            return u.Show_Users(users_show);
         }
 
 

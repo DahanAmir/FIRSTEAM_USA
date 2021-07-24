@@ -212,6 +212,7 @@
     <Content Include="IMAGE\TOEFL.png" />
     <Content Include="IMAGE\ציונים.jpg" />
     <Content Include="MatchCSS.css" />
+    <Content Include="Pages\Manager\Algo - Copy.html" />
     <Content Include="Pages\Manager\AllWishlist.html" />
     <Content Include="Pages\Manager\Connectasplayer.html" />
     <Content Include="Pages\Manager\LogIn.html" />

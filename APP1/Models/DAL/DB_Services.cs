@@ -1824,16 +1824,25 @@ namespace APP1.Models.DAL
         //===============================Users========================
         //======================================================================
 
-        public List<Users> Show_Users()
+        public List<Users> Show_Users(string users_show)
         {
             List<Users> list_of_user= new List<Users>();
             SqlConnection con = null;
 
             try
             {
+                String selectSTR = "";
                 con = connect("DBConnectionString"); // create a connection to the database using the connection String defined in the web config file
+                if (users_show== "users_show_algo")
+                {
+                     selectSTR = "SELECT * FROM Users left JOIN UserData ON  UserData.Email=Users.Email where UserData.Email IS NOT NULL";
 
-                String selectSTR = "SELECT * FROM Users left JOIN UsersStatus ON Users.Email = UsersStatus.Email ";
+                }
+                else
+                {
+                     selectSTR = "SELECT * FROM Users left JOIN UsersStatus ON Users.Email = UsersStatus.Email ";
+
+                }
                 SqlCommand cmd = new SqlCommand(selectSTR, con);
 
                 // get a reader
@@ -1843,41 +1852,55 @@ namespace APP1.Models.DAL
                 {
                   
                     Users ul = new Users();
-                    ul.FirstName = (string)dr["FirstName"];
-                    ul.Email = (string)dr["Email"];
-                    ul.TypeUsers = Convert.ToInt32(dr["TypeUsers"]);
-                    ul.Sex = (string)dr["sex"];
-                    ul.LastName = (string)dr["LastName"];
-                    ul.Phone = (string)dr["Phone"];
-                    ul.Position = (string)dr["Position"];
-                    ul.BirthDay = (DateTime)dr["birthDay"];
-                    ul.Register = (DateTime)dr["Register"];
-
-                    if (dr["EstimatedYear"].GetType() != typeof(DBNull))
-                    ul.EstimatedYear = (DateTime)dr["EstimatedYear"];
-
-                    if (dr["Active"].GetType() != typeof(DBNull))
-                        ul.Active = Convert.ToInt32(dr["Active"]);
-
-
-                    if (dr["Address"].GetType() != typeof(DBNull))
-                    ul.Address = (string)dr["Address"];
-
-                    if (dr["Password"].GetType() != typeof(DBNull))
-                      ul.Password = (string)dr["Password"];
-
-                    if (dr["Status"].GetType() != typeof(DBNull))
-                     ul.Status = (string)dr["Status"];
-
-
-                    if (dr["Height"].GetType() != typeof(DBNull))
-                        ul.Height = (float)(double)dr["Height"];
-
-
-                    if (dr["Active"].GetType() == typeof(DBNull)|| Convert.ToInt32(dr["Active"]) !=-1)
-                        ul.Active = 1;
+                    if (users_show == "users_show_algo")
+                    {
+                        ul.FirstName = (string)dr["FirstName"];
+                        ul.LastName = (string)dr["LastName"];
+                        ul.Email = (string)dr["Email"];
+                    }
                     else
-                        ul.Active = -1;
+                    {
+                        ul.FirstName = (string)dr["FirstName"];
+                        ul.Email = (string)dr["Email"];
+                        ul.TypeUsers = Convert.ToInt32(dr["TypeUsers"]);
+                        ul.LastName = (string)dr["LastName"];
+                        if (dr["Register"].GetType() != typeof(DBNull))
+                            ul.Register = (DateTime)dr["Register"];
+                        if (dr["birthDay"].GetType() != typeof(DBNull))
+                            ul.BirthDay = (DateTime)dr["birthDay"];
+                        if (dr["Position"].GetType() != typeof(DBNull))
+                            ul.Position = (string)dr["Position"];
+                        if (dr["Phone"].GetType() != typeof(DBNull))
+                            ul.Phone = (string)dr["Phone"];
+                        if (dr["sex"].GetType() != typeof(DBNull))
+                            ul.Sex = (string)dr["sex"];
+                        if (dr["EstimatedYear"].GetType() != typeof(DBNull))
+                            ul.EstimatedYear = (DateTime)dr["EstimatedYear"];
+
+                        if (dr["Active"].GetType() != typeof(DBNull))
+                            ul.Active = Convert.ToInt32(dr["Active"]);
+
+
+                        if (dr["Address"].GetType() != typeof(DBNull))
+                            ul.Address = (string)dr["Address"];
+
+                        if (dr["Password"].GetType() != typeof(DBNull))
+                            ul.Password = (string)dr["Password"];
+
+                        if (dr["Status"].GetType() != typeof(DBNull))
+                            ul.Status = (string)dr["Status"];
+
+
+                        if (dr["Height"].GetType() != typeof(DBNull))
+                            ul.Height = (float)(double)dr["Height"];
+
+
+                        if (dr["Active"].GetType() == typeof(DBNull) || Convert.ToInt32(dr["Active"]) != -1)
+                            ul.Active = 1;
+                        else
+                            ul.Active = -1;
+                    }
+                    
 
 
                     list_of_user.Add(ul);
