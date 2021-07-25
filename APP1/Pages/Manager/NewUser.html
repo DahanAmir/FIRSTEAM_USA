@@ -957,7 +957,7 @@
                 <input type="text" class="form-control" id="FnameTB" pattern="[A-Za-z].{1,10}" required placeholder="Enter the family name">
             </div>
              <div class="form-group">
-                 <label for="birthday">BirthDay:</label>
+                 <label for="birthday"><span class="red-star">★ </span> BirthDay:</label>
                 <input type="date" placeholder="MM-dd-yyyy" id="birthday" max='2000-13-13' required >
 
             </div>
@@ -976,7 +976,7 @@
 
             <div class="form-group">
                 <label for="mailTB"><span class="red-star" required>★ </span>mail</label>
-                <input type="text" class="form-control" id="mailTB" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter the mail. Format should be: XXXX@XXXX." required />
+                <input type="text" class="form-control" id="mailTB" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter the mail. Format should be: XXXX@XXXX. Please use small letters" required />
             </div>
 
 
@@ -1008,10 +1008,10 @@
             </div>
 
             <div class="form-group">
-                <label for="PositionTB"><span class="red-star" required>★ </span>Position</label>
+                <label for="PositionTB"><span class="red-star" > </span>Position</label>
                 <input type="text" class="form-control" id="PositionTB"
                        oninvalid="this.setCustomValidity('Enter Your Position')"
-                       oninput="this.setCustomValidity('')" required />
+                       oninput="this.setCustomValidity('')"  />
             </div>
 
             <div class="form-group">
