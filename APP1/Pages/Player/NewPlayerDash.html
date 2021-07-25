@@ -1908,23 +1908,23 @@
             var BirthDay1 = 'null'
             users = data;
 
-            for (var i = 0; i < users.length; i++) {
-                if (email == users[i].Email) {
-                    if (users[i].Register) { Register1 = users[i].Register.split('T00:00:00') }
-                    if (users[i].BirthDay) { BirthDay1 = users[i].BirthDay.split('T00:00:00') }
-                    if (users[i].EstimatedYear) { EstimatedYear1 = users[i].EstimatedYear.split('T00:00:00') }
-                    $("#Email")[0].innerHTML = '<p id="Email"><span> Email </span>: ' + users[i].Email + "</p>"
+            for (var i = 0; i < data.length; i++) {
+                if (email == data[i].Email) {
+                    if (data[i].Register) { Register1 = data[i].Register.split('T00:00:00') }
+                    if (data[i].BirthDay) { BirthDay1 = data[i].BirthDay.split('T00:00:00') }
+                    if (data[i].EstimatedYear) { EstimatedYear1 = data[i].EstimatedYear.split('T00:00:00') }
+                    $("#Email")[0].innerHTML = '<p id="Email"><span> Email </span>: ' + data[i].Email + "</p>"
 
-                    $("#Firstname")[0].innerHTML = '<p id="Firstname"><span>First Name </span>: ' + users[i].FirstName + "</p>"
-                    $("#Lasttname")[0].innerHTML = '<p id="Lasttname"><span>Last Name </span>: ' + users[i].LastName + "</p>"
-                    $("#Sex")[0].innerHTML = '<p id="Sex"><span>Sex </span>: ' + users[i].Sex + "</p>"
-                    $("#Position")[0].innerHTML = '<p id="Position"><span>Position </span>: ' + users[i].Position + "</p>"
-                    $("#Address")[0].innerHTML = '<p id="Address"><span>Address </span>: ' + users[i].Address + "</p>"
+                    $("#Firstname")[0].innerHTML = '<p id="Firstname"><span>First Name </span>: ' + data[i].FirstName + "</p>"
+                    $("#Lasttname")[0].innerHTML = '<p id="Lasttname"><span>Last Name </span>: ' + data[i].LastName + "</p>"
+                    $("#Sex")[0].innerHTML = '<p id="Sex"><span>Sex </span>: ' + data[i].Sex + "</p>"
+                    $("#Position")[0].innerHTML = '<p id="Position"><span>Position </span>: ' + data[i].Position + "</p>"
+                    $("#Address")[0].innerHTML = '<p id="Address"><span>Address </span>: ' + data[i].Address + "</p>"
                     $("#Register")[0].innerHTML = '<p id="Register"><span> Register </span>: ' + Register1[0] + "</p>"
                     $("#EstimatedYear")[0].innerHTML = '<p id="BirthDay"><span>Estimated Year </span>: ' + EstimatedYear1[0] + "</p>"
                     $("#BirthDay")[0].innerHTML = '<p id="BirthDay"><span> BirthDay </span>: ' + BirthDay1[0] + "</p>"
-                    $("#header")[0].innerText = 'Welcome back ' + users[i].LastName + ' ' + users[i].FirstName
-                    i=users.length
+                    $("#header")[0].innerText = 'Welcome back ' + data[i].LastName + ' ' + data[i].FirstName
+                    i=data.length
                 }
             }
 
