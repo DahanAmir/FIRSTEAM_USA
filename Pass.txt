@@ -1,8 +1,8 @@
 Manager:
-Email:amirm@gmail.com
-Password:Aamir1234!
+Email:adi@gmail.com
+Password:12345
 
 
 Player:
 Email:adip@gmail.com
-Password:Adip1234!
+Password: 1234
