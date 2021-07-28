@@ -48,8 +48,8 @@ namespace WebApplication2.Controllers
                         httpPostedFile.SaveAs(bakfileSavePath);
 
 
-                        imageLinks.Add("uploaded_Files/" + namebak);
-                        imageLinks.Add("uploaded_Files/"+ fname);
+                        imageLinks.Add("../uploaded_Files/" + namebak);
+                        imageLinks.Add("../uploaded_Files/" + fname);
                     }
                 }
             }
